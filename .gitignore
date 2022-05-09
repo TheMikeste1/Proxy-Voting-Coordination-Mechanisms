@@ -314,3 +314,7 @@ TSWLatexianTemp*
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+
+# USU's thesis guide. Can be found here: https://gradschool.usu.edu/thesis-dissertation-requirements/
+Publication Guide.pdf
