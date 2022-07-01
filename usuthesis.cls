@@ -149,6 +149,7 @@
 \DeclareOption{me}{\set@@dept{me}}
 \DeclareOption{ae}{\set@@dept{ae}} % Added section SEB 22 Aug 2018
 \DeclareOption{cee}{\set@@dept{cee}} % Added section LSR 26 Jan 2018
+\DeclareOption{cs}{\set@@dept{cs}}  % Added by Michael Hegerhorst
 %}}}
 
 %{{{ Document type definitions
@@ -323,6 +324,11 @@
 %}}}
 
 %{{{ Set some title page values based on dept option
+% Added by Michael Hegerhorst
+\ifthen{\equal{cs}{\@@dept}}{%
+  \departmentname{Computer Science}
+  \degreein{Computer Science}
+}
 \ifthen{\equal{ee}{\@@dept}}{%
   \departmentname{Electrical and Computer Engineering}
   \degreein{Electrical Engineering}
