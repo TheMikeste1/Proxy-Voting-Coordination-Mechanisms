@@ -89,59 +89,63 @@
 %}}}
 
 % Author and Title Information
-\author{John Q. Engineer}
+\author{Michael D. Hegerhorst}
+% TODO: Pick title
 \title{A Complicated and Impressive Sounding Title that is Too Long
-  For a Single Line While Including Everything}
+For a Single Line While Including Everything}
 
 % The Committee
-\majorprof{Richard P. Feynmann, Ph.D.}
-\firstreader{Robert L. Forward, Ph.D.}
-\secondreader{Albert Einstein, Ph.D.}
-\thirdreader{Gottfried Liebniz, Ph.D.}
-\fourthreader{Isaac Newton, Ph.D.}
+\majorprof{Vicki Allan, Ph.D.}
+\firstreader{John Edwards, Ph.D.}
+\secondreader{Shuhan Yuan, Ph.D.}
+%\thirdreader{Gottfried Liebniz, Ph.D.}
+%\fourthreader{Isaac Newton, Ph.D.}
 
 % Graduate Dean
-\graddean{ D. Richard Cutler, Ph.D.}
-\deantitle{ Vice Provost of Graduate Studies}
+% TODO: Add the name and title of the CS graduate dean
+\graddean{FIX ME}
+\deantitle{FIX ME}
 
 % Degree Information
-%\degree{Master of Science}
-\degree{Doctor of Philosophy}
-\month{May}
+% TODO: Should this be "Master of Science in Computer Science?"
+\degree{Master of Science}
+\month{December}
 \gradyear{2022}
 
 \begin{document}
     %{{{ Frontmatter
     \preliminaries   % set frontmatter style
-    
+
     \maketitle
     \makecopyright        % optional
-    
+
     \include{abstract}
     \include{publicabstract}
     \include{dedication}  % optional 
     \include{acknowl}     % optional
-    
-    \tableofcontents 
-    \listoftables 
+
+    \tableofcontents
+    \listoftables
     \listoffigures
-    
+
 %    \include{notation}  % optional
     \include{acronyms}  % optional  
     %}}}
     %{{{ The main body of the thesis
     \body  % set main body style
     % Chapters
-    \include{sample-chapter1}
-    \include{sample-chapter2}
-    
+    \include{chapter1-introduction}
+    \include{chapter2-experimental-design}
+    \include{chapter3-results}
+    \include{chapter4-conclusions-and-further-work}
+
     % Endmatter
     % For BibTeX references: specify a .bib file and a style.
     % The style used here is for IEEE transactions formatting:
     \references{IEEEabrv,sample}{IEEEtran}
     % The style used here is for AIAA formatting:
 %    \references{IEEEabrv,sample}{aiaa}
-    
+
     \include{appendix}
     \include{vita}
     %}}}
