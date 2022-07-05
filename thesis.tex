@@ -121,9 +121,9 @@ For a Single Line While Including Everything}
     \maketitle
     \makecopyright        % optional
 
-    \include{abstract}
-    \include{publicabstract}
-    \include{dedication}  % optional 
+    \include{content/frontmatter/abstract}
+    \include{content/frontmatter/publicabstract}
+    \include{content/frontmatter/dedication}  % optional
 %    \include{acknowl}     % optional TODO: Do I want acknowledgements?
 
     \tableofcontents
@@ -131,25 +131,29 @@ For a Single Line While Including Everything}
     \listoffigures
 
 %    \include{notation}  % optional
-    \include{acronyms}  % optional  
+    \include{content/frontmatter/acronyms}  % optional
     %}}}
     %{{{ The main body of the thesis
     \body  % set main body style
     % Chapters
-    \include{chapter1-introduction}
-    \include{chapter2-experimental-design}
-    \include{chapter3-results}
-    \include{chapter4-conclusions-and-further-work}
+    \include{content/chapter1-introduction}
+    \include{content/chapter2-experimental-design}
+    \include{content/chapter3-results}
+    \include{content/chapter4-conclusions-and-further-work}
 
     % Endmatter
     % For BibTeX references: specify a .bib file and a style.
     % The style used here is for IEEE transactions formatting:
-    \references{IEEEabrv, references/research}{IEEEtran}
+    \references{
+        content/endmatter/references/IEEEabrv,
+        content/endmatter/references/research,
+        content/endmatter/references/sample}
+    {IEEEtran}
 
     % The style used here is for AIAA formatting:
 %    \references{IEEEabrv,sample}{aiaa}
 
-%    \include{appendix} % FIXME: Uncomment
+    \include{content/endmatter/appendix}
 %    \include{vita}  % TODO: I don't think I actually need this unless I'm a doctorate.
     %}}}
 \end{document}
