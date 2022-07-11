@@ -29,11 +29,78 @@
   publisher  = {International Foundation for Autonomous Agents and Multiagent Systems},
   series     = {AAMAS '17},
   abstract   = {We consider a social choice problem where only a small number of people out of a large population are sufficiently available or motivated to vote. A common solution to increase participation is to allow voters use a proxy, that is, transfer their voting rights to another voter. Considering social choice problems on metric spaces, we compare voting with and without the use of proxies to see which mechanism better approximates the optimal outcome, and characterize the regimes in which proxy voting is beneficial. When voters' opinions are located on an interval, both the median mechanism and the mean mechanism are substantially improved by proxy voting. When voters vote on many binary issues, proxy voting is better when the sample of active voters is too small to provide a good outcome. Our theoretical results extend to situations where available voters choose strategically whether to participate. We support our theoretical findings with empirical results showing substantial benefits of proxy voting on simulated and real preference data.},
+  groups     = {Proxy Voting Examples},
   keywords   = {computational social choice, proxy voting},
   location   = {S\~{a}o Paulo, Brazil},
   numpages   = {9},
   readstatus = {read},
+  relevance  = {relevant},
   url        = {https://dl.acm.org/doi/10.5555/3091125.3091247},
 }
 
+@Article{Mueller1972,
+  author     = {Dennis C. Mueller and Robert D. Tollison and Thomas D. Willett},
+  journal    = {Public Choice},
+  title      = {Representative democracy via random selection},
+  year       = {1972},
+  issn       = {1573-7101},
+  month      = mar,
+  number     = {1},
+  pages      = {57-68},
+  volume     = {12},
+  comment    = {Accessible: [https://www.jstor.org/stable/30022669](https://www.jstor.org/stable/30022669)
+
+p 59 ". . . if the populace is sampled, choices based on a different quality of information than if representatives decide will be obtained." This is related to my idea of using different quality of sensors, with higher level sensors being used as proxies (representatives) and less expensive ones being used as inactive voters.
+
+Page 62 might be interesting. It states random democracy might need 1000+ participants, depending on the allowed error rate.},
+  doi        = {10.1007/bf01718470},
+  groups     = {Proxy Voting Examples},
+  publisher  = {Springer Science and Business Media {LLC}},
+  readstatus = {read},
+  refid      = {Mueller1972},
+}
+
+@Conference{Zhang2022,
+  author    = {Yuzhe Zhang and Davide Grossi},
+  booktitle = {Proceedings of the 21st International Conference on Autonomous Agents and Multiagent Systems},
+  title     = {Tracking Truth by Weighting Proxies in Liquid Democracy},
+  year      = {2022},
+  address   = {Richland, SC},
+  month     = {5},
+  pages     = {1482–1490},
+  publisher = {International Foundation for Autonomous Agents and Multiagent Systems},
+  series    = {AAMAS '22},
+  abstract  = {We study wisdom-of-the-crowd effects in liquid democracy on networks where agents are allowed to apportion parts of their voting weight to different proxies. We show that in this setting---unlike in the standard one where voting weight is delegated in full to only one proxy---it becomes possible to construct delegation structures that optimize the truth-tracking ability of the group. Focusing on group accuracy we contrast this centralized solution with the setting in which agents are free to choose their weighted delegations by greedily trying to maximize their own individual accuracy. While equilibria with weighted delegations may be as bad as with standard delegations, they are never worse and may sometimes be better. To gain further insights into this model we experimentally study quantal response delegation strategies on random networks. We observe that weighted delegations can lead, under specific conditions, to higher group accuracy than simple majority voting.},
+  day       = {9},
+  groups    = {Proxy Voting Examples},
+  isbn      = {9781450392136},
+  keywords  = {epistemic social choice, liquid democracy, weighted delegations},
+  location  = {Virtual Event, New Zealand},
+  pagetotal = {9},
+  url       = {https://dl.acm.org/doi/10.5555/3535850.3536015},
+}
+
+@Article{Goelz2021,
+  author    = {Paul Gölz and Anson Kahng and Simon Mackenzie and Ariel D. Procaccia},
+  title     = {The Fluid Mechanics of Liquid Democracy},
+  year      = {2021},
+  month     = {10},
+  pages     = {1–39},
+  abstract  = {Liquid democracy is the principle of making collective decisions by letting agents transitively delegate their votes. Despite its significant appeal, it has become apparent that a weakness of liquid democracy is that a small subset of agents may gain massive influence. To address this, we propose to change the current practice by allowing agents to specify multiple delegation options instead of just one. Much like in nature, where—fluid mechanics teaches us—liquid maintains an equal level in connected vessels, we seek to control the flow of votes in a way that balances influence as much as possible. Specifically, we analyze the problem of choosing delegations to approximately minimize the maximum number of votes entrusted to any agent by drawing connections to the literature on confluent flow. We also introduce a random graph model for liquid democracy and use it to demonstrate the benefits of our approach both theoretically and empirically.},
+  address   = {New York, NY, USA},
+  booktitle = {ACM Trans. Econ. Comput.},
+  day       = {15},
+  doi       = {10.1145/3485012},
+  groups    = {Proxy Voting Examples},
+  keywords  = {Liquid democracy, democratic participation, power of two choices, preferential attachment, random graphs},
+  pagetotal = {39},
+  publisher = {Association for Computing Machinery},
+  url       = {https://doi.org/10.1145/3485012},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
+
+@Comment{jabref-meta: grouping:
+0 AllEntriesGroup:;
+1 StaticGroup:Proxy Voting Examples\;0\;1\;0x8a8a8aff\;\;\;;
+}
