@@ -13,21 +13,38 @@ Having the ability to take highly precise and accurate measurements is essential
 to maintaining safety, ensuring research is accurate, and providing a higher
 quality of life.
 This is particularly critical in high-risk or high-cost scenarios, such as when
-human life is involved, or when the cost of using a sensor or taking a
-measurement is particularly expensive.  % Maybe expand on what "expensive" means?
+human life is involved, or when the cost of using a sensor, taking a
+measurement, or running an experiment is particularly expensive.  % Maybe expand on what "expensive" means?
 This paper explores the idea of using an adapted form of proxy voting, as
 described in~\cite[para. 1.3]{Miller1969}, as a way of taking multiple
 measurements to ensure accuracy while minimizing the cost of taking those
 measurements.
 
-% FIXME: I should introduce the basics of my idea here, ot at least before getting too in depth of what proxy voting is
-
-
 \section{Contribution}\label{sec:contribution}
-% TODO: Go in depth as to what the purpose of this study is
+% FIXME: This paragraph ought to be reorded to the final order of experiments
+This study aims to explore the idea of using proxy voting as a technique to
+improve the accuracy of multiple measurements while reducing the cost by
+employing less expensive gauging methods when they are available.
+This is accomplished by first taking a number of more expensive measurements to
+serve as proxies, then supplementing any lack of precision by allocating
+votes from cheaper methods of assessing a metric.
+Additionally, this paper experiments with using different voting mechanisms and
+weighting mechanisms in an attempt to optimize proxy voting for different
+distributions of error.
+Finally, this paper attempts to identify how many `proxy' measurements need
+to be taken to reduce cost while still ensuring accuracy, and attempts to
+identify any benefit of using proxy votes as opposed to simply averaging the
+results.
+
+% TODO: Provide a brief description of what is discovered here
+
+% TODO: Maybe explain the structure of the paper as well?
+
+\section{Potential Applications}\label{sec:potential-applications}
+- % TODO: List potential applications, such as high risk/cost scenarios
 
 
-\section{Background}\label{sec:Background}
+\section{Background}\label{sec:background}
 \textit{Proxy voting} involves allowing agents to transfer their voting power
 from themselves to another agent, known as a \textit{proxy}\cite[para. 1.4]
 {Cohensius2017}.
@@ -52,15 +69,15 @@ is sufficient for the research performed in this paper.
 
 Proxy voting has a number of advantages over direct voting.
 The most obvious advantage is it allows inactive voters to reduce the work
-required from them by choosing a proxy to perform the work of voting for them.
+required of them by choosing a proxy to perform the work of voting for them.
 Naturally, this is extremely useful when the cost of voting is high, such as
 when remaining educated on a topic is difficult or
 time-consuming~\cite[para 1.1]{Mueller1972}, uncomfortable work such as standing
 in long queues is required, or other frustrating or costly obstacles must be
 overcome.
-In these cases, proxy voting allows voters to skip paying the costs while still
-having their voice heard by allowing a proxy to perform the work once on behalf
-of all voting power transferred to it.
+In these cases, proxy voting allows voters to skip incurring the costs while
+still having their voice heard by allowing a proxy to perform the work once on
+behalf of all voting power transferred to it.
 
 This often also has the effect of increasing the system welfare by
 increasing the accuracy of the system~\cite[sec. 1.1]{Cohensius2017}.
@@ -70,7 +87,7 @@ pitfalls of that mechanism under proxy voting.
 
 Proxy voting also allows for agents uninformed about the issue at hand to
 delegate the voting power to a trusted expert.
-For the purposes of this study, this is particularly useful.
+This is particularly useful for the purposes of this study.
 By using less accurate but cheaper measurements, the system can still yield
 increased accuracy and confidence in a result without requiring many more
 expensive measurements.
@@ -84,20 +101,6 @@ towards the super voter.
 For this paper's purposes, a poor distribution of measurements will make one
 proxy a super voter and increase the error of the result.
 
-% PROS
-% - Increase of total system welfare
-% - Decreased work for inactive agents
-% - Allows uneducated agents to defer to a trusted expert
-%   - Advantageous because there is a large cost to staying educated on all topics [Mueller1972, p 58]
-% CONS
-% - Can lead to "Super voters" [Golz2021, para. 1.3]
-%   - Allows for corruption
-% - Can lead to less desirable outcomes in some situations [Cohensius2017]
-%   - From what I can tell this is not discussing the accuracy of a system, but
-%     rather that for the mean mechanism argmin and argmax will be active,
-%     meaning the most extreme opinions are in play.
-% - Potential for proxies to betray inactive voters
-
 
 %% TODO: I don't like this paragraph, rewrite it
 %While use cases of proxy voting are typically focussed on situations that
@@ -106,11 +109,6 @@ proxy a super voter and increase the error of the result.
 %Primarily, the hope is to reduce the impact of measurement error by using
 %a combination of `expensive' and `inexpensive' measurements to obtain a
 %highly-accurate metric, about which the system can be confident.
-
-
-\section{Potential Applications}\label{sec:potential-applications}
-- % TODO: List potential applications, such as high risk/cost scenarios
-
 
 \section{Previous Work}\label{sec:previous-work}  % TODO: Maybe change this into Related Work?
 Proxy voting and other similar ideas have been explored a number of times
