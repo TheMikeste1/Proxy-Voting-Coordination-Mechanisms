@@ -110,18 +110,40 @@ proxy a super voter and increase the error of the result.
 %a combination of `expensive' and `inexpensive' measurements to obtain a
 %highly-accurate metric, about which the system can be confident.
 
-\section{Previous Work}\label{sec:previous-work}  % TODO: Maybe change this into Related Work?
-Proxy voting and other similar ideas have been explored a number of times
-primarily in the political and social science spheres\cite{Cohensius2017, Mueller1972, Zhang2022, Golz2021}.
-These studies typically focus on the advantages, disadvantages, as well as
-augmentations of proxy voting when used by a society.
+\section{Related Work}\label{sec:related-work}
+Proxy voting and liquid democracy are a well-discussed topics with a number of
+papers investigating their viability, advantages, and disadvantages.
+Many of these studies focus on political and societal uses for these techniques,
+but some of their discoveries can be used for this paper's purposes.
 
-- "Proxy Voting for Better Outcomes"\cite{Cohensius2017} explores the idea of
-using proxy voters to reduce, and even minimize under some voting mechanisms,
-the social cost of voting.
-- Paper assumes infinite voters, but I use finite voters (as few as possible)
-- Discuss voting mechanisms and discoveries
-- Explain how what I'm doing is different
+Directly related to this paper,\ \cite{Cohensius2017} explores proxy voting with
+infinite voters using set of \textit{mechanisms} or \textit{voting rules}.
+These are algorithms used to consolidate votes into the end result.
+The mechanisms discussed by \etal{Cohensius} included mean\footnote{An
+    interesting aside, though not directly relevant to this
+    study, is \etal{Cohensius} discovered the most extreme opinions will be
+    active under strategic participation when using a mean voting
+    mechanism\cite[lemma~9]{Cohensius2017}.}
+and median rules on continuous spaces, as well as majority rule on
+binary spaces.
+\etal{Cohensius} allow for both random and strategic participation, meaning any
+agent could decide whether it served as a proxy or not.
+
+\etal{Cohensius}'s work serves as the basis of this study, which expands on
+the voting mechanisms used as well as introduces an additional type of
+mechanism: weighting mechanisms.
+This study also explores using finite voters instead of infinite as discussed
+in~\cite{Cohensius2017}, as well as uses a set of proxies instead of random or
+strategic participation.
+
+% TODO: Explain Mueller1972
+
+% TODO: Explain Miller1969
+
+
+
+
+
 
 Research to be done:
 - Any similar papers
