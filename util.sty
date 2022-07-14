@@ -1,0 +1,7 @@
+\NeedsTeXFormat{LaTeX2e}  % Not sure if this is correct
+\ProvidesPackage{util}[Contains my utility commands]
+
+\DeclareOption*{\PackageWarning{util}{Unknown ‘\CurrentOption’}}
+\ProcessOptions\relax
+
+\newcommand{\etal}[1]{#1~et~al.\@}
