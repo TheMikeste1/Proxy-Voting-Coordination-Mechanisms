@@ -16,9 +16,10 @@ This is particularly critical in high-risk or high-cost scenarios, such as when
 human life is involved, or when the cost of using a sensor, taking a
 measurement, or running an experiment is particularly expensive.  % Maybe expand on what "expensive" means?
 This paper explores the idea of using an adapted form of proxy voting, as
-described in~\cite[para.~1.3]{Miller1969}, as a way of taking multiple
+described in~\cite[para.~I.3]{Miller1969}, as a way of taking multiple
 measurements to ensure accuracy while minimizing the cost of taking those
 measurements.
+
 
 \section{Contribution}\label{sec:contribution}
 % FIXME: This paragraph ought to be reorded to the final order of experiments
@@ -39,6 +40,7 @@ results.
 % TODO: Provide a brief description of what is discovered here
 
 % TODO: Maybe explain the structure of the paper as well?
+
 
 \section{Potential Applications}\label{sec:potential-applications}
 - % TODO: List potential applications, such as high risk/cost scenarios
@@ -72,9 +74,9 @@ The most obvious advantage is it allows inactive voters to reduce the work
 required of them by choosing a proxy to perform the work of voting for them.
 Naturally, this is extremely useful when the cost of voting is high, such as
 when remaining educated on a topic is difficult or
-time-consuming~\cite[para.~1.1]{Mueller1972}, uncomfortable work such as standing
-in long queues is required, or other frustrating or costly obstacles must be
-overcome.
+time-consuming~\cite[para.~1.1]{Mueller1972}, uncomfortable work such as
+standing in long queues is required, or other frustrating or costly obstacles
+must be overcome.
 In these cases, proxy voting allows voters to skip incurring the costs while
 still having their voice heard by allowing a proxy to perform the work once on
 behalf of all voting power transferred to it.
@@ -111,20 +113,37 @@ proxy a super voter and increase the error of the result.
 %a combination of `expensive' and `inexpensive' measurements to obtain a
 %highly-accurate metric, about which the system can be confident.
 
+
 \section{Related Work}\label{sec:related-work}
 Proxy voting and liquid democracy are a well-discussed topics with a number of
 papers investigating their viability, advantages, and disadvantages.
 Many of these studies focus on political and societal uses for these techniques,
 but some of their discoveries can be used for this paper's purposes.
 
+James Miller~\cite{Miller1969} explored the idea of proxy voting as a more
+direct method of democracy over representative democracy.
+Most of his work focuses on the political and societal advantages of proxy
+voting, and so is not directly applicable to the problem at hand.
+However, he does bring up the idea this paper calls \textit{expert proxies},
+those being individuals who would `vote as [the inactive voter] would if only
+[the inactive voter] had the time and knowledge to participate
+directly'~\cite[para.~I.3]{Miller1969}.
+This concept is exactly what this paper plans to exploit: create and use expert
+proxies when generating a measurement and allow less accurate techniques to use
+them as proxies.
+
+
+% TODO: Explain Mueller1972
+
+
 Directly related to this paper,\ \cite{Cohensius2017} explores proxy voting with
 infinite voters using set of \textit{mechanisms} or \textit{voting rules}.
 These are algorithms used to consolidate votes into the end result.
 The mechanisms discussed by \etal{Cohensius} included mean\footnote{An
-    interesting aside, though not directly relevant to this
-    study, is \etal{Cohensius} discovered the most extreme opinions will be
-    active under strategic participation when using a mean voting
-    mechanism\cite[lemma~9]{Cohensius2017}.}
+interesting aside, though not directly relevant to this
+study, is \etal{Cohensius} discovered the most extreme opinions will be
+active under strategic participation when using a mean voting
+mechanism\cite[lemma~9]{Cohensius2017}.}
 and median rules on continuous spaces, as well as majority rule on
 binary spaces.
 \etal{Cohensius} allow for both random and strategic participation, meaning any
@@ -136,14 +155,6 @@ mechanism: weighting mechanisms.
 This study also explores using finite voters instead of infinite as discussed
 in~\cite{Cohensius2017}, as well as uses a set of proxies instead of random or
 strategic participation.
-
-% TODO: Explain Mueller1972
-
-% TODO: Explain Miller1969
-
-
-
-
 
 
 Research to be done:
