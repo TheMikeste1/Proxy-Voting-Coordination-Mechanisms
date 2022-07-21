@@ -4,14 +4,11 @@
 
 \chapter{EXPERIMENT DESIGN}\label{ch:experiment-design}
 
-\section{Preliminaries}\label{sec:preliminaries}
-% Talk basics about voting mechanisms and start explaining weighting mechanisms
-
-\section{Experiment Design}\label{sec:experiment-design}
-
-\subsection{Experiments}\label{sec:experiments}
+\section{Experiments}\label{sec:experiments}
 - Infinite (a la \cite{Cohensius2017})
 - Finite
+    - Expert proxies, untrained inactive
+    - Untrained proxies, expert inactive
 - Finite with agent costs
 
 \subsection{Criteria}\label{subsec:criteria}
@@ -30,8 +27,6 @@
 - Dimensions?
 - Cost per proxy
 - Cost per non-proxy
-
-
 
 \section{Mechanisms}\label{sec:mechanisms}
 - Explain what mechanisms are, as well as my expansion using weight mechanisms.
@@ -63,6 +58,39 @@
 - Borda
 - Ranked Choice
 - . . .
+
+\section{Experiment Design}\label{sec:experiment-design}
+% Steps
+In order to ensure consistency, each experiment will follow the same general
+steps.
+
+\begin{enumerate}[label=\textbf{\arabic*}., leftmargin=2\parindent]
+    \titleditem{Generate proxies}
+    Given the space in which an experiment is to take place, the system will
+    generate a number of proxies using the given distribution.
+    The number and distribution of these proxies will depend on the
+    parameters of the experiment.
+    \titleditem{Generate inactive voters}
+    The system will then generate a set of inactive voters.
+    Again, the number and distribution these voters will depend on the
+    experiment's parameters and will often not be the same as the proxies'
+    parameters.
+    In particular, the distribution and range used will generally be
+    different from the proxies' since the proxies serve as `experts' and so
+    should be more accurate.
+    \titleditem{Assign weights to proxies}
+    Using the given \hyperref[subsec:weight-mechanisms]{weighting mechanism},
+    each inactive voter will apply weights to one or more proxies.
+    The system will sum these weights to get a total weight for each proxy.
+    \titleditem{Estimate truth}
+    % TODO
+    % Voting mechanisms
+    \titleditem{Calculate error}
+    % TODO
+\end{enumerate}
+
+% TODO: Caveats
+
 
 
 \section{Further Work and Improvements}\label{sec:further-work-and-improvements}

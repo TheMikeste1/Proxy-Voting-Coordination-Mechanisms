@@ -4,4 +4,6 @@
 \DeclareOption*{\PackageWarning{util}{Unknown ‘\CurrentOption’}}
 \ProcessOptions\relax
 
-\newcommand{\etal}[1]{#1~et~al.\@}
+\newcommand*{\etal}[1]{#1~et~al.\@}
+
+\newcommand*{\titleditem}[1]{\item\textbf{#1:}\\}
