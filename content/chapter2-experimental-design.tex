@@ -34,9 +34,29 @@ as the expert voters due to their possibility for error.
 Measurement methods represented by these voters are less accurate, though
 likely cheaper.  % TODO: such as. . .
 
-% TODO: Explain different configurations
-%  - Expert proxies, untrained inactive
-%  - Untrained proxies, expert inactive
+Both types of voters have the same goal: to enhance the accuracy of the system.
+They will work in tandem in order to accomplish this goal.
+There are two immediately identifiable ways to use both types of voters which
+will be explored in this paper.
+First, the experts can be used as proxies and the untrained as inactive voters.
+This exploits the idea discussed in~\cite{Miller1969, Mueller1972} of
+allowing experts to guide the system while still pulling information from the
+other agents.
+
+The second obvious way to employ these agents is using the untrained voters
+and the proxies and allowing the experts to transfer their voting power to them.
+This is the direct inverse of the previous setup.
+The intuition behind this strategy is since untrained voters are likely
+cheaper and so can be more numerous, they have a better chance of being closer
+to the true value due to the law of large numbers.
+Naturally, this technique would be most beneficial when untrained agents use a
+distribution with a decent likelihood of the true value being included, such
+as Gaussian or uniform.
+While this study does not plan to exploit the law of large numbers anywhere
+near its full potential, this setup may be beneficial where many measurements
+can be taken or when untrained agents are considerably less expensive than
+experts.
+
 %  - Finite with agent costs
 
 \subsection{Criteria}\label{subsec:criteria}
@@ -58,6 +78,7 @@ likely cheaper.  % TODO: such as. . .
 - Seed
     - Metaparameter--allows reproduction of an iteration. Each iteration
       will have a unique seed.
+    - Might be best to not discuss this in the paper.
 
 \section{Mechanisms}\label{sec:mechanisms}
 - Explain what mechanisms are, as well as my expansion using weight mechanisms.
@@ -116,7 +137,7 @@ will be 0.
 This makes it trivial to calculate loss, and also simplifies selecting the
 positions of each voter.
 
-% TODO: Talk about distribution range restrictions, such as gaussian being
+% TODO: Talk about distribution range restrictions, such as Gaussian being
 % restricted between -1 and 1. I may want to restrict both experts and
 % the untrained to the same value to simplify things.
 
