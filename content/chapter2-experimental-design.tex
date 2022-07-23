@@ -90,6 +90,15 @@ process.
 Afterwards, the data will be analysed in an attempt to identify any patterns,
 strengths, or weaknesses proxy voting has as a measurement verification tool.
 
+In order to simplify various calculations, the true value for each experiment
+will be 0.
+This makes it trivial to calculate loss, and also simplifies selecting the
+positions of each voter.
+
+% TODO: Talk about distribution range restrictions, such as gaussian being
+% restricted between -1 and 1. I may want to restrict both experts and
+% the untrained to the same value to simplify things.
+
 \subsection{Data Collection}\label{subsec:data-collection}
 % Steps
 In order to ensure consistency, each experiment will follow the same general
