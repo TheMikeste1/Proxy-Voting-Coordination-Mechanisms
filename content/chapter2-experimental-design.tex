@@ -12,11 +12,32 @@ weaknesses of proxy voting under certain conditions and attempt to minimize
 the costs of ensuring accurate measurements.
 
 \section{Experiments}\label{sec:experiments}
-- Infinite (a la \cite{Cohensius2017})
-- Finite
-- Expert proxies, untrained inactive
-- Untrained proxies, expert inactive
-- Finite with agent costs
+This study explores the idea of using finite voters, as opposed to the
+infinite voters described in~\cite{Cohensius2017}.
+These voters' positions will be randomly selected using a distribution, which
+will vary from experiment to experiment.
+By design, there are two primary types of voters: expert and untrained.
+
+\textit{Expert voters} are agents that give a more accurate estimate of the
+true value.
+These voters have tighter extremes for estimated values or are chosen from
+a more accurate distribution (such as Gaussian) allowing them to be more
+certain in their estimation.
+These voters represent better, though likely more expensive, methods for
+taking a measurement.  % TODO: such as. . .
+
+\textit{Untrained voters}, on the other hand, are agents with a worse
+distribution or more extreme minimums and maximums.
+These agents have a greater degree on error, and while they might be correct
+about the true value they are unable to be as certain about their estimations
+as the expert voters due to their possibility for error.
+Measurement methods represented by these voters are less accurate, though
+likely cheaper.  % TODO: such as. . .
+
+% TODO: Explain different configurations
+%  - Expert proxies, untrained inactive
+%  - Untrained proxies, expert inactive
+%  - Finite with agent costs
 
 \subsection{Criteria}\label{subsec:criteria}
 - Time (squared?)
@@ -153,3 +174,8 @@ as the estimated truth, the error, as well as the rest of the
 
 
 \section{Further Work and Improvements}\label{sec:further-work-and-improvements}
+- Multiple levels of expertise. Expert voters could have varying levels of
+accuracy, allowing for more complex systems.
+- (If I decide to restrict experts and untrained to the same mins and maxes)
+Allow for untrained to have a lower restriction, making them less accurate.
+
