@@ -3,12 +3,16 @@
 %
 
 \chapter{EXPERIMENT DESIGN}\label{ch:experiment-design}
+% TODO: What is the purpose of these experiments?
+
+% TODO: Maybe make a system design section/chapter?
+
 
 \section{Experiments}\label{sec:experiments}
 - Infinite (a la \cite{Cohensius2017})
 - Finite
-    - Expert proxies, untrained inactive
-    - Untrained proxies, expert inactive
+- Expert proxies, untrained inactive
+- Untrained proxies, expert inactive
 - Finite with agent costs
 
 \subsection{Criteria}\label{subsec:criteria}
@@ -59,10 +63,24 @@
 - Ranked Choice
 - . . .
 
+
 \section{Experiment Design}\label{sec:experiment-design}
+% TODO: I don't currently have anything in here about agents with different
+%  costs. I might not get to that until after running the cost-less
+%  experiments, but I ought to look for opportunities to implement it.
+The experiments will be performed in two phases.
+First, all data will be collected.
+This is done primarily to make all desired data available during the analysis
+process.
+% FIXME: Is there really nothing else I could say here?
+Afterwards, the data will be analysed in an attempt to identify any patterns,
+strengths, or weaknesses proxy voting has as a measurement verification tool.
+
+\subsection{Data Collection}\label{subsec:data-collection}
 % Steps
 In order to ensure consistency, each experiment will follow the same general
 steps.
+% TODO: Fill this out more
 
 \begin{enumerate}[label=\textbf{\arabic*}., leftmargin=2\parindent]
     \titleditem{Generate proxies}
@@ -70,6 +88,7 @@ steps.
     generate a number of proxies using the given distribution.
     The number and distribution of these proxies will depend on the
     parameters of the experiment.
+
     \titleditem{Generate inactive voters}
     The system will then generate a set of inactive voters.
     Again, the number and distribution these voters will depend on the
@@ -78,19 +97,35 @@ steps.
     In particular, the distribution and range used will generally be
     different from the proxies' since the proxies serve as `experts' and so
     should be more accurate.
+
     \titleditem{Assign weights to proxies}
     Using the given \hyperref[subsec:weight-mechanisms]{weighting mechanism},
     each inactive voter will apply weights to one or more proxies.
     The system will sum these weights to get a total weight for each proxy.
+
     \titleditem{Estimate truth}
-    % TODO
-    % Voting mechanisms
+    Once all the weights have been calculated, the system will coalesce
+    the weights into an estimated value using the provided
+    \hyperref[subsec:voting-mechanisms]{voting mechanism}.
+    This value is the system's estimation of the true value.
+
     \titleditem{Calculate error}
-    % TODO
+    Finally, the error of the system can be calculated by using the true
+    value and the system's estimation of the truth.
+    This error can be used to determine how well the system worked and
+    ultimately determine if proxy voting is useful under the given parameters.
 \end{enumerate}
+
+% FIXME: I might want to specify how many times a combination is ran
+Each combination of parameters will be run a number of times in order to obtain
+a fair spread of error for that set of parameters.
+After each iteration, % TODO: what data is collected?
+
 
 % TODO: Caveats
 
+\subsection{Analysis}\label{subsec:analysis}
+% TODO: What is done after an experiment?
 
 
 \section{Further Work and Improvements}\label{sec:further-work-and-improvements}
