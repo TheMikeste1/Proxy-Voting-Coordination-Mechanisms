@@ -94,13 +94,39 @@ Both setups will be examined in this study.
 Fortunately, the process of how to create the setups is identical.
 The only difference is which type of agent serves as proxies.
 
-%  - Finite with agent costs
-
 \subsection{Criteria}\label{subsec:criteria}
+A system is only as good as its ability to perform.
+In order to gauge the ability or goodness of proxy voting as a form of
+measurement correction, three primary criteria have been identified.
+
+First, the most important part of the system is the accuracy.
+If a system using proxy voting performs worse than simply averaging all votes
+it would have been better to skip the additional complexities of using
+proxies.
+Accuracy will be measured using squared loss.
+Fortunately, since agents operate within a space $\chi$, calculating the
+squared loss for a system $\mathbb{L}{(\mathbb{S})}$, is
+as simple as calculating the squared distance
+\begin{equation}
+    \mathbb{L}{(\mathbb{S})} = {
+        \left(\sqrt{
+            (\mathbb{T}_\mathbb{S}^1 - \mathbb{T}^1)^2 +
+            \mathellipsis +
+            (\mathbb{T}_\mathbb{S}^k - \mathbb{T}^k)^2
+        }\right)
+    }^2 =
+    (\mathbb{T}_\mathbb{S}^1 - \mathbb{T}^1)^2 +
+    \mathellipsis +
+    (\mathbb{T}_\mathbb{S}^k - \mathbb{T}^k)^2
+    \text{,}\label{eq:loss}
+\end{equation}
+where $\mathbb{T}_\mathbb{S}^k$ and $\mathbb{T}^k$ are the $k$th dimension of
+the estimated and real truth respectively.
+
 % - Time (squared?)/Calculation complexity
 %   - Useful to know if humans could use it.
-% - Accuracy/Precision & Recall
 % - Cost
+%   - Ratios?
 
 \subsection{Parameters}\label{subsec:parameters}
 % - \# of Proxies
