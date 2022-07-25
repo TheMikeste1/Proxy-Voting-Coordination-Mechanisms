@@ -64,56 +64,57 @@ The only difference is which type of agent serves as proxies.
 %  - Finite with agent costs
 
 \subsection{Criteria}\label{subsec:criteria}
-- Time (squared?)
-- Accuracy/Precision \& Recall
-- Cost
+% - Time (squared?)/Calculation complexity
+%   - Useful to know if humans could use it.
+% - Accuracy/Precision & Recall
+% - Cost
 
 \subsection{Parameters}\label{subsec:parameters}
-- \# of Proxies
-- \# of Non-Proxies
-- Distribution of votes
-    - Uniform
-    - Gaussian
-    - Bimodal about center
-    - Skewed?
-- Dimensions?
-- Cost per proxy
-- Cost per non-proxy
-- Seed
-    - Metaparameter--allows reproduction of an iteration. Each iteration
-      will have a unique seed.
-    - Might be best to not discuss this in the paper.
+% - \# of Proxies
+% - \# of Non-Proxies
+% - Distribution of votes
+%     - Uniform
+%     - Gaussian
+%     - Bimodal about center
+%     - Skewed?
+% - Dimensions?
+% - Cost per proxy
+% - Cost per non-proxy
+% - Seed
+%     - Metaparameter--allows reproduction of an iteration. Each iteration
+%       will have a unique seed.
+%     - Might be best to not discuss this in the paper.
 
 \section{Mechanisms}\label{sec:mechanisms}
-- Explain what mechanisms are, as well as my expansion using weight mechanisms.
+% - Explain what mechanisms are, as well as my expansion using weight mechanisms.
 
 \subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
-- Explain what voting mechanisms are
+% - Explain what voting mechanisms are
 
 \subsubsection{Candidate Mechanisms}\label{subsubsec:candidate-mechanisms}
-- Explain what candidate mechanisms are
-
-- Median
-- Borda
-- Ranked Choice
-- Plurality? Likely not going to work well
-- . . .
+% - Explain what candidate mechanisms are
+%
+% - Median
+% - Borda
+% - Ranked Choice
+% - Plurality? Likely not going to work well
+% - . . .
 
 \subsubsection{Average Mechanisms}\label{subsubsec:average-mechanisms}
-- Explain what average mechanisms are
-
-- Mean
-- Weight by Borda
-- Weight by Ranked Choice
-- . . .
+% - Explain what average mechanisms are
+%
+% - Mean
+% - Weight by Borda
+% - Weight by Ranked Choice
+% - . . .
 
 \subsection{Weight Mechanisms}\label{subsec:weight-mechanisms}
-- Explain what weight mechanisms are
-
-- Vote for closest (implemented by \cite{Cohensius2017})
-- Borda
-- Ranked Choice
-- . . .
+% - Explain what weight mechanisms are
+%
+% - Vote for closest (implemented by \cite{Cohensius2017})
+% - Borda
+% - Ranked Choice
+% - . . .
 
 
 \section{Experiment Design}\label{sec:experiment-design}
@@ -199,8 +200,8 @@ as the estimated truth, the error, as well as the rest of the
 
 
 \section{Further Work and Improvements}\label{sec:further-work-and-improvements}
-- Multiple levels of expertise. Expert voters could have varying levels of
-accuracy, allowing for more complex systems.
-- (If I decide to restrict experts and untrained to the same mins and maxes)
-Allow for untrained to have a lower restriction, making them less accurate.
+% - Multiple levels of expertise. Expert voters could have varying levels of
+% accuracy, allowing for more complex systems.
+% - (If I decide to restrict experts and untrained to the same mins and maxes)
+% Allow for untrained to have a lower restriction, making them less accurate.
 
