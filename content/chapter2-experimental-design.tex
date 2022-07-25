@@ -12,22 +12,31 @@ weaknesses of proxy voting under certain conditions and attempt to minimize
 the costs of ensuring accurate measurements.
 
 \section{Preliminaries}\label{sec:preliminaries}
+Each system $\mathbb{S}$ will output some estimation $\mathbb{T}_\mathbb{S}$
+of the truth $\mathbb{T}$.
+This will be done by allowing a set of agents $\mathbb{A}$ to observe
+$\mathbb{T}$ and provide their own estimation $\mathbb{T}_a$, where $a$ is an
+individual agent.
+These estimations will then be compiled into $\mathbb{T}_\mathbb{S}$ using
+the system's \hyperref[subsec:voting-mechanisms]{voting mechanism}.
+An agent need not provide the same $\mathbb{T}_a$ for the same $\mathbb{T}$,
+and by extension $\mathbb{T}_\mathbb{S}$ may not be the same each time a
+system is run.
+
 All agents will operate within a defined space~$\chi$, where $\chi \subseteq
 \mathbb{R}^k$ and $k \geq 1$ dimensions, as described
 by~\cite[para.~2.1]{Cohensius2017}.
-Specifically, this paper will focus on an interval space $\chi = [a, b]^1$.
-The space of $\chi = [a, b]^2$ could be used to expand, but whereas
-measurements are typically performed in a singular dimension (one doesn't
-measure both the length and width with a single measurement--it takes two)
-and would ultimately only increase the complexity of the system, this
+Specifically, this paper will focus on interval spaces of $\chi = [a, b]^1$.
+Spaces of $\chi = [a, b]^2$ or higher could also be used, but since
+measurements are typically performed one at a time in a singular dimension (one
+doesn't measure both the length and width with a single measurement--it takes
+two) and would ultimately only increase the complexity of the system, this
 exercise is left for further work.
-
 Using the space $\chi$ allows each agent's preference, which for this paper's
-purposes represents the agent's estimation of the truth $\mathbf{T}$, to be
-represented by a position within this space.
+purposes represents $\mathbb{T}_a$, to be represented as a position within
+this space.
+This likewise means $\mathbb{T}_\mathbb{S}$ will be a position within $\chi$.
 
-% TODO: There's probably more we can fit in here. If not, maybe make
-%   Preliminaries a subsection of Experiments?
 
 \section{Experiments}\label{sec:experiments}
 This study explores the idea of using finite voters, as opposed to the
