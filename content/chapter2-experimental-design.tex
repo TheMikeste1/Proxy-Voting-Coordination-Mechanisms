@@ -11,7 +11,9 @@ The primary goal of these analyses is to identify the strengths and
 weaknesses of proxy voting under certain conditions and attempt to minimize
 the costs of ensuring accurate measurements.
 
+
 \section{Preliminaries}\label{sec:preliminaries}
+
 \subsection{System Design and Agent Space}\label{subsec:system-design-and
 -agent-space}
 Each system $\mathbb{S}$ will output some estimation $\mathbb{T}_\mathbb{S}$
@@ -63,6 +65,7 @@ Measurement methods represented by these voters are less accurate, though
 likely cheaper.  % TODO: such as. . .
 
 %  - Finite with agent costs
+
 
 \section{Experiment Criteria and Parameters}\label{sec:experiment-criteria
 -and-parameters}
@@ -144,8 +147,10 @@ the estimated and real truth respectively.
 %       will have a unique seed.
 %     - Might be best to not discuss this in the paper.
 
+
 \section{Mechanisms}\label{sec:mechanisms}
-% - Explain what mechanisms are, as well as my expansion using weight mechanisms.
+% - Explain what mechanisms are, as well as my expansion using weight
+% mechanisms.
 
 \subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
 % - Explain what voting mechanisms are
@@ -175,6 +180,7 @@ the estimated and real truth respectively.
 % - Ranked Choice
 % - . . .
 
+% FIXME: I don't like this section name
 
 \section{Experiment Design}\label{sec:experiment-design}
 % TODO: I don't currently have anything in here about agents with different
@@ -196,10 +202,12 @@ process.
 Afterwards, the data will be analysed in an attempt to identify any patterns,
 strengths, or weaknesses proxy voting has as a measurement verification tool.
 
+% TODO: Move this paragraph to Preliminaries?
 In order to simplify various calculations, the true value for each experiment
 will be 0.
-This makes it trivial to calculate loss, and also simplifies selecting the
-positions of each voter.
+This simplifies selecting the positions of each voter, as well as making it
+trivial to calculate loss since we can modify
+% FIXME: Cite loss calculation formula and show difference.
 
 % TODO: Talk about distribution range restrictions, such as Gaussian being
 % restricted between -1 and 1. I may want to restrict both experts and
