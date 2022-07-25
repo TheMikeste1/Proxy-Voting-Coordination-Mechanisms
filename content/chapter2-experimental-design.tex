@@ -12,6 +12,8 @@ weaknesses of proxy voting under certain conditions and attempt to minimize
 the costs of ensuring accurate measurements.
 
 \section{Preliminaries}\label{sec:preliminaries}
+\subsection{System Design and Agent Space}\label{subsec:system-design-and
+-agent-space}
 Each system $\mathbb{S}$ will output some estimation $\mathbb{T}_\mathbb{S}$
 of the truth $\mathbb{T}$.
 This will be done by allowing a set of agents $\mathbb{A}$ to observe
@@ -37,8 +39,7 @@ purposes represents $\mathbb{T}_a$, to be represented as a position within
 this space.
 This likewise means $\mathbb{T}_\mathbb{S}$ will be a position within $\chi$.
 
-\section{Experiment Criteria and Parameters}\label{sec:experiment-criteria
--and-parameters}
+\subsection{Agent Types}\label{subsec:agent-types}
 This study explores the idea of using finite voters, as opposed to the
 infinite voters described in~\cite{Cohensius2017}.
 These voters' positions will be randomly selected using a distribution, which
@@ -61,7 +62,12 @@ as the expert voters due to their possibility for error.
 Measurement methods represented by these voters are less accurate, though
 likely cheaper.  % TODO: such as. . .
 
-Both types of voters have the same goal: to enhance the accuracy of the system.
+%  - Finite with agent costs
+
+\section{Experiment Criteria and Parameters}\label{sec:experiment-criteria
+-and-parameters}
+Both untrained and expert voters have the same goal: to enhance the accuracy of
+the system.
 They will work in tandem in order to accomplish this goal.
 There are two immediately identifiable ways to use both types of voters which
 will be explored in this paper.
