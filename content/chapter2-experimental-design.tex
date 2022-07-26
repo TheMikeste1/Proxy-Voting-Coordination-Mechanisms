@@ -16,19 +16,19 @@ the costs of ensuring accurate measurements.
 
 \subsection{System Design and Agent Space}\label{subsec:system-design-and
 -agent-space}
-Each system $\mathbb{S}$ will output some estimation $\mathbb{T}_\mathbb{S}$
-of the truth $\mathbb{T}$.
-This will be done by allowing a set of agents $\mathbb{A}$ to observe
-$\mathbb{T}$ and provide their own estimation $\mathbb{T}_a$, where $a$ is an
-individual agent.
-These estimations will then be compiled into $\mathbb{T}_\mathbb{S}$ using
+Each system \system\ will output some estimation \systemtruth\ of the truth
+\truth.
+This will be done by allowing the set of agents belonging to \system,
+known as \systemagents, to observe \truth\ and provide their
+own estimation \agenttruth, where \agent is an individual agent.
+These estimations will then be compiled into \systemtruth\ using
 the system's \hyperref[subsec:voting-mechanisms]{voting mechanism}.
-An agent need not provide the same $\mathbb{T}_a$ for the same $\mathbb{T}$,
-and by extension $\mathbb{T}_\mathbb{S}$ may not be the same each time a
+An agent need not provide the same \agenttruth\ for the same \truth,
+and by extension \systemtruth\ may not be the same each time a
 system is run.
 
-All agents will operate within a defined space~$\chi$, where $\chi \subseteq
-\mathbb{R}^k$ and $k \geq 1$ dimensions, as described
+All agents will operate within a defined space~\systemspace, where
+$\systemspace \subseteq \mathbb{R}^k$ and $k \geq 1$ dimensions, as described
 by~\cite[para.~2.1]{Cohensius2017}.
 Specifically, this paper will focus on interval spaces of $\chi = [a, b]^1$.
 Spaces of $\chi = [a, b]^2$ or higher could also be used, but since
@@ -37,9 +37,9 @@ doesn't measure both the length and width with a single measurement--it takes
 two) and would ultimately only increase the complexity of the system, this
 exercise is left for further work.
 Using the space $\chi$ allows each agent's preference, which for this paper's
-purposes represents $\mathbb{T}_a$, to be represented as a position within
+purposes represents \agenttruth, to be represented as a position within
 this space.
-This likewise means $\mathbb{T}_\mathbb{S}$ will be a position within $\chi$.
+This likewise means \systemtruth\ will be a position within $\chi$.
 
 \subsection{Agent Types}\label{subsec:agent-types}
 This study explores the idea of using finite voters, as opposed to the
@@ -51,7 +51,7 @@ By design, there are two primary types of voters: expert and untrained.
 \textit{Expert voters} are agents that give a more accurate estimate of the
 true value.
 These voters have tighter extremes for estimated values or are chosen from
-a more accurate distribution (such as Gaussian about $\mathbb{T}$) allowing
+a more accurate distribution (such as Gaussian about \truth) allowing
 them to be more certain in their estimation.
 These voters represent better, though likely more expensive, methods for
 taking a measurement.  % TODO: such as. . .
