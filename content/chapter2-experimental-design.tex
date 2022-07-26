@@ -28,18 +28,19 @@ and by extension \systemtruth\ may not be the same each time a
 system is run.
 
 All agents will operate within a defined space~\systemspace, where
-$\systemspace \subseteq \mathbb{R}^k$ and $k \geq 1$ dimensions, as described
-by~\cite[para.~2.1]{Cohensius2017}.
-Specifically, this paper will focus on interval spaces of $\chi = [a, b]^1$.
-Spaces of $\chi = [a, b]^2$ or higher could also be used, but since
+$\systemspace \subseteq \real^\dimensions$ and $\dimensions \geq 1$
+dimensions, as described by~\cite[para.~2.1]{Cohensius2017}.
+Specifically, this paper will focus on interval spaces of
+$\systemspace = [a, b]^1$.
+Spaces of $\systemspace = [a, b]^2$ or higher could also be used, but since
 measurements are typically performed one at a time in a singular dimension (one
 doesn't measure both the length and width with a single measurement--it takes
 two) and would ultimately only increase the complexity of the system, this
 exercise is left for further work.
-Using the space $\chi$ allows each agent's preference, which for this paper's
-purposes represents \agenttruth, to be represented as a position within
+Using the space \systemspace\ allows each agent's preference, which for this
+paper's purposes represents \agenttruth, to be represented as a position within
 this space.
-This likewise means \systemtruth\ will be a position within $\chi$.
+This likewise means \systemtruth\ will be a position within \systemspace.
 
 \subsection{Agent Types}\label{subsec:agent-types}
 This study explores the idea of using finite voters, as opposed to the
@@ -106,25 +107,25 @@ First, the most important part of the system is the accuracy.
 If a system using proxy voting performs worse than simply averaging all votes
 it would have been better to skip the additional complexities of using
 proxies.
-Accuracy will be measured using squared loss.
-Fortunately, since agents operate within a space $\chi$, calculating the
-squared loss for a system $\mathbb{L}{(\mathbb{S})}$, is
-as simple as calculating the squared distance
+Accuracy will be measured using squared~loss~\loss.
+Fortunately, since agents operate within \systemspace, calculating the
+squared loss for a system~\systemloss, is as simple as calculating the
+squared distance
 \begin{equation}
-    \mathbb{L}{(\mathbb{S})} = {
+    \systemloss = {
         \left(\sqrt{
-            (\mathbb{T}_\mathbb{S}^1 - \mathbb{T}^1)^2 +
+            (\systemtruth^1 - \truth^1)^2 +
             \mathellipsis +
-            (\mathbb{T}_\mathbb{S}^k - \mathbb{T}^k)^2
+            (\systemtruth^k - \truth^k)^2
         }\right)
     }^2 =
-    (\mathbb{T}_\mathbb{S}^1 - \mathbb{T}^1)^2 +
+    (\systemtruth^1 - \truth^1)^2 +
     \mathellipsis +
-    (\mathbb{T}_\mathbb{S}^k - \mathbb{T}^k)^2
+    (\systemtruth^k - \truth^k)^2
     \text{,}\label{eq:loss}
 \end{equation}
-where $\mathbb{T}_\mathbb{S}^k$ and $\mathbb{T}^k$ are the $k$th dimension of
-the estimated and real truth respectively.
+where $\systemtruth^k$ and $\truth^k$ are the $k$th
+dimension of the estimated and real truth respectively.
 
 % - Time (squared?)/Calculation complexity
 %   - Useful to know if humans could use it.

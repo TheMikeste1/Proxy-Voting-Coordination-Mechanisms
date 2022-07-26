@@ -5,19 +5,31 @@ type them, reducing mistakes and making it easier to change them.]
 \DeclareOption*{\PackageWarning{notations}{Unknown ‘\CurrentOption’}}
 \ProcessOptions\relax
 
+\RequirePackage{amsmath}  % For math fonts
+
 % Private utils
+%% Used to simplify making new commands
 \newcommand{\@newnotation}{\@ifstar{\@newnotationstar}{\@newnotationnostar}}
 \newcommand{\@newnotationnostar}[2]{\newcommand{#1}{\ensuremath{#2}}}
 \newcommand*{\@newnotationstar}[2]{\newcommand*{#1}{\ensuremath{#2}}}
 
+%% Used to raise chi, since it annoys me that it's lower
+% Modified from https://tex.stackexchange.com/a/103898/277236
+\newcommand{\@raisedchi}[2]{\raisebox{\depth}{$#1\chi$}}
+\DeclareRobustCommand{\raisedchi}{{\mathpalette\@raisedchi\relax}}
+
 % Solo symbols
 \@newnotation*{\agent}{a}
 \@newnotation*{\agents}{\mathbb{A}}
+\@newnotation*{\dimensions}{k}
+\@newnotation*{\loss}{\mathbb{L}}
+\@newnotation*{\real}{\mathbb{R}}
 \@newnotation*{\system}{\mathbb{S}}
-\@newnotation*{\systemspace}{\chi}
+\@newnotation*{\systemspace}{\raisedchi}
 \@newnotation*{\truth}{\top}
 
 % Combinations
 \@newnotation*{\agenttruth}{\truth_\agent}
 \@newnotation*{\systemagents}{\system_\agents}
+\@newnotation*{\systemloss}{\loss{(\system)}}
 \@newnotation*{\systemtruth}{\truth_\system}
