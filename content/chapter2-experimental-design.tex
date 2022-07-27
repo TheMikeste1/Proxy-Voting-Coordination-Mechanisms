@@ -127,10 +127,27 @@ squared distance
 where $\systemtruth^k$ and $\truth^k$ are the $k$th
 dimension of the estimated and real truth respectively.
 
+The next criteria used to judge systems is the cost of the system.
+The total cost of a system \systemcost\ is described by
+\begin{equation}
+    \systemcost =
+    \sum_{\agent \in \agents}{
+        \agentcost
+    }
+    \text{,}\label{eq:cost}
+\end{equation}
+where \agentcost is the cost of an agent.
+This cost is an arbitrary value of an arbitrary unit which accounts for time,
+monetary cost, or any other cost the measuring technique requires.
+While in reality there may be some fluctuation in cost for the same
+measurement, for simplicity this study considers all agents of the same type
+to have the same cost.
+% TODO: What ratios between expert an untrained agents are beneficial?
+
+
 % - Time (squared?)/Calculation complexity
 %   - Useful to know if humans could use it.
-% - Cost
-%   - Ratios?
+
 
 \subsection{Parameters}\label{subsec:parameters}
 % - \# of Proxies
