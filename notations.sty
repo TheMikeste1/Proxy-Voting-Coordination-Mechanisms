@@ -38,7 +38,12 @@ type them, reducing mistakes and making it easier to change them.]
 \@newnotation*{\systemloss}{\loss{(\system)}}
 \@newnotation*{\systemtruth}{\truth_\system}
 
+% Templates
+\newcommand*{\uniform}[2]{\ensuremath{\mathcal{U}_{[#1, #2]}}}
+\newcommand*{\gaussian}[2]{\ensuremath{\mathcal{N}{(#1, #2)}}}
+\newcommand*{\betadistribution}[2]{\ensuremath{\mathcal{B}{(#1, #2)}}}
+
 % Distributions
-\@newnotation*{\uniformdist}{\mathcal{U}_{[a, b]}}
-\@newnotation*{\gaussiandist}{\mathcal{N}(\mean, \stddeviation)}
-\@newnotation*{\betadist}{\mathcal{B}(\alpha, \beta)}
+\@newnotation*{\uniformdist}{\uniform{a}{b}}
+\@newnotation*{\gaussiandist}{\gaussian{\mean}{\stddeviation}}
+\@newnotation*{\betadist}{\betadistribution{\alpha}{\beta}}
