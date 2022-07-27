@@ -172,16 +172,31 @@ produce~\systemtruth.
 
 \subsubsection{Agent Parameters}\label{subsubsec:agent-parameters}
 Similar to systems, each type of agent will have a different set of parameters.
+There are two parameters that make creates the most distinction between
+agents: their vote distribution and their extents.
 
-% - Distribution of votes
-%     - Uniform
-%     - Gaussian
-%     - Bimodal about center
-%     - Skewed?
-% - Min/Max vote
-% - Cost
+The extents determine the maximum and minimum value away from \truth the
+agent is able to vote.
+For example, an agent with an extent of 10 could vote anywhere in the
+interval $[\truth - 10, \truth + 10]$.
+While the extent determines the general boundaries, some distributions allow
+numbers slightly outside these ranges.
+For these distributions, the percent of votes inside the extents are
+specified in \autoref{tab:voting-distributions}.
 
+The vote distribution determines which distribution is used by the agent when
+attempting to measure \truth.
+The distributions used in this study are found
+in~\autoref{tab:voting-distributions}.
+These distributions, combined with the extent, have a large influence on the
+agent's ability to measure \truth.
 
+Finally, each agent has a cost \agentcost associated with it.
+This cost is an arbitrary unit used to represent the monetary cost, time
+required, and/or any other value required by the agent.
+The cost can be assigned or reassigned at any time before calculating the
+system cost since the system itself does not need to know the cost of the
+agents it's using to estimate~\truth.
 
 % - Dimensions?
 % - Seed
