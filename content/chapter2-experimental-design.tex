@@ -142,9 +142,15 @@ monetary cost, or any other cost the measuring technique requires.
 While in reality there may be some fluctuation in cost for the same
 measurement, for simplicity this study considers all agents of the same type
 to have the same cost.
-% TODO: What ratios between expert an untrained agents are beneficial?
+The goal of system cost as a criteria is to determine if a less-costly system
+could perform just as well if not better than one with a higher cost.
+% TODO: Would ratios between expert an untrained agents are beneficial? Maybe
+% useful for knowing if adding an agent is useful?
 
 
+% - Number of measurements?
+%   - Expert
+%   - Untrained
 % - Time (squared?)/Calculation complexity
 %   - Useful to know if humans could use it.
 
@@ -283,10 +289,13 @@ as the estimated truth, the error, as well as the rest of the
 \subsection{Analysis}\label{subsec:analysis}
 % TODO: What is done after an experiment?
 
-
+% FIXME: This might need to be moved to Chapter 4
 \section{Further Work and Improvements}\label{sec:further-work-and-improvements}
 % - Multiple levels of expertise. Expert voters could have varying levels of
 % accuracy, allowing for more complex systems.
 % - (If I decide to restrict experts and untrained to the same mins and maxes)
 % Allow for untrained to have a lower restriction, making them less accurate.
+% - Independently track time, monetary cost, etc. for system cost (described
+% in the cost section of Criteria. Useful identifying multiple systems for
+% different costs.
 
