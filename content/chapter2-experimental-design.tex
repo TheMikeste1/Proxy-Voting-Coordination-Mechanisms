@@ -155,16 +155,35 @@ could perform just as well if not better than one with a higher cost.
 
 
 \subsection{Parameters}\label{subsec:parameters}
-% - \# of Proxies
-% - \# of Non-Proxies
+\subsubsection{System Parameters}\label{subsubsec:system-parameters}
+Each system will have a different set of parameters.
+First, each system will need a set of proxy voters.
+These proxies can be either experts or untrained, depending on which setup is
+being used.
+Similarly, each system will also need a set of inactive voters which can also
+be either experts or untrained.
+
+Finally, each system will receive two mechanisms: a
+\hyperref[subsec:voting-mechanisms]{voting mechanism} and a
+\hyperref[subsec:weighting-mechanisms]{weighting mechanism}.
+The weighting mechanism will be used to apply weights to each proxy, and the
+voting mechanism will be used to condense all~\agenttruth\ to
+produce~\systemtruth.
+
+\subsubsection{Agent Parameters}\label{subsubsec:agent-parameters}
+Similar to systems, each type of agent will have a different set of parameters.
+
 % - Distribution of votes
 %     - Uniform
 %     - Gaussian
 %     - Bimodal about center
 %     - Skewed?
+% - Min/Max vote
+% - Cost
+
+
+
 % - Dimensions?
-% - Cost per proxy
-% - Cost per non-proxy
 % - Seed
 %     - Metaparameter--allows reproduction of an iteration. Each iteration
 %       will have a unique seed.
