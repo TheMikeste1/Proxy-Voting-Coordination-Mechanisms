@@ -31,19 +31,22 @@ type them, reducing mistakes and making it easier to change them.]
 \@newnotation*{\truth}{\top}
 
 % Combinations
-\@newnotation*{\agentcost}{\cost{(\agent)}}
-\@newnotation*{\agenttruth}{\truth_\agent}
+\@newnotation*{\agentcost}{\costof{\agent}}
+\@newnotation*{\agenttruth}{\truthof{\agent}}
 \@newnotation*{\systemagents}{\system_\agents}
-\@newnotation*{\systemcost}{\cost{(\system)}}
-\@newnotation*{\systemloss}{\loss{(\system)}}
-\@newnotation*{\systemtruth}{\truth_\system}
+\@newnotation*{\systemcost}{\costof{\system}}
+\@newnotation*{\systemloss}{\lossof{\system}}
+\@newnotation*{\systemtruth}{\truthof{\system}}
 
 % Templates
-\newcommand*{\uniform}[2]{\ensuremath{\mathcal{U}_{[#1, #2]}}}
-\newcommand*{\gaussian}[2]{\ensuremath{\mathcal{N}{(#1, #2)}}}
 \newcommand*{\betadistribution}[2]{\ensuremath{\mathcal{B}{(#1, #2)}}}
+\newcommand*{\costof}[1]{\ensuremath{\cost{(#1)}}}
+\newcommand*{\gaussian}[2]{\ensuremath{\mathcal{N}{(#1, #2)}}}
+\newcommand*{\lossof}[1]{\ensuremath{\loss{(#1)}}}
+\newcommand*{\truthof}[1]{\ensuremath{\truth{(#1)}}}
+\newcommand*{\uniform}[2]{\ensuremath{\mathcal{U}_{[#1, #2]}}}
 
 % Distributions
-\@newnotation*{\uniformdist}{\uniform{a}{b}}
-\@newnotation*{\gaussiandist}{\gaussian{\mean}{\stddeviation}}
 \@newnotation*{\betadist}{\betadistribution{\alpha}{\beta}}
+\@newnotation*{\gaussiandist}{\gaussian{\mean}{\stddeviation}}
+\@newnotation*{\uniformdist}{\uniform{a}{b}}
