@@ -228,9 +228,15 @@ mechanisms and average mechanisms.
 \textit{Candidate mechanisms} are mechanisms that select a proxy to serve as
 \systemtruth.
 % TODO: Fill out strengths and weaknesses
+This study experiments with a number of candidate mechanisms, which are
+described below.
 
-This study experiments with a number of candidate mechanisms, including a median
-mechanism as described by~\cite{Cohensius2017} as (with some symbolic changes)
+\paragraphbf{Median}
+The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
+This study build off their by using finite voters instead of infinite, as
+well as applying weighting mechanisms which will result in different results.
+The median mechanism is the same as the one used in~\cite{Cohensius2017},
+and is described as (with some symbolic changes)
 \begin{equation}
     \textbf{md}(\agents) =
     \min\{\agent_i \in \agents \text{ s.t. }
