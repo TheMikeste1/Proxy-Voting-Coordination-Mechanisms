@@ -219,9 +219,32 @@ assign weights to proxies, which rules are named `weighting mechanisms.'
 \subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
 \textit{Voting mechanisms} are a concept borrowed from~\cite{Cohensius2017},
 there simply labeled `mechanisms.'
-% - Explain what voting mechanisms are
+These are algorithms used to condense proxies and their weights into
+\systemtruth.
+These algorithms can be broken down into two primary categories: candidate
+mechanisms and average mechanisms.
 
 \subsubsection{Candidate Mechanisms}\label{subsubsec:candidate-mechanisms}
+\textit{Candidate mechanisms} are mechanisms that select a proxy to serve as
+\systemtruth.
+% TODO: Fill out strengths and weaknesses
+
+This study experiments with a number of candidate mechanisms, including a median
+mechanism as described by~\cite{Cohensius2017} as (with some symbolic changes)
+\begin{equation}
+    \textbf{md}(\agents) =
+    \min\{\agent_i \in \agents \text{ s.t. }
+        |\{j: \agent_i \geq \agent_j\}| \geq
+        |\{j: \agent_i < \agent_j\}|
+    \}
+    \text{,}\label{eq:median-mechanism}
+\end{equation}
+meaning the mechanisms selects the minimum agent that has an equal or greater
+number of agents below it as it has above it in value.
+
+
+
+
 % - Explain what candidate mechanisms are
 %
 % - Median
@@ -231,6 +254,11 @@ there simply labeled `mechanisms.'
 % - . . .
 
 \subsubsection{Average Mechanisms}\label{subsubsec:average-mechanisms}
+\textit{Average mechanisms} are mechanisms that produce a \systemtruth\ that
+is not necessarily the position of any one agent, though it may be.
+They work by averaging the positions of multiple proxies to some degree.
+% TODO: Fill out strengths and weaknesses
+
 % - Explain what average mechanisms are
 %
 % - Mean
