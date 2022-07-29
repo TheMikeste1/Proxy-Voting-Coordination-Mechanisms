@@ -29,14 +29,17 @@ type them, reducing mistakes and making it easier to change them.]
 \@newnotation*{\system}{\mathbb{S}}
 \@newnotation*{\systemspace}{\@raisedchi}
 \@newnotation*{\truth}{\top}
+\@newnotation*{\weight}{w}
 
 % Combinations
 \@newnotation*{\agentcost}{\costof{\agent}}
 \@newnotation*{\agenttruth}{\truthof{\agent}}
+\@newnotation*{\agentweight}{\weightof{\agent}}
 \@newnotation*{\systemagents}{\system_\agents}
 \@newnotation*{\systemcost}{\costof{\system}}
 \@newnotation*{\systemloss}{\lossof{\system}}
 \@newnotation*{\systemtruth}{\truthof{\system}}
+\@newnotation*{\systemweight}{\weightof{\system}}
 
 % Templates
 \newcommand*{\betadistribution}[2]{\ensuremath{\mathcal{B}{(#1, #2)}}}
@@ -45,6 +48,7 @@ type them, reducing mistakes and making it easier to change them.]
 \newcommand*{\lossof}[1]{\ensuremath{\loss{(#1)}}}
 \newcommand*{\truthof}[1]{\ensuremath{\truth{(#1)}}}
 \newcommand*{\uniform}[2]{\ensuremath{\mathcal{U}_{[#1, #2]}}}
+\newcommand*{\weightof}[1]{\ensuremath{\weight{(#1)}}}
 
 % Distributions
 \@newnotation*{\betadist}{\betadistribution{\alpha}{\beta}}

@@ -42,6 +42,8 @@ paper's purposes represents \agenttruth, to be represented as a position within
 this space.
 This likewise means \systemtruth\ will be a position within \systemspace.
 
+% TODO: Talk about \agentweight and \systemweight
+
 \subsection{Agent Types}\label{subsec:agent-types}
 This study explores the idea of using finite voters, as opposed to the
 infinite voters described in~\cite{Cohensius2017}.
@@ -239,15 +241,22 @@ The median mechanism is the same as the one used in~\cite{Cohensius2017},
 and is described as (with some symbolic changes)
 \begin{equation}
     \textbf{md}(\agents) =
-    \min\{\agent_i \in \agents \text{ s.t. }
+    \min\left\{\agent_i \in \agents \text{ s.t. }
         |\{j: \agent_i \geq \agent_j\}| \geq
         |\{j: \agent_i < \agent_j\}|
-    \}
+    \right\}
     \text{,}\label{eq:median-mechanism}
 \end{equation}
 meaning the mechanisms selects the minimum agent that has an equal or greater
-number of agents below it as it has above it in value.
-
+number of agents below it as it has above it in terms of \agenttruth.
+For weighted scenarios, this agent will be the minimum agent whose sum of
+weights below plus itself is greater than or equal to $\frac{\systemweight}{2}$,
+as described with $\textbf{md}(\agents) = \min\left\{
+    \agent_i \in \agents \text{ s.t. }
+        \weightof{\agent_i} +
+            \sum_{\agent_j \in \systemagents}^{\agent_{i - 1}} \weightof{\agent_j}
+        \geq \frac{\systemweight}{2}
+\right\}$.
 
 
 
