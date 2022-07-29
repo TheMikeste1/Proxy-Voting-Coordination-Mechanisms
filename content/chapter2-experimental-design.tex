@@ -264,14 +264,18 @@ as described with
 \end{equation}
 where \systemagents\ is ordered by \agenttruth.
 
+\paragraphbf{Plurality}
+The plurality mechanism selects the proxy with the highest weight.
+It is described by
+\begin{equation}
+    \textbf{pl}(\systemagents) =
+    \max \weightof{\systemagents}
+    \text{,}\label{eq:plurality-mechanism}
+\end{equation}
+meaning the agent with the maximum weight.
 
-
-% - Explain what candidate mechanisms are
-%
-% - Median
 % - Borda
 % - Ranked Choice
-% - Plurality? Likely not going to work well
 % - . . .
 
 \subsubsection{Average Mechanisms}\label{subsubsec:average-mechanisms}
