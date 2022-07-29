@@ -237,26 +237,32 @@ described below.
 The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
 This study build off their by using finite voters instead of infinite, as
 well as applying weighting mechanisms which will result in different results.
-The median mechanism is the same as the one used in~\cite{Cohensius2017},
-and is described as (with some symbolic changes)
-\begin{equation}
-    \textbf{md}(\agents) =
-    \min\left\{\agent_i \in \agents \text{ s.t. }
-        |\{j: \agent_i \geq \agent_j\}| \geq
-        |\{j: \agent_i < \agent_j\}|
-    \right\}
-    \text{,}\label{eq:median-mechanism}
-\end{equation}
+The median mechanism is the same as the one used in~\cite[para.~2.4]{Cohensius2017},
+and is described, with some symbolic changes, as
+\begin{equation*}
+    \textbf{md}(\systemagents) =
+        \min\left\{\agent_i \in \systemagents \text{ s.t. }
+            |\{j: \agent_i \geq \agent_j\}| \geq
+            |\{j: \agent_i < \agent_j\}|
+        \right\}
+    \text{,}
+\end{equation*}
 meaning the mechanisms selects the minimum agent that has an equal or greater
 number of agents below it as it has above it in terms of \agenttruth.
-For weighted scenarios, this agent will be the minimum agent whose sum of
+
+For weighted scenarios, the median agent will be the minimum agent whose sum of
 weights below plus itself is greater than or equal to $\frac{\systemweight}{2}$,
-as described with $\textbf{md}(\agents) = \min\left\{
-    \agent_i \in \agents \text{ s.t. }
+as described with
+\begin{equation}
+    \textbf{md}(\systemagents) = \min\left\{
+        \agent_i \in \systemagents \text{ s.t. }
         \weightof{\agent_i} +
             \sum_{\agent_j \in \systemagents}^{\agent_{i - 1}} \weightof{\agent_j}
         \geq \frac{\systemweight}{2}
-\right\}$.
+\right\}
+        \text{,}\label{eq:median-mechanism}
+\end{equation}
+where \systemagents\ is ordered by \agenttruth.
 
 
 
