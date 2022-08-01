@@ -275,7 +275,7 @@ It is described by
 \end{equation}
 meaning the proxy with the maximum weight.
 
-\mechanismheader{Borda}
+\mechanismheader{Borda}\label{para:candidate-borda}
 Instead of using agent-assigned weights, the Borda mechanism uses a typical
 Borda count algorithm where the proxy closest to an agent is ranked first and
 receives the $n$ points, where $n$ is the number of proxies, while the proxy
@@ -323,7 +323,15 @@ The formula for the mean mechanism is
 meaning the sum of each proxy multiplied by its weight divided by
 \systemweight, where \systemweight\ is the total system weight.
 
-% - Mean
+\mechanismheader{Weight by Borda}
+As with the \hyperref[para:candidate-borda]{candidate mechanism} equivalent,
+weight by Borda skips agent-assigned weights and instead applies Borda count
+on behalf of each inactive voter, scoring the closest proxy as $n$, where $n$
+is the number of proxies, and the furthest $1$.
+However, instead of selecting the proxy with the highest score, the mean
+mechanism is used with the scores as the weights.
+The output of the mean mechanism is \systemtruth.
+
 % - Weight by Borda
 % - Weight by Ranked Choice
 % - . . .
