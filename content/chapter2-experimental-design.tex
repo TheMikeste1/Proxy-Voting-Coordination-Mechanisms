@@ -221,8 +221,8 @@ assign weights to proxies, which rules are named `weighting mechanisms.'
 \subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
 \textit{Voting mechanisms} are a concept borrowed from~\cite{Cohensius2017},
 there simply labeled `mechanisms.'
-These are algorithms used to condense proxies and their weights into
-\systemtruth.
+These are algorithms used to condense proxies and their weights, which are
+required to be positive, into \systemtruth.
 These algorithms can be broken down into two primary categories: candidate
 mechanisms and average mechanisms.
 
@@ -348,9 +348,7 @@ applied by the inactive agents are used instead of ranking each proxy.
 
 \subsection{Weighting Mechanisms}\label{subsec:weighting-mechanisms}
 % - Explain what weighting Mechanisms are
-%
-% - Vote for closest (implemented by \cite{Cohensius2017})
-% - . . .
+% Weights must be positive!!
 
 \mechanismheader{Vote for Closest}
 The vote for closest weighting mechanism is the simplest weighting mechanism.
@@ -360,6 +358,23 @@ between proxies, each inactive voter simply votes for the proxy closest to
 itself.
 This is equivalent to assigning a weight of 1 to the closet proxy, and giving
 the rest 0.
+
+\mechanismheader{Distance Voting}
+This mechanism uses the negative distance between the proxies and an agent as
+the weight.
+The negative distance is used so the proxy closest to the given agent
+receives the highest weight.
+Once all distances for all agents are calculated, each weight need to be
+adjust to be positive using the formula
+\begin{equation}
+    g{(\agent)} = \lvert
+        \min{\weightof{\systemproxies}} - \weightof{\agent}
+    \rvert
+    \text{,}\label{eq:distance-voting-adjustment}
+\end{equation}
+which gives the absolute value of the minimum weight minus the agent's weight.
+This results in the minimum weight being equal to 0, and the highest weight
+equal to the distance between the minimum and the maximum weight.
 
 \mechanismheader{Borda}\label{para:borda}
 The Borda mechanism allows each inactive voter to weight each proxy.
