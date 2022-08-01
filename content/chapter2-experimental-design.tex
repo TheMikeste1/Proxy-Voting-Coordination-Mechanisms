@@ -237,14 +237,15 @@ described below.
 The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
 This study build off their by using finite voters instead of infinite, as
 well as applying weighting mechanisms which will result in different results.
-The median mechanism is the same as the one used in~\cite[para.~2.4]{Cohensius2017},
+The median mechanism is the same as the one used in~\cite[para.~2
+.4]{Cohensius2017},
 and is described, with some symbolic changes, as
 \begin{equation*}
-    \textbf{md}(\systemagents) =
-        \min\left\{\agent_i \in \systemagents \text{ s.t. }
-            |\{j: \agent_i \geq \agent_j\}| \geq
-            |\{j: \agent_i < \agent_j\}|
-        \right\}
+    \textbf{md}(\systemproxies) =
+    \min\left\{\agent_i \in \systemproxies \text{ s.t. }
+    |\{j: \agent_i \geq \agent_j\}| \geq
+    |\{j: \agent_i < \agent_j\}|
+    \right\}
     \text{,}
 \end{equation*}
 meaning the mechanisms selects the minimum agent that has an equal or greater
@@ -255,24 +256,24 @@ weights below plus itself is greater than or equal to $\frac{\systemweight}{2}$,
 as described with
 \begin{equation}
     \textbf{md}(\systemagents) = \min\left\{
-        \agent_i \in \systemagents \text{ s.t. }
-        \weightof{\agent_i} +
-            \sum_{\agent_j \in \systemagents}^{\agent_{i - 1}} \weightof{\agent_j}
-        \geq \frac{\systemweight}{2}
-\right\}
-        \text{,}\label{eq:median-mechanism}
+    \agent_i \in \systemproxies \text{ s.t. }
+    \weightof{\agent_i} +
+    \sum_{\agent_j \in \systemproxies}^{\agent_{i - 1}} \weightof{\agent_j}
+    \geq \frac{\systemweight}{2}
+    \right\}
+    \text{,}\label{eq:median-mechanism}
 \end{equation}
-where \systemagents\ is ordered by \agenttruth.
+where \systemproxies\ is ordered by \agenttruth.
 
 \mechanismheader{Plurality}
-The plurality mechanism selects the proxy with the highest weight.
+The plurality mechanism simply selects the proxy with the highest weight.
 It is described by
 \begin{equation}
-    \textbf{pl}(\systemagents) =
-    \argmax \weightof{\systemagents}
+    \textbf{pl}(\systemproxies) =
+    \argmax \weightof{\systemproxies}
     \text{,}\label{eq:plurality-mechanism}
 \end{equation}
-meaning the agent with the maximum weight.
+meaning the proxy with the maximum weight.
 \mechanismheader{Borda}
 Instead of using agent-assigned weights, the Borda mechanism uses a typical
 Borda count algorithm where the proxy closest to an agent is ranked first and
