@@ -365,7 +365,7 @@ the weight.
 The negative distance is used so the proxy closest to the given agent
 receives the highest weight.
 Once all distances for all agents are calculated, each weight need to be
-adjust to be positive using the formula
+adjusted to be positive using the formula
 \begin{equation}
     g{(\agent)} = \lvert
         \min{\weightof{\systemproxies}} - \weightof{\agent}
@@ -381,8 +381,8 @@ The Borda mechanism allows each inactive voter to weight each proxy.
 Each proxy is rated some value in $[1 \mathellipsis n]$, with the closest
 given $n$ and the furthest $1$.
 These values are used as the weights for whichever voting mechanism is used.
-This should results in something similar to distance voting, but with
-a set range of scores.
+This should result in something similar to distance voting, but with a set
+range of scores.
 
 \section{Experiment Design}\label{sec:experiment-design}
 % TODO: I don't currently have anything in here about agents with different
