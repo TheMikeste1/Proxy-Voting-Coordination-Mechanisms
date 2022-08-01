@@ -70,6 +70,7 @@ likely cheaper.  % TODO: such as. . .
 
 %  - Finite with agent costs
 
+
 \section{Experiment Criteria and Parameters}\label{sec:experiment-criteria
 -and-parameters}
 Both untrained and expert voters have the same goal: to enhance the accuracy of
@@ -317,7 +318,7 @@ The formula for the mean mechanism is
     \sum_{\agent_i \in \systemproxies} {\weightof{\agent_i} \cdot \agent_i}
     \text{,}\label{eq:mean-mechanism}
 \end{equation*}
-meaning the sum of each proxy multiplied by its weight divided by
+meaning the sum of each proxy multiplied by its weight divided by 
 \systemweight, where \systemweight\ is the total system weight.
 This mechanism is the core of the average mechanisms, and is used as a final
 step in most other average mechanisms.
@@ -327,8 +328,8 @@ Each proxy is ranked by each inactive agent according to how close they are
 to the inactive agent.
 The number of times each proxy is ranked first is counted, and the proxy with
 the least votes is eliminated and given a score of 1.
-The process continues from $1 \mathellipsis n$, where $n$ is the number of proxies,
-at which point the mean mechanism is with the scores as the weights.
+The process continues from $1 \mathellipsis n$, where $n$ is the number of
+proxies, at which point the mean mechanism is with the scores as the weights.
 
 \mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
 The weight by instant runoff mechanism is similar to the
@@ -344,7 +345,6 @@ are used as the weights for the mean mechanism.
 Essentially, this is
 \hyperref[para:avg-instant-runoff]{weight by instant runoff}, but the weights
 applied by the inactive agents are used instead of ranking each proxy.
-
 
 \subsection{Weighting Mechanisms}\label{subsec:weighting-mechanisms}
 Weighting mechanisms are strategies by which inactive agents assign weights
@@ -370,7 +370,7 @@ Once all distances for all agents are calculated, each weight need to be
 adjusted to be positive using the formula
 \begin{equation}
     g{(\agent)} = \lvert
-        \min{\weightof{\systemproxies}} - \weightof{\agent}
+    \min{\weightof{\systemproxies}} - \weightof{\agent}
     \rvert
     \text{,}\label{eq:distance-voting-adjustment}
 \end{equation}
@@ -385,6 +385,7 @@ given $n$ and the furthest $1$.
 These values are used as the weights for whichever voting mechanism is used.
 This should result in something similar to distance voting, but with a set
 range of scores.
+
 
 \section{Experiment Design}\label{sec:experiment-design}
 % TODO: I don't currently have anything in here about agents with different
