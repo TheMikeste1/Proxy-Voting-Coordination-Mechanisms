@@ -282,7 +282,7 @@ receives the $n$ points, where $n$ is the number of proxies, while the proxy
 furthest away is ranked last and receives $1$ point.
 The proxy with the highest points is selected as \systemtruth.
 
-\mechanismheader{Instant Runoff}
+\mechanismheader{Instant Runoff}\label{para:candidate-instant-runoff}
 Similar to Borda, the instant runoff mechanism does not use agent-assigned
 weights, but rather ranks each proxy on behalf of the agents according to
 distance.
@@ -332,8 +332,14 @@ However, instead of selecting the proxy with the highest score, the mean
 mechanism is used with the scores as the weights.
 The output of the mean mechanism is \systemtruth.
 
-% - Weight by Borda
-% - Weight by Ranked Choice
+\mechanismheader{Weight by Instant Runoff}
+The weight by instant runoff mechanism is similar to weight by Borda, but
+using instant runoff instead of Borda count.
+The process is the same as the
+\hyperref[para:candidate-instant-runoff]{candidate version} of instant
+runoff, but instead of select the majority proxy the remaining votes for
+each proxy are used as the weights for the mean mechanism.
+
 % - . . .
 
 \subsection{Weighting Mechanisms}\label{subsec:weighting-mechanisms}
