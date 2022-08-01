@@ -308,8 +308,21 @@ is not necessarily the position of any one agent, though it may be.
 They work by averaging the positions of multiple proxies to some degree.
 % TODO: Fill out strengths and weaknesses
 
-% - Explain what average mechanisms are
-%
+\mechanismheader{Mean}
+The mean mechanism is another mechanism originally used in
+~\cite{Cohensius2017}.
+It is reemployed here to make use of the additional weighting mechanisms and
+finite voters.
+The formula for the mean mechanism is
+\begin{equation*}
+    \mathbf{mn}(\systemproxies) =
+    \frac{1}{\systemweight}
+    \sum_{\agent_i \in \systemproxies} {\weightof{\agent_i} \cdot \agent_i}
+    \text{,}\label{eq:mean-mechanism}
+\end{equation*}
+meaning the sum of each proxy multiplied by its weight divided by
+\systemweight, where \systemweight\ is the total system weight.
+
 % - Mean
 % - Weight by Borda
 % - Weight by Ranked Choice
