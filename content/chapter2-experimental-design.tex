@@ -43,6 +43,7 @@ this space.
 This likewise means \systemtruth\ will be a position within \systemspace.
 
 % TODO: Talk about \agentweight and \systemweight
+% TODO: Talk about \proxies vs inactive
 
 \subsection{Agent Types}\label{subsec:agent-types}
 This study explores the idea of using finite voters, as opposed to the
@@ -68,7 +69,6 @@ Measurement methods represented by these voters are less accurate, though
 likely cheaper.  % TODO: such as. . .
 
 %  - Finite with agent costs
-
 
 \section{Experiment Criteria and Parameters}\label{sec:experiment-criteria
 -and-parameters}
@@ -120,7 +120,7 @@ squared distance
             \mathellipsis +
             (\systemtruth_k - \truth_k)^2
         }\right)
-    }^2 \nonumber \\ 
+    }^2 \nonumber \\
     &= (\systemtruth_1 - \truth_1)^2 +
     \mathellipsis +
     (\systemtruth_k - \truth_k)^2
@@ -155,8 +155,8 @@ could perform just as well if not better than one with a higher cost.
 % - Time (squared?)/Calculation complexity
 %   - Useful to know if humans could use it.
 
-
 \subsection{Parameters}\label{subsec:parameters}
+
 \subsubsection{System Parameters}\label{subsubsec:system-parameters}
 Each system will have a different set of parameters.
 First, each system will need a set of proxy voters.
@@ -274,6 +274,7 @@ It is described by
     \text{,}\label{eq:plurality-mechanism}
 \end{equation}
 meaning the proxy with the maximum weight.
+
 \mechanismheader{Borda}
 Instead of using agent-assigned weights, the Borda mechanism uses a typical
 Borda count algorithm where the proxy closest to an agent is ranked first and
@@ -323,6 +324,7 @@ They work by averaging the positions of multiple proxies to some degree.
 % - . . .
 
 % FIXME: I don't like this section name
+
 
 \section{Experiment Design}\label{sec:experiment-design}
 % TODO: I don't currently have anything in here about agents with different
@@ -408,6 +410,8 @@ as the estimated truth, the error, as well as the rest of the
 % TODO: What is done after an experiment?
 
 % FIXME: This might need to be moved to Chapter 4
+
+
 \section{Further Work and Improvements}\label{sec:further-work-and-improvements}
 % - Multiple levels of expertise. Expert voters could have varying levels of
 % accuracy, allowing for more complex systems.
