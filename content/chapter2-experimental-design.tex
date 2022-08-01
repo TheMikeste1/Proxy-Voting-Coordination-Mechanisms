@@ -347,8 +347,10 @@ applied by the inactive agents are used instead of ranking each proxy.
 
 
 \subsection{Weighting Mechanisms}\label{subsec:weighting-mechanisms}
-% - Explain what weighting Mechanisms are
-% Weights must be positive!!
+Weighting mechanisms are strategies by which inactive agents assign weights
+to proxies.
+All final weights are required to be positive in order to simplify
+calculating \systemtruth through the voting mechanisms.
 
 \mechanismheader{Vote for Closest}
 The vote for closest weighting mechanism is the simplest weighting mechanism.
