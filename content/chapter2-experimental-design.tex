@@ -274,18 +274,14 @@ It is described by
     \text{,}\label{eq:plurality-mechanism}
 \end{equation}
 meaning the proxy with the maximum weight.
-
-\mechanismheader{Borda}\label{para:candidate-borda}
-Instead of using agent-assigned weights, the Borda mechanism uses a typical
-Borda count algorithm where the proxy closest to an agent is ranked first and
-receives the $n$ points, where $n$ is the number of proxies, while the proxy
-furthest away is ranked last and receives $1$ point.
-The proxy with the highest points is selected as \systemtruth.
+While a seemingly simply mechanism, this voting mechanism combined with some
+weighting mechanism allows for common voting systems.
+For example, plurality used with \hyperref[para:borda]{borda weighting}
+provides the Borda count system.
 
 \mechanismheader{Instant Runoff}\label{para:candidate-instant-runoff}
-Similar to Borda, the instant runoff mechanism does not use agent-assigned
-weights, but rather ranks each proxy on behalf of the agents according to
-distance.
+The instant runoff mechanism does not use agent-assigned weights, but rather
+ranks each proxy on behalf of the agents according to distance.
 Once all proxies are ranked, each proxy receives a score according to how
 many first place votes they receive.
 The proxy with the lowest number of votes is eliminated, and its votes are
@@ -323,28 +319,19 @@ The formula for the mean mechanism is
 \end{equation*}
 meaning the sum of each proxy multiplied by its weight divided by
 \systemweight, where \systemweight\ is the total system weight.
-
-\mechanismheader{Weight by Borda}
-As with the \hyperref[para:candidate-borda]{candidate mechanism} equivalent,
-weight by Borda skips agent-assigned weights and instead applies Borda count
-on behalf of each inactive voter, scoring the closest proxy as $n$, where $n$
-is the number of proxies, and the furthest $1$.
-However, instead of selecting the proxy with the highest score, the mean
-mechanism is used with the scores as the weights.
-The output of the mean mechanism is \systemtruth.
+This mechanism is the core of the average mechanisms, and is used as a final
+step in most other average mechanisms.
 
 \mechanismheader{Weight by Ranked Choice}
 Each proxy is ranked by each inactive agent according to how close they are
 to the inactive agent.
 The number of times each proxy is ranked first is counted, and the proxy with
 the least votes is eliminated and given a score of 1.
-The process continues from $1 \cdots n$, where $n$ is the number of proxies,
+The process continues from $1 \mathellipsis n$, where $n$ is the number of proxies,
 at which point the mean mechanism is with the scores as the weights.
 
 \mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
-The weight by instant runoff mechanism is similar to weight by Borda, but
-using instant runoff instead of Borda count.
-The process is the same as the
+The weight by instant runoff mechanism is similar to the
 \hyperref[para:candidate-instant-runoff]{candidate version} of instant
 runoff, but instead of select the majority proxy the remaining votes for
 each proxy are used as the weights for the mean mechanism.
@@ -363,11 +350,22 @@ applied by the inactive agents are used instead of ranking each proxy.
 % - Explain what weighting Mechanisms are
 %
 % - Vote for closest (implemented by \cite{Cohensius2017})
-% - Borda
-% - Ranked Choice
 % - . . .
 
-% FIXME: I don't like this section name
+\mechanismheader{Vote for Closest}
+The vote for closest weighting mechanism is the simplest weighting mechanism.
+It is an adaptation of the infinite mechanism used in~\cite{Cohensius2017},
+where instead of each proxy being assigned the weight of the boundaries
+between proxies, each inactive voter simply votes for the proxy closest to
+itself.
+This is equivalent to assigning a weight of 1 to the closet proxy, and giving
+the rest 0.
+
+\mechanismheader{Borda}\label{para:borda}
+The Borda mechanism allows each inactive voter to weight each proxy.
+Each proxy is rated some value in $[1 \mathellipsis n]$, with the closest
+given $n$ and the furthest $1$.
+These values are used as the weights for whichever voting mechanism is used.
 
 
 \section{Experiment Design}\label{sec:experiment-design}
