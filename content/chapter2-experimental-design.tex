@@ -318,7 +318,7 @@ The formula for the mean mechanism is
     \sum_{\agent_i \in \systemproxies} {\weightof{\agent_i} \cdot \agent_i}
     \text{,}\label{eq:mean-mechanism}
 \end{equation*}
-meaning the sum of each proxy multiplied by its weight divided by 
+meaning the sum of each proxy multiplied by its weight divided by
 \systemweight, where \systemweight\ is the total system weight.
 This mechanism is the core of the average mechanisms, and is used as a final
 step in most other average mechanisms.
@@ -407,12 +407,23 @@ process.
 Afterwards, the data will be analysed in an attempt to identify any patterns,
 strengths, or weaknesses proxy voting has as a measurement verification tool.
 
-% TODO: Move this paragraph to Preliminaries?
 In order to simplify various calculations, the true value for each experiment
 will be 0.
-This simplifies selecting the positions of each voter, as well as making it
-trivial to calculate loss since we can modify
-% FIXME: Cite loss calculation formula and show difference.
+This simplifies selecting the positions of each voter without any meaningful
+differences, as well as making it trivial to calculate loss by changing the
+\hyperref[eq:loss]{loss formula} to
+\begin{align}
+    \systemloss &=
+    (\systemtruth_1 - 0)^2 +
+    \mathellipsis +
+    (\systemtruth_k - 0)^2
+    \nonumber \\
+    &=
+    (\systemtruth_1)^2 +
+    \mathellipsis +
+    (\systemtruth_k )^2
+    \text{.}\label{eq:adjusted-loss}
+\end{align}
 
 % TODO: Talk about distribution range restrictions, such as Gaussian being
 % restricted between -1 and 1. I may want to restrict both experts and
