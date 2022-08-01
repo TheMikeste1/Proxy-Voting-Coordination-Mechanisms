@@ -333,6 +333,14 @@ However, instead of selecting the proxy with the highest score, the mean
 mechanism is used with the scores as the weights.
 The output of the mean mechanism is \systemtruth.
 
+\mechanismheader{Weight by Ranked Choice}
+Each proxy is ranked by each inactive agent according to how close they are
+to the inactive agent.
+The number of times each proxy is ranked first is counted, and the proxy with
+the least votes is eliminated and given a score of 1.
+The process continues from $1 \cdots n$, where $n$ is the number of proxies,
+at which point the mean mechanism is with the scores as the weights.
+
 \mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
 The weight by instant runoff mechanism is similar to weight by Borda, but
 using instant runoff instead of Borda count.
