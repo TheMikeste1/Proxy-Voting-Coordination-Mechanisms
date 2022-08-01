@@ -294,6 +294,7 @@ This continues until some proxy has the majority ($>$50\%) of votes, at which
 time that proxy is selected as \systemtruth.
 
 \mechanismheader{Weighted Instant Runoff}
+\label{para:candidate-weighted-instant-runoff}
 The weighted instant runoff mechanism is the same as instant runoff, but uses
 the weights provided by each agent instead.
 Since it is possible that a weighting mechanism will not provide second or
@@ -332,7 +333,7 @@ However, instead of selecting the proxy with the highest score, the mean
 mechanism is used with the scores as the weights.
 The output of the mean mechanism is \systemtruth.
 
-\mechanismheader{Weight by Instant Runoff}
+\mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
 The weight by instant runoff mechanism is similar to weight by Borda, but
 using instant runoff instead of Borda count.
 The process is the same as the
@@ -340,7 +341,15 @@ The process is the same as the
 runoff, but instead of select the majority proxy the remaining votes for
 each proxy are used as the weights for the mean mechanism.
 
-% - . . .
+\mechanismheader{Averaged Weighted Instant Runoff}
+This mechanism is the same as
+\hyperref[para:candidate-weighted-instant-runoff]{weighted instant runoff},
+but instead of selecting the majority proxy as \systemtruth\ the remaining votes
+are used as the weights for the mean mechanism.
+Essentially, this is
+\hyperref[para:avg-instant-runoff]{weight by instant runoff}, but the weights
+applied by the inactive agents are used instead of ranking each proxy.
+
 
 \subsection{Weighting Mechanisms}\label{subsec:weighting-mechanisms}
 % - Explain what weighting Mechanisms are
