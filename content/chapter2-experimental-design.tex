@@ -273,10 +273,32 @@ It is described by
     \text{,}\label{eq:plurality-mechanism}
 \end{equation}
 meaning the agent with the maximum weight.
+\mechanismheader{Borda}
+Instead of using agent-assigned weights, the Borda mechanism uses a typical
+Borda count algorithm where the proxy closest to an agent is ranked first and
+receives the $n$ points, where $n$ is the number of proxies, while the proxy
+furthest away is ranked last and receives $1$ point.
+The proxy with the highest points is selected as \systemtruth.
 
-% - Borda
-% - Ranked Choice
-% - . . .
+\mechanismheader{Instant Runoff}
+Similar to Borda, the instant runoff mechanism does not use agent-assigned
+weights, but rather ranks each proxy on behalf of the agents according to
+distance.
+Once all proxies are ranked, each proxy receives a score according to how
+many first place votes they receive.
+The proxy with the lowest number of votes is eliminated, and its votes are
+redistributed to the second choice for each agent.
+This continues until some proxy has the majority ($>$50\%) of votes, at which
+time that proxy is selected as \systemtruth.
+
+\mechanismheader{Weighted Instant Runoff}
+The weighted instant runoff mechanism is the same as instant runoff, but uses
+the weights provided by each agent instead.
+Since it is possible that a weighting mechanism will not provide second or
+third choices, the agents whose choice is eliminated will need to
+re-provide weights each iteration.
+Once some proxy has the majority ($>$50\%) of weights it is selected as
+\systemtruth.
 
 \subsubsection{Average Mechanisms}\label{subsubsec:average-mechanisms}
 \textit{Average mechanisms} are mechanisms that produce a \systemtruth\ that
