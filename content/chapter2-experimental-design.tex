@@ -113,20 +113,20 @@ Accuracy will be measured using squared~loss~\loss.
 Fortunately, since agents operate within \systemspace, calculating the
 squared loss for a system~\systemloss, is as simple as calculating the
 squared distance
-\begin{equation}
-    \systemloss = {
+\begin{align}
+    \systemloss &= {
         \left(\sqrt{
-            (\systemtruth^1 - \truth^1)^2 +
+            (\systemtruth_1 - \truth_1)^2 +
             \mathellipsis +
-            (\systemtruth^k - \truth^k)^2
+            (\systemtruth_k - \truth_k)^2
         }\right)
-    }^2 =
-    (\systemtruth^1 - \truth^1)^2 +
+    }^2 \nonumber \\ 
+    &= (\systemtruth_1 - \truth_1)^2 +
     \mathellipsis +
-    (\systemtruth^k - \truth^k)^2
+    (\systemtruth_k - \truth_k)^2
     \text{,}\label{eq:loss}
-\end{equation}
-where $\systemtruth^k$ and $\truth^k$ are the $k$th
+\end{align}
+where $\systemtruth_k$ and $\truth_k$ are the $k$th
 dimension of the estimated and real truth respectively.
 
 The next criteria used to judge systems is the cost of the system.
