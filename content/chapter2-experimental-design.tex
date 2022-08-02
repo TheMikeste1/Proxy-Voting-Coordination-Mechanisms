@@ -268,15 +268,14 @@ as described with
 where \systemproxies\ is ordered by \agenttruth.
 
 \mechanismheader{Plurality}
-The plurality mechanism simply selects the proxy with the highest weight.
-It is described by
+The plurality mechanism simply selects the proxy with the highest weight, which
+is described by
 \begin{equation}
     \textbf{pl}(\systemproxies) =
     \argmax \weightof{\systemproxies}
-    \text{,}\label{eq:plurality-mechanism}
+    \text{.}\label{eq:plurality-mechanism}
 \end{equation}
-meaning the proxy with the maximum weight.
-While a seemingly simply mechanism, this voting mechanism combined with some
+While a seemingly simple mechanism, this voting mechanism combined with some
 weighting mechanism allows for common voting systems.
 For example, plurality used with \hyperref[para:borda]{borda weighting}
 provides the Borda count system.
