@@ -62,7 +62,7 @@ taking a measurement.  % TODO: such as. . .
 
 \textit{Untrained voters}, on the other hand, are agents with a worse
 distribution or more extreme minimums and maximums.
-These agents have a greater degree on error, and while they might be correct
+These agents have a greater degree of error, and while they might be correct
 about the true value they are unable to be as certain about their estimations
 as the expert voters due to their possibility for error.
 Measurement methods represented by these voters are less accurate, though
@@ -221,7 +221,7 @@ assign weights to proxies, which rules are named `weighting mechanisms.'
 
 \subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
 \textit{Voting mechanisms} are a concept borrowed from~\cite{Cohensius2017},
-there simply labeled `mechanisms.'
+where they are simply labeled `mechanisms.'
 These are algorithms used to condense proxies and their weights, which are
 required to be positive, into \systemtruth.
 These algorithms can be broken down into two primary categories: candidate
@@ -236,8 +236,9 @@ described below.
 
 \mechanismheader{Median}
 The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
-This study build off their by using finite voters instead of infinite, as
-well as applying weighting mechanisms which will result in different results.
+This study builds off their design by using finite voters instead of
+infinite, as well as applying weighting mechanisms which will result in
+different results.
 The formula for the median mechanism is the same as the one used
 in~\cite[para.~2.4]{Cohensius2017}, which was described as, with some
 symbolic changes,
