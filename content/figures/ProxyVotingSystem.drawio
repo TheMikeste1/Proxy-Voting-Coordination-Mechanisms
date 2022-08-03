@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-08-03T20:25:09.743Z" agent="5.0 (Windows)" etag="1h8LzlBhozL8SKlc8TDE" version="20.2.2" type="github">
+<mxfile host="app.diagrams.net" modified="2022-08-03T20:29:42.768Z" agent="5.0 (Windows)" etag="a8GhTv-IUw3LWUBx8mt-" version="20.2.2" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1673" dy="918" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -161,20 +161,20 @@
             <mxRectangle x="256" y="-50" width="160" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="48MuwtFEveb9ULirr05y-15" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="48MuwtFEveb9ULirr05y-5" vertex="1">
-          <mxGeometry y="30" width="210" height="14" as="geometry" />
-        </mxCell>
         <mxCell id="48MuwtFEveb9ULirr05y-16" value="Mean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="48MuwtFEveb9ULirr05y-5" vertex="1">
-          <mxGeometry y="44" width="210" height="30" as="geometry" />
+          <mxGeometry y="30" width="210" height="30" as="geometry" />
         </mxCell>
         <mxCell id="48MuwtFEveb9ULirr05y-17" value="Weight by Ranked Choice" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="48MuwtFEveb9ULirr05y-5" vertex="1">
-          <mxGeometry y="74" width="210" height="30" as="geometry" />
+          <mxGeometry y="60" width="210" height="30" as="geometry" />
         </mxCell>
         <mxCell id="48MuwtFEveb9ULirr05y-19" value="Weight by Instant Runoff" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="48MuwtFEveb9ULirr05y-5" vertex="1">
-          <mxGeometry y="104" width="210" height="30" as="geometry" />
+          <mxGeometry y="90" width="210" height="30" as="geometry" />
         </mxCell>
         <mxCell id="48MuwtFEveb9ULirr05y-18" value="Averaged Weighted Instant Runoff" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="48MuwtFEveb9ULirr05y-5" vertex="1">
-          <mxGeometry y="134" width="210" height="30" as="geometry" />
+          <mxGeometry y="120" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="48MuwtFEveb9ULirr05y-15" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="48MuwtFEveb9ULirr05y-5" vertex="1">
+          <mxGeometry y="150" width="210" height="14" as="geometry" />
         </mxCell>
         <mxCell id="48MuwtFEveb9ULirr05y-6" value="Median" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;labelBorderColor=none;" parent="48MuwtFEveb9ULirr05y-5" vertex="1">
           <mxGeometry y="164" width="210" height="30" as="geometry" />
