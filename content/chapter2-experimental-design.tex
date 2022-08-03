@@ -286,17 +286,16 @@ ranks each proxy on behalf of the agents according to distance.
 Once all proxies are ranked, each proxy receives a score according to how
 many first place votes they receive.
 The proxy with the lowest number of votes is eliminated, and its votes are
-redistributed to the second choice for each agent.
+redistributed to the next closest for each affected agent.
 This continues until some proxy has the majority ($>$50\%) of votes, at which
 time that proxy is selected as \systemtruth.
 
 \mechanismheader{Weighted Instant Runoff}
 \label{para:candidate-weighted-instant-runoff}
 The weighted instant runoff mechanism works the same as instant runoff, but uses
-the weights provided by each agent instead.
-Since it is possible that a weighting mechanism will not provide second or
-third choices, the agents whose choice is eliminated will need to
-re-provide weights each iteration.
+the weights provided by each agent instead of ranking them by distance.
+While the original weights are provided by the agents, the weights of the
+eliminated proxies will be redistributed by distance to the affected agents.
 Once some proxy has the majority ($>$50\%) of weights it is selected as
 \systemtruth.
 
