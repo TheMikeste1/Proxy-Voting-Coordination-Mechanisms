@@ -294,8 +294,8 @@ time that proxy is selected as \systemtruth.
 \label{para:candidate-weighted-instant-runoff}
 The weighted instant runoff mechanism works the same as instant runoff, but uses
 the weights provided by each agent instead of ranking them by distance.
-While the original weights are provided by the agents, the weights of the
-eliminated proxies will be redistributed by distance to the affected agents.
+Whenever a proxy is eliminated, its weight will be redistributed according to
+the ranking specified by the affected agents.
 Once some proxy has the majority ($>$50\%) of weights it is selected as
 \systemtruth.
 
