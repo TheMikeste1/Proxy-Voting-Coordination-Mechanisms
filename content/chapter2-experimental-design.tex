@@ -361,22 +361,19 @@ This is equivalent to assigning a weight of 1 to the closet proxy, and giving
 the rest 0.
 
 \mechanismheader{Distance Voting}
-This mechanism uses the negative distance between the proxies and an agent as
-the weight.
-The negative distance is used so the proxy closest to the given agent
-receives the highest weight.
-Once an agent has calculated the negative distance for all proxies,
-each weight needs to be adjusted to be positive using the formula
+This mechanism uses the distance between the proxies and an agent as the weight.
+Once an agent has calculated all the distance for all proxies,
+each weight needs to be adjusted so the closest has the highest weight using
+the formula
 \begin{equation}
     g_\agent{(\proxy)} = \lvert
-    \min{\weight_{\agent}{(\systemproxies)}} - \weight_{\agent}{(\proxy)}
+    \max{\weight_{\agent}{(\systemproxies)}} - \weight_{\agent}{(\proxy)}
     \rvert
     \text{,}\label{eq:distance-voting-adjustment}
 \end{equation}
-which gives the absolute value of the minimum weight minus the agent's weight.
-This results in the minimum weight being equal to 0, and the highest weight
-equal to the distance between the minimum and the maximum weight, and also
-means the weights fulfill the positive weight requirement.
+which results in the highest distance proxy's weight being equal to 0 and the
+closest proxy's weight equal to the distance between the minimum and the
+maximum weight.
 
 \mechanismheader{Borda}\label{para:borda}
 The Borda mechanism allows each inactive voter to weight each proxy.
