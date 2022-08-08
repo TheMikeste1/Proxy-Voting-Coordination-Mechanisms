@@ -328,12 +328,13 @@ to the inactive agent.
 The number of times each proxy is ranked first is counted, and the proxy with
 the least votes is eliminated and given a score of 1.
 The process continues from $1 \mathellipsis n$, where $n$ is the number of
-proxies, at which point the mean mechanism is with the scores as the weights.
+proxies, at which point the mean mechanism is applied using the scores as
+weights.
 
 \mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
 The weight by instant runoff mechanism is similar to the
 \hyperref[para:candidate-instant-runoff]{candidate version} of instant
-runoff, but instead of select the majority proxy the remaining votes for
+runoff, but instead of selecting the majority proxy the remaining votes for
 each proxy are used as the weights for the mean mechanism.
 
 \mechanismheader{Averaged Weighted Instant Runoff}
