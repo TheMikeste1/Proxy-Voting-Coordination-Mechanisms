@@ -326,10 +326,12 @@ step in most other average mechanisms.
 Each proxy is ranked by each inactive agent according to how close they are
 to the inactive agent.
 The number of times each proxy is ranked first is counted, and the proxy with
-the least votes is eliminated and given a score of 1.
+the least votes is removed from the wanking process and given a weight of 1.
 The process continues from $1 \mathellipsis n$, where $n$ is the number of
 proxies, at which point the mean mechanism is applied using the scores as
 weights.
+This results in the lowest-ranked proxy having a weight of 1, and the
+highest-ranked proxy receiving a weight of $n$.
 
 \mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
 The weight by instant runoff mechanism is similar to the
