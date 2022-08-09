@@ -369,8 +369,8 @@ Once an agent has calculated all the distance for all proxies,
 each weight needs to be adjusted so the closest has the highest weight using
 the formula
 \begin{equation}
-    g_\agent{(\proxy)} = \lvert
-    \max{\weight_{\agent}{(\systemproxies)}} - \weight_{\agent}{(\proxy)}
+    g_\agent{(\proxies)} = \lvert
+    \max{\weight_{\agent}{(\systemproxies)}} - \weight_{\agent}{(\proxies)}
     \rvert
     \text{,}\label{eq:distance-voting-adjustment}
 \end{equation}
