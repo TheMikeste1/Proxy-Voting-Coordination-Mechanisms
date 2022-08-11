@@ -121,37 +121,28 @@ For a Single Line While Including Everything}
     %{{{ Frontmatter
     \preliminaries   % set frontmatter style
 
-    \maketitle
-    \makecopyright        % optional
-
-    \include{content/frontmatter/abstract}
-    \include{content/frontmatter/publicabstract}
-    \include{content/frontmatter/dedication}  % optional
+    % \maketitle
+    % \makecopyright        % optional
+    %
+    % \include{content/frontmatter/abstract}
+    % \include{content/frontmatter/publicabstract}
+    % \include{content/frontmatter/dedication}  % optional
 %    \include{acknowl}     % optional TODO: Do I want acknowledgements?
 
     \tableofcontents
-    \listoftables
-    \listoffigures
+    % \listoftables
+    % \listoffigures
 
     \include{content/frontmatter/notation}  % optional
-    \include{content/frontmatter/acronyms}  % optional
+    % \include{content/frontmatter/acronyms}  % optional
     %}}}
     %{{{ The main body of the thesis
     \body  % set main body style
     % Chapters
-    \include{content/chapter1-introduction}
+    % \include{content/chapter1-introduction}
     \include{content/chapter2-experimental-design}
-    \include{content/chapter3-results}
-    \include{content/chapter4-conclusions-and-further-work}
-% TODO Research to be done:
-%   - Any similar papers
-%   - Finite proxy voting
-%  Those below will likely require a specific type of sensor
-%   - Current sensor error mitigation techniques
-%   - Typical sensor error rates
-%   - Sensor variance
-%   - Sensor error distributions (e.g.\ Gaussian)
-
+    % \include{content/chapter3-results}
+    % \include{content/chapter4-conclusions-and-further-work}
 
     % Endmatter
     % For BibTeX references: specify a .bib file and a style.
@@ -166,6 +157,7 @@ For a Single Line While Including Everything}
 %    \references{IEEEabrv,sample}{aiaa}
 
     \include{content/endmatter/appendix}
-%    \include{vita}  % TODO: I don't think I actually need this unless I'm a doctorate.
+%    \include{vita}  % FIXME: I don't think I actually need this unless I'm a
+%    doctorate.
     %}}}
 \end{document}
