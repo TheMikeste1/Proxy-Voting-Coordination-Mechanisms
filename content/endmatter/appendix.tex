@@ -71,3 +71,21 @@ location. % FIXME
     \begin{tabular}{|c|c|c|}
     \end{tabular}
 \end{table}
+
+\appendixsection{Distributions of Error}
+The distribution of square error for each voting mechanism is displayed in
+\autoref{fig:voting_mechanisms_distribution}.
+
+\begin{figure}
+    \newcommand{\height}{
+        \dimexpr
+        \textheight - 2 % Could also be .9\textheight
+        \baselineskip
+    }
+
+    \centering
+    \includegraphics[width=\textwidth, height=\height, keepaspectratio]
+    {../Analysis/notebooks/img/voting_mechanisms_distribution}
+    \caption{The distribution of squared error by voting mechanism}
+    \label{fig:voting_mechanisms_distribution}
+\end{figure}
