@@ -19,8 +19,34 @@ consists of using a combination of graphing, One-way ANOVA tests, and
 Student's t- or Mann-Whitney U-tests.
 
 % TODO: Does "Best Overall" sound good, or does ". . . Analysis" sound
-% better? Or should I use something else entirely? Optimal?
-\section{Voting Mechanisms Analysis}\label{sec:best-overall-voting-mechanism}
+% better? Or should I use something else entirely? Optimal? Lowest Error?
+\section{Lowest Error Voting Mechanisms}\label{sec:best-overall-voting-mechanism}
+Voting mechanisms consolidate the votes of all agents along with their weights
+into a final estimate, and so play a pivotal role in the accuracy of a system.
+\autoref{fig:voting_mechanisms_comparison} illustrates the population of
+squared error for each voting mechanism.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.75]
+    {./content/figures/voting_mechanisms_comparison}
+    \caption{Squared error populations by voting mechanism, with average
+    mechanisms on the left and candidate mechanisms on the right.}
+    \label{fig:voting_mechanisms_comparison}
+\end{figure}
+
+This graph immediately tells us a few things.
+First, the squared error seems to be skewed, favoring numbers closer to 0.
+This means there is a fairly even spread of estimates, since this is the
+pattern one would expect to see from a uniform distribution of estimates.
+Interestingly, however, is the majority of most error populations are
+somewhere between a uniform distribution of estimates
+(\autoref{fig:expected_even_distribution_squared_error}) and a normal
+distribution (\autoref{fig:expected_gaussian_distribution_squared_error}).
+Indeed, if the estimates are instead graphed as in
+\autoref{fig:voting_mechanisms_estimate_distribution}, the distribution of estimates
+is more normal than uniform.
+This means most mechanisms are better at estimating \truth\ than random chance.
 
 % Best Average mechanism
 % Best Candidate mechanism
