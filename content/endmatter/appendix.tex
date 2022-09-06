@@ -72,9 +72,9 @@ location. % FIXME
     \end{tabular}
 \end{table}
 
-\appendixsection{Distributions of Error}
-The distribution of square error for each voting mechanism is displayed as a
-KDE graph in \autoref{fig:voting_mechanisms_distribution}.
+\appendixsection{Distributions of Variables}
+The distribution of variables for each voting mechanism is displayed as a
+KDE graph in the figures of this section.
 
 \begin{figure}[!t]
     \centering
@@ -84,9 +84,22 @@ KDE graph in \autoref{fig:voting_mechanisms_distribution}.
         \textheight - 2 % Could also be .9\textheight
         \baselineskip,
         keepaspectratio]
-    {./content/figures/voting_mechanisms_distribution}
-    \caption{The distribution of squared error by voting mechanism}
-    \label{fig:voting_mechanisms_distribution}
+    {./content/figures/voting_mechanisms_error_distribution}
+    \caption{The distribution of squared error by voting mechanism.}
+    \label{fig:voting_mechanisms_error_distribution}
+\end{figure}
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr
+        \textheight - 2 % Could also be .9\textheight
+        \baselineskip,
+        keepaspectratio]
+    {./content/figures/voting_mechanisms_estimate_distribution}
+    \caption{The distribution of system estimate by voting mechanism.}
+    \label{fig:voting_mechanisms_estimate_distribution}
 \end{figure}
 
 \appendix{Visualizations}\label{chap:visualizations}
