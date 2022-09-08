@@ -56,6 +56,44 @@ The results of this analysis can be found in
 \autoref{subsec:lowest-error-candidate-mechanisms}.
 
 \subsection{Average Mechanisms}\label{subsec:lowest-error-average-mechanisms}
+Average mechanisms, as described in \autoref{subsubsec:average-mechanisms}, work by
+averaging the estimates of the system's agents, so it is not too surprising they
+result in less error than candidate mechanisms, which ultimately output a single
+agent's estimate.
+However, they are not all created equally.
+This leads us to the question: which average mechanisms generally work best?
+
+To start, an ANOVA test was performed on the average mechanisms.
+This produced a p-value of 0, indicating there is very likely a difference between
+average mechanisms.
+U-tests were then performed to compare each mechanism on its own against each other
+mechanism individually, resulting in \autoref{fig:average-mechanisms-p-values}.
+The numbers next to the edges are the resultant p-values, where the alternative is
+the population is lower than the other.
+As is shown by the graph, there is sufficient evidence to reject the null hypothesis
+than any of the populations are the same.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.75]
+    {./content/figures/average-mechanisms-p-values.gv}
+    \caption{The p-values for average voting mechanisms, given the alternative is one
+    population is lesser than the other.
+    An arrow pointing to another voting mechanism indicates the `from' mechanism
+    beats the `to' mechanism.}
+    \label{fig:average-mechanisms-p-values}
+\end{figure}
+
+In addition, Ranked Choice appears to beat out every other voting mechanism, followed
+by Mean beating two, then Weight by Instant Runoff beating one, and finally Averaged
+Weighted Instant Runoff beating none.
+This means the rankings of the average mechanisms is as follows:
+\begin{enumerate}
+    \item \hyperref[para:avg-ranked-choice]{Ranked Choice}
+    \item \hyperref[para:mean]{Mean}
+    \item \hyperref[para:avg-instant-runoff]{Weight by Instant Runoff}
+    \item \hyperref[para:avg-avg-instant-runoff]{Averaged Weighted Instant Runoff}
+\end{enumerate}
 
 \subsection{Candidate Mechanisms}\label{subsec:lowest-error-candidate-mechanisms}
 

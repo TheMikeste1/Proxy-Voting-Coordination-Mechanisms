@@ -305,7 +305,7 @@ is not necessarily the position of any one agent, though it may be.
 They work by averaging the positions of multiple proxies to some degree.
 % TODO: Fill out strengths and weaknesses
 
-\mechanismheader{Mean}
+\mechanismheader{Mean}\label{para:mean}
 The mean mechanism is another mechanism originally used in
 ~\cite{Cohensius2017}.
 It is reemployed here to make use of the additional weighting mechanisms and
@@ -322,7 +322,7 @@ meaning the sum of each proxy multiplied by its weight divided by
 This mechanism is the core of the average mechanisms, and is used as a final
 step in most other average mechanisms.
 
-\mechanismheader{Weight by Ranked Choice}
+\mechanismheader{Weight by Ranked Choice}\label{para:avg-ranked-choice}
 Each proxy is ranked by each inactive agent according to how close they are
 to the inactive agent.
 The number of times each proxy is ranked first is counted, and the proxy with
@@ -339,7 +339,7 @@ The weight by instant runoff mechanism is similar to the
 runoff, but instead of selecting the majority proxy the remaining votes for
 each proxy are used as the weights for the mean mechanism.
 
-\mechanismheader{Averaged Weighted Instant Runoff}
+\mechanismheader{Averaged Weighted Instant Runoff}\label{para:avg-avg-instant-runoff}
 This mechanism is the same as
 \hyperref[para:candidate-weighted-instant-runoff]{weighted instant runoff},
 but instead of selecting the majority proxy as \systemtruth\ the remaining votes
