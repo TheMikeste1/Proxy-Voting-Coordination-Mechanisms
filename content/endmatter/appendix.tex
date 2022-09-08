@@ -72,6 +72,30 @@ location. % FIXME
     \end{tabular}
 \end{table}
 
+\appendixsection{Voting Mechanism P-Values}
+\autoref{fig:all-voting-mechanisms-p-values} illustrates the p-values for all voting
+mechanisms, given the alternative is one population is lesser than the other.
+An arrow pointing to another voting mechanism indicates the `from' mechanism beats
+the `to' mechanism.
+
+\begin{figure}[!t]
+    \centering
+    \includegraphics[
+        angle=90,
+        width=\textwidth,
+        height=\dimexpr
+        \textheight - 2 % Could also be .9\textheight
+        \baselineskip,
+        keepaspectratio]
+    {./content/figures/all-voting-mechanisms-p-values.gv}
+    \caption{The p-values for all voting mechanisms, given the alternative is one
+    population is lesser than the other.
+    An arrow pointing to another voting mechanism indicates the `from' mechanism beats
+    the `to' mechanism.}
+    \label{fig:all-voting-mechanisms-p-values}
+\end{figure}
+
+
 \appendixsection{Distributions of Variables}
 The distribution of variables for each voting mechanism is displayed as a
 KDE graph in the figures of this section.
