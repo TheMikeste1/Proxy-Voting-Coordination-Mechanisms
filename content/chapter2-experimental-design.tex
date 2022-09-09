@@ -234,7 +234,7 @@ mechanisms and average mechanisms.
 This study experiments with a number of candidate mechanisms, which are
 described below.
 
-\mechanismheader{Median}
+\mechanismheader{Median}\label{para:median}
 The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
 This study builds off their design by using finite voters instead of
 infinite, as well as applying weighting mechanisms which will result in
@@ -267,7 +267,7 @@ as described with
 \end{equation}
 where \systemproxies\ is ordered by \agenttruth.
 
-\mechanismheader{Plurality}
+\mechanismheader{Plurality}\label{para:plurality}
 The plurality mechanism simply selects the proxy with the highest weight, which
 is described by
 \begin{equation}
@@ -280,7 +280,7 @@ weighting mechanism allows for common voting systems.
 For example, plurality used with \hyperref[para:borda]{Borda weighting}
 provides the Borda count system.
 
-\mechanismheader{Instant Runoff}\label{para:candidate-instant-runoff}
+\mechanismheader{Instant Runoff}\label{para:cand-instant-runoff}
 The instant runoff mechanism does not use agent-assigned weights, but rather
 ranks each proxy on behalf of the agents according to distance.
 Once all proxies are ranked, each proxy receives a score according to how
@@ -290,7 +290,7 @@ redistributed to the next closest for each affected agent.
 This continues until some proxy has the majority ($>$50\%) of votes, at which
 time that proxy is selected as \systemtruth.
 
-\mechanismheader{Weighted Instant Runoff}
+\mechanismheader{Weighted Instant Runoff}\label{para:cand-weighted-instant-runoff}
 \label{para:candidate-weighted-instant-runoff}
 The weighted instant runoff mechanism works the same as instant runoff, but uses
 the weights provided by each agent instead of ranking them by distance.
@@ -335,11 +335,11 @@ highest-ranked proxy receiving a weight of $n$.
 
 \mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
 The weight by instant runoff mechanism is similar to the
-\hyperref[para:candidate-instant-runoff]{candidate version} of instant
+\hyperref[para:cand-instant-runoff]{candidate version} of instant
 runoff, but instead of selecting the majority proxy the remaining votes for
 each proxy are used as the weights for the mean mechanism.
 
-\mechanismheader{Averaged Weighted Instant Runoff}\label{para:avg-avg-instant-runoff}
+\mechanismheader{Averaged Weighted Instant Runoff}\label{para:avg-weighted-instant-runoff}
 This mechanism is the same as
 \hyperref[para:candidate-weighted-instant-runoff]{weighted instant runoff},
 but instead of selecting the majority proxy as \systemtruth\ the remaining votes

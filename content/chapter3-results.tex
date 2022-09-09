@@ -11,6 +11,7 @@ consists of using a combination of graphing, One-way ANOVA tests, and
 Student's t- or Mann-Whitney U-tests.
 All tests are performed with $\alpha = 0.05$ unless otherwise stated.
 
+
 \section{Lowest Error Voting Mechanisms}\label{sec:lowest-error-voting-mechanism}
 Voting mechanisms consolidate the votes of all agents along with their weights
 into a final estimate, and so play a pivotal role in the accuracy of a system.
@@ -58,7 +59,7 @@ The results of this analysis can be found in
 \subsection{Average Mechanisms}\label{subsec:lowest-error-average-mechanisms}
 Average mechanisms, as described in \autoref{subsubsec:average-mechanisms}, work by
 averaging the estimates of the system's agents, so it is not too surprising they
-result in less error than candidate mechanisms, which ultimately output a single
+result in less error than candidate mechanisms which ultimately output only a single
 agent's estimate.
 However, they are not all created equally.
 This leads us to the question: which average mechanisms generally work best?
@@ -87,15 +88,57 @@ than any of the populations are the same.
 In addition, Ranked Choice appears to beat out every other voting mechanism, followed
 by Mean beating two, then Weight by Instant Runoff beating one, and finally Averaged
 Weighted Instant Runoff beating none.
-This means the rankings of the average mechanisms is as follows:
-\begin{enumerate}
-    \item \hyperref[para:avg-ranked-choice]{Ranked Choice}
-    \item \hyperref[para:mean]{Mean}
-    \item \hyperref[para:avg-instant-runoff]{Weight by Instant Runoff}
-    \item \hyperref[para:avg-avg-instant-runoff]{Averaged Weighted Instant Runoff}
-\end{enumerate}
+\begin{samepage}
+    This means the rankings of the average mechanisms is as follows:
+    \begin{enumerate}
+        \item \hyperref[para:avg-ranked-choice]{Ranked Choice}
+        \item \hyperref[para:mean]{Mean}
+        \item \hyperref[para:avg-instant-runoff]{Weight by Instant Runoff}
+        \item \hyperref[para:avg-weighted-instant-runoff]{Averaged Weighted Instant
+        Runoff}
+    \end{enumerate}
+\end{samepage}
 
 \subsection{Candidate Mechanisms}\label{subsec:lowest-error-candidate-mechanisms}
+Candidate voting mechanisms are described in \autoref{subsubsec:candidate-mechanisms}.
+They work by selecting a single `candidate' and uses its vote as \systemtruth.
+While they do not appear to perform as well as average mechanisms, they may be
+circumstances where they are required and so they will still be analyzed to determine
+which candidate mechanism works best.
+
+An ANOVA analysis was again used to start, which resulted in a p-value of
+$2.49e-221$.
+This, again, is clearly below $\alpha$, so we can reject the null hypothesis that all
+populations are the same.
+Following the pattern of analysis in
+\autoref{subsec:lowest-error-average-mechanisms}, U-tests where then performed to
+identify which mechanisms produced lower error than others.
+The p-values can be found in \autoref{fig:candidate-mechanisms-p-values}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.75]
+    {./content/figures/candidate-mechanisms-p-values.gv}
+    \caption{The p-values for candidate voting mechanisms, given the alternative is one
+    population is lesser than the other.
+    An arrow pointing to another voting mechanism indicates the `from' mechanism
+    beats the `to' mechanism.}
+    \label{fig:candidate-mechanisms-p-values}
+\end{figure}
+
+While not as many p-values are 0 with the candidate mechanisms, there is still very
+strong evidence that each candidate mechanism is not the same as each other.
+For the candidate mechanisms, Median appears to be the best, followed
+by Plurality, Instant Runoff, and finally Weighted Instant Runoff.
+\begin{samepage}
+    This means the rankings of the candidate mechanisms is as follows:
+    \begin{enumerate}
+        \item \hyperref[para:median]{Median}
+        \item \hyperref[para:plurality]{Plurality}
+        \item \hyperref[para:cand-instant-runoff]{Instant Runoff}
+        \item \hyperref[para:cand-weighted-instant-runoff]{Weighted Instant Runoff}
+    \end{enumerate}
+\end{samepage}
 
 
 \section{Best Overall Weighting Mechanism}\label{sec:best-overall-weighting-mechanism}
