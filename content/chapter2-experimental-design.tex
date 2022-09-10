@@ -354,7 +354,7 @@ to proxies.
 All final weights are required to be positive in order to simplify
 calculating \systemtruth through the voting mechanisms.
 
-\mechanismheader{Vote for Closest}
+\mechanismheader{Vote for Closest}\label{para:closest}
 The vote for closest weighting mechanism is the simplest weighting mechanism.
 It is an adaptation of the infinite mechanism used in~\cite{Cohensius2017},
 where instead of each proxy being assigned the weight of the boundaries
@@ -363,7 +363,7 @@ itself.
 This is equivalent to assigning a weight of 1 to the closet proxy, and giving
 the rest 0.
 
-\mechanismheader{Distance Voting}
+\mechanismheader{Distance Voting}\label{para:distance-voting}
 This mechanism uses the distance between the proxies and an agent as the weight.
 Once an agent has calculated all the distance for all proxies,
 each weight needs to be adjusted so the closest has the highest weight using

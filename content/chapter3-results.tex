@@ -143,7 +143,55 @@ by Plurality, Instant Runoff, and finally Weighted Instant Runoff.
 \end{samepage}
 
 
-\section{Lowest Error Weighting Mechanisms}\label{sec:lowest-error-overall-weighting-mechanism}
+\section{Lowest Error Weighting Mechanisms}\label{
+    sec:lowest-error-overall-weighting-mechanism}
+Weighting mechanisms have a direct influence on how voting mechanisms operate in that
+they apply weights to the estimates of the proxies.
+This naturally has a direct impact on the output of a system.
+\autoref{fig:weighting-mechanisms-comparison}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.75]
+    {./content/figures/weighting_mechanisms/weighting_mechanisms_comparison}
+    \caption{Squared error populations by weighting mechanism.}
+    \label{fig:weighting-mechanisms-comparison}
+\end{figure}
+
+% TODO: Add a table with the mean error for each mechanism
+
+While the mechanisms definitely appear close, there is a visible difference between
+the Equal Weight mechanism and the other mechanisms.
+This can be confirmed using a series of Mann-Whitney U-tests, resulting in
+\autoref{fig:weighting-mechanisms-p-values}.
+\begin{samepage}
+    This gives us the ordering:
+    \begin{enumerate}
+        \item \hyperref[para:closest]{Vote for Closest}
+        \item \hyperref[para:borda]{Borda}
+        \item \hyperref[para:distance-voting]{Distance Voting}
+        \item \hyperref[para:equal-weight]{Equal Weight}
+    \end{enumerate}
+\end{samepage}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.75]
+    {./content/figures/weighting_mechanisms/weighting-mechanisms-p-values.gv}
+    \caption{The p-values for weighting mechanisms, given the alternative is one
+    population is lesser than the other.
+    An arrow pointing to another voting mechanism indicates the `from' mechanism
+    beats the `to' mechanism.}
+    \label{fig:weighting-mechanisms-p-values}
+\end{figure}
+
+These results are somewhat surprising in that the simplest method, arguably barring
+Equal Weight, appears to produce the best results.
+This may be due to the Closest mechanism yielding a lower system-wide weight while
+still maintaining an ordering of preferences.
+However, this does not necessarily mean the Closest mechanism pairs best with all
+voting mechanisms.
+This idea is explored in~\fullref{sec:lowest-error-overall-combination}.
 
 
 \section{Lowest Error Combination}\label{sec:lowest-error-overall-combination}
