@@ -386,6 +386,17 @@ These values are used as the weights for whichever voting mechanism is used.
 This should result in something similar to distance voting, but with a set
 range of scores.
 
+\mechanismheader{Equal Weight}\label{para:equal-weight}
+The Equal Weight mechanism gives the same weight to each proxy.
+Since any value greater than 0 should result in the same output, the value used here
+will be 1.
+While each proxy will receive the same weight, the proxies will still be ordered by
+preference.
+This will allow the voting mechanisms to still produce some accurate output without
+being influenced by weights.
+The primary purpose of this mechanism is to determine if weights are actually
+important, or if all that is required is the ordering.
+
 
 \section{Experiment Design}\label{sec:experiment-design}
 % TODO: I don't currently have anything in here about agents with different
