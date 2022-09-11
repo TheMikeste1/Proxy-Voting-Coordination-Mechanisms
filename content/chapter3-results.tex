@@ -261,7 +261,7 @@ mechanism ordering rather than that of the weighting mechanisms.
     \caption{The rankings of combinations, ordered by the number of combinations
     beaten.
     The maximum number of combinations is 31 (32 total combinations, minus
-    the combination itself).
+    the combination being tested).
     Note that those with the same count are arranged in no particular order.}
     \label{tab:combined-overall-rankings}
 
@@ -343,8 +343,94 @@ mechanism ordering rather than that of the weighting mechanisms.
 % TODO: Try to find some cirumstance where some else works better
 
 
-\section{Best Inactive to Proxy Ratio}\label{sec:best-inactive-to-proxy-count}
+\section{How many Agents to Use}\label{sec:how-many-agents}
+Regardless of which combination of mechanisms is used, the question still remains,
+`How many proxies and inactive agents should be used?'
+This question directly affects the cost of a system, since the cost is tied to the
+number of agents, and so ideally the number of agents should be minimized.
 
+There are three parts to this question, all of which will be addressed here.
+The first is how many proxies should be used.
+\autoref{fig:proxy-count} shows how proxy count affects the error of a system.
+From this graph, we can see in the beginning more proxies produces better results.
+However, this benefit reduces over time and eventually flattens out or, in the case
+of some combinations, increases the error of a system.
+This benefit seems to bottom out between 10 and 15 proxies.
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr
+        \textheight - 4 % Could also be .9\textheight
+        \baselineskip,
+        keepaspectratio]
+    {./content/figures/ratios/proxy_count}
+    \caption{How the number of proxies affects the system error.}
+    \label{fig:proxy-count}
+\end{figure}
 
+The second part of determining how many agents to use is how many inactive agents to
+use.
+As with minimizing the number of proxies, minimizing the number of inactive agents to
+use will help reduce the costs of the system.
+\autoref{fig:inactive-count} seems to indicate that, with the exception of
+weightlessly averaging all agents, there is little benefit in using more inactive
+agents.
+This doesn't mean only one inactive agent should be used, as is indicated by the
+third part of the question: the ratio between proxies and inactive agents.
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr
+        \textheight - 4 % Could also be .9\textheight
+        \baselineskip,
+        keepaspectratio]
+    {./content/figures/ratios/inactive_count}
+    \caption{How the number of inactive agents affects the system error.}
+    \label{fig:inactive-count}
+\end{figure}
+
+\autoref{fig:ratios}~and~\ref{fig:ratios-zoomed} display the error in the system as
+the ratio between proxies and inactive agents increases, with
+\autoref{fig:ratios-zoomed} providing a zoomed-in perspective.
+Interestingly, the curve produced in each of these graphs flattens around a 1:1
+ratio, indicating that there is little or no benefit to having a differing number of
+proxies and inactive agents.
+Additionally, there seems to be small `hiccups' at each whole number.
+While the reason for this is not explored in this study, this would indicate that
+slightly higher or lower ratio than 1:1 should be used.
+With this mind, and since the number of inactive agents generally does not have an
+effect on the system error, it would likely be best to use slightly fewer inactive
+agents than proxy agents in an effort to decrease the total system cost and increase
+system accuracy.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr
+        \textheight - 4 % Could also be .9\textheight
+        \baselineskip,
+        keepaspectratio]
+    {./content/figures/ratios/ratios}
+    \caption{How the ratio between proxies and inactive agents affects the system
+    error.}
+    \label{fig:ratios}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[
+        width=\textwidth,
+        height=\dimexpr
+        \textheight - 4 % Could also be .9\textheight
+        \baselineskip,
+        keepaspectratio]
+    {./content/figures/ratios/ratios_zoomed}
+    \caption{How the ratio between proxies and inactive agents affects the system
+    error. Zoomed in to better see the curve.}
+    \label{fig:ratios-zoomed}
+\end{figure}
