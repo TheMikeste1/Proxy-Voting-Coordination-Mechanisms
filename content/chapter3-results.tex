@@ -407,37 +407,191 @@ These combinations are displayed in~\autoref{tab:non-asymmetric-lower-pop-system
         Proxy Distribution & %
         Inactive Distribution \\
         \hhline{|=|=|=|=|}
-        Mean & Borda & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        Mean & Borda & \betadistribution{4}{4} & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Mean & Equal Weight & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        Mean & Equal Weight & \betadistribution{4}{4} & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Mean & Borda & Gaussian & \betadistribution{0.3}{0.3} \\
+        Mean & Borda & Gaussian & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Mean & Distance & Gaussian & \betadistribution{0.3}{0.3} \\
+        Mean & Distance & Gaussian & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Mean & Equal Weight & Gaussian & \betadistribution{0.3}{0.3} \\
+        Mean & Equal Weight & Gaussian & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Ranked Choice & Borda & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        Ranked Choice & Borda & \betadistribution{4}{4} & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Ranked Choice & Closest & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        Ranked Choice & Closest & \betadistribution{4}{4} & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Ranked Choice & Distance & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        Ranked Choice & Distance & \betadistribution{4}{4} & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Ranked Choice & Borda & Gaussian & \betadistribution{0.3}{0.3} \\
+        Ranked Choice & Borda & Gaussian & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Ranked Choice & Closest & Gaussian & \betadistribution{0.3}{0.3} \\
+        Ranked Choice & Closest & Gaussian & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Ranked Choice & Distance & Gaussian & \betadistribution{0.3}{0.3} \\
+        Ranked Choice & Distance & Gaussian & \betadistribution{0
+        .3}{0.3} \\
         \hline
-        Ranked Choice & Equal Weight & Gaussian & \betadistribution{0.3}{0.3} \\
+        Ranked Choice & Equal Weight & Gaussian & \betadistribution{0
+        .3}{0.3} \\
         \hline
     \end{tabular}
 \end{table}
 
-% Talk about what percentage of all possible combinations this is
+However, this does not mean a proxy system is always better when some distribution is
+asymmetrical.
+The number of lower error asymmetric combinations is only 29.62\% of the 1536
+possible combinations with at least one distribution asymmetric, and all 467 lower error
+combinations are only 22.80\% of all 2048 combinations.
+Ten combinations with at least one asymmetric distribution failed to achieve a lower
+error, regardless of the mechanism used.
+These combinations are shown in \autoref{tab:no-appearance-distro-combos}.
+Of note is in all these combinations, both distributions are asymmetric.
+Additionally, whenever an asymmetric distribution is placed with itself, a proxy system
+does not produce a lower error.
+Finally, the more heavily skewed asymmetric distributions work worse with other
+asymmetric distributions.
 
-% Talk about asymm distributions that are not better
+\begin{table}[htbp]
+    % increase table row spacing, adjust to taste
+    \renewcommand{\arraystretch}{1.0}
 
+    \caption{The asymmetric distribution combinations that were never found to achieve
+    lower error than weightlessly averaging, arranged in no particular order.}
+    \label{tab:no-appearance-distro-combos}
+
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Proxy Distribution        & Inactive Distribution     \\
+        \hhline{|=|=|}
+        \betadistribution{0.3}{3} & \betadistribution{0.3}{3} \\
+        \hline
+        \betadistribution{0.3}{3} & \betadistribution{3}{0.3} \\
+        \hline
+        \betadistribution{0.3}{3} & \betadistribution{4}{1}   \\
+        \hline
+        \betadistribution{1}{4}   & \betadistribution{1}{4}   \\
+        \hline
+        \betadistribution{1}{4}   & \betadistribution{4}{1}   \\
+        \hline
+        \betadistribution{3}{0.3} & \betadistribution{0.3}{3} \\
+        \hline
+        \betadistribution{3}{0.3} & \betadistribution{1}{4}   \\
+        \hline
+        \betadistribution{3}{0.3} & \betadistribution{3}{0.3} \\
+        \hline
+        \betadistribution{4}{1}   & \betadistribution{1}{4}   \\
+        \hline
+        \betadistribution{4}{1}   & \betadistribution{4}{1}   \\
+        \hline
+    \end{tabular}
+\end{table}
+
+A natural next question is which mechanism combinations are more likely to produce a
+lower error?
+The count of how many times each voting mechanism/weighting mechanism combination
+tests to have a lower error than weightlessly averaging in displayed
+in~\autoref{tab:lower-pop-combo-count}.
+This table would seem to indicate that the stronger combinations are more able to
+achieve a lower error.
+Surprisingly, even candidate mechanisms are occasionally able to achieve a lower error
+as well.
+
+\begin{table}[htbp]
+    % increase table row spacing, adjust to taste
+    \renewcommand{\arraystretch}{1.0}
+
+    \caption{The count of mechanism combinations the achieve a lower error
+    population than weightlessly averaging, ordered by count, then voting mechanism,
+        and finally weighting mechanism.}
+    \label{tab:lower-pop-combo-count}
+
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Voting Mechanism                    & Weighting Mechanism & Count \\
+        \hhline{|=|=|=|}
+        Mean                                & Equal Weight        & 20    \\
+        \hline
+        Plurality                           & Closest             & 20    \\
+        \hline
+        Ranked Choice                       & Borda               & 20    \\
+        \hline
+        Ranked Choice                       & Closest             & 20    \\
+        \hline
+        Ranked Choice                       & Distance            & 20    \\
+        \hline
+        Ranked Choice                       & Equal Weight        & 19    \\
+        \hline
+        Instant Runoff (Average)            & Borda               & 16    \\
+        \hline
+        Instant Runoff (Average)            & Closest             & 16    \\
+        \hline
+        Instant Runoff (Average)            & Distance            & 16    \\
+        \hline
+        Mean                                & Borda               & 16    \\
+        \hline
+        Mean                                & Closest             & 16    \\
+        \hline
+        Median                              & Closest             & 16    \\
+        \hline
+        Weighted Instant Runoff (Average)   & Borda               & 16    \\
+        \hline
+        Weighted Instant Runoff (Average)   & Closest             & 16    \\
+        \hline
+        Instant Runoff (Average)            & Equal Weight        & 14    \\
+        \hline
+        Instant Runoff (Candidate)          & Borda               & 14    \\
+        \hline
+        Instant Runoff (Candidate)          & Closest             & 14    \\
+        \hline
+        Instant Runoff (Candidate)          & Distance            & 14    \\
+        \hline
+        Median                              & Equal Weight        & 14    \\
+        \hline
+        Plurality                           & Distance            & 14    \\
+        \hline
+        Weighted Instant Runoff (Average)   & Equal Weight        & 14    \\
+        \hline
+        Weighted Instant Runoff (Candidate) & Borda               & 14    \\
+        \hline
+        Weighted Instant Runoff (Candidate) & Closest             & 14    \\
+        \hline
+        Instant Runoff (Candidate)          & Equal Weight        & 13    \\
+        \hline
+        Weighted Instant Runoff (Candidate) & Equal Weight        & 13    \\
+        \hline
+        Mean                                & Distance            & 11    \\
+        \hline
+        Plurality                           & Equal Weight        & 11    \\
+        \hline
+        Median                              & Borda               & 10    \\
+        \hline
+        Weighted Instant Runoff (Average)   & Distance            & 10    \\
+        \hline
+        Weighted Instant Runoff (Candidate) & Distance            & 10    \\
+        \hline
+        Median                              & Distance            & 8     \\
+        \hline
+        Plurality                           & Borda               & 8     \\
+        \hline
+    \end{tabular}
+\end{table}
+
+While it is clear that simply weightlessly averaging all agent's estimates is a more
+accurate method, there appear to be occasions when proxy vote systems can reduce
+error, particularly when one of the error distributions is asymmetrical.
+This look into distributions and other parameters begs for a closer look and may yield
+fascinating results upon closer inspection.
 
 \section{How many Agents to Use}\label{sec:how-many-agents}
 Regardless of which combination of mechanisms is used, the question still remains,
