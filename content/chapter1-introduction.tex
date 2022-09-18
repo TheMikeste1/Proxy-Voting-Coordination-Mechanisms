@@ -14,7 +14,7 @@ to maintaining safety, ensuring research is accurate, and providing a higher
 quality of life.
 This is particularly critical in high-risk or high-cost scenarios, such as when
 human life is involved, or when the cost of using a sensor, taking a
-measurement, or running an experiment is particularly expensive.  % Maybe expand on what "expensive" means?
+measurement, or running an experiment is particularly expensive.
 This paper explores the idea of using an adapted form of proxy voting, as
 described in~\cite[para.~1.3]{Miller1969}, as a way of taking multiple
 measurements to ensure accuracy while minimizing the cost of taking those
@@ -22,7 +22,6 @@ measurements.
 
 
 \section{Contribution}\label{sec:contribution}
-% FIXME: This paragraph ought to be reorded to the final order of experiments
 This study aims to explore the idea of using proxy voting as a technique to
 improve the accuracy of multiple measurements while reducing the cost by
 employing less expensive gauging methods when they are available.
@@ -37,13 +36,23 @@ to be taken to reduce cost while still ensuring accuracy, and attempts to
 identify any benefit of using proxy votes as opposed to simply averaging the
 results.
 
-% TODO: Provide a brief description of what is discovered here
-
-% TODO: Maybe explain the structure of the paper as well?
+This paper will show that, while proxy vote systems are not a perfect tool to
+increase a system's accuracy, they may be beneficial when a distribution of error is
+asymmetrical.
+Additionally, this paper will identify the best performing voting and weighting
+mechanisms, as well as discuss an ideal range of proxy and inactive agents to be used
+in such a system.
 
 
 \section{Potential Applications}\label{sec:potential-applications}
-- % TODO: List potential applications, such as high risk/cost scenarios
+Proxy vote systems can be used in situations where highly accurate measurements are
+difficult, costly, or time-consuming, and cheaper or easier alternatives are available.
+While this study will show they will not work in all situations, there do have a
+potential use when one of the alternative measurements tends to yield an asymmetrical
+distribution of error.
+
+These systems may also have use in ensemble machine learning techniques, though this
+idea is not explored in this study.
 
 
 \section{Background}\label{sec:background}
@@ -60,7 +69,6 @@ proxies can also be called \textit{active voters}.
 
 In contrast, \textit{direct voting} requires each agent to vote on their own
 (and so incur the costs).
-%This ensures each agent has a direct influence on an election % TODO: Fill out this paragraph
 
 In some cases, the proxy is also able to transfer their vote, as well as all
 their weight, to yet another proxy.
@@ -101,11 +109,8 @@ However, proxy voting is not without its flaws.
 amount of power.
 This can be problematic because the result of a system will be too biased
 towards the super voter.
-For this paper's purposes, a poor distribution of measurements will make one
+For this paper's purposes, a poor distribution of measurements may make one
 proxy a super voter and increase the error of the result.
-
-
-% FIXME: This section ends a little harshly, maybe I should wrap it up better
 
 
 \section{Related Work}\label{sec:related-work}
