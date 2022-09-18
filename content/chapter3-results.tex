@@ -40,7 +40,36 @@ Indeed, if the estimates are instead graphed as in
 is more normal than uniform.
 This means most mechanisms are better at estimating \truth\ than random chance.
 
-% TODO: Add a table with the mean error for each mechanism
+\begin{table}[htbp]
+    % increase table row spacing, adjust to taste
+    \renewcommand{\arraystretch}{1.0}
+
+    \caption{The mean squared error for each mechanism, ordered lowest to highest.}
+    \label{tab:voting-mechanism-mean-error}
+
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Voting Mechanism                    & Mean Squared Error \\
+        \hhline{|=|=|}
+        Mean                                & 0.253191           \\
+        \hline
+        Ranked Choice                       & 0.262085           \\
+        \hline
+        Instant Runoff (Average)            & 0.272652           \\
+        \hline
+        Weighted Instant Runoff (Average)   & 0.282148           \\
+        \hline
+        Plurality                           & 0.318054           \\
+        \hline
+        Median                              & 0.323846           \\
+        \hline
+        Instant Runoff (Candidate)          & 0.329869           \\
+        \hline
+        Weighted Instant Runoff (Candidate) & 0.342495           \\
+        \hline
+    \end{tabular}
+\end{table}
 
 Additionally, while all distributions appear generally close, there appears to be a
 slight difference between average and candidate mechanisms.
@@ -157,7 +186,28 @@ This naturally has a direct impact on the output of a system.
     \label{fig:weighting-mechanisms-comparison}
 \end{figure}
 
-% TODO: Add a table with the mean error for each mechanism
+\begin{table}[htbp]
+    % increase table row spacing, adjust to taste
+    \renewcommand{\arraystretch}{1.0}
+
+    \caption{The mean squared error for each mechanism, ordered lowest to highest.}
+    \label{tab:weighting-mechanism-mean-error}
+
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Weighting Mechanism & Mean Squared Error \\
+        \hhline{|=|=|}
+        Closest             & 0.269045           \\
+        \hline
+        Distance            & 0.275722           \\
+        \hline
+        Borda               & 0.276065           \\
+        \hline
+        Equal Weight        & 0.328497           \\
+        \hline
+    \end{tabular}
+\end{table}
 
 While the mechanisms definitely appear close, there is a visible difference between
 the Equal Weight mechanism and the other mechanisms.
@@ -592,6 +642,7 @@ accurate method, there appear to be occasions when proxy vote systems can reduce
 error, particularly when one of the error distributions is asymmetrical.
 This look into distributions and other parameters begs for a closer look and may yield
 fascinating results upon closer inspection.
+
 
 \section{How many Agents to Use}\label{sec:how-many-agents}
 Regardless of which combination of mechanisms is used, the question still remains,
