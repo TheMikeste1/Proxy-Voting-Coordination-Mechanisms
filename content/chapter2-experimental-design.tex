@@ -2,8 +2,6 @@
 %  This document contains chapter 2 of the thesis.
 %
 
-% TODO: Maybe make a system design section/chapter? This would go over how
-%  the actualy system works as opposed to how the experiments are set up.
 \chapter{EXPERIMENT DESIGN}\label{ch:experiment-design}
 In order to identify the ability of proxy voting to serve as a correctional
 method, a number of experiments have been devised.
@@ -42,8 +40,12 @@ paper's purposes represents \agenttruth, to be represented as a position within
 this space.
 This likewise means \systemtruth\ will be a position within \systemspace.
 
-% TODO: Talk about \agentweight and \systemweight
-% TODO: Talk about \proxies vs inactive
+Each system will additionally have a total system weight, denominated with
+\systemweight.
+\systemweight\ can be described simply by the equation
+$\systemweight = \sum_{\agent \in \systemagents} \agentweight$, where \agentweight\
+is the weight provided by the individual agent.
+
 
 \subsection{Agent Types}\label{subsec:agent-types}
 This study explores the idea of using finite voters, as opposed to the
@@ -58,7 +60,7 @@ These voters have tighter extremes for estimated values or are chosen from
 a more accurate distribution (such as Gaussian about \truth) allowing
 them to be more certain in their estimation.
 These voters represent better, though likely more expensive, methods for
-taking a measurement.  % TODO: such as. . .
+taking a measurement.
 
 \textit{Untrained voters}, on the other hand, are agents with a worse
 distribution or more extreme minimums and maximums.
@@ -66,7 +68,7 @@ These agents have a greater degree of error, and while they might be correct
 about the true value they are unable to be as certain about their estimations
 as the expert voters due to their possibility for error.
 Measurement methods represented by these voters are less accurate, though
-likely cheaper.  % TODO: such as. . .
+likely cheaper.
 
 %  - Finite with agent costs
 
@@ -147,8 +149,6 @@ measurement, for simplicity this study considers all agents of the same type
 to have the same cost.
 The goal of system cost as a criteria is to determine if a less-costly system
 could perform just as well if not better than one with a higher cost.
-% TODO: Would ratios between expert an untrained agents are beneficial? Maybe
-% useful for knowing if adding an agent is useful?
 
 % - Number of measurements?
 %   - Expert
@@ -230,7 +230,6 @@ mechanisms and average mechanisms.
 \subsubsection{Candidate Mechanisms}\label{subsubsec:candidate-mechanisms}
 \textit{Candidate mechanisms} are mechanisms that select a proxy to serve as
 \systemtruth.
-% TODO: Fill out strengths and weaknesses
 This study experiments with a number of candidate mechanisms, which are
 described below.
 
@@ -303,7 +302,6 @@ Once some proxy has the majority ($>$50\%) of weights it is selected as
 \textit{Average mechanisms} are mechanisms that produce a \systemtruth\ that
 is not necessarily the position of any one agent, though it may be.
 They work by averaging the positions of multiple proxies to some degree.
-% TODO: Fill out strengths and weaknesses
 
 \mechanismheader{Mean}\label{para:mean}
 The mean mechanism is another mechanism originally used in
@@ -399,24 +397,17 @@ important, or if all that is required is the ordering.
 
 
 \section{Experiment Design}\label{sec:experiment-design}
-% TODO: I don't currently have anything in here about agents with different
-%  costs. I might not get to that until after running the cost-less
-%  experiments, but I ought to look for opportunities to implement it.
-%
-%  Costs can potentially be added post-experiment, since the outcome of the
-%  experiment does not depend on the costs of the agents. This would
-%  primarily allow for identifying a cost-ratio and ideal number of agents.
-%
-%  It might also be interesting to develop a system that uses a budget
-%  without a predefined number of proxies and inactives.
-
 The experiments will be performed in two phases.
 First, all data will be collected.
 This is done primarily to make all desired data available during the analysis
 process.
-% FIXME: Is there really nothing else I could say here?
+
 Afterwards, the data will be analysed in an attempt to identify any patterns,
 strengths, or weaknesses proxy voting has as a measurement verification tool.
+While a seemingly simple phase, this is where the majority of the work in this study
+lies.
+Data will be graphed in multiple different ways, and tests ran in an attempt to
+identify strengths and weaknesses of the proxy vote system, if there are any to uncover.
 
 In order to simplify various calculations, the true value for each experiment
 will be 0.
@@ -447,8 +438,7 @@ to more accurately reflect expert and untrained measurements in the real world.
 \subsection{Data Collection}\label{subsec:data-collection}
 % Steps
 In order to ensure consistency, each experiment will follow the same general
-steps.
-% TODO: Fill this out more
+steps:
 
 \begin{enumerate}[label=\textbf{\arabic*}., leftmargin=2\parindent]
     \titleditem{Generate proxies}
@@ -484,12 +474,12 @@ steps.
     ultimately determine if proxy voting is useful under the given parameters.
 \end{enumerate}
 
-% FIXME: I might want to specify how many times a combination is ran
 Each combination of parameters will be run a number of times in order to obtain
 a fair spread of error for that set of parameters.
 After each iteration, the combination of parameters will be recorded as well
 as the estimated truth, the error, and the rest of the
 \hyperref[subsec:criteria]{criteria}.
+Additional runs will be performed during the analysis phase as required.
 
 \subsection{Analysis}\label{subsec:analysis}
 Once all data is collected, analyses will be performed in order to answer a
@@ -510,4 +500,28 @@ number of questions.
     \item How many inactive agents per proxy should be used?
 \end{enumerate}
 
-% TODO: Fill me out more
+Each question will be answered through its own dedicated inquiry.
+For the first three questions, the error will initially be graphed in order to
+visually ascertain any differences between mechanisms.
+Afterwards, appropriate population tests will be performed on the population of error
+for each relevant group to statistically determine if any differences exist between
+each population, visually apparent or not.
+Finally, if there is any difference between populations, an overall ranking will be
+determined.
+
+The fourth question, which serves to determine if using a proxy vote system is even
+beneficial to begin with, will follow a similar procedure to the first three
+questions: the error for each population will be graphed and tests ran to identify
+any differences.
+Once this has been performed, additional, more in-depth tests will be performed to
+determine to what level any proxy vote system improves on simply averaging the
+agents' votes.
+
+As for the final question, improvement on error will be graphed against the number of
+agents used to determine if there is any critical point where the benefit of adding
+more agents is reduced.
+Ratios between proxy and inactive agents with also be graphed and analysed to
+determine a scalable idea of how many inactive agents to use per proxy agent.
+This is also the analysis where the cost of the system is most relevant.
+Since the cost of each agent will vary between application, this study will attempt to
+minimize the total count of agents in an attempt to produce the lowest-cost system.
