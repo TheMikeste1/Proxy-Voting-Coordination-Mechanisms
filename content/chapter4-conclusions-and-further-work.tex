@@ -32,12 +32,23 @@ Further research may be required to identify its full capabilities and weaknesse
 before its full potential can be exploited.
 
 \section{Further Work and Improvements}\label{sec:further-work-and-improvements}
-% FIXME: This might need to be moved to Chapter 4
-% - Multiple levels of expertise. Expert voters could have varying levels of
-% accuracy, allowing for more complex systems.
-% - (If I decide to restrict experts and untrained to the same mins and maxes)
-% Allow for untrained to have a lower restriction, making them less accurate.
-% - Independently track time, monetary cost, etc. for system cost (described
-% in the cost section of Criteria. Useful identifying multiple systems for
-% different costs.
-% Closer look into instances where proxy voting works better than weightlessly averaging
+There are multiple ways in which the research performed in this study can be
+furthered and improved.
+Some obvious vectors for additional research include testing additional voting and
+weighting mechanisms.
+Additionally, allowing for multiple levels of expertise for both inactive and proxy
+agents could yield additional interesting results.
+
+As previously mentioned, proxy vote systems appear to work best when one error
+distribution is asymmetrical.
+This idea can be further developed and refined to develop more specific rules as to
+when proxy vote systems are superior to simply averaging all agents.
+
+Finally, this study assumes all agents, both expert and untrained, have the same
+extents, or range of estimates.
+In the real world, this is likely not the case--the range of error with less accurate
+measurements could very possibly vary as much if not more than the distribution of
+error.
+An analysis into mixing different extents, in addition to the other parameters used
+in this study, may yield additional use cases for proxy vote systems and is where the
+author feels the most room for improvement lies.
