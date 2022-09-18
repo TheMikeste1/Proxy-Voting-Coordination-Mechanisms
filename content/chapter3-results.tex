@@ -340,7 +340,103 @@ mechanism ordering rather than that of the weighting mechanisms.
 
 \section{Weightlessly Averaging All Agents}\label{sec:weightless-average-all}
 % Explain how WeightlessAverageAll works best
-% TODO: Try to find some cirumstance where some else works better
+While the results thus far have been very interesting, the question of if using such
+systems works better than simply averaging the estimates of all agents.
+Such an operation is here dubbed `weightlessly averaging all,' since it ignores
+weights and simply averages all agents, including inactive agents.
+This technique does not use a weighting mechanism.
+\autoref{fig:weightless-voting-mechanisms-comparison} shows how weightlessly
+averaging all agents compares to the other mechanisms, ignoring which weighting
+mechanism is used or the distribution of the proxies or inactive agents.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.75]
+    {./content/figures/weightless/weightless_voting_mechanisms_comparison}
+    \caption{Squared error populations by voting mechanism, with average
+    mechanisms on the left and candidate mechanisms on the right.
+    Weightlessly averaging all agents' estimates is in the center.}
+    \label{fig:weightless-voting-mechanisms-comparison}
+\end{figure}
+
+It is immediately evident that weightlessly averaging all agents' estimates works
+considerable better that using proxy vote systems.
+While this would initially indicate that proxy vote systems should not be used when a
+simpler and more accurate technique already exists, this broad overview does not tell
+the full story.
+As explored previously, each voting mechanism is also paired with a weighting
+mechanism that heavily influences its accuracy.
+Additionally, we have yet to explore how the proxy and inactive estimate
+distributions interact with the different mechanisms.
+
+Indeed, performing tests on group separated by voting and weighting mechanisms as
+well as proxy and inactive estimate distribution, indicates 467 of the 2048 possible
+combinations, or 22.80\%, work better using a proxy vote system than weightlessly
+averaging.
+These tests are performed as if the proxy system was used instead of weightlessly
+averaging, meaning that if the tests are performed groups with the same proxy and
+inactive estimate distributions.
+
+Of these 467 combinations, 223 (47.75\%) have an asymmetric proxy distribution with
+a symmetric inactive distribution, while 154 (32.98\%) have an asymmetric inactive
+distribution with a symmetric inactive distribution.
+Additionally, 78 (16.70\%) use asymmetric distributions for both proxies and
+inactive agents.
+This totals to 455 (97.43\%) of the 467 more accurate proxy systems that use
+asymmetric distributions!
+
+The remaining 12 consist of high-performing voting mechanism/weighting mechanism
+combinations, as discovered in \autoref{sec:lowest-error-overall-combination},
+using Gaussian or \betadistribution{4}{4} distributions for the proxies,
+and \betadistribution{0.3}{0.3} as the inactive distributions.
+These combinations are displayed in~\autoref{tab:non-asymmetric-lower-pop-systems}.
+
+\begin{table}[htbp]
+    % increase table row spacing, adjust to taste
+    \renewcommand{\arraystretch}{1.0}
+
+    \caption{The proxy voting systems that still achieve a lower error than
+    weightless average all, in no particular order.}
+    \label{tab:non-asymmetric-lower-pop-systems}
+
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Voting Mechanism & %
+        Weighting Mechanism & %
+        Proxy Distribution & %
+        Inactive Distribution \\
+        \hhline{|=|=|=|=|}
+        Mean & Borda & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        \hline
+        Mean & Equal Weight & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        \hline
+        Mean & Borda & Gaussian & \betadistribution{0.3}{0.3} \\
+        \hline
+        Mean & Distance & Gaussian & \betadistribution{0.3}{0.3} \\
+        \hline
+        Mean & Equal Weight & Gaussian & \betadistribution{0.3}{0.3} \\
+        \hline
+        Ranked Choice & Borda & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        \hline
+        Ranked Choice & Closest & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        \hline
+        Ranked Choice & Distance & \betadistribution{4}{4} & \betadistribution{0.3}{0.3} \\
+        \hline
+        Ranked Choice & Borda & Gaussian & \betadistribution{0.3}{0.3} \\
+        \hline
+        Ranked Choice & Closest & Gaussian & \betadistribution{0.3}{0.3} \\
+        \hline
+        Ranked Choice & Distance & Gaussian & \betadistribution{0.3}{0.3} \\
+        \hline
+        Ranked Choice & Equal Weight & Gaussian & \betadistribution{0.3}{0.3} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+% Talk about what percentage of all possible combinations this is
+
+% Talk about asymm distributions that are not better
 
 
 \section{How many Agents to Use}\label{sec:how-many-agents}
