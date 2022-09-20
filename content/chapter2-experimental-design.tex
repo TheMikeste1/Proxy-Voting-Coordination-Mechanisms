@@ -59,7 +59,7 @@ By design, there are two primary types of voters: expert and untrained.
 \textit{Expert voters} are agents that give a more accurate estimate of the
 true value.
 These voters have tighter extremes for estimated values or are chosen from
-a more accurate distribution (such as Gaussian about \truth) allowing
+a more accurate distribution (such as Gaussian about \truth), allowing
 them to be more certain in their estimation.
 These voters represent better, though likely more expensive, methods for
 taking a measurement.
@@ -67,7 +67,7 @@ taking a measurement.
 \textit{Untrained voters}, on the other hand, are agents with a worse
 distribution or more extreme minimums and maximums.
 These agents have a greater degree of error, and while they might be correct
-about the true value they are unable to be as certain about their estimations
+about the true value, they are unable to be as certain about their estimations
 as the expert voters due to their possibility for error.
 Measurement methods represented by these voters are less accurate, though
 likely cheaper.
@@ -90,7 +90,7 @@ other agents.
 The second obvious way to employ these agents is using the untrained voters
 and the proxies and allowing the experts to transfer their voting power to them.
 This is the direct inverse of the previous setup.
-The intuition behind this strategy is since untrained voters are likely
+This strategy is based on the intuition that since untrained voters are likely
 cheaper and so can be more numerous, they have a better chance of being closer
 to the true value due to the law of large numbers.
 Naturally, this technique would be most beneficial when untrained agents use a
@@ -107,10 +107,10 @@ The only difference is which type of agent serves as proxies.
 
 \subsection{Criteria}\label{subsec:criteria}
 A system is only as good as its ability to perform.
-In order to gauge the ability or goodness of proxy voting as a form of
+In order to gauge the ability or `goodness' of proxy voting as a form of
 measurement correction, three primary criteria have been identified.
 
-First, the most important part of the system is the accuracy.
+The first and most important criteria is the accuracy of the system.
 If a system using proxy voting performs worse than simply averaging all votes
 it would have been better to skip the additional complexities of using
 proxies.
@@ -149,7 +149,7 @@ monetary cost, or any other cost the measuring technique requires.
 While in reality there may be some fluctuation in cost for the same
 measurement, for simplicity this study considers all agents of the same type
 to have the same cost.
-The goal of system cost as a criteria is to determine if a less-costly system
+The goal of system cost as a criteria is to determine if a less costly system
 could perform just as well, if not better than, one with a higher cost.
 
 % - Number of measurements?
@@ -165,7 +165,7 @@ Each system will have a different set of parameters.
 First, each system will need a set of proxy voters.
 These proxies can be either experts or untrained, depending on which setup is
 being used.
-Similarly, each system will also need a set of inactive voters which can also
+Similarly, each system will also need a set of inactive voters which can likewise
 be either experts or untrained.
 
 Finally, each system will receive two mechanisms: a
@@ -177,11 +177,10 @@ produce~\systemtruth.
 
 \subsubsection{Agent Parameters}\label{subsubsec:agent-parameters}
 Similar to systems, each type of agent will have a different set of parameters.
-There are two parameters that create the most distinction between agents: their vote
+There are two parameters which create the most distinction between agents: their vote
 distribution and their extents.
 
-The extents determine the maximum and minimum value away from \truth\ the
-agent is able to vote.
+The extents determine how far away from \truth\ the agent is able to vote.
 For example, an agent with an extent of 10 could vote anywhere in the
 interval $[\truth - 10, \truth + 10]$.
 While the extent determines the general boundaries, some distributions allow
@@ -237,8 +236,8 @@ described below.
 
 \mechanismheader{Median}\label{para:median}
 The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
-This study builds off their design by using finite voters instead of
-infinite, as well as applying new weighting mechanisms which will likely yield
+This study builds off of their design by using finite voters instead of
+infinite, as well as applying new weighting mechanisms that will likely yield
 different results.
 The formula for the median mechanism is the same as the one used
 in~\cite[para.~2.4]{Cohensius2017}, which was described as (with some
@@ -297,7 +296,7 @@ The weighted instant runoff mechanism works the same as instant runoff, but uses
 the weights provided by each agent instead of ranking them by distance.
 Whenever a proxy is eliminated, its weight will be redistributed according to
 the ranking specified by the affected agents.
-Once some proxy has the majority ($>$50\%) of weights it is selected as
+Once some proxy has the majority ($>$50\%) of weights, it is selected as
 \systemtruth.
 
 \subsubsection{Average Mechanisms}\label{subsubsec:average-mechanisms}
@@ -326,7 +325,7 @@ step in most other average mechanisms.
 Each proxy is ranked by each inactive agent according to how close they are
 to the inactive agent.
 The number of times each proxy is ranked first is counted, and the proxy with
-the least votes is removed from the ranking process and given a weight of 1.
+the fewest votes is removed from the ranking process and given a weight of 1.
 The process continues from $1 \mathellipsis n$, where $n$ is the number of
 proxies, at which point the mean mechanism is applied using the scores as
 weights.
@@ -336,13 +335,13 @@ highest-ranked proxy receiving a weight of $n$.
 \mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
 The weight by instant runoff mechanism is similar to the
 \hyperref[para:cand-instant-runoff]{candidate version} of instant
-runoff, but instead of selecting the majority proxy the remaining votes for
+runoff, but instead of selecting the majority proxy, the remaining votes for
 each proxy are used as the weights for the mean mechanism.
 
 \mechanismheader{Averaged Weighted Instant Runoff}\label{para:avg-weighted-instant-runoff}
 This mechanism is the same as
 \hyperref[para:candidate-weighted-instant-runoff]{weighted instant runoff},
-except instead of selecting the majority proxy as \systemtruth\ the remaining votes
+except instead of selecting the majority proxy as \systemtruth, the remaining votes
 are used as the weights for the mean mechanism.
 Essentially, this is
 \hyperref[para:avg-instant-runoff]{weight by instant runoff}, but the weights
@@ -392,8 +391,8 @@ Since any value greater than 0 should result in the same output, the value used 
 will be 1.
 While each proxy will receive the same weight, the proxies will still be ordered by
 preference.
-This will allow the voting mechanisms to still produce some accurate output without
-being influenced by weights.
+This will allow the voting mechanisms to still produce some output without being
+influenced by weights.
 The primary purpose of this mechanism is to determine if weights are actually
 important, or if all that is required is the ordering.
 
@@ -408,7 +407,7 @@ Afterwards, the data will be analysed in an attempt to identify any patterns,
 strengths, or weaknesses proxy voting has as a measurement verification tool.
 While a seemingly simple phase, this is where the majority of the work in this study
 lies.
-Data will be graphed in multiple different ways, and tests ran in an attempt to
+Data will be graphed in multiple different ways, and tests will be run in an attempt to
 identify strengths and weaknesses of the proxy vote system, if there are any to uncover.
 
 In order to simplify various calculations, the true value for each experiment
@@ -430,12 +429,13 @@ differences, as well as making it trivial to calculate loss by changing the
 \end{align}
 
 Additionally, all extents can be set to 1, which can easily be scaled to any
-desired number simply my multiplying by that number.
+desired number simply by multiplying by that number.
 Using the same extents also makes it much easier to determine where an agent
-can vote since the interval will be $[-1, 1]$.
+can vote, since the interval will be $[-1, 1]$.
 While using extents of 1 should not make any meaningful differences to the final
-analysis, it should be noted that further work could be done using additional extents
-to more accurately reflect expert and untrained measurements in the real world.
+analysis in this study, it should be noted that further work could be done using
+additional extents to more accurately reflect expert and untrained measurements in
+the real world.
 
 \subsection{Data Collection}\label{subsec:data-collection}
 % Steps
@@ -493,7 +493,7 @@ number of questions.
     \item Which \hyperref[subsec:weighting-mechanisms]{weighting mechanism}
     generally results in the lowest error?
 
-    \item Which combinations of voting mechanism and weighting mechanism
+    \item Which combination of voting mechanism and weighting mechanism
     produces the lowest error?
 
     \item Do these systems work better than simply averaging all the agents' estimates?
@@ -513,15 +513,15 @@ determined.
 
 The fourth question, which serves to determine if using a proxy vote system is even
 beneficial to begin with, will follow a similar procedure to the first three
-questions: the error for each population will be graphed and tests ran to identify
-any differences.
+questions: the error for each population will be graphed and tests will be run to
+identify any differences.
 Once this has been done, additional, more in-depth tests will be performed to
-determine to what degree any proxy vote system improves on simply averaging the
+determine to what degree any proxy vote system improves upon simply averaging the
 agents' votes.
 
-As for the final question, improvement on error will be graphed against the number of
-agents used to determine if there is any critical point where the benefit of adding
-more agents is reduced.
+As for the final question, the change in error will be graphed against the
+number of agents used to determine if there is any critical point where the benefit
+of adding more agents is reduced.
 Ratios between proxy and inactive agents will also be graphed and analysed to
 determine a scalable idea of how many inactive agents to use per proxy agent.
 This is also the analysis where the cost of the system is most relevant.

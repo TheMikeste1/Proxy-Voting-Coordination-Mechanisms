@@ -31,7 +31,7 @@ This graph immediately tells us a few things.
 First, the squared error seems to be skewed, favoring numbers closer to 0.
 This means there is a fairly even spread of estimates, since this is the
 pattern one would expect to see from a uniform distribution of estimates.
-Interestingly, however, is that the majority of most error populations are
+Interestingly, however, the majority of error for most populations is
 somewhere between a uniform distribution of estimates
 (\autoref{fig:expected_even_distribution_squared_error}) and a normal
 distribution (\autoref{fig:expected_gaussian_distribution_squared_error}).
@@ -90,7 +90,7 @@ The results of this analysis can be found in
 \subsection{Average Mechanisms}\label{subsec:lowest-error-average-mechanisms}
 Average mechanisms, as described in \autoref{subsubsec:average-mechanisms}, work by
 averaging the estimates of the system's agents, so it is not too surprising they
-result in less error than candidate mechanisms which ultimately output only a single
+result in less error than candidate mechanisms, which ultimately output only a single
 agent's estimate.
 However, they are not all created equally.
 This leads us to the question: which average mechanisms generally work best?
@@ -135,8 +135,8 @@ Candidate voting mechanisms are described in \autoref{subsubsec:candidate-mechan
 They work by selecting a single proxy as the `candidate' and using its vote as
 \systemtruth.
 While they do not appear to perform as well as average mechanisms, there may be
-circumstances where they are required and so they will still be examined to determine
-which candidate mechanism works best.
+circumstances where they are required.
+As such, they will still be examined to determine which candidate mechanism works best.
 
 An ANOVA analysis was again used to start, which resulted in a p-value of
 $2.49e-221$.
@@ -249,7 +249,7 @@ This idea is explored in~\fullref{sec:lowest-error-overall-combination}.
 \section{Lowest Error Combination}\label{sec:lowest-error-overall-combination}
 While the previous sections have explored the lowest error for each voting mechanism and
 weighting mechanism regardless of the mechanism it's paired with, this section will
-explore the lowest error for each combination of voting and weighting mechanism.
+explore the lowest error for each combination of voting and weighting mechanisms.
 
 The population of error for each combination is displayed in
 \autoref{fig:combined-comparison}, where we see a similar pattern with the voting
@@ -270,8 +270,8 @@ than the mean.
 \end{figure}
 
 Using U-tests, we can discover which combinations produce the lowest error.
-By counting how many times some combination beats other combinations, we can produce
-an over ranking.
+By counting how many times any given combination beats other combinations, we can
+produce an overall ranking.
 The number of times one combination `beats' another by having a lower error is
 displayed in \autoref{fig:combined-lesser_counts}, and is further tabulated in
 \autoref{tab:combined-overall-rankings}.
@@ -394,11 +394,12 @@ mechanism ordering rather than that of the weighting mechanisms.
 
 \section{Weightlessly Averaging All Agents}\label{sec:weightless-average-all}
 % Explain how WeightlessAverageAll works best
-While the results thus far have been very interesting, the question of if using such
-systems works better than simply averaging the estimates of all agents.
+While the results thus far have been very interesting, this important, baseline
+question remains unanswered: does employing such a system work better than simply
+averaging the estimates of all agents?
 Such an operation is here dubbed `weightlessly averaging all,' since it ignores
 weights and simply averages all agents, including inactive agents.
-This technique does not use a weighting mechanism.
+Thus, this technique does not use a weighting mechanism.
 \autoref{fig:weightless-voting-mechanisms-comparison} shows how weightlessly
 averaging all agents compares to the other mechanisms, ignoring which weighting
 mechanism is used or the distribution of the proxies or inactive agents.
@@ -423,13 +424,13 @@ mechanism that heavily influences its accuracy.
 Additionally, we have yet to explore how the proxy and inactive estimate
 distributions interact with the different mechanisms.
 
-Indeed, performing tests on groups separated by voting and weighting mechanism as
+Indeed, performing tests on groups separated by voting and weighting mechanism, as
 well as proxy and inactive estimate distribution, indicates 467 of the 2048 possible
 combinations, or 22.80\%, work better using a proxy vote system than weightlessly
 averaging.
-These tests are performed as if the proxy system was used instead of weightlessly
+These tests are performed as if the proxy system were used instead of weightlessly
 averaging, meaning that they are performed as if the agents had the same estimate
-distribution when weightlessly averaging as with the proxy system.
+distribution when weightlessly averaging as they did with the proxy system.
 
 Of these 467 combinations, 223 (47.75\%) have an asymmetric proxy distribution with
 a symmetric inactive distribution, while 154 (32.98\%) have an asymmetric inactive
@@ -645,7 +646,7 @@ as well.
 While it is clear that simply weightlessly averaging all agent's estimates is a more
 accurate method, there appear to be occasions when proxy vote systems can reduce
 error, particularly when one of the error distributions is asymmetrical.
-This look into distributions and other parameters begs for a closer look and may yield
+This view into distributions and other parameters begs for a closer look and may yield
 fascinating results upon closer inspection.
 
 
