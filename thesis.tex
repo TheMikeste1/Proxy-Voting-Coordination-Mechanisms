@@ -56,7 +56,6 @@
 %\usepackage{siunitx}           % Provides standard formatting of SI units.
 \usepackage{listings}          % Use when including computer code.
 
-
 % Include TikZ and PGF packages for high-quality graphics, schematics
 % and plots. This is optional; at the current time, when run with
 % latex to create a .dvi file, the xdvi viewer will produce incorrect
@@ -93,6 +92,7 @@
 \usepackage[outdir=./build/auxil/content/]{epstopdf}
 \pdfminorversion=7 % Because epstopdf outputs as version 1.7
 
+
 % Set spacing around figures and tables to triple space
 \setlength{\intextsep}{2em} % Vertical space above & below [h] floats
 \setlength{\textfloatsep}{2em} % Vertical space below (above) [t] ([b]) floats
@@ -102,6 +102,8 @@
 \author{Michael D. Hegerhorst}
 \title{An Exploration into the Use of Proxy Votes to Increase System Accuracy}
 
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\vicki}[1]{\textcolor{blue}{Vicki: #1}}
 % The Committee
 \majorprof{Vicki Allan, Ph.D.}
 \firstreader{John Edwards, Ph.D.}
@@ -146,7 +148,7 @@
     \include{content/chapter2-experimental-design}
     \include{content/chapter3-results}
     \include{content/chapter4-conclusions-and-further-work}
-
+    \vicki{Need better set of references.  Two are really old.  Do the others recommend proxy voting in a situation such as yours?  You need to compare against other good methods, not just average weighting.}
     % Endmatter
     % For BibTeX references: specify a .bib file and a style.
     % The style used here is for IEEE transactions formatting:
@@ -159,6 +161,8 @@
 %    \references{IEEEabrv,sample}{aiaa}
 
     \include{content/endmatter/appendix}
+    
+
 %    \include{vita}  % FIXME: I don't think I actually need this unless I'm a doctorate.
     %}}}
 \end{document}

@@ -14,6 +14,7 @@ the costs of ensuring accurate measurements.
 This section will provide a brief overview of the proxy voting system, as well how it
 generally works.
 
+\vicki{My first impression is that what you are trying to do likely goes my many different names.  I don't think you can assume that proxy voting is how everyone will approach this.  Thus,  you would need to compare your method with what others have done to solve the same problem.}
 \subsection{System Design and Agent Space}\label{subsec:system-design-and
 -agent-space}
 Each system \system\ will output some estimation \systemtruth\ of the truth
@@ -26,6 +27,7 @@ the system's \hyperref[subsec:voting-mechanisms]{voting mechanism}.
 An agent need not provide the same \agenttruth\ for the same \truth,
 and by extension \systemtruth\ may not be the same each time a
 system is run.
+\vicki{so is there a single item we are trying to learn about? Does truth change over time?}
 
 All agents will operate within a defined space~\systemspace, where
 $\systemspace \subseteq \real^k$ and $k \geq 1$ dimensions, as described
@@ -63,6 +65,7 @@ a more accurate distribution (such as Gaussian about \truth), allowing
 them to be more certain in their estimation.
 These voters represent better, though likely more expensive, methods for
 taking a measurement.
+\vicki{How do we know an expert voter?  Do they identify themselves?}
 
 \textit{Untrained voters}, on the other hand, are agents with a worse
 distribution or more extreme minimums and maximums.
@@ -86,6 +89,7 @@ First, the experts can be used as proxies and the untrained as inactive voters.
 This exploits the idea discussed in~\cite{Miller1969, Mueller1972} of
 allowing experts to guide the system while still pulling information from the
 other agents.
+\vicki{I'm not seeing how they are pulling information from the other agents.}
 
 The second obvious way to employ these agents is using the untrained voters
 and the proxies and allowing the experts to transfer their voting power to them.
@@ -104,7 +108,10 @@ experts.
 Both setups will be examined in this study.
 Fortunately, the process of how to create the setups is identical.
 The only difference is which type of agent serves as proxies.
+\vicki{It isn't clear the setup.  So the untrained voters have information that is felt to be accurate (on average).  How is this true if they are untrained?  Can you give me a specific example?  Suppose I was trying to decide the best medication for covid.  My experts are medical professionals who have done studies.  Are my untrained voters ones who have had a small amount of experience, which may be helpful?
 
+Is the proxy the voter who actually votes?
+}
 \subsection{Criteria}\label{subsec:criteria}
 A system is only as good as its ability to perform.
 In order to gauge the ability or `goodness' of proxy voting as a form of
@@ -133,6 +140,7 @@ squared distance
 \end{align}
 where $\systemtruth_k$ and $\truth_k$ are the $k$th
 dimension of the estimated and real truth respectively.
+\vicki{So is $\systemtruth_k$ what the set estimates and $\truth_k$ the actual truth?}
 
 The next criteria used to judge systems is the cost of the system.
 The total cost of a system \systemcost\ is calculated as
@@ -179,6 +187,7 @@ produce~\systemtruth.
 Similar to systems, each type of agent will have a different set of parameters.
 There are two parameters which create the most distinction between agents: their vote
 distribution and their extents.
+\vicki{So are  you controlling the randomness of the vote?}
 
 The extents determine how far away from \truth\ the agent is able to vote.
 For example, an agent with an extent of 10 could vote anywhere in the
@@ -237,7 +246,7 @@ described below.
 \mechanismheader{Median}\label{para:median}
 The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
 This study builds off of their design by using finite voters instead of
-infinite, as well as applying new weighting mechanisms that will likely yield
+infinite, \vicki{You haven't defined an infinite voter.  Do you mean an infinite number of voters?}as well as applying new weighting mechanisms that will likely yield
 different results.
 The formula for the median mechanism is the same as the one used
 in~\cite[para.~2.4]{Cohensius2017}, which was described as (with some
@@ -268,6 +277,7 @@ as described with
 where \systemproxies\ is ordered by \agenttruth.
 
 \mechanismheader{Plurality}\label{para:plurality}
+\vicki{Are you  using proxy to mean the voter selected or the results of their vote?}
 The plurality mechanism simply selects the proxy with the highest weight, which
 is described by
 \begin{equation}
@@ -322,6 +332,7 @@ This mechanism is the core of the average mechanisms, and is used as a final
 step in most other average mechanisms.
 
 \mechanismheader{Weight by Ranked Choice}\label{para:avg-ranked-choice}
+\vicki{Again, I don't think I understand the setup.  If I'm untrained, why do I even have an opinion that matters?}
 Each proxy is ranked by each inactive agent according to how close they are
 to the inactive agent.
 The number of times each proxy is ranked first is counted, and the proxy with
@@ -331,6 +342,7 @@ proxies, at which point the mean mechanism is applied using the scores as
 weights.
 This results in the lowest-ranked proxy having a weight of 1, and the
 highest-ranked proxy receiving a weight of $n$.
+\vicki{So your voting space is ordered?  An unordered space would be like candidates for president.  There is no univesal ordering of most left, median, most right.  But, if we were voting on how much tuition to charge, it is completely orderded by cost.}
 
 \mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
 The weight by instant runoff mechanism is similar to the
@@ -436,6 +448,7 @@ While using extents of 1 should not make any meaningful differences to the final
 analysis in this study, it should be noted that further work could be done using
 additional extents to more accurately reflect expert and untrained measurements in
 the real world.
+\vicki{ Forcing each voter to have the same extents seems to make the cases simpler than they should be.}
 
 \subsection{Data Collection}\label{subsec:data-collection}
 % Steps
@@ -518,6 +531,7 @@ identify any differences.
 Once this has been done, additional, more in-depth tests will be performed to
 determine to what degree any proxy vote system improves upon simply averaging the
 agents' votes.
+\vicki{Averaging over the votes doesn't appear to be a reasonable comparison.  
 
 As for the final question, the change in error will be graphed against the
 number of agents used to determine if there is any critical point where the benefit
