@@ -6,9 +6,9 @@
 This chapter attempts to answer the questions previously outlined in the
 \hyperref[subsec:analysis]{Analysis} section.
 Each section is dedicated to exploring one question.
-The process used is described in each section though the process usually
-consists of using a combination of graphing, One-way ANOVA tests, and
-Student's t- or Mann-Whitney U-tests.
+The process used is described in each section, though the analysis usually consists
+of using a combination of graphing, one-way ANOVA tests, and Mann-Whitney
+U-tests.
 All tests are performed with $\alpha = 0.05$ unless otherwise stated.
 
 
@@ -31,7 +31,7 @@ This graph immediately tells us a few things.
 First, the squared error seems to be skewed, favoring numbers closer to 0.
 This means there is a fairly even spread of estimates, since this is the
 pattern one would expect to see from a uniform distribution of estimates.
-Interestingly, however, is the majority of most error populations are
+Interestingly, however, is that the majority of most error populations are
 somewhere between a uniform distribution of estimates
 (\autoref{fig:expected_even_distribution_squared_error}) and a normal
 distribution (\autoref{fig:expected_gaussian_distribution_squared_error}).
@@ -74,8 +74,8 @@ This means most mechanisms are better at estimating \truth\ than random chance.
 Additionally, while all distributions appear generally close, there appears to be a
 slight difference between average and candidate mechanisms.
 This can be confirmed by comparing the average mechanisms to the candidate mechanisms
-using a Mann-Whitney U-test, with the alternative being the average mechanisms'
-squared error is lesser.
+using a U-test, with the alternative being that one population has lower error than the
+other.
 Performing such a test results in a p-value of 0.0, far below the $\alpha$ of 0.05.
 Since candidate mechanisms can still be useful depending on the situation, both the
 best average mechanisms and the best candidate mechanisms will be identified.
@@ -98,12 +98,12 @@ This leads us to the question: which average mechanisms generally work best?
 To start, an ANOVA test was performed on the average mechanisms.
 This produced a p-value of 0, indicating there is very likely a difference between
 average mechanisms.
-U-tests were then performed to compare each mechanism on its own against each other
+U-tests were then performed to compare each mechanism against every other
 mechanism individually, resulting in \autoref{fig:average-mechanisms-p-values}.
 The numbers next to the edges are the resultant p-values, where the alternative is
-the population is lower than the other.
+that one population has lower error than the other.
 As is shown by the graph, there is sufficient evidence to reject the null hypothesis
-than any of the populations are the same.
+that any of the populations are the same.
 
 \begin{figure}[htbp]
     \centering
@@ -132,9 +132,10 @@ Weighted Instant Runoff beating none.
 
 \subsection{Candidate Mechanisms}\label{subsec:lowest-error-candidate-mechanisms}
 Candidate voting mechanisms are described in \autoref{subsubsec:candidate-mechanisms}.
-They work by selecting a single `candidate' and uses its vote as \systemtruth.
-While they do not appear to perform as well as average mechanisms, they may be
-circumstances where they are required and so they will still be analyzed to determine
+They work by selecting a single proxy as the `candidate' and using its vote as
+\systemtruth.
+While they do not appear to perform as well as average mechanisms, there may be
+circumstances where they are required and so they will still be examined to determine
 which candidate mechanism works best.
 
 An ANOVA analysis was again used to start, which resulted in a p-value of
@@ -142,7 +143,7 @@ $2.49e-221$.
 This, again, is clearly below $\alpha$, so we can reject the null hypothesis that all
 populations are the same.
 Following the pattern of analysis in
-\autoref{subsec:lowest-error-average-mechanisms}, U-tests where then performed to
+\autoref{subsec:lowest-error-average-mechanisms}, U-tests were then performed to
 identify which mechanisms produced lower error than others.
 The p-values can be found in \autoref{fig:candidate-mechanisms-p-values}.
 
@@ -157,8 +158,9 @@ The p-values can be found in \autoref{fig:candidate-mechanisms-p-values}.
     \label{fig:candidate-mechanisms-p-values}
 \end{figure}
 
-While not as many p-values are 0 with the candidate mechanisms, there is still very
-strong evidence that each candidate mechanism is not the same as each other.
+While not as many candidate mechanism tests yielded p-values as small as those of
+the average mechanisms, there is still very strong evidence that each candidate
+mechanism is different from the others.
 For the candidate mechanisms, Median appears to be the best, followed
 by Plurality, Instant Runoff, and finally Weighted Instant Runoff.
 \begin{samepage}
@@ -176,7 +178,8 @@ by Plurality, Instant Runoff, and finally Weighted Instant Runoff.
 Weighting mechanisms have a direct influence on how voting mechanisms operate in that
 they apply weights to the estimates of the proxies.
 This naturally has a direct impact on the output of a system.
-\autoref{fig:weighting-mechanisms-comparison}
+\autoref{fig:weighting-mechanisms-comparison} illustrates the population of
+squared error for each weighting mechanism.
 
 \begin{figure}[htbp]
     \centering
@@ -211,7 +214,7 @@ This naturally has a direct impact on the output of a system.
 
 While the mechanisms definitely appear close, there is a visible difference between
 the Equal Weight mechanism and the other mechanisms.
-This can be confirmed using a series of Mann-Whitney U-tests, resulting in
+This can be confirmed using a series of U-tests, resulting in
 \autoref{fig:weighting-mechanisms-p-values}.
 \begin{samepage}
     This gives us the ordering:
@@ -285,8 +288,9 @@ lower error than candidate mechanisms.
     \label{fig:combined-lesser_counts}
 \end{figure}
 
-From the graph, we can see our findings in~\fullref{sec:lowest-error-voting-mechanism}
-hold true with the combinations as well, with Ranked Choice taking the top three ranks.
+From the graph, it can be seen that the findings
+in~\fullref{sec:lowest-error-voting-mechanism} hold true with combinations of
+mechanisms as well, with Ranked Choice taking the top three ranks.
 The rankings from~\fullref{sec:lowest-error-weighting-mechanism} also
 generally hold true, since the Closest and Borda mechanisms generally
 appear sooner than others.
@@ -410,7 +414,7 @@ mechanism is used or the distribution of the proxies or inactive agents.
 \end{figure}
 
 It is immediately evident that weightlessly averaging all agents' estimates works
-considerable better that using proxy vote systems.
+considerably better that using proxy vote systems.
 While this would initially indicate that proxy vote systems should not be used when a
 simpler and more accurate technique already exists, this broad overview does not tell
 the full story.
@@ -419,13 +423,13 @@ mechanism that heavily influences its accuracy.
 Additionally, we have yet to explore how the proxy and inactive estimate
 distributions interact with the different mechanisms.
 
-Indeed, performing tests on group separated by voting and weighting mechanisms as
+Indeed, performing tests on groups separated by voting and weighting mechanism as
 well as proxy and inactive estimate distribution, indicates 467 of the 2048 possible
 combinations, or 22.80\%, work better using a proxy vote system than weightlessly
 averaging.
 These tests are performed as if the proxy system was used instead of weightlessly
-averaging, meaning that if the tests are performed groups with the same proxy and
-inactive estimate distributions.
+averaging, meaning that they are performed as if the agents had the same estimate
+distribution when weightlessly averaging as with the proxy system.
 
 Of these 467 combinations, 223 (47.75\%) have an asymmetric proxy distribution with
 a symmetric inactive distribution, while 154 (32.98\%) have an asymmetric inactive
@@ -548,8 +552,8 @@ asymmetric distributions.
 
 The natural next question that aries is, `which mechanism combinations are more likely
 to produce a lower error?'
-The count of how many times each voting mechanism/weighting mechanism combination
-tests to have a lower error than weightlessly averaging in displayed
+The count of how many times each voting/weighting mechanism combination
+tests to have a lower error than weightlessly averaging is tabulated
 in~\autoref{tab:lower-pop-combo-count}.
 This table would seem to indicate that the stronger combinations, as explored
 in~\fullref{sec:lowest-error-overall-combination}, are more able to achieve a lower
@@ -561,9 +565,9 @@ as well.
     % increase table row spacing, adjust to taste
     \renewcommand{\arraystretch}{1.0}
 
-    \caption{The count of mechanism combinations the achieve a lower error
-    population than weightlessly averaging, ordered by first count, then voting
-    mechanism, and finally weighting mechanism.}
+    \caption{The count of mechanism combinations that achieve a lower error
+    population than weightlessly averaging, ordered first by count, then by voting
+    mechanism, and finally by weighting mechanism.}
     \label{tab:lower-pop-combo-count}
 
     \centering
@@ -702,12 +706,12 @@ Interestingly, the curve produced in each of these graphs flattens around a 1:1
 ratio, indicating that there is little or no benefit to having a differing number of
 proxies and inactive agents.
 Additionally, there seems to be small `hiccups' at each whole number.
-While the reason for this is not explored in this study, this would indicate that
+While the reason behind the hiccups is not explored here, this would indicate that a
 slightly higher or lower ratio than 1:1 should be used.
 With this mind, and since the number of inactive agents generally does not have an
 effect on the system error, it would likely be best to use slightly fewer inactive
-agents than proxy agents in an effort to decrease the total system cost and increase
-system accuracy.
+agents than proxies in an effort to decrease the total system cost while still
+maintaining accuracy.
 
 \begin{figure}[htbp]
     \centering

@@ -150,7 +150,7 @@ While in reality there may be some fluctuation in cost for the same
 measurement, for simplicity this study considers all agents of the same type
 to have the same cost.
 The goal of system cost as a criteria is to determine if a less-costly system
-could perform just as well if not better than one with a higher cost.
+could perform just as well, if not better than, one with a higher cost.
 
 % - Number of measurements?
 %   - Expert
@@ -177,8 +177,8 @@ produce~\systemtruth.
 
 \subsubsection{Agent Parameters}\label{subsubsec:agent-parameters}
 Similar to systems, each type of agent will have a different set of parameters.
-There are two parameters that creates the most distinction between
-agents: their vote distribution and their extents.
+There are two parameters that create the most distinction between agents: their vote
+distribution and their extents.
 
 The extents determine the maximum and minimum value away from \truth\ the
 agent is able to vote.
@@ -238,11 +238,11 @@ described below.
 \mechanismheader{Median}\label{para:median}
 The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
 This study builds off their design by using finite voters instead of
-infinite, as well as applying weighting mechanisms which will result in
+infinite, as well as applying new weighting mechanisms which will likely yield
 different results.
 The formula for the median mechanism is the same as the one used
-in~\cite[para.~2.4]{Cohensius2017}, which was described as, with some
-symbolic changes,
+in~\cite[para.~2.4]{Cohensius2017}, which was described as (with some
+symbolic changes)
 \begin{equation*}
     \textbf{md}(\systemproxies) =
     \min\left\{\agent_i \in \systemproxies \text{ s.t. }
@@ -251,7 +251,7 @@ symbolic changes,
     \right\}
     \text{,}
 \end{equation*}
-meaning the mechanisms selects the minimum agent that has an equal or greater
+meaning the mechanism selects the minimum agent that has an equal or greater
 number of agents below it as it has above it in terms of \agenttruth.
 
 For weighted scenarios, the median agent will be the minimum agent whose sum of
@@ -276,8 +276,8 @@ is described by
     \argmax \weightof{\systemproxies}
     \text{.}\label{eq:plurality-mechanism}
 \end{equation}
-While a seemingly simple mechanism, this voting mechanism combined with some
-weighting mechanism allows for common voting systems.
+While a seemingly simple mechanism, plurality combined with some
+weighting mechanisms allows for other common voting systems.
 For example, plurality used with \hyperref[para:borda]{Borda weighting}
 provides the Borda count system.
 
@@ -326,7 +326,7 @@ step in most other average mechanisms.
 Each proxy is ranked by each inactive agent according to how close they are
 to the inactive agent.
 The number of times each proxy is ranked first is counted, and the proxy with
-the least votes is removed from the wanking process and given a weight of 1.
+the least votes is removed from the ranking process and given a weight of 1.
 The process continues from $1 \mathellipsis n$, where $n$ is the number of
 proxies, at which point the mean mechanism is applied using the scores as
 weights.
@@ -342,7 +342,7 @@ each proxy are used as the weights for the mean mechanism.
 \mechanismheader{Averaged Weighted Instant Runoff}\label{para:avg-weighted-instant-runoff}
 This mechanism is the same as
 \hyperref[para:candidate-weighted-instant-runoff]{weighted instant runoff},
-but instead of selecting the majority proxy as \systemtruth\ the remaining votes
+except instead of selecting the majority proxy as \systemtruth\ the remaining votes
 are used as the weights for the mean mechanism.
 Essentially, this is
 \hyperref[para:avg-instant-runoff]{weight by instant runoff}, but the weights
@@ -352,7 +352,7 @@ applied by the inactive agents are used instead of ranking each proxy.
 Weighting mechanisms are strategies by which inactive agents assign weights
 to proxies.
 All final weights are required to be positive in order to simplify
-calculating \systemtruth through the voting mechanisms.
+calculating \systemtruth\ through the voting mechanisms.
 
 \mechanismheader{Vote for Closest}\label{para:closest}
 The vote for closest weighting mechanism is the simplest weighting mechanism.
@@ -454,9 +454,9 @@ steps:
     Again, the number and distribution of these voters will depend on the
     experiment's parameters and will often not be the same as the proxies'
     parameters.
-    In particular, the distribution and range used will generally be
-    different from the proxies' since the proxies serve as `experts' and so
-    should be more accurate.
+    In particular, the distribution used will generally be different from those of
+    the proxies since the proxies serve as `experts' and so should be more accurate.
+    Inactive voters could also differ from proxies by using different extents.
 
     \titleditem{Assign weights to proxies}
     Using the given \hyperref[subsec:weighting-mechanisms]{weighting mechanism},
@@ -481,7 +481,7 @@ a fair spread of error for that set of parameters.
 After each iteration, the combination of parameters will be recorded as well
 as the estimated truth, the error, and the rest of the
 \hyperref[subsec:criteria]{criteria}.
-Additional runs will be performed during the analysis phase as required.
+Additional runs will be performed during the analysis phase, as deemed necessary.
 
 \subsection{Analysis}\label{subsec:analysis}
 Once all data is collected, analyses will be performed in order to answer a
@@ -515,14 +515,14 @@ The fourth question, which serves to determine if using a proxy vote system is e
 beneficial to begin with, will follow a similar procedure to the first three
 questions: the error for each population will be graphed and tests ran to identify
 any differences.
-Once this has been performed, additional, more in-depth tests will be performed to
-determine to what level any proxy vote system improves on simply averaging the
+Once this has been done, additional, more in-depth tests will be performed to
+determine to what degree any proxy vote system improves on simply averaging the
 agents' votes.
 
 As for the final question, improvement on error will be graphed against the number of
 agents used to determine if there is any critical point where the benefit of adding
 more agents is reduced.
-Ratios between proxy and inactive agents with also be graphed and analysed to
+Ratios between proxy and inactive agents will also be graphed and analysed to
 determine a scalable idea of how many inactive agents to use per proxy agent.
 This is also the analysis where the cost of the system is most relevant.
 Since the cost of each agent will vary between application, this study will attempt to
