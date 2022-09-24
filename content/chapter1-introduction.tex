@@ -24,7 +24,7 @@ them a viable replacement for the more accurate but more costly measurements.
 
 The proxy voting system makes use of a model developed by \etal{Cohensius} in their 2017
 article~\cite{Cohensius2017}.
-This model places voters' preferences in a metric space, such as
+This model places voters' preferences in a metric space \systemspace, such as
 in~\autoref{fig:system-metric-space}.
 Modeling voters' preferences in such as way allows for continuous preferences instead of
 discrete or binary opinions other models might emphasize.
@@ -32,28 +32,6 @@ Whereas this study deals with the accuracy and errors of a set of measurements, 
 error also exists in continuous space, such a preference space is useful for this
 paper's purposes.
 A measurement can be taken, and the resulting value will be its preference.
-
-% Explain what Cohensius did
-%   - Strategic participation
-%   - Infinite voters
-%   - Voting Mechanisms
-% Explain what I'm borrowing and what I'm doing differently
-%   - Compulsory use of proxies
-%   - Finite voters
-%   - Additional voting mechanisms
-%   - Weighting mechanisms
-\etal{Cohensius} a
-
-
-With all this in mind, the system proposed in this study operates like so:
-A measurement is taken, and the resulting value subsequently represented as the
-measurement's preference.
-After taking several measurements, sensing simultaneously with several sensors, or
-some other similar operation, all preferences can be aggregated with any desired voting
-mechanism.
-The resulting value will be the actual value, as estimated by the system.
-
-
 
 \begin{figure}[htbp]
     \centering
@@ -84,6 +62,44 @@ The resulting value will be the actual value, as estimated by the system.
     \label{fig:system-metric-space}
 \end{figure}
 
+This model was used in~\cite{Cohensius2017} with an infinite population of voters.
+However, since it would be costly, not to mention realistically impossible, to take
+infinite measurements, this paper will use the model with a finite population.
+This, in conjunction with proxy voting as described in \autoref{sec:background}, form
+the core of the system.
+
+% Explain what Cohensius did
+%   - Strategic participation
+%   - Infinite voters
+%   - Voting Mechanisms
+% Explain what I'm borrowing and what I'm doing differently
+%   - Compulsory use of proxies
+%   - Finite voters
+%   - Additional voting mechanisms
+%   - Weighting mechanisms
+
+\etal{Cohensius} also introduce the concept of \textit{voting mechanisms} or
+\textit{voting rules}, which are functions that map a set of preferences
+in~\systemspace\ to an outcome that also exists in~\systemspace.
+This study employs the use of two of their mechanisms, the Mean and Median
+mechanisms, as well as introduces additional mechanisms.
+Additionally, this study introduces the idea of \textit{weighting mechanisms}, which
+determines how agents apply weights to proxies in the proxy vote system.
+
+While \etal{Cohensius} primarily examine voting mechanisms under random and strategic
+participation, this study will preselect proxies and require agents that are not
+proxies to make use of them.
+This allows the a system designer to choose a suitable set of measurement techniques
+as the proxies, and reinforce their measurements using the other agents.
+
+With all this in mind, the system proposed in this study operates like so:
+A measurement is taken, and the resulting value subsequently represented as the
+measurement's preference.
+After taking several measurements, sensing simultaneously with several sensors, or
+some other similar operation, weights will be applied using a weighting mechanism to a
+preselected set of measurements which will then be aggregated with any desired voting
+mechanism.
+The resulting value will be the system's estimation of the actual value.
 
 
 
