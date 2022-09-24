@@ -26,6 +26,13 @@ The proxy voting system makes use of a model developed by \etal{Cohensius} in th
 article~\cite{Cohensius2017}.
 This model places voters' preferences in a metric space, such as
 in~\autoref{fig:system-metric-space}.
+Modeling voters' preferences in such as way allows for continuous preferences instead of
+discrete or binary opinions other models might emphasize.
+Whereas this study deals with the accuracy and errors of a set of measurements, whose
+error also exists in continuous space, such a preference space is useful for this
+paper's purposes.
+A measurement can be taken, and the resulting value will be its preference.
+
 % Explain what Cohensius did
 %   - Strategic participation
 %   - Infinite voters
@@ -35,6 +42,18 @@ in~\autoref{fig:system-metric-space}.
 %   - Finite voters
 %   - Additional voting mechanisms
 %   - Weighting mechanisms
+\etal{Cohensius} a
+
+
+With all this in mind, the system proposed in this study operates like so:
+A measurement is taken, and the resulting value subsequently represented as the
+measurement's preference.
+After taking several measurements, sensing simultaneously with several sensors, or
+some other similar operation, all preferences can be aggregated with any desired voting
+mechanism.
+The resulting value will be the actual value, as estimated by the system.
+
+
 
 \begin{figure}[htbp]
     \centering
