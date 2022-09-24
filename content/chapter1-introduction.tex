@@ -24,11 +24,11 @@ them a viable replacement for the more accurate but more costly measurements.
 
 The proxy voting system makes use of a model developed by \etal{Cohensius} in their 2017
 article~\cite{Cohensius2017}.
-This model places voters' preferences in a metric space, similar to what is seen
+This model places voters' preferences in a metric space, such as
 in~\autoref{fig:system-metric-space}.
 
 
-\begin{figure}[!htbp]
+\begin{figure}[htbp]
     \centering
     % Built using:
     % https://tex.stackexchange.com/a/148253/277236
@@ -38,8 +38,7 @@ in~\autoref{fig:system-metric-space}.
         \foreach \x in  {-1, 1} % Vertical higher lines
         \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,0pt);
         \foreach \x in {-1, 0, 1} % Numbers and lower lines
-        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-2pt) node[below]
-            {$\x$};
+        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-2pt) node[below]{$\x$};
 
         % Labeled points
         \tkzDefPoint(-4/7, 0){agentA}
