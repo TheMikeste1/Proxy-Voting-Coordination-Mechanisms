@@ -15,44 +15,54 @@ higher quality of life.
 This is particularly critical in high-risk or high-cost scenarios, such as when
 human life is involved, or when the cost of using a sensor, taking a
 measurement, or running an experiment is particularly expensive.
-This paper explores the idea of using an adapted form of proxy voting, as
-described in~\cite[para.~1.3]{Miller1969}, as a way of taking multiple
-measurements to ensure accuracy while minimizing the cost of taking those
-measurements.
-\vicki{ In your introduction you need to introduce the problem you are trying to solve.  I wouldn’t jump to contributions immediately.}
+This paper explores the idea of replacing highly-accurate, though undesirable,
+measurement techniques with a system of alternative, less accurate techniques combined
+with an adapted form of proxy voting while still maintaining a sufficient level of
+accuracy.
+Ideally, this system would employ measurements that are cheaper or less risky, making
+them a viable replacement for the more accurate but more costly measurements.
 
-\section{Contribution}\label{sec:contribution}
-This study aims to explore the idea of using proxy voting as a technique to
-improve the accuracy of multiple measurements while reducing the cost by
-employing less expensive gauging methods when they are available.
-This is accomplished by first taking a number of more expensive measurements to
-serve as proxies, then supplementing any lack of precision by allocating
-votes from cheaper methods of assessing a metric.
-Additionally, this paper experiments with using different voting mechanisms and
-weighting mechanisms in an attempt to optimize proxy voting for different
-distributions of error.
-Finally, this paper attempts to identify how many `proxy' measurements need
-to be taken to reduce cost while still ensuring accuracy, and attempts to
-identify any benefit of using proxy votes as opposed to simply averaging the
-results.
-
-This paper will show that, while proxy vote systems are not a perfect tool to
-increase a system's accuracy, they may be beneficial when a distribution of error is
-asymmetrical.
-Additionally, this paper will identify the best performing voting and weighting
-mechanisms, as well as discuss an ideal range of proxy and inactive agents to be used
-in such a system.
+The proxy voting system makes use of a model developed by \etal{Cohensius} in their 2017
+article~\cite{Cohensius2017}.
+This model places voters' preferences in a metric space, similar to what is seen
+in~\autoref{fig:system-metric-space}.
 
 
-\section{Potential Applications}\label{sec:potential-applications}
-Proxy vote systems can be used in situations where highly accurate measurements are
-difficult, costly, or time-consuming, and cheaper or easier alternatives are available.
-While this study will show they will not work in all situations, they do have a
-potential use when one of the alternative measurements tends to yield an asymmetrical
-distribution of error.
+\begin{figure}[!htbp]
+    \centering
+    % Built using:
+    % https://tex.stackexchange.com/a/148253/277236
+    % https://tex.stackexchange.com/a/380491/277236
+    \begin{tikzpicture}[scale=5]
+        \draw(-1,0) -- (1,0) ; % Axis
+        \foreach \x in  {-1, 1} % Vertical higher lines
+        \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,0pt);
+        \foreach \x in {-1, 0, 1} % Numbers and lower lines
+        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-2pt) node[below]
+            {$\x$};
 
-These systems may also have use in ensemble machine learning techniques, though this
-idea is not explored in this study.
+        % Labeled points
+        \tkzDefPoint(-4/7, 0){agentA}
+        \tkzDefPoint(3/4, 0){agentB}
+        \tkzDefPoint(1/12, 0){agentC}
+        \tkzLabelPoint[above](agentA){$\truthof{a}$}
+        \tkzLabelPoint[above](agentB){$\truthof{b}$}
+        \tkzLabelPoint[above](agentC){$\truthof{c}$}
+
+        \foreach \n in {agentA, agentB, agentC}
+        \node at (\n)[circle,fill,inner sep=1.75pt]{};
+    \end{tikzpicture}
+
+    \caption{Example preference metric space, where \truthof{x} represent the
+    preference of agent $x$.}
+    \label{fig:system-metric-space}
+\end{figure}
+
+
+
+
+\vicki{ In your introduction you need to introduce the problem you are trying to
+solve. I wouldn’t jump to contributions immediately.}
 
 
 \section{Background}\label{sec:background}
@@ -72,7 +82,8 @@ In contrast, \textit{direct voting} requires each agent to vote on their own
 
 In some cases, the proxy is also able to transfer their vote, as well as all
 their weight, to yet another proxy.
-\vicki{You haven’t told us about voting weight.  If I can transfer my vote, why not weight? }
+\vicki{You haven’t told us about voting weight. If I can transfer my vote, why not
+weight? }
 This is known as \textit{liquid democracy}, which has its own challenges and
 advantages.
 However, simple proxy voting, where proxies cannot transfer their voting power,
@@ -89,8 +100,11 @@ must be overcome.
 In these cases, proxy voting allows voters to skip incurring the costs while
 still having their voice heard by allowing a proxy to perform the work once on
 behalf of all voting power transferred to it.
-\vicki{  But if I’m turning my vote to a proxy, h ow is my vote heard?  You could say you impacted the vote, but not that your vote was heard.  I don’t know how you can say the accuracy is increased, unless you know the proxy is smarter than you.
-How do the voters find  proxies and how do they decide who they trust?  The reader is unclear about the setup.}
+\vicki{  But if I’m turning my vote to a proxy, how is my vote heard? You could say
+you impacted the vote, but not that your vote was heard. I don’t know how you can say
+the accuracy is increased, unless you know the proxy is smarter than you.
+How do the voters find proxies and how do they decide who they trust? The reader is
+unclear about the setup.}
 
 In addition to reducing individual agents' work, proxy voting also often has
 the effect of increasing the system welfare by increasing the accuracy of the
@@ -119,7 +133,8 @@ finds it.}
 
 
 \section{Related Work}\label{sec:related-work}
-\vicki{You need to cite previous work which motivates your approach.  It seems your previous work doesn't really motivate what you are doing.}
+\vicki{You need to cite previous work which motivates your approach. It seems your
+previous work doesn't really motivate what you are doing.}
 Proxy voting and liquid democracy are well-discussed topics with a number of
 papers investigating their viability, advantages, and disadvantages.
 Many of these studies focus on political and societal uses for these techniques,
@@ -170,3 +185,37 @@ in~\cite{Cohensius2017}, and explores the use of a set of proxies instead of
 employing random or strategic participation.
 While the use of finite voters in this case could be viewed as a two-layered
 form of liquid democracy, this idea is not explored by this paper.
+
+
+\section{Contribution}\label{sec:contribution}
+This study aims to explore the idea of using proxy voting as a technique to
+improve the accuracy of multiple measurements while reducing the cost by
+employing less expensive gauging methods when they are available.
+This is accomplished by first taking a number of more expensive measurements to
+serve as proxies, then supplementing any lack of precision by allocating
+votes from cheaper methods of assessing a metric.
+Additionally, this paper experiments with using different voting mechanisms and
+weighting mechanisms in an attempt to optimize proxy voting for different
+distributions of error.
+Finally, this paper attempts to identify how many `proxy' measurements need
+to be taken to reduce cost while still ensuring accuracy, and attempts to
+identify any benefit of using proxy votes as opposed to simply averaging the
+results.
+
+This paper will show that, while proxy vote systems are not a perfect tool to
+increase a system's accuracy, they may be beneficial when a distribution of error is
+asymmetrical.
+Additionally, this paper will identify the best performing voting and weighting
+mechanisms, as well as discuss an ideal range of proxy and inactive agents to be used
+in such a system.
+
+
+\section{Potential Applications}\label{sec:potential-applications}
+Proxy vote systems can be used in situations where highly accurate measurements are
+difficult, costly, or time-consuming, and cheaper or easier alternatives are available.
+While this study will show they will not work in all situations, they do have a
+potential use when one of the alternative measurements tends to yield an asymmetrical
+distribution of error.
+
+These systems may also have use in ensemble machine learning techniques, though this
+idea is not explored in this study.
