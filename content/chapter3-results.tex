@@ -9,6 +9,13 @@ Each section is dedicated to exploring one question.
 The process used is described in each section, though the analysis usually consists
 of using a combination of graphing, one-way ANOVA tests, and Mann-Whitney
 U-tests.
+ANOVA and Mann-Whitney U-tests, hereafter called simply `U-tests,' are statistical
+analysis tests used to identify differences between populations of statistics.
+ANOVA serves to determine if any of several populations is different, whereas U-tests
+are able to compare populations one-on-one and so pinpoint which ones are different.
+The reason U-tests are used instead of the possibly more well-known Student's t-test
+is, as will be show later, the squared error populations are all asymmetrically
+distributed which is better handled by U-tests.
 All tests are performed with $\alpha = 0.05$ unless otherwise stated.
 
 
@@ -80,10 +87,10 @@ Performing such a test results in a p-value of 0.0, far below the $\alpha$ of 0.
 Since candidate mechanisms can still be useful depending on the situation, both the
 best average mechanisms and the best candidate mechanisms will be identified.
 
-\vicki{Need to define U-tests.
-It seems biased that everyone know the true value. When you know the true value, lots
-of subtle ways of cheating could get you closer. You only have a true test when the
-voters don't know the correct answer.}
+% \vicki{Need to define U-tests.
+% It seems biased that everyone know the true value. When you know the true value, lots
+% of subtle ways of cheating could get you closer. You only have a true test when the
+% voters don't know the correct answer.}
 Further U-tests were performed, comparing each individual voting mechanism against
 every other individual mechanism.
 The results of this analysis can be found in
@@ -144,8 +151,8 @@ As such, they will still be examined to determine which candidate mechanism work
 
 An ANOVA analysis was again used to start, which resulted in a p-value of
 $2.49e-221$.
-This, again, is clearly below $\alpha$, so we can reject the null hypothesis that all
-populations are the same.
+This, again, is clearly below $\alpha$, so the null hypothesis that all populations
+are the same can be rejected.
 Following the pattern of analysis in
 \autoref{subsec:lowest-error-average-mechanisms}, U-tests were then performed to
 identify which mechanisms produced lower error than others.
@@ -256,7 +263,7 @@ weighting mechanism regardless of the mechanism it's paired with, this section w
 explore the lowest error for each combination of voting and weighting mechanisms.
 
 The population of error for each combination is displayed in
-\autoref{fig:combined-comparison}, where we see a similar pattern with the voting
+\autoref{fig:combined-comparison}, where a similar pattern can seen with the voting
 mechanisms as what was discussed in \autoref{sec:lowest-error-voting-mechanism}: the
 candidate mechanisms tend to be noticeably worse than the average mechanisms.
 Additionally, average mechanisms typically produce an error below the weighting
