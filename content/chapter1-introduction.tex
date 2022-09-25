@@ -102,19 +102,26 @@ some other similar operation, weights will be applied using a weighting mechanis
 preselected set of measurements which will then be aggregated with any desired voting
 mechanism.
 The resulting value will be the system's estimation of the actual value.
+
 This paper will explore the potential circumstances under which this system will be
 beneficial, as well as outline what types of measurement techniques should be proxies
 and which mechanisms to use.
-
+In order to perform this analysis, a known truth value \truth\ will be selected.
+The system proposed above will then estimate the known truth using
+values pulled from probability distributions to represent values obtained from
+performing a real measurements.
+The system's estimated truth \systemtruth\ will then be compared to the actual truth
+in order to determine how well the system worked.
 
 % \vicki{ In your introduction you need to introduce the problem you are trying to
-% solve. I wouldn’t jump to contributions immediately.}
+% solve. I wouldn't jump to contributions immediately.}
 
 
 \section{Background}\label{sec:background}
 \textit{Proxy voting} involves allowing agents to transfer their voting power
 from themselves to another agent, known as a \textit{proxy}\cite[para.~1.4]
 {Cohensius2017}.
+This adds to the voting power of the proxy, which is called its `weight.'
 By doing so, the transferring agent loses their ability to directly affect the
 voting game, instead allowing the proxy to affect it on their behalf.
 In other words, the transferring agent does not vote in an election but rather
@@ -122,20 +129,9 @@ affects the election vicariously through the proxy to which they transferred
 their power.
 These transferring agents are also known as \textit{inactive voters}, and the
 proxies can also be called \textit{active voters}.
+In contrast, \textit{direct voting} requires each agent to vote on their own.
 
-In contrast, \textit{direct voting} requires each agent to vote on their own
-(and so incur the costs).
-
-In some cases, the proxy is also able to transfer their vote, as well as all
-their weight, to yet another proxy.
-\vicki{You haven’t told us about voting weight. If I can transfer my vote, why not
-weight? }
-This is known as \textit{liquid democracy}, which has its own challenges and
-advantages.
-However, simple proxy voting, where proxies cannot transfer their voting power,
-is sufficient for the research performed in this paper.
-
-Proxy voting has a number of advantages over direct voting.
+Under normal circumstances, proxy voting has a number of advantages over direct voting.
 The most obvious advantage is that it allows inactive voters to reduce the work
 required of them by choosing a proxy to perform the work of voting for them.
 Naturally, this is extremely useful when the cost of voting is high, such as
@@ -145,12 +141,29 @@ standing in long queues is required, or other frustrating or costly obstacles
 must be overcome.
 In these cases, proxy voting allows voters to skip incurring the costs while
 still having their voice heard by allowing a proxy to perform the work once on
-behalf of all voting power transferred to it.
-\vicki{  But if I’m turning my vote to a proxy, how is my vote heard? You could say
-you impacted the vote, but not that your vote was heard. I don’t know how you can say
-the accuracy is increased, unless you know the proxy is smarter than you.
-How do the voters find proxies and how do they decide who they trust? The reader is
-unclear about the setup.}
+behalf of all voters who transfer their power to the proxy.
+Of course, a voter would not want to give its voting power to just any proxy.
+This study employs a similar technique as used in~\cite{Cohensius2017}, which has the
+voters, or agents, pass their voting power to the proxy that is closest in the
+preference space.
+In addition to only transferring power to the closest, which here is called the
+`closest' weighting mechanism, this study examines additional ways to split weight
+among several or all proxies.
+% \vicki{  But if I'm turning my vote to a proxy, how is my vote heard? You could say
+% you impacted the vote, but not that your vote was heard. I don't know how you can say
+% the accuracy is increased, unless you know the proxy is smarter than you.
+% How do the voters find proxies and how do they decide who they trust? The reader is
+% unclear about the setup.}
+
+Additionally, since measurements will have unfortunately incurred their cost since in
+order for them to have a preference they need to be taken, this paper will not be
+able to take full advantage of relieving individual agents of some of their cost.
+However, by using less accurate measurement techniques with proxy voting, the hope
+is to increase the overall system accuracy without incurring costs of using more
+accurate measurement techniques.
+Regardless, one question addressed in this paper is if proxy voting should be used at
+all, or if direct voting should be used instead by simply averaging the less expensive
+measurements.
 
 In addition to reducing individual agents' work, proxy voting also often has
 the effect of increasing the system welfare by increasing the accuracy of the
@@ -159,28 +172,15 @@ However, this increase does not work in all circumstances and so proxy voting
 should be used after investigating the voting mechanism used and the potential
 pitfalls of that mechanism under proxy voting.
 
-Proxy voting also allows for agents that are uninformed about the issue at hand to
-delegate the voting power to a trusted expert.
-This is particularly useful for the purposes of this study.
-By using less accurate but cheaper measurements, the system can still yield
-increased accuracy and confidence in a result without requiring many more
-expensive measurements.
+In some cases, the proxy is also able to transfer their own vote, as well as the rest of
+their weight, to yet another proxy.
+% \vicki{You haven't told us about voting weight. If I can transfer my vote, why not
+% weight? }
+This is known as \textit{liquid democracy}, which has its own challenges and
+advantages.
+However, simple proxy voting, where proxies cannot transfer their voting power,
+is sufficient for the research performed in this paper.
 
-However, proxy voting is not without its flaws.
-\etal{Gölz} investigated a weakness in liquid democracy dubbed `super voters'
-~\cite[para.~1.3]{Golz2021}, which are proxies that receive an extremely large
-amount of power.
-This can be problematic because the result of a system will be too biased
-towards the super voter.
-For this paper's purposes, a poor distribution of measurements may make one
-proxy a super voter and increase the error of the result.
-\vicki{here it appears you know absolute truth, and just want to assure the voting
-finds it.}
-
-
-\section{Related Work}\label{sec:related-work}
-\vicki{You need to cite previous work which motivates your approach. It seems your
-previous work doesn't really motivate what you are doing.}
 Proxy voting and liquid democracy are well-discussed topics with a number of
 papers investigating their viability, advantages, and disadvantages.
 Many of these studies focus on political and societal uses for these techniques,
@@ -209,48 +209,38 @@ However, a primary goal of this paper is to use far fewer measurements than the
 quoted 500, as that many measurements would likely be far more expensive than
 simply using a single, more costly form of measurement with better accuracy.
 
-Directly related to this paper,\ \etal{Cohensius}~\cite{Cohensius2017} explore
-proxy voting with infinite voters using a set of \textit{mechanisms}, also
-known as \textit{voting rules}.
-These are algorithms used to consolidate votes into the end result.
-The mechanisms discussed by \etal{Cohensius} include mean\footnote{An
-interesting aside, though not directly relevant to this
-study, is \etal{Cohensius} discovered that the most extreme opinions will be
-active under strategic participation when using a mean voting
-mechanism\cite[lemma~9]{Cohensius2017}.}
-and median rules in continuous spaces, as well as majority rule in
-binary spaces.
-\etal{Cohensius} allow for both random and strategic participation, meaning any
-agent could decide whether it served as a proxy or not.
-
-\etal{Cohensius}'s work serves as the basis of this study, which expands on
-the voting mechanisms used as well as introduces an additional type of
-mechanism: weighting mechanisms.
-This study also explores the use of finite voters instead of infinite as discussed
-in~\cite{Cohensius2017}, and explores the use of a set of proxies instead of
-employing random or strategic participation.
-While the use of finite voters in this case could be viewed as a two-layered
-form of liquid democracy, this idea is not explored by this paper.
+However, proxy voting is not without its flaws.
+\etal{Gölz} investigated a weakness in liquid democracy dubbed `super voters'
+~\cite[para.~1.3]{Golz2021}, which are proxies that receive an extremely large
+amount of power.
+This can be problematic because the result of a system will be too biased
+towards the super voter.
+For this paper's purposes, a poor distribution of measurements may make one
+proxy a super voter and increase the error of the system.
+% \vicki{here it appears you know absolute truth, and just want to assure the voting
+% finds it.}
 
 
 \section{Contribution}\label{sec:contribution}
-This study aims to explore the idea of using proxy voting as a technique to
-improve the accuracy of multiple measurements while reducing the cost by
-employing less expensive gauging methods when they are available.
-This is accomplished by first taking a number of more expensive measurements to
-serve as proxies, then supplementing any lack of precision by allocating
-votes from cheaper methods of assessing a metric.
+This study aims to explore the idea of using proxy voting as a technique remove the
+need to take expensive, dangerous, or otherwise undesirable but more accurate
+measurements by employing more desirable but less accurate gauging methods when they
+are available.
+This is accomplished by first taking a number of measurements to serve as proxies, then
+supplementing any lack of precision by allocating votes from other measurement
+techniques.
 Additionally, this paper experiments with using different voting mechanisms and
 weighting mechanisms in an attempt to optimize proxy voting for different
 distributions of error.
+This paper also determines if using such mechanisms is even worthwhile, or if it
+would be better to skip the proxy voting and simply allow each measurement contribute
+to the truth directly.
 Finally, this paper attempts to identify how many `proxy' measurements need
-to be taken to reduce cost while still ensuring accuracy, and attempts to
-identify any benefit of using proxy votes as opposed to simply averaging the
-results.
+to be taken to reduce cost while still ensuring accuracy.
 
 This paper will show that, while proxy vote systems are not a perfect tool to
-increase a system's accuracy, they may be beneficial when a distribution of error is
-asymmetrical.
+increase a system's accuracy, they may be beneficial when the distribution of error
+from a measurement is asymmetrical.
 Additionally, this paper will identify the best performing voting and weighting
 mechanisms, as well as discuss an ideal range of proxy and inactive agents to be used
 in such a system.
