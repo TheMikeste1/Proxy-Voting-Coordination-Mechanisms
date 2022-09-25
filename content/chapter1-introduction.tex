@@ -26,7 +26,7 @@ The proxy voting system makes use of a model developed by \etal{Cohensius} in th
 article~\cite{Cohensius2017}.
 This model places voters' preferences in a metric space \systemspace, such as
 in~\autoref{fig:system-metric-space}.
-Modeling voters' preferences in such as way allows for continuous preferences instead of
+Modeling voters' preferences in such a way allows for continuous preferences instead of
 discrete or binary opinions other models might emphasize.
 Whereas this study deals with the accuracy and errors of a set of measurements, whose
 error also exists in continuous space, such a preference space is useful for this
@@ -87,24 +87,28 @@ Additionally, this study introduces the idea of \textit{weighting mechanisms}, w
 determines how agents apply weights to proxies in the proxy vote system.
 
 While \etal{Cohensius} primarily examine voting mechanisms under random and strategic
-participation, this study will preselect proxies and require agents that are not
-proxies to make use of them.
-This allows the a system designer to choose a suitable set of measurement techniques
-as the proxies, and reinforce their measurements using the other agents.
+participation in a proxy vote system, this study will preselect proxies and require
+all other agents to use them.
+The reasoning behind this compulsory proxy system is to allow a system designer to
+choose a suitable set of measurement techniques as the proxies, and reinforce their
+measurements using the other agents.
 
-With all this in mind, the system proposed in this study operates like so:
-A measurement is taken, and the resulting value subsequently represented as the
+Using the concepts discussed above, the system proposed in this study
+operates like so:
+A measurement is taken, and the resulting value is subsequently represented as the
 measurement's preference.
 After taking several measurements, sensing simultaneously with several sensors, or
 some other similar operation, weights will be applied using a weighting mechanism to a
 preselected set of measurements which will then be aggregated with any desired voting
 mechanism.
 The resulting value will be the system's estimation of the actual value.
+This paper will explore the potential circumstances under which this system will be
+beneficial, as well as outline what types of measurement techniques should be proxies
+and which mechanisms to use.
 
 
-
-\vicki{ In your introduction you need to introduce the problem you are trying to
-solve. I wouldn’t jump to contributions immediately.}
+% \vicki{ In your introduction you need to introduce the problem you are trying to
+% solve. I wouldn’t jump to contributions immediately.}
 
 
 \section{Background}\label{sec:background}
