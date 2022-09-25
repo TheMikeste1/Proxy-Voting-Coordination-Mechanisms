@@ -97,11 +97,14 @@ Using the concepts discussed above, the system proposed in this study
 operates like so:
 A measurement is taken, and the resulting value is subsequently represented as the
 measurement's preference.
-After taking several measurements, sensing simultaneously with several sensors, or
-some other similar operation, weights will be applied using a weighting mechanism to a
-preselected set of measurements which will then be aggregated with any desired voting
-mechanism.
+After taking several measurements, either simultaneously or sequentially, weights will
+be applied using a weighting mechanism to a preselected set of measurements which
+will then be aggregated with any desired voting mechanism.
 The resulting value will be the system's estimation of the actual value.
+This system would ideally be implemented as a software layer in a program that
+controls sensors used to take measurements, but one could use a simple system employing
+simple voting and weighting mechanisms with pen and paper if they are willing to take
+the required measurements by hand.
 
 This paper will explore the potential circumstances under which this system will be
 beneficial, as well as outline what types of measurement techniques should be proxies
@@ -109,7 +112,7 @@ and which mechanisms to use.
 In order to perform this analysis, a known truth value \truth\ will be selected.
 The system proposed above will then estimate the known truth using
 values pulled from probability distributions to represent values obtained from
-performing a real measurements.
+performing real measurements.
 The system's estimated truth \systemtruth\ will then be compared to the actual truth
 in order to determine how well the system worked.
 
@@ -141,7 +144,7 @@ standing in long queues is required, or other frustrating or costly obstacles
 must be overcome.
 In these cases, proxy voting allows voters to skip incurring the costs while
 still having their voice heard by allowing a proxy to perform the work once on
-behalf of all voters who transfer their power to the proxy.
+behalf of all voters who transfer their power to that proxy.
 Of course, a voter would not want to give its voting power to just any proxy.
 This study employs a similar technique as used in~\cite{Cohensius2017}, which has the
 voters, or agents, pass their voting power to the proxy that is closest in the
@@ -155,15 +158,13 @@ among several or all proxies.
 % How do the voters find proxies and how do they decide who they trust? The reader is
 % unclear about the setup.}
 
-Additionally, since measurements will have unfortunately incurred their cost since in
-order for them to have a preference they need to be taken, this paper will not be
-able to take full advantage of relieving individual agents of some of their cost.
+Additionally, measurements will have unfortunately already incurred their cost, since in
+order for them to have a preference they need to be performed.
+As such, this paper will not be able to take full advantage of relieving individual
+agents of some of their cost.
 However, by using less accurate measurement techniques with proxy voting, the hope
-is to increase the overall system accuracy without incurring costs of using more
+is to increase the overall system accuracy without incurring the cost of using more
 accurate measurement techniques.
-Regardless, one question addressed in this paper is if proxy voting should be used at
-all, or if direct voting should be used instead by simply averaging the less expensive
-measurements.
 
 In addition to reducing individual agents' work, proxy voting also often has
 the effect of increasing the system welfare by increasing the accuracy of the
@@ -222,7 +223,7 @@ proxy a super voter and increase the error of the system.
 
 
 \section{Contribution}\label{sec:contribution}
-This study aims to explore the idea of using proxy voting as a technique remove the
+This study aims to explore the idea of using proxy voting as a technique to remove the
 need to take expensive, dangerous, or otherwise undesirable but more accurate
 measurements by employing more desirable but less accurate gauging methods when they
 are available.
@@ -232,7 +233,7 @@ techniques.
 Additionally, this paper experiments with using different voting mechanisms and
 weighting mechanisms in an attempt to optimize proxy voting for different
 distributions of error.
-This paper also determines if using such mechanisms is even worthwhile, or if it
+This paper also determines if using such mechanisms are even worthwhile, or if it
 would be better to skip the proxy voting and simply allow each measurement contribute
 to the truth directly.
 Finally, this paper attempts to identify how many `proxy' measurements need
