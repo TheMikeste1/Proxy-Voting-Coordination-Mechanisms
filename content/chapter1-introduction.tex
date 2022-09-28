@@ -33,6 +33,8 @@ error also exists in continuous space, such a preference space is useful for thi
 paper's purposes.
 A measurement can be taken, and the resulting value will be its preference.
 
+\com{ We need to rethink the assumptions about the metric space.  Consider multidimensional spaces.  Consider when there is no clear ordering. Consider when there are only discrete choices. If we are thinking about  votes that take place in the House, considering an example from that case would be helpful.  Another thought is that sometimes the choices change once you are actually in a meeting, through amendment to the original proposal. For example, they are voting on tuition reimbursement and someone amends the bill to include funding for veterans.  How unhappy is the inactive voter with his choice of proxy when the issues change?   }
+
 \begin{figure}[htbp]
     \centering
     % Built using:
@@ -80,18 +82,19 @@ the core of the system.
 
 \etal{Cohensius} also introduce the concept of \textit{voting mechanisms} or
 \textit{voting rules}, which are functions that map a set of preferences
-in~\systemspace\ to an outcome that also exists in~\systemspace.
+in~\systemspace\ to an outcome that also exists in~\systemspace.  \com{The idea of a voting mechanism did NOT start with Cohensius. Give credit to the proper originator.}
 This study employs the use of two of their mechanisms, the Mean and Median
 mechanisms, as well as introduces additional mechanisms.
 Additionally, this study introduces the idea of \textit{weighting mechanisms}, which
 determines how agents apply weights to proxies in the proxy vote system.
+\com{Being able to divide  your vote between multiple proxies would be interesting, but it could be that you end up hurting your most preferred candidate. Suppose the vote is between A and B.  You like A slightly more.   Suppose you give 60\% of your vote to candidate A and 40\% to B.  If someone else gave 100\% to B, B wins.  If you would have given 100\% to A, it would have been a tie.}
 
 While \etal{Cohensius} primarily examine voting mechanisms under random and strategic
 participation in a proxy vote system, this study will preselect proxies and require
 all other agents to use them.
 The reasoning behind this compulsory proxy system is to allow a system designer to
 choose a suitable set of measurement techniques as the proxies, and reinforce their
-measurements using the other agents.
+measurements using the other agents.  \com{Doesn't make sense for the House case.}
 
 Using the concepts discussed above, the system proposed in this study
 operates like so:
@@ -105,6 +108,8 @@ This system would ideally be implemented as a software layer in a program that
 controls sensors used to take measurements, but one could use a simple system employing
 simple voting and weighting mechanisms with pen and paper if they are willing to take
 the required measurements by hand.
+
+\com{I'm going to stop reading here until I hear back from you about the new application.  The application selected colors all other decisions.}
 
 This paper will explore the potential circumstances under which this system will be
 beneficial, as well as outline what types of measurement techniques should be proxies
