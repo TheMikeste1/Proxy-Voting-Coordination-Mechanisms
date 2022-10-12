@@ -122,19 +122,6 @@ can serve as the budget.
 %   - Additional voting mechanisms
 %   - Weighting mechanisms
 
-% TODO: Rewrite this paragraph for the new topic
-This paper will explore the potential circumstances under which this system will be
-beneficial, as well as outline what types of measurement techniques should be proxies
-and which mechanisms to use.
-In order to perform this analysis, a known truth value \truth\ will be selected.
-\com{computed?}
-The system proposed above will then estimate the known truth using
-values pulled from probability distributions to represent values obtained from
-performing real measurements.
-The system's estimated truth \systemtruth\ will then be compared to the actual truth
-in order to determine how well the system worked.
-
-% TODO: This and below should probably be moved into the background section
 This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
 which are functions that map a set of preferences in~\systemspace\ to an outcome that
 also exists in~\systemspace.
@@ -148,8 +135,17 @@ also exists in~\systemspace.
 %
 This study employs the use of several common voting mechanisms and adapts them to the
 proxy voting system.
-These are described in~\autoref{subsec:voting-mechanisms}.
+What these mechanisms are and how they operate are described
+in~\autoref{subsec:voting-mechanisms}.
 
+This paper will explore how proxy voting affects the vote and under what
+circumstances it can be used by the House without changing the result.
+This will be determined by measuring by how much the system output changes when using
+proxy voting from all members voting and only present members voting.
+This will be done using continuous outputs instead of binary `yea' or `nay' votes,
+since this will allow for more precise measurements in change.
+
+% TODO: This and below should probably be moved into the background section
 While \etal{Cohensius} primarily examine voting mechanisms under random and strategic
 participation in a proxy vote system, this study will preselect proxies and require
 all other agents to use them.
