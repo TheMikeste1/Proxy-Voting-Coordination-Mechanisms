@@ -117,6 +117,19 @@ situation where a congress member can choose their proxy for each topic individu
 %   - Finite voters
 %   - Additional voting mechanisms
 %   - Weighting mechanisms
+
+% TODO: Rewrite this paragraph for the new topic
+This paper will explore the potential circumstances under which this system will be
+beneficial, as well as outline what types of measurement techniques should be proxies
+and which mechanisms to use.
+In order to perform this analysis, a known truth value \truth\ will be selected.
+\com{computed?}
+The system proposed above will then estimate the known truth using
+values pulled from probability distributions to represent values obtained from
+performing real measurements.
+The system's estimated truth \systemtruth\ will then be compared to the actual truth
+in order to determine how well the system worked.
+
 % TODO: This and below should probably be moved into the background section
 This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
 which are functions that map a set of preferences in~\systemspace\ to an outcome that
@@ -140,41 +153,14 @@ The reasoning behind this compulsory proxy system is to allow a system designer 
 choose a suitable set of measurement techniques as the proxies, and reinforce their
 measurements using the other agents.
 %
-\com{Doesn't make sense for the House case  Better bit to have this restriction.}
-
-Using the concepts discussed above, the system proposed in this study
-operates as follows:
-A measurement is taken, and the resulting value is subsequently represented as the
-measurement's preference.
-After taking several measurements, either simultaneously or sequentially, weights will
-be applied using a weighting mechanism to a preselected set of measurements which
-will then be aggregated with any desired voting mechanism.
-The resulting value will be the system's estimation of the actual value.
-This system would ideally be implemented as a software layer in a program that
-controls sensors used to take measurements, but one could use a simple system employing
-simple voting and weighting mechanisms with pen and paper if they are willing to take
-the required measurements by hand.
-
-
-This paper will explore the potential circumstances under which this system will be
-beneficial, as well as outline what types of measurement techniques should be proxies
-and which mechanisms to use.
-In order to perform this analysis, a known truth value \truth\ will be selected.  \com{computed?}
-The system proposed above will then estimate the known truth using
-values pulled from probability distributions to represent values obtained from
-performing real measurements.
-The system's estimated truth \systemtruth\ will then be compared to the actual truth
-in order to determine how well the system worked.
-
-% \vicki{ In your introduction you need to introduce the problem you are trying to
-% solve. I wouldn't jump to contributions immediately.}
+\com{Doesn't make sense for the House case Better bit to have this restriction.}
 
 
 \section{Background}\label{sec:background}
 \textit{Proxy voting} involves allowing agents to transfer their voting power
 from themselves to another agent, known as a \textit{proxy}\cite[para.~1.4]
-{Cohensius2017}  \com{No need to give paragraph.  You are mainly giving credit for
-the idea.  You can't give Cohesius credit for the idea of proxy voting.}
+{Cohensius2017}  \com{No need to give paragraph. You are mainly giving credit for
+the idea. You can't give Cohesius credit for the idea of proxy voting.}
 This adds to the voting power of the proxy, which is called its `weight.'
 By doing so, the transferring agent loses their ability to directly affect the
 voting game, instead allowing the proxy to affect it on their behalf.
@@ -192,7 +178,11 @@ Naturally, this is extremely useful when the cost of voting is high, such as
 when remaining educated on a topic is difficult or
 time-consuming~\cite[para.~1.1]{Mueller1972}, uncomfortable work such as
 standing in long queues is required, or other frustrating or costly obstacles
-must be overcome.  \com{Pick an application area and discuss the advantages of proxy voting for them.  The cost of remaining educated indicates the person doesn't have a researched opinion.  That is quite different from not being able to vote because of inconvenience.  In many cases, we want the voters to be informed.  If they aren't, there are reasons to discount their vote.}
+must be overcome.  \com{Pick an application area and discuss the advantages of proxy
+voting for them. The cost of remaining educated indicates the person doesn't have a
+researched opinion. That is quite different from not being able to vote because of
+inconvenience. In many cases, we want the voters to be informed. If they aren't,
+    there are reasons to discount their vote.}
 
 In these cases, proxy voting allows voters to skip incurring the costs while
 still having their voice heard by allowing a proxy to perform the work once on
@@ -236,7 +226,8 @@ However, simple proxy voting, where proxies cannot transfer their voting power,
 is sufficient for the research performed in this paper.
 
 Proxy voting and liquid democracy are well-discussed topics with a number of
-papers investigating their viability, advantages, and disadvantages.  \com{Cite those papers here.}
+papers investigating their viability, advantages, and disadvantages.  \com{Cite those
+papers here.}
 Many of these studies focus on political and societal uses for these techniques,
 but some of their discoveries can be used for this paper's purposes.
 
@@ -268,8 +259,10 @@ However, proxy voting is not without its flaws.
 ~\cite[para.~1.3]{Golz2021}, which are proxies that receive an extremely large
 amount of power.
 This can be problematic because the result of a system will be too biased
-towards the super voter.  \com{Explain why the super is a problem. It seems part of the proxy philosophy.  
-If many voters use proxies,  you aren't going to see the richness of preferences. This shouldn't have been a surprise.}
+towards the super voter.  \com{Explain why the super is a problem. It seems part of
+the proxy philosophy.
+If many voters use proxies,  you aren't going to see the richness of preferences.
+This shouldn't have been a surprise.}
 
 For this paper's purposes, a poor distribution of measurements may make one
 proxy a super voter and increase the error of the system.
@@ -289,7 +282,7 @@ techniques.
 needed.
 If all the cheap sensors agree, is there really any point in employing an expensive
 sensors.
-But is this really proxy voting?  It seems more like "not voting", as the expensive
+But is this really proxy voting? It seems more like "not voting", as the expensive
 sensor has no opinion.}
 Additionally, this paper experiments with using different voting mechanisms and
 weighting mechanisms in an attempt to optimize proxy voting for different
