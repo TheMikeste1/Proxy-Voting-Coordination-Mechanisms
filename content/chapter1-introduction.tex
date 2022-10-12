@@ -36,44 +36,21 @@ We additionally explore how different voting rules affect the results of the vot
 %   - What are voting rules
 % Contribution
 
-
-
-
-
-The ability to correctly take measurements is an important part of human
-progress, both in terms of everyday lives and the advancement of science.
-Having the ability to take highly precise and accurate measurements is essential
-to maintaining safety, ensuring the accuracy of research, and providing a
-higher quality of life.
-This is particularly critical in high-risk or high-cost scenarios, such as when
-human life is involved, or when the cost of using a sensor, taking a
-measurement, or running an experiment is particularly expensive.
-This paper explores the idea of replacing highly-accurate, though undesirable,
-measurement techniques with a system of alternative, less accurate techniques combined
-with an adapted form of proxy voting while still maintaining a sufficient level of
-accuracy.
-Ideally, this system would employ measurements that are cheaper or less risky, making
-them a viable replacement for the more accurate but more costly measurements.
-
-The proxy voting system makes use of a model developed by \etal{Cohensius} in their 2017
-article~\cite{Cohensius2017}.
-This model places voters' preferences in a metric space \systemspace, such as
+In order to conduct this study, we employ a model developed by \etal{Cohensius} in
+their 2017 article~\cite{Cohensius2017}.
+This model places voters' preferences, which for our purposes are the congress
+members' opinions on a topic, in a metric space \systemspace, such as
 in~\autoref{fig:system-metric-space}.
 Modeling voters' preferences in such a way allows for continuous preferences instead of
 discrete or binary opinions other models might emphasize.
-Whereas this study deals with the accuracy and errors of a set of measurements, whose
-error also exists in continuous space, such a preference space is useful for this
-paper's purposes.
-A measurement can be taken, and the resulting value will be its preference.
-
-\com{ We need to rethink the assumptions about the metric space. Consider
-multidimensional spaces. Consider when there is no clear ordering. Consider when
-there are only discrete choices. If we are thinking about votes that take place in
-the House, considering an example from that case would be helpful. Another thought is
-that sometimes the choices change once you are actually in a meeting, through
-amendment to the original proposal. For example, they are voting on tuition
-reimbursement and someone amends the bill to include funding for veterans. How
-unhappy is the inactive voter with his choice of proxy when the issues change?   }
+This is beneficial, as it allows for a more realistic representation of voters'
+opinions, since it is unlikely that voters' opinions are perfectly binary.
+For example, it is likely that some members are very passionate for the
+use of proxy voting in the House, while others are passionately against it, and yet
+others remain ambivalent or less-passionately for or against.
+This works perfectly with the metric space model, as it allows for the passionate
+opinions to be at opposite extremes of the metric space, while the less-passionate
+opinions are closer to the center.
 
 \begin{figure}[htbp]
     \centering
@@ -104,11 +81,10 @@ unhappy is the inactive voter with his choice of proxy when the issues change?  
     \label{fig:system-metric-space}
 \end{figure}
 
-This model was used in~\cite{Cohensius2017} with an infinite population of voters.
-However, since it would be costly, not to mention realistically impossible, to take
-infinite measurements, this paper will use the model with a finite population.
-This, in conjunction with proxy voting as described in \autoref{sec:background}, form
-the core of the system.
+This model also naturally extends to two- or other multidimensional spaces, such as
+the opinions of a congress member on multiple topics.
+However, for the purposes of this study, we will only consider the idealistic
+situation where a congress member can choose their proxy for each topic individually.
 
 % Explain what Cohensius did
 %   - Strategic participation
