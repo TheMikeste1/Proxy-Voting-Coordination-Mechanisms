@@ -37,7 +37,28 @@ We additionally explore how different voting rules affect the results of the vot
 %   - What are voting rules
 % Contribution
 
-In order to conduct this study, we employ a model developed by \etal{Cohensius} in
+In order to conduct this study, we make a number of assumptions.
+First, we assume that each voter is able to choose their proxy per-topic.
+This is not currently the case for the House of Representatives, which requires
+a proxy to be chosen by letter and so would be difficult to change as different
+topics are discussed~\cite{Congress.gov2020}.
+However, since it would be fairly simple to implement a new process that allows
+per-topic proxies, and to give proxy voting its best chance we believe this assumption
+is reasonable.
+
+Second, we assume that each voter has perfect knowledge of potential proxies' opinions.
+This will allow them to choose the proxy that has the most similar opinion to their own.
+While in reality voters will likely not have perfect knowledge of others' opinions,
+it is often not too hard to gauge the opinion of others, particularly those with whom
+an individual often associates, and so we believe this assumption is reasonable.
+
+Finally, we assume that there are no factors besides closeness in opinion that affect
+the choice of proxy.
+For example, we assume a voter would rather choose a proxy for a specific topic who
+closely aligns with their opinion on that topic but has a different party affiliation
+rather than choose a proxy who has the same party affiliation but a different opinion.
+
+As part of this study, we employ a model developed by \etal{Cohensius} in
 their 2017 article~\cite{Cohensius2017}.
 This model places voters' preferences, which for our purposes are the congress
 members' opinions on a topic, in a metric space \systemspace, such as
@@ -84,7 +105,7 @@ opinions are closer to the center.
 
 This model also naturally extends to two- or higher-dimensional spaces, such as
 the opinions of a congress member on multiple topics.
-However, for the purposes of this study, we will only consider the idealistic
+However, as previously mentioned, we will only consider the idealistic
 situation where a congress member can choose their proxy for each topic individually.
 
 % Explain what Cohensius did
@@ -96,6 +117,12 @@ situation where a congress member can choose their proxy for each topic individu
 %   - Finite voters
 %   - Additional voting mechanisms
 %   - Weighting mechanisms
+
+
+
+
+
+
 
 \etal{Cohensius} also introduce the concept of \textit{voting mechanisms} or
 \textit{voting rules}, which are functions that map a set of preferences
