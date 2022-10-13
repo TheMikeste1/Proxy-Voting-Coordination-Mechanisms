@@ -190,12 +190,20 @@ voters, or agents, pass their voting power to the proxy that is closest in the
 preference space.
 
 In addition to reducing individual agents' work, proxy voting also often has
-the effect of increasing the system welfare by increasing the accuracy of the
-system~\cite[sec.~1.1]{Cohensius2017}.
-\com{Briefly explain in a phrase or two how it increases accuracy.}
-However, this increase does not work in all circumstances and so proxy voting
-should be used after investigating the voting mechanism used and the potential
-pitfalls of that mechanism under proxy voting.
+the effect of increasing the system accuracy as opposed to only allowing active
+agents to vote~\cite{Cohensius2017}.
+This follows intuition: if a voter doesn't vote, the system loses information.
+By allowing them to still influence the voting game through proxy, some information
+is reintroduced into the system.
+Naturally, in terms of system accuracy the ideal situation is when all voters
+participate.
+However, system welfare can be enhanced on an individual level by allowing agents
+who want to be inactive to become inactive.
+When operating under the Congress resolution, system welfare can also be enhanced
+through proxy voting by allowing ill members to quarantine and ensure the health
+of other agents.
+As will be discussed in \autoref{ch:results}, this additional system welfare comes at
+the cost of some system accuracy since not all information can be restored.
 
 In some cases, the proxy is also able to transfer their own vote, as well as the rest of
 their weight, to yet another proxy   \com{What do you mean by voting weight?}
