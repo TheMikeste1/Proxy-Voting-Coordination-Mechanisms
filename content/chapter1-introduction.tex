@@ -230,15 +230,21 @@ However, proxy voting is not without its flaws.
 amount of power, while others gain very little.
 While they determined these proxies tend to use their power wisely, there can be
 situations where they can be problematic.
-\com{Explain why the super is a problem. It seems part of
-the proxy philosophy.
-If many voters use proxies,  you aren't going to see the richness of preferences.
-This shouldn't have been a surprise.}
+As a simple example, consider a vote taking over preference
+space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
+$\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$.
+Under the mean mechanism, discussed in \autoref{para:mean}, if everyone were to vote
+we would get the actual preference of the system, $\systemtruth = 0.1875$.
+However, if $\agent_2$ and $\agent_3$ were to become inactive and select $\agent_4$ as
+their proxy, making them a super voter, the result would be $\systemtruth = 0.5$.
+This is an absolute error of 0.3125, or 15.625\% of the entire preference space!
+While $\agent_4$ would certainly be the preferred proxy, if $\agent_2$ were to
+instead strategically delegate their vote to $\agent_1$, the result would
+be $\systemtruth = 0$, which is closer to the actual preference.
+However, without knowing to whom $\agent_3$ is delegating their vote, or even if he
+will, $\agent_2$ has no reason to be strategic.
 
-For this paper's purposes, a poor distribution of measurements may make one
-proxy a super voter and increase the error of the system.
-% \vicki{here it appears you know absolute truth, and just want to assure the voting
-% finds it.}
+% TODO: While the above might seem a contrived example, \etal{Cohensius}. . .
 
 % While \etal{Cohensius} primarily examine voting mechanisms under random and strategic
 % participation in a proxy vote system, this study will preselect proxies and require
