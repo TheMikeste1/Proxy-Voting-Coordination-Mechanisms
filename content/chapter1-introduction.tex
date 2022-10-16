@@ -233,18 +233,20 @@ While they determined these proxies tend to use their power wisely, there can be
 situations where they can be problematic.
 As a simple example, consider a vote taking over preference
 space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
-$\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$.
+$\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
+$\truthof{\agent_5} = 0.15$.
 Under the mean mechanism, discussed in \autoref{para:mean}, if everyone were to vote
-we would get the actual preference of the system, $\systemtruth = 0.1875$.
-However, if $\agent_2$ and $\agent_3$ were to become inactive and select $\agent_4$ as
-their proxy, making them a super voter, the result would be $\systemtruth = 0.5$.
+we would get the actual preference of the system, $\systemtruth = 0.18$.
+However, if $\agent_2$, $\agent_3$, and $\agent_5$ were to become inactive and select
+$\agent_4$ as their proxy, making them a super voter, the result would be
+$\systemtruth = 0.6$.
 This is visualized in \autoref{fig:voting-example}.
-This is an absolute error of 0.3125, or 15.625\% of the entire preference space!
-While $\agent_4$ would certainly be the preferred proxy, if $\agent_2$ were to
+This is an absolute error of 0.42, or 21\% of the entire preference space!
+While $\agent_4$ would certainly be the preferred proxy, if $\agent_5$ were to
 instead strategically delegate their vote to $\agent_1$, the result would
-be $\systemtruth = 0$, which is closer to the actual preference.
-However, without knowing to whom $\agent_3$ is delegating their vote, or even if he
-will, $\agent_2$ has no reason to be strategic.
+be $\systemtruth = 0.2$, which is closer to the actual system preference.
+However, without knowing to whom the other agents are delegating their vote, or even
+if they will, $\agent_5$ has no reason to be strategic.
 
 \begin{figure}[htbp]
     \centering
@@ -261,31 +263,33 @@ will, $\agent_2$ has no reason to be strategic.
         \tkzDefPoint(0.25, 0){agent2}
         \tkzDefPoint(0.5, 0){agent3}
         \tkzDefPoint(1, 0){agent4}
+        \tkzDefPoint(0.15, 0){agent5}
         \tkzLabelPoint[above](agent1){$\truthof{\agent_1}$}
-        \tkzLabelPoint[above](agent2){$\truthof{\agent_2}$}
+        \tkzLabelPoint[below](agent2){$\truthof{\agent_2}$}
         \tkzLabelPoint[above](agent3){$\truthof{\agent_3}$}
         \tkzLabelPoint[above](agent4){$\truthof{\agent_4}$}
+        \tkzLabelPoint[above](agent5){$\truthof{\agent_5}$}
 
-        \foreach \n in {agent1, agent2, agent3, agent4}
+        \foreach \n in {agent1, agent2, agent3, agent4, agent5}
         \node at (\n)[circle,fill,inner sep=1.75pt]{};
 
 
         % Actual preference
         \draw[color=blue, line width=0.5mm, dotted]
-        (0.1875, 4pt) -- (0.1875, -3pt);
-        \node[color=blue] at (0.1875,-4pt) {$\systemtruth_{actual}$};
+        (0.18, 0pt) -- (0.18, -3pt);
+        \node[color=blue] at (0.18,-4pt) {$\systemtruth_{actual}$};
 
         % Preference under proxy vote
         \draw[color=orange, line width=0.5mm, dotted]
-        (0.5, 4pt) -- (0.5, -3pt);
-        \node[color=orange] at (0.5,-4pt) {$\systemtruth_{proxy}$};
+        (0.6, 0pt) -- (0.6, -3pt);
+        \node[color=orange] at (0.6,-4pt) {$\systemtruth_{proxy}$};
     \end{tikzpicture}
 
     \caption{
         An example vote and its results.
-        $\systemtruth_{actual}$ is the result when everyone votes,
-        and $\systemtruth_{proxy}$ is when $\agent_2$ and $\agent_3$ delegate their
-        vote and make $\agent_4$ a super voter.
+        $\textcolor{blue}{\systemtruth_{actual}}$ is the result when everyone votes,
+        and $\textcolor{orange}{\systemtruth_{proxy}}$ is when $\agent_2$, $\agent_3$,
+        and $\agent_5$ delegate their vote and make $\agent_4$ a super voter.
     }
     \label{fig:voting-example}
 \end{figure}
