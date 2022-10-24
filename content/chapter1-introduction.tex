@@ -13,6 +13,7 @@ Representatives~\cite{Congress.gov2020}.
 This resolution was passed on May 15th, 2020, and as indicated by proxy designation
 letters sent to the Clerk of the House of Representatives~\cite{Clerk.House.gov2022},
 was put to use as soon as five days later.
+\vicki{Would be good to clarify why they can't just vote remotely.}
 The hope behind the resolution was to allow members of the House of Representatives
 to vote remotely, in order to prevent the spread of COVID-19~\cite{Congress.gov2020}.
 However, the question remains as to what degree proxy voting affects the results of
@@ -59,6 +60,8 @@ For example, we assume a voter would rather choose a proxy for a specific topic 
 closely aligns with their opinion on that topic but has a different party affiliation
 rather than choose a proxy who has the same party affiliation but a different opinion.
 
+\vicki{I wonder how reasonable this assumption is.  It isn't likely they would pick someone of a different party.}
+
 As part of this study, we employ a model developed by \etal{Cohensius} in
 their 2017 article~\cite{Cohensius2017}.
 This model places voters' preferences, which for our purposes are the congress
@@ -71,6 +74,7 @@ opinions, since it is unlikely that voters' opinions are perfectly binary.
 For example, it is likely that some members are very passionate for the
 use of proxy voting in the House, while others are passionately against it, and yet
 others remain ambivalent or less-passionately for or against.
+\vicki{ Better to pick another topic as feeling passionate about proxy voting in the discussion of proxy voting adds unnecessary confusion.}
 This works perfectly with the metric space model, as it allows for the passionate
 opinions to be at opposite extremes of the metric space, while the less-passionate
 opinions are closer to the center.
@@ -106,12 +110,14 @@ opinions are closer to the center.
 
 This model also naturally extends to two- or higher-dimensional spaces, such as
 the opinions of a congress member on multiple topics.
+\vicki{I would think it is better explained as multi-faceted topics.  For example, in seeking a solution to migration how do they feel about border restrictions, finding root causes of migration, economic impact.}
 However, as previously mentioned, we will only consider the idealistic
 situation where a congress member can choose their proxy for each topic individually.
 The model also allows for votes on topics that are not binary, such as setting the
 budget for the year:
 instead of simply voting yes or no on some pre-chosen budget, the output of the system
 can serve as the budget.
+\vicki{For budget, any amount would be possible, but for other topics a complete range wouldn't be possible.  If you are voting on term limits, it really is a  yes/no decision.}
 
 % Explain what Cohensius did
 %   - Strategic participation
@@ -152,7 +158,7 @@ since this will allow for more precise measurements in change.
 from themselves to another agent, known as a \textit{proxy}.
 This adds to the voting power of the proxy, which is called its `weight.'
 By delegating a proxy, the transferring agent loses their ability to directly affect the
-voting game, instead allowing the proxy to affect it on their behalf.
+voting, instead allowing the proxy to affect it on their behalf.
 In other words, the transferring agent does not vote in an election or other types of
 voting games, but rather affects the election vicariously through the proxy to which
 they transferred their power.
@@ -166,7 +172,9 @@ required of them by choosing a proxy to perform the work of voting for them.
 Naturally, this is extremely useful when the cost of voting is high, such as
 when remaining educated on a topic is difficult or
 time-consuming~\cite{Mueller1972}, uncomfortable work such as standing in
-long queues is required, or other frustrating or costly obstacles must be overcome.
+long queues is required, or other frustrating or costly obstacles must be overcome
+\vicki{In the house, we aren't trying to save them work in becoming knowledgeable.
+I don't think they would like that connotation.  "I was too lazy to become informed so I gave my proxy to XXX."  Emphasize legimate reasons for needing a proxy:  illness, attend conference, spend time with sick relatives }
 For our purposes it is likely undesirable that the agents, being members of Congress,
 do not pay the cost of remaining educated, but proxy voting can still be beneficial
 to the agents because it would allow them to prevent the spread of disease or avoid
@@ -190,6 +198,7 @@ Naturally, in terms of system accuracy the ideal situation is when all voters
 participate.
 However, system welfare can be enhanced on an individual level by allowing agents
 who want to be inactive to become inactive.
+\vicki{be clear you are talking about proxy voting.  Abstaining is another way of being inactive.}
 When operating under the Congress resolution, system welfare can also be enhanced
 through proxy voting by allowing ill members to quarantine and ensure the health
 of other agents.
@@ -228,6 +237,8 @@ congress member to remain informed on all topics.
 While the current resolution allows vote by proxy only for emergencies, it is
 possible the resolution could be expanded to exploit this idea.
 
+\vicki{This is a valid reason for proxy voting, but it isn't the reasons we are talking about here.}
+
 However, proxy voting is not without its flaws.
 \etal{Kling} investigated a weakness in liquid democracy dubbed `super voters'
 ~\cite[para.~1.3]{Kling2015}, which are proxies that receive an extremely large
@@ -251,6 +262,7 @@ instead strategically delegate their vote to $\agent_1$, the result would
 be $\systemtruth = 0.2$, which is closer to the actual system preference.
 However, without knowing to whom the other agents are delegating their vote, or even
 if they will, $\agent_5$ has no reason to be strategic.
+\vicki{Strategic voting always requires information.  a5 could very well know how likely it was for others to select a proxy and could know their opinion.}
 
 \begin{figure}[htbp]
     \centering
