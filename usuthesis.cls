@@ -564,6 +564,7 @@
         \ \\  % empty line to create required triple space
         Major Professor: {\Zmajorprof}\\
         Department: {\Zdepartmentname}\\
+        \vspace{\baselineskip}
     \end{singlespace}
     \begin{doublespace}
 }
