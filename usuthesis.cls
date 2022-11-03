@@ -573,7 +573,7 @@
     \end{doublespace}
     % place page count at the end of the abstract
     \par \bigskip
-    \hfill (\ref{totalpageno} pages)
+    \hfill (\ref*{totalpageno} pages)
 }
 %}}}
 
