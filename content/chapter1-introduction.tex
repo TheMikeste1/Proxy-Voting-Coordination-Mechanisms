@@ -267,12 +267,10 @@ $\agent_4$ as their proxy, making them a super voter, the result would be
 $\systemtruth = 0.6$.
 This is visualized in \autoref{fig:voting-example}.
 This is an absolute error of 0.42, or 21\% of the entire preference space!
-While $\agent_4$ would certainly be the preferred proxy, if $\agent_5$ were to
-instead strategically delegate their vote to $\agent_1$, the result would
-be $\systemtruth = 0.2$, which is closer to the actual system preference.
-However, without knowing to whom the other agents are delegating their vote, or even
-if they will, $\agent_5$ has no reason to be strategic.
-\vicki{Strategic voting always requires information.  a5 could very well know how likely it was for others to select a proxy and could know their opinion.}
+Ideally the output of a system employing proxy voting would be much closer to the
+actual preference of the system.
+The amount of error produced by a proxy vote system, as well as which voting
+mechanisms minimize this error, is precisely what this paper will explore.
 
 \begin{figure}[htbp]
     \centering
@@ -323,9 +321,9 @@ if they will, $\agent_5$ has no reason to be strategic.
 
 \section{Contribution}\label{sec:contribution}
 This study aims to explore the use of proxy voting for Congress.
-We examine how much of an effect proxy voting has on the outcome of a vote under a
-number of distributions of opinions, as well as with various numbers of inactive
-agents.
+We examine how much of an effect in terms of error proxy voting has on the outcome
+of a vote under a number of distributions of opinions, as well as with various
+numbers of inactive agents.
 Additionally, this paper experiments with using different voting mechanisms in order
 to determine if these proxy votes should be handled differently from normal voting.
 Finally, this paper will watch for the prevalence of super voters and attempt to
