@@ -419,7 +419,7 @@
     \chapter*{ \begin{center} \textnormal{LIST OF TABLES}  \end{center}}
     \addcontentsline{toc}{chapter}{\textnormal{LIST OF TABLES}}
     \addvspace{10pt}
-    \typeout{!! List of Tables...!!}
+    \typeout{List of Tables...!!}
     \noindent
     Table \hfill Page\\         % newline allows us to use a vspace...
     % vspace adjusts spacing to get a doublespace between table headings
@@ -440,7 +440,7 @@
     \chapter*{\begin{center} \textnormal{LIST OF FIGURES} \end{center}}
     \addcontentsline{toc}{chapter}{\textnormal{LIST OF FIGURES}}
     \addvspace{10pt} 
-    \typeout{!! List of Figures...!!}
+    \typeout{List of Figures...!!}
     \noindent
     Figure \hfill Page\\         % newline allows us to use a vspace...
     % vspace adjusts spacing to get a doublespace between table headings
@@ -460,7 +460,7 @@
     \chapter*{\begin{center} \textnormal{LIST OF ALGORITHMS} \end{center}}
     \addcontentsline{toc}{chapter}{\textnormal{LIST OF ALGORITHMS}}
     \addvspace{10pt} 
-    \typeout{!! List of Algorithms...!!}
+    \typeout{List of Algorithms...!!}
     \noindent
     Algorithm \hfill Page\\         % newline allows us to use a vspace...
     % vspace adjusts spacing to get a doublespace between table headings
