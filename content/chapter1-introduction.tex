@@ -36,6 +36,7 @@ proxy voting in the House altogether.
 In either case, it is important to understand the effects of proxy voting so it can
 be utilized in the most effective way possible.
 
+
 \section{Assumptions and Preliminaries}\label{sec:assumptions-and-preliminaries}
 In order to conduct this study, we make a number of assumptions.
 First, we assume that each voter is able to choose their proxy per-topic.
@@ -90,28 +91,7 @@ opinions are closer to the center.
 
 \begin{figure}[htbp]
     \centering
-    % Built using:
-    % https://tex.stackexchange.com/a/148253/277236
-    % https://tex.stackexchange.com/a/380491/277236
-    \begin{tikzpicture}[scale=1.45]
-        \draw(0,0) -- (10,0) ; % Axis
-        \foreach \x in  {0, 10} % Vertical higher lines
-        \draw[shift={(\x,0)},color=black] (0pt,5pt) -- (0pt,0pt);
-        \foreach \x in {0, 5, 10} % Numbers and lower lines
-        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-5pt) node[below]{$\x$};
-
-        % Labeled points
-        \tkzDefPoint((-4/7 + 1) * 5, 0){agentA}
-        \tkzDefPoint((3/4 + 1) * 5, 0){agentB}
-        \tkzDefPoint((1/12 + 1) * 5, 0){agentC}
-        \tkzLabelPoint[above](agentA){$\truthof{a}$}
-        \tkzLabelPoint[above](agentB){$\truthof{b}$}
-        \tkzLabelPoint[above](agentC){$\truthof{c}$}
-
-        \foreach \n in {agentA, agentB, agentC}
-        \node at (\n)[circle,fill,inner sep=1.75pt]{};
-    \end{tikzpicture}
-
+    \input{content/figures/system-metric-space.tikz}
     \caption{Example of a 1D preference metric space, where \truthof{x} represents the
     preference of agent $x$.}
     \label{fig:system-metric-space}
@@ -294,41 +274,7 @@ mechanisms minimize this error, is precisely what this paper will explore.
 
 \begin{figure}[htbp]
     \centering
-    % Built using:
-    % https://tex.stackexchange.com/a/148253/277236
-    % https://tex.stackexchange.com/a/380491/277236
-    \begin{tikzpicture}[scale=7.0]
-        \draw(-1,0) -- (1,0) ; % Axis
-        \foreach \x in {-1, 0, 1} % Numbers and lower lines
-        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-2pt) node[below]{$\x$};
-
-        % Labeled points
-        \tkzDefPoint(-1, 0){agent1}
-        \tkzDefPoint(0.25, 0){agent2}
-        \tkzDefPoint(0.5, 0){agent3}
-        \tkzDefPoint(1, 0){agent4}
-        \tkzDefPoint(0.15, 0){agent5}
-        \tkzLabelPoint[above](agent1){$\truthof{\agent_1}$}
-        \tkzLabelPoint[below](agent2){$\truthof{\agent_2}$}
-        \tkzLabelPoint[above](agent3){$\truthof{\agent_3}$}
-        \tkzLabelPoint[above](agent4){$\truthof{\agent_4}$}
-        \tkzLabelPoint[above](agent5){$\truthof{\agent_5}$}
-
-        \foreach \n in {agent1, agent2, agent3, agent4, agent5}
-        \node at (\n)[circle,fill,inner sep=1.75pt]{};
-
-
-        % Actual preference
-        \draw[color=blue, line width=0.5mm, dotted]
-        (0.18, 0pt) -- (0.18, -3pt);
-        \node[color=blue] at (0.18,-4pt) {$\systemtruth_{actual}$};
-
-        % Preference under proxy vote
-        \draw[color=orange, line width=0.5mm, dotted]
-        (0.6, 0pt) -- (0.6, -3pt);
-        \node[color=orange] at (0.6,-4pt) {$\systemtruth_{proxy}$};
-    \end{tikzpicture}
-
+    \input{content/figures/voting-example.tikz}
     \caption{
         An example vote and its results.
         $\textcolor{blue}{\systemtruth_{actual}}$ is the result when everyone votes,
