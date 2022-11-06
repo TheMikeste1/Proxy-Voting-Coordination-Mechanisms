@@ -158,12 +158,23 @@ the model, since observing the continuous output allows for more granularity in 
 differences between proxy and non-proxy voting, as well as in the differences between
 voting rules.
 
-This paper will explore how proxy voting affects the vote and under what
-circumstances it can be used by the House without changing the result.
-This will be determined by measuring by how much the system output changes when using
-proxy voting from all members voting and only present members voting.
-This will be done using continuous outputs instead of binary `yea' or `nay' votes,
-since this will allow for more precise measurements in change.
+\section{Proposed Work}\label{sec:contribution}
+% \section{Contribution}\label{sec:contribution}
+This study aims to explore the use of proxy voting in the House of Representatives.
+We examine how much of an effect in terms of error proxy voting has on the outcome
+of a vote under a number of distributions of opinions, as well as with various
+numbers of inactive agents.
+Additionally, this paper experiments with using different voting mechanisms in order
+to determine if these proxy votes should be handled differently from normal voting.
+Finally, this paper will watch for the prevalence of super voters and attempt to
+assess any effect, beneficial or harmful, they have on the system.
+
+The error of a proxy vote will be calculated by measuring by how much the system output
+changes when using proxy voting instead of having all members voting and only present
+members voting.
+This will be done using continuous outputs instead of discrete or binary `yea' or
+`nay' votes, since this will allow for more precise measurements in differences
+between proxy and non-proxy voting.
 
 
 \section{Background}\label{sec:background}
@@ -326,17 +337,6 @@ mechanisms minimize this error, is precisely what this paper will explore.
     \label{fig:voting-example}
 \end{figure}
 
-
-\section{Proposed Work}\label{sec:contribution}
-% \section{Contribution}\label{sec:contribution}
-This study aims to explore the use of proxy voting in the House of Representatives.
-We examine how much of an effect in terms of error proxy voting has on the outcome
-of a vote under a number of distributions of opinions, as well as with various
-numbers of inactive agents.
-Additionally, this paper experiments with using different voting mechanisms in order
-to determine if these proxy votes should be handled differently from normal voting.
-Finally, this paper will watch for the prevalence of super voters and attempt to
-assess any effect, beneficial or harmful, they have on the system.
 
 % TODO: Fill out synopsis of what is learned after the data is analysed
 % This paper will show that, while proxy vote systems are not a perfect tool to
