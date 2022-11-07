@@ -1,0 +1,25 @@
+%! suppress = NonBreakingSpace
+\NeedsTeXFormat{LaTeX2e}  % Not sure if this is correct
+\ProvidesPackage{util}[Contains my utility commands]
+
+\DeclareOption*{\PackageWarning{util}{Unknown ‘\CurrentOption’}}
+\ProcessOptions\relax
+
+\RequirePackage{hyperref} % Creates hyperlinks within document
+
+\DeclareMathOperator*{\argmax}{\arg\max}
+\DeclareMathOperator*{\argmin}{\arg\min}
+
+\newcommand*{\etal}[1]{#1~et~al.\@}
+
+% Source: https://tex.stackexchange.com/a/121871/277236
+%! suppress = CommandAlreadyDefined
+%! suppress = UnresolvedReference
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\autoref*{#1}~\nameref*{#1}}}
+
+% Source: https://tex.stackexchange.com/a/100930
+\newcommand*{\getcurrentindex}{\number\numexpr\value{enumi}\relax}
+
+\newcommand*{\mechanismheader}[1]{\paragraph{\textbf{\textit{#1}}}}
+
+\newcommand*{\titleditem}[1]{\item\textbf{#1:}\\}

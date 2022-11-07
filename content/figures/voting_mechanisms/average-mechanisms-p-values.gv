@@ -1,0 +1,12 @@
+digraph "average-mechanisms-p-values" {
+	InstantRunoffAverage
+	Mean
+	RankedChoice
+	WeightedInstantRunoffAverage
+	InstantRunoffAverage -> WeightedInstantRunoffAverage [label=" 8.03e-32"]
+	Mean -> InstantRunoffAverage [label=" 0.00"]
+	Mean -> WeightedInstantRunoffAverage [label=" 0.00"]
+	RankedChoice -> InstantRunoffAverage [label=" 0.00"]
+	RankedChoice -> Mean [label=" 8.61e-13"]
+	RankedChoice -> WeightedInstantRunoffAverage [label=" 0.00"]
+}

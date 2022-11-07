@@ -1,0 +1,52 @@
+%
+% Contains notations used in this paper.
+% Mostly used because I hate having to search throughout a paper to figure
+% out what a symbol means in a math equation.
+%
+%! suppress = EscapeAmpersand
+\newcommand{\notationheader}[1]{\multicolumn{2}{l}{\textbf{#1}}\\}
+\newcommand{\notationdesc}[2]{#1 & #2\\}
+
+% TODO: Rephrase descriptions
+
+\begin{notation}
+\setlength{\tabcolsep}{3mm}{
+    \begin{tabular}{ll}
+        \notationheader{Variables and Functions}
+
+        \notationdesc{\agent}{An individual agent}
+        \notationdesc{\agentcost}{The cost of using an individual agent}
+        \notationdesc{\agents}{The set of all agents}
+        \notationdesc{\agenttruth}{The truth as estimated by an agent}
+        \notationdesc{\agentweight}{The weight of an agent}
+        \notationdesc{\cost}{Cost}
+        \notationdesc{\loss}{Loss}
+        \notationdesc{\mean}{Mean/Average}
+        \notationdesc{\proxies}{The set of all proxies}
+        \notationdesc{\real}{The set of all real numbers}
+        \notationdesc{\stddeviation}{Standard deviation}
+        \notationdesc{\system}{A system}
+        \notationdesc{\systemagents}{The agents of a system}
+        \notationdesc{\systemcost}{The cost of a system}
+        \notationdesc{\systemloss}{The loss of a system}
+        \notationdesc{\systemspace}{The space within a system operates}
+        \notationdesc{\systemtruth}{The truth as estimated by a system}
+        \notationdesc{\systemweight}{The total weight of a system}
+        \notationdesc{\truth}{Truth}
+        \notationdesc{\weight}{Weight}
+
+
+        \notationheader{Distributions}
+        \notationdesc{\uniformdist}{Uniform on the interval $[a, b]$}
+        \notationdesc{\gaussiandist}{Normal (Gaussian) with $\text{mean} = \mean$
+            and $\text{std. deviation} = \stddeviation$}
+        \notationdesc{\betadist}{Beta distribution}
+    \end{tabular}
+}
+
+% The table as defined above will fill one page. If you need more room to list
+% notation you will need to create a second table, and place it below this 
+% comment. This new table will appear one a new page.
+
+\end{notation}
+

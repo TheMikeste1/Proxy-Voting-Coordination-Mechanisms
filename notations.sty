@@ -1,0 +1,58 @@
+\NeedsTeXFormat{LaTeX2e}  % Not sure if this is correct
+\ProvidesPackage{notations}[Contains my notations. This makes it easier to
+type them, reducing mistakes and making it easier to change them.]
+
+\DeclareOption*{\PackageWarning{notations}{Unknown ‘\CurrentOption’}}
+\ProcessOptions\relax
+
+\RequirePackage{amsmath}  % For math fonts
+
+% Private utils
+%% Used to simplify making new commands
+\newcommand{\@newnotation}{\@ifstar{\@newnotationstar}{\@newnotationnostar}}
+\newcommand{\@newnotationnostar}[2]{\newcommand{#1}{\ensuremath{#2}}}
+\newcommand*{\@newnotationstar}[2]{\newcommand*{#1}{\ensuremath{#2}}}
+
+%% Used to raise chi, since it annoys me that it's lower
+% Modified from https://tex.stackexchange.com/a/103898/277236
+\newcommand{\@innerraisedchi}[2]{\raisebox{\depth}{$#1\chi$}}
+\DeclareRobustCommand{\@raisedchi}{{\mathpalette\@innerraisedchi\relax}}
+
+% Solo symbols
+\@newnotation*{\agent}{a}
+\@newnotation*{\agents}{\mathbb{A}}
+\@newnotation*{\cost}{\mathbb{C}}
+\@newnotation*{\loss}{\mathbb{L}}
+\@newnotation*{\mean}{\mu}
+\@newnotation*{\proxies}{\mathbb{P}}
+\@newnotation*{\real}{\mathbb{R}}
+\@newnotation*{\stddeviation}{\sigma}
+\@newnotation*{\system}{\mathbb{S}}
+\@newnotation*{\systemspace}{\@raisedchi}
+\@newnotation*{\truth}{\top}
+\@newnotation*{\weight}{w}
+
+% Combinations
+\@newnotation*{\agentcost}{\costof{\agent}}
+\@newnotation*{\agenttruth}{\truthof{\agent}}
+\@newnotation*{\agentweight}{\weightof{\agent}}
+\@newnotation*{\systemagents}{\system_\agents}
+\@newnotation*{\systemcost}{\costof{\system}}
+\@newnotation*{\systemloss}{\lossof{\system}}
+\@newnotation*{\systemproxies}{\system_\proxies}
+\@newnotation*{\systemtruth}{\truthof{\system}}
+\@newnotation*{\systemweight}{\weightof{\system}}
+
+% Templates
+\newcommand*{\betadistribution}[2]{\ensuremath{\mathcal{B}{\left(#1, #2\right)}}}
+\newcommand*{\costof}[1]{\ensuremath{\cost{\left(#1\right)}}}
+\newcommand*{\gaussian}[2]{\ensuremath{\mathcal{N}{\left(#1, #2\right)}}}
+\newcommand*{\lossof}[1]{\ensuremath{\loss{\left(#1\right)}}}
+\newcommand*{\truthof}[1]{\ensuremath{\truth{\left(#1\right)}}}
+\newcommand*{\uniform}[2]{\ensuremath{\mathcal{U}_{[#1, #2]}}}
+\newcommand*{\weightof}[1]{\ensuremath{\weight{\left(#1\right)}}}
+
+% Distributions
+\@newnotation*{\betadist}{\betadistribution{\alpha}{\beta}}
+\@newnotation*{\gaussiandist}{\gaussian{\mean}{\stddeviation}}
+\@newnotation*{\uniformdist}{\uniform{a}{b}}

@@ -1,0 +1,646 @@
+%
+%  This document contains chapter 2 of the thesis.
+%
+
+\chapter{EXPERIMENT DESIGN}\label{ch:experiment-design}
+In order to identify the ability of proxy voting to serve as a correctional
+method, a number of experiments have been devised.
+The primary goal of these analyses is to identify the strengths and
+weaknesses of the proxy voting system under certain conditions and attempt to minimize
+the costs while still ensuring accurate measurements.
+
+
+\section{Preliminaries}\label{sec:preliminaries}
+This section will provide a brief overview of the proxy voting system, as well how it
+works.
+
+\vicki{My first impression is that what you are trying to do likely goes my many
+different names. I don't think you can assume that proxy voting is how everyone will
+approach this. Thus,  you would need to compare your method with what others have
+done to solve the same problem.}
+
+\subsection{System Design and Agent Space}
+\label{subsec:system-design-and-agent-space}
+Each system \system\ will output some estimation \systemtruth\ of the truth
+\truth.
+While in the real world one would likely not know the true value of \truth, during the
+analyses the value of \truth\ will be known so error can be properly calculated.
+The system will produce \systemtruth\ by allowing the set of agents belonging to
+\system, known as \systemagents, to attempt to observe \truth\ and provide their own
+estimation \agenttruth, where \agent\ is an individual agent.
+Keeping in mind that the system's agents are measurement techniques, an agent
+attempting to observe \truth\ is the act of performing a measurement.
+These estimations will then be coalesced into \systemtruth\ using
+the system's \hyperref[subsec:voting-mechanisms]{voting mechanism}.
+An agent need not provide the same \agenttruth\ for the same \truth\ since taking
+measurement twice will likely not yield the exact same result due to error in taking
+the measurement, and so by extension \systemtruth\ may not be the same each time a
+system tries to estimate \truth.
+% \vicki{so is there a single item we are trying to learn about? Does truth change over
+% time?}
+\com{This is interesting. How doesn't this impact your conclusions?}
+
+All agents will operate within a defined space~\systemspace, where
+$\systemspace \subseteq \real^k$ and $k \geq 1$ dimensions, as described
+by~\cite[para.~2.1]{Cohensius2017}.
+Specifically, this paper will focus on interval spaces of
+$\systemspace = [a, b]^1$.
+Spaces of $\systemspace = [a, b]^2$ or higher could also be used, but since
+measurements are typically performed one at a time in a singular dimension (one
+doesn't measure both the length and width with a single measurement--it takes
+two) and would ultimately only increase the complexity of the system, this
+exercise is left for further work.
+Using the space \systemspace\ allows each agent's preference, which for this
+paper's purposes represents \agenttruth, to be represented as a position within
+this space.
+This likewise means \systemtruth\ will be a position within \systemspace.
+
+Each system will additionally have a total system weight, denoted by
+\systemweight.
+This weight is the total amount of weight in the system, which is primarily
+determined by the \hyperref[subsec:weighting-mechanisms]{weighting mechanism} used.
+\systemweight\ can be described simply by the equation
+$\systemweight = \sum_{\agent \in \systemagents} \agentweight$, where \agentweight\
+is the weight provided by the individual agent.
+
+\subsection{Agent Types}\label{subsec:agent-types}
+This study explores the idea of using finite voters, as opposed to the
+infinite voters described in~\cite{Cohensius2017}.
+These voters' positions will be randomly selected using a probability distribution,
+which will vary from experiment to experiment.
+By design, there are two primary types of voters: expert and untrained.
+
+\textit{Expert voters} are agents that give a more accurate estimate of the
+true value.
+These voters are measurements with a tighter range, or lower extent, for estimated
+values or are chosen from a more accurate distribution (such as Gaussian about
+\truth), allowing them to be more certain in their estimation.
+These voters represent better, though likely more expensive, methods for
+taking a measurement.
+A real world example of this could be using a high-accuracy laser ruler to calculate
+the length of a board.
+% \vicki{How do we know an expert voter? Do they identify themselves?}
+
+\textit{Untrained voters}, on the other hand, are agents with a worse
+distribution or more extreme minimums and maximums.
+These are measurement techniques that have a greater degree of error, and while they
+might be correct about the true value, they are unable to be as certain about their
+estimations as the expert voters due to the possibility for error.
+Measurement methods represented by these voters are less accurate, though
+likely cheaper.
+Instead of a laser ruler, an example of this could be using a school ruler or
+estimating by placing an arm on the board.
+
+The type of agent is primarily determined by the other agents used.
+A school ruler would almost certainly be considered untrained compared to a laser ruler,
+but it could be considered expert when compared to `just eyeballing it.'
+A goal of this study is to determine how these types of
+agents interact and inform a potential system designer using the proposed system on
+how many expert voters and untrained voters they need to use.
+
+
+\section{Experiment Criteria and Parameters}
+\label{sec:experiment-criteria-and-parameters}
+Both untrained and expert voters have the same goal: to enhance the accuracy of
+the system.
+They will work in tandem in order to accomplish this goal.
+There are two immediately identifiable ways to use both types of voters which
+will be explored in this paper.
+First, the experts can be used as proxies and the untrained as inactive voters.
+This exploits the idea discussed in~\cite{Miller1969, Mueller1972} of
+allowing experts to guide the system.
+The untrained voters will then reinforce the estimates provided by the experts by
+helping to identify the experts that appeal the most to the untrained agents.
+On an individual level, each untrained agent will create a ranking for the
+experts/proxies determined by how much the proxy's preference differs from the
+untrained agent.
+It will then apply weights to each proxy using the system-assigned weighting mechanism
+according to the proxy's rank.
+This approach could be compared to getting a list of the best restaurants from food
+critics, then asking friends and family which restaurant they like the most from
+that list.
+% \vicki{I'm not seeing how they are pulling information from the other agents.}
+
+The second obvious way to employ these agents is using the untrained voters
+as the proxies and allowing the experts to transfer their voting power to them.
+This is the direct inverse of the previous setup.
+This strategy is based on the intuition that since untrained voters are likely
+cheaper and so can be more numerous, they have a better chance of being closer
+to the true value due to the law of large numbers.
+The experts would then bring \systemtruth\ closer to \truth\ by allocating more
+weight to the untrained agents that are closest to \truth.
+Assuming the expert preferences are actually more likely to be closer to \truth,
+this strategy should work even if the majority of untrained voters are biased away from
+\truth, since in such a scenario a large amount of weight would be placed on those
+untrained agents that are closest to \truth.
+Naturally, this technique would be most beneficial when untrained agents use a
+distribution with a decent likelihood of the true value being included, such
+as uniform.
+While this study does not plan to exploit the law of large numbers anywhere
+near its full potential, this setup may be beneficial where many measurements
+can be taken or when untrained agents are considerably less expensive than
+experts.
+Instead of going to food critics first, this could be compared to asking friends and
+family about their favorite restaurants, then seeing how the critics review those
+restaurants before choosing.
+
+Both approaches will be examined in this study.
+Fortunately, the process of how to create the setups is identical.
+The only difference is which type of agent serves as proxies.
+% \vicki{It isn't clear the setup. So the untrained voters have information that is
+% felt to be accurate (on average). How is this true if they are untrained? Can you
+% give me a specific example? Suppose I was trying to decide the best medication for
+% covid. My experts are medical professionals who have done studies. Are my untrained
+% voters ones who have had a small amount of experience, which may be helpful?
+% Is the proxy the voter who actually votes?}
+
+\subsection{Criteria}\label{subsec:criteria}
+A system is only as good as its ability to perform.
+In order to gauge the ability or `goodness' of proxy voting as a form of
+measurement correction, three primary criteria have been identified.
+
+The first and most important criteria is the accuracy of the system.
+If a system using proxy voting performs worse than simply averaging all votes
+it would have been better to skip the additional complexities of using
+proxies.
+Accuracy will be measured using squared~loss~\loss.
+Fortunately, since agents operate within \systemspace, calculating the
+squared loss for a system~\systemloss, is as simple as calculating the
+squared distance
+\begin{align}
+    \systemloss &= {
+        \left(\sqrt{
+            (\systemtruth_1 - \truth_1)^2 +
+            \mathellipsis +
+            (\systemtruth_k - \truth_k)^2
+        }\right)
+    }^2 \nonumber \\
+    &= (\systemtruth_1 - \truth_1)^2 +
+    \mathellipsis +
+    (\systemtruth_k - \truth_k)^2
+    \text{,}\label{eq:loss}
+\end{align}
+where $\systemtruth_k$ and $\truth_k$ are the $k$th
+dimension of the truth as estimated by the system and real truth respectively.
+% \vicki{So is $\systemtruth_k$ what the set estimates and $\truth_k$ the actual truth?}
+
+The next criteria used to judge systems is the cost of the system.
+The total cost of a system \systemcost\ is calculated as
+\begin{equation}
+    \systemcost =
+    \sum_{\agent \in \agents}{
+        \agentcost
+    }
+    \text{,}\label{eq:cost}
+\end{equation}
+where \agentcost\ is the cost of an agent.
+This cost is an arbitrary value of an arbitrary unit which accounts for time,
+monetary cost, or any other cost the measuring technique requires.
+While in reality there may be some fluctuation in cost for the same
+measurement, for simplicity this study considers all agents of the same type
+to have the same cost.
+The goal of system cost as a criteria is to determine if a less costly system
+could perform just as well, if not better than, one with a higher cost.
+
+\com{This may make more sense if we were using the expert voters periodically.
+So, they take a measurement and pick a proxy.
+Then they are idle for a while before taking another measurement a picking a proxy.
+This could save money and be a use for proxy voting.
+However, to be interesting, the accuracy of the proxies would have to vary over time.}
+
+% - Number of measurements?
+%   - Expert
+%   - Untrained
+% - Time (squared?)/Calculation complexity
+%   - Useful to know if humans could use it.
+
+\subsection{Parameters}\label{subsec:parameters}
+
+\subsubsection{System Parameters}\label{subsubsec:system-parameters}
+Each system will have a different set of parameters.
+First, each system will need a set of proxy voters.
+These proxies can be either experts or untrained, depending on which setup is
+being used.
+Similarly, each system will also need a set of inactive voters which can likewise
+be either experts or untrained.
+\com{Would be easier to follow if you described one system completely before talking
+about the other system.}
+
+Finally, each system will receive two mechanisms: a
+\hyperref[subsec:voting-mechanisms]{voting mechanism} and a
+\hyperref[subsec:weighting-mechanisms]{weighting mechanism}.
+The weighting mechanism will be used to apply weights to each proxy, and the
+voting mechanism will be used to condense all~\agenttruth\ to produce~\systemtruth.
+
+\subsubsection{Agent Parameters}\label{subsubsec:agent-parameters}
+Similar to systems, each type of agent will have a different set of parameters.
+There are two parameters which create the most distinction between agents: their
+extent and their distribution of error.
+% \vicki{So are you controlling the randomness of the vote?}
+
+The extent determines how far away from \truth\ the agent is able to vote.
+For example, an agent with an extent of 10 could vote anywhere in the
+interval $[\truth - 10, \truth + 10]$.
+In terms of measurements, this is like saying a measurement is accurate to within
+\textpm 10 centimeters.
+While the extent determines the general boundaries, some distributions allow
+numbers slightly outside these ranges.
+For these distributions, the percent of votes inside the extents are
+specified in \autoref{tab:distributions-percent-inside-extents}.
+These extents are not meant to be known \com{ can you just say they are not known ?}
+by the system, but are rather an
+estimation of the range of error about \truth\ a measurement in the real world
+might have.
+
+The distribution of error for an agent determines which distribution is used by the
+agent when attempting to measure \truth.
+A list and images of the distributions used in this study is found
+in~\autoref{sec:distributions-used}.
+These distributions, combined with the extent, have a large influence on the
+agent's ability to measure \truth.
+
+Finally, each agent has a cost \agentcost\ associated with it.
+This cost is an arbitrary unit used to represent the monetary cost, time
+required, and/or any other value required by the agent.
+The cost can be assigned or reassigned at any time before calculating the
+system cost since the system itself does not need to know the cost of the
+agents it is using to estimate~\truth.
+Whereas the cost of taking a measurement will vary wildly between applications, this
+study will focus on ratios between expert and untrained agents so a potential system
+designer able determine the cost they need to expend in order to maintain system
+accuracy.
+
+% - Dimensions?
+% - Seed
+%     - Metaparameter--allows reproduction of an iteration. Each iteration
+%       will have a unique seed.
+%     - Might be best to not discuss this in the paper.
+
+
+\section{Mechanisms}\label{sec:mechanisms}
+\textit{Mechanisms} are a group of strategies used to accomplish some goal.
+These are different from the mechanisms described by~\cite{Cohensius2017} in
+that they do not exclusively include voting rules.
+Instead, these have been relabeled to `voting mechanisms' and the definition
+of mechanisms has been expanded to also include rules used by agents to
+assign weights to proxies, which rules are named `weighting mechanisms.'
+
+\subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
+\textit{Voting mechanisms} are a concept borrowed from~\cite{Cohensius2017},
+\com{Coehnsius didn't invent the term. Give proper credit.}
+where they are simply labeled `mechanisms.'
+These are algorithms used to condense proxies and their weights, which are
+required to be positive, into \systemtruth.
+These algorithms can be broken down into two primary categories: candidate
+mechanisms and average mechanisms.
+
+\subsubsection{Candidate Mechanisms}\label{subsubsec:candidate-mechanisms}
+\textit{Candidate mechanisms} are mechanisms that select a proxy to serve as
+\systemtruth.  \com{Select a single proxy?}
+This study experiments with a number of candidate mechanisms, which are
+described below.
+In all cases, some proxy is selected and its preference is used as \systemtruth.
+
+\mechanismheader{Median}\label{para:median}
+The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
+\com{Briefly explain the median mechanism.}
+This study differs from their study by using a finite number of voters instead of
+infinite,
+% \vicki{You haven't defined an infinite voter. Do you mean an infinite number of
+% voters?}
+as well as applying new weighting mechanisms that will likely yield
+different results.
+The formula for the median mechanism is the same as the one used
+in~\cite[para.~2.4]{Cohensius2017}, which was described as (with some
+symbolic changes)
+\begin{equation*}
+    \textbf{md}(\systemproxies) =
+    \min\left\{\agent_i \in \systemproxies \text{ s.t. }
+    |\{j: \agent_i \geq \agent_j\}| \geq
+    |\{j: \agent_i < \agent_j\}|
+    \right\}
+    \text{,}
+\end{equation*}
+meaning the mechanism selects the minimum agent that has an equal or greater
+number of agents below it as it has above it in terms of \agenttruth.  \com{this
+definition doesn't work with a non-linear space (which you used easier.}
+
+For weighted scenarios, the median agent will be the minimum agent whose sum of
+weights below plus itself is greater than or equal to $\frac{\systemweight}{2}$,
+as described with
+\begin{equation}
+    \textbf{md}(\systemagents) = \min\left\{
+    \agent_i \in \systemproxies \text{ s.t. }
+    \weightof{\agent_i} +
+    \sum_{\agent_j \in \systemproxies}^{\agent_{i - 1}} \weightof{\agent_j}
+    \geq \frac{\systemweight}{2}
+    \right\}
+    \text{,}\label{eq:median-mechanism}
+\end{equation}
+where \systemproxies\ is ordered by \agenttruth.
+
+\mechanismheader{Plurality}\label{para:plurality}
+% \vicki{Are you using proxy to mean the voter selected or the results of their vote?}
+The plurality mechanism simply selects the proxy with the highest weight, which is
+described by
+\begin{equation}
+    \textbf{pl}(\systemproxies) =
+    \argmax \weightof{\systemproxies}
+    \text{.}\label{eq:plurality-mechanism}
+\end{equation}
+This proxy's preference then becomes \systemtruth.
+
+While a seemingly simple mechanism, plurality combined with some
+weighting mechanisms allows for other common voting systems.
+For example, plurality used with \hyperref[para:borda]{Borda weighting}
+provides the Borda count system.  \com{Need to briefly describe Borda. Not everyone
+will know what that is. You may want to move some of the basic definitions to the
+previous work section.}
+
+\mechanismheader{Instant Runoff}\label{para:cand-instant-runoff}
+The instant runoff mechanism does not use agent-assigned weights, but rather
+ranks each proxy on behalf of the agents according to distance \com{from their
+preferred choice}.
+Once all proxies are ranked, each proxy receives a score according to how
+many first place votes they receive.
+The proxy with the lowest number of votes is eliminated, and its votes are
+redistributed to the next closest for each affected agent.
+This continues until some proxy has the majority ($>$50\%) of votes, at which
+time that proxy is selected as \systemtruth.  \com{How interesting is instant runoff
+when the votes are on a linear scale? For example, single peaked preference makes
+lots of things easier. We just pick the median. How far away you are doesn't matter.}
+
+\mechanismheader{Weighted Instant Runoff}\label{para:cand-weighted-instant-runoff}
+\label{para:candidate-weighted-instant-runoff}
+The weighted instant runoff mechanism works the same as instant runoff, but uses
+the weights provided by each agent instead of ranking them by distance.
+Whenever a proxy is eliminated, its weight will be redistributed according to
+the ranking specified by the affected agents.
+Once some proxy has the majority ($>$50\%) of weights, it is selected as
+\systemtruth.
+
+\subsubsection{Average Mechanisms}\label{subsubsec:average-mechanisms}
+\textit{Average mechanisms} are mechanisms that produce a \systemtruth\ that
+is not necessarily the position of any one agent, though it may be.
+They work by averaging the positions of multiple proxies to some degree.
+\com{Average seems like a bad name as average and mean are typically the same thing.
+Come up with a more inclusive term.}
+
+\mechanismheader{Mean}\label{para:mean}
+The mean mechanism is another mechanism originally used in
+~\cite{Cohensius2017}.
+It is reemployed here to make use of the additional weighting mechanisms and
+finite voters.
+The formula for the mean mechanism is
+\begin{equation*}
+    \mathbf{mn}(\systemproxies) =
+    \frac{1}{\systemweight}
+    \sum_{\agent_i \in \systemproxies} {\weightof{\agent_i} \cdot \agent_i}
+    \text{,}\label{eq:mean-mechanism}
+\end{equation*}
+meaning the sum of each proxy multiplied by its weight divided by
+\systemweight, where \systemweight\ is the total system weight.
+This mechanism is the core of the average mechanisms, and is used as a final
+step in most other average mechanisms.
+
+\mechanismheader{Weight by Ranked Choice}\label{para:avg-ranked-choice}
+% \vicki{Again, I don't think I understand the setup. If I'm untrained, why do I even
+% have an opinion that matters?}
+Each proxy is ranked by each inactive agent according to how close their preference
+is in \systemspace\ to the inactive agent's preference.
+The number of times each proxy is ranked first is counted, and the proxy with
+the fewest votes is removed from the ranking process and given a weight of 1.
+The process continues from $1 \mathellipsis n$, where $n$ is the number of
+proxies, at which point the mean mechanism is applied using the scores as
+weights.
+This results in the lowest-ranked proxy having a weight of 1, and the
+highest-ranked proxy receiving a weight of $n$.
+% \vicki{So your voting space is ordered? An unordered space would be like candidates
+% for president. There is no univesal ordering of most left, median, most right. But,
+% if we were voting on how much tuition to charge, it is completely orderded by cost.}
+
+\mechanismheader{Weight by Instant Runoff}\label{para:avg-instant-runoff}
+The weight by instant runoff mechanism is similar to the
+\hyperref[para:cand-instant-runoff]{candidate version} of instant
+runoff, but instead of selecting the majority proxy, the remaining votes for
+each proxy are used as the weights for the mean mechanism.
+
+\mechanismheader{Averaged Weighted Instant Runoff}
+\label{para:avg-weighted-instant-runoff}
+This mechanism is the same as
+\hyperref[para:candidate-weighted-instant-runoff]{weighted instant runoff},
+except instead of selecting the majority proxy as \systemtruth, the remaining votes
+are used as the weights for the mean mechanism.
+Essentially, this is
+\hyperref[para:avg-instant-runoff]{weight by instant runoff}, but the weights
+applied by the inactive agents are used instead of ranking each proxy.
+
+\subsection{Weighting Mechanisms}\label{subsec:weighting-mechanisms}
+Weighting mechanisms are strategies by which inactive agents assign weights
+to proxies.
+All final weights are required to be positive in order to simplify
+calculating \systemtruth\ through the voting mechanisms.
+
+In a sense, inactive agents are electing the proxies they think have the best
+preference, and so this step can be seen as a mini-election to determine the best
+proxies.
+In every case, inactive voters will rank proxies by how far away the proxy's
+preference is to their own.
+The closer the preference is to an inactive voter's, the better its ranking.
+
+\mechanismheader{Vote for Closest}\label{para:closest}
+The vote for closest weighting mechanism is the simplest weighting mechanism.
+It is an adaptation of the infinite mechanism used in~\cite{Cohensius2017},
+where instead of each proxy being assigned the weight of the boundaries
+between proxies, each inactive voter simply votes for the proxy closest to
+itself.
+This is equivalent to assigning a weight of 1 to the closet proxy, and giving
+the rest 0.
+
+\mechanismheader{Distance Voting}\label{para:distance-voting}
+This mechanism uses the distance between the proxies and an agent as the weight.
+Once an agent has calculated all the distance for all proxies,
+each weight needs to be adjusted so the closest has the highest weight using
+the formula
+\begin{equation}
+    g_\agent{(\proxies)} = \lvert
+    \max{\weight_{\agent}{(\systemproxies)}} - \weight_{\agent}{(\proxies)}
+    \rvert
+    \text{,}\label{eq:distance-voting-adjustment}
+\end{equation}
+which results in the highest distance proxy's weight being equal to 0 and the
+closest proxy's weight equal to the distance between the minimum and the
+maximum weight.
+
+\mechanismheader{Borda}\label{para:borda}
+The Borda mechanism allows each inactive voter to weight each proxy.
+Each proxy is rated some value in $[1 \mathellipsis n]$, with the closest
+given $n$ and the furthest $1$.
+These values are used as the weights for whichever voting mechanism is used.
+This should result in something similar to distance voting, but with a set
+range of scores.
+
+\mechanismheader{Equal Weight}\label{para:equal-weight}
+The Equal Weight mechanism gives the same weight to each proxy.
+Since any value greater than 0 should result in the same output, the value used here
+will be 1.
+While each proxy will receive the same weight, the proxies will still be ordered by
+preference.
+This will allow the voting mechanisms to still produce some output without being
+influenced by weights.
+The primary purpose of this mechanism is to determine if weights are actually
+important, or if all that is required is the ordering.
+\com{I don't understand this one. Are we saying that it doesn't matter how many
+inactive voters like a proxy? This doesn't seem reasonable.}
+
+
+\section{Experiment Design}\label{sec:experiment-design}
+The experiments will be performed in two phases.
+First, all data will be collected.
+This is done primarily to make all desired data available during the analysis
+process.
+
+Afterwards, the data will be analysed in an attempt to identify any patterns,
+strengths, or weaknesses the proxy voting system has as a measurement verification tool.
+While a seemingly simple phase, this is where the majority of the work in this study
+lies.
+Data will be graphed in multiple different ways, and tests will be run in an attempt to
+identify strengths and weaknesses of the proxy vote system, if there are any to uncover.
+
+Since this study is only concerned about the error of the system, what the value of the
+actual truth used should not matter.
+As such, in order to simplify various calculations the true value for each experiment
+will be 0.
+This simplifies selecting the positions of each voter without any meaningful
+differences, as well as making it trivial to calculate loss by changing the
+\hyperref[eq:loss]{loss formula} to
+\begin{align}
+    \systemloss &=
+    (\systemtruth_1 - 0)^2 +
+    \mathellipsis +
+    (\systemtruth_k - 0)^2
+    \nonumber \\
+    &=
+    (\systemtruth_1)^2 +
+    \mathellipsis +
+    (\systemtruth_k )^2
+    \text{.}\label{eq:adjusted-loss}
+\end{align}
+\com{Picking the truth to be 0 is undesirable as your voting system could be biased
+to lean towards 0 if in doubt. The computations aren't that much simpler - and the
+computer is doing them, so it is a non-issue. }
+
+
+Additionally, all extents can be set to 1, which can easily be scaled to any
+desired number simply by multiplying by that number.
+This is an approach similar to that taken by \etal{Cohensius} in~\cite{Cohensius2017},
+with the exception that the extents for the agents is known and that this paper's model
+allows the extents of the agents and the interval of \systemspace\ to be different.
+Using these extents also makes it much easier to determine where an agent
+can vote, since the interval will be $[-1, 1]$.
+Using extents of 1 should not make any meaningful differences to the final
+analysis in this study, which is primarily focussed on how different error
+distributions will affect the results.
+However, it should be noted that further work could be done using additional extents
+to more accurately reflect other types of measurements in the real world.
+% \vicki{ Forcing each voter to have the same extents seems to make the cases simpler
+% than they should be.}
+
+\subsection{Data Collection}\label{subsec:data-collection}
+% Steps
+In order to ensure consistency, each experiment will follow the same general
+steps:
+
+\begin{enumerate}[label=\textbf{\arabic*}., leftmargin=2\parindent]
+    \titleditem{Generate proxies}
+    Given the space \systemspace\ in which an experiment is to take place, the system
+    will take a number of measurements using the provided error distribution to serve
+    as proxies.
+    The number and distribution of these proxies will depend on the
+    parameters of the experiment.
+
+    \titleditem{Generate inactive voters}
+    The system will then generate a set of inactive voters in the same way.
+    Again, the number and distribution of these voters will depend on the
+    experiment's parameters and will often not be the same as the proxies'
+    parameters.
+    In particular, the distribution used will generally be different from those of
+    the proxies since the proxies serve as `experts' and so should be more accurate.
+    Inactive voters could also differ from proxies by using different extents.
+
+    \titleditem{Assign weights to proxies}
+    Using the assigned \hyperref[subsec:weighting-mechanisms]{weighting mechanism},
+    each inactive voter will apply weights to one or more proxies.
+    The system will sum these weights to get a total weight for each proxy.
+
+    \titleditem{Estimate truth}
+    Once all the weights have been calculated, the system will coalesce
+    the weights into an estimated value using the assigned
+    \hyperref[subsec:voting-mechanisms]{voting mechanism}.
+    This value is the system's estimation \systemtruth\ of the true value \truth.
+
+    \titleditem{Calculate error}
+    Finally, the error of the system can be calculated by using the true
+    value and the system's estimation of the truth.
+    This error can be used to determine how well the system worked and
+    ultimately determine if the proxy voting system is useful under the given
+    parameters.
+\end{enumerate}
+
+Each combination of parameters will be run a number of times in order to obtain
+a fair spread of error for that set of parameters.
+After each iteration, the combination of parameters will be recorded as well
+as the estimated truth, the error, and the rest of the
+\hyperref[subsec:criteria]{criteria}.
+Additional runs will be performed during the analysis phase, as deemed necessary.
+
+\subsection{Analysis}\label{subsec:analysis}
+Once all data is collected, analyses will be performed in order to answer a
+number of questions.
+\begin{enumerate}[label=\textbf{Q\arabic*}., leftmargin=2\parindent]
+    \item Which \hyperref[subsec:voting-mechanisms]{voting mechanism}
+    generally results in the lowest error?
+
+    \item Which \hyperref[subsec:weighting-mechanisms]{weighting mechanism}
+    generally results in the lowest error?
+
+    \item Which combination of voting mechanism and weighting mechanism
+    produces the lowest error?
+
+    \item Is it even worthwhile to use proxy voting, given the more expensive
+    measurement technique has already replaced by the less expensive measurements?
+    Or would it be better to simply average all the agents' estimates?
+
+    % Ratio is likely important here
+    \item How many inactive agents per proxy should be used?
+\end{enumerate}
+
+Each question will be answered through its own dedicated inquiry.
+For the first three questions, the error will initially be graphed in order to
+visually ascertain any differences between mechanisms.
+Afterwards, appropriate population tests will be performed on the population of error
+for each relevant group to statistically determine if any differences exist between
+each population, visually apparent or not.
+Finally, if there is any difference between populations, an overall ranking will be
+determined.
+
+The fourth question, which serves to determine if using a proxy vote system is even
+beneficial to begin with, will follow a similar procedure to the first three
+questions: the error for each population will be graphed and tests will be run to
+identify any differences.
+Once this has been done, additional, more in-depth tests will be performed to
+determine to what degree any proxy vote system improves upon simply averaging the
+agents' votes.
+The purpose behind this is to check if an undesirable measurement technique, as
+discussed in \autoref{ch:introduction}, could simply be replaced with a series of
+more desirable measurements without needing to add the complexities of proxy voting.
+% \vicki{Averaging over the votes doesn't appear to be a reasonable comparison.}
+
+As for the final question, the change in error will be graphed against the
+number of agents used to determine if there is any critical point where the benefit
+of adding more agents is reduced.
+Ratios between proxy and inactive agents will also be graphed and analysed to
+determine a scalable idea of how many inactive agents to use per proxy agent.
+This is also the analysis where the cost of the system is most relevant.
+Since the cost of each agent will vary between application, this study will attempt to
+minimize the total count of agents in an attempt to produce the lowest-cost system.
