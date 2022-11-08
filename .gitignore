@@ -319,3 +319,9 @@ TSWLatexianTemp*
 # USU's thesis guide. Can be found here: https://gradschool.usu.edu/thesis-dissertation-requirements/
 Publication Guide.pdf
 *.tmp
+
+#.idea/*
+!.idea/runConfigurations/
+!.idea/*.iml
+!.idea/modules.xml
+.idea/misc.xml
