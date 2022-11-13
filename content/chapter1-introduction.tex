@@ -143,51 +143,6 @@ the model, since observing the continuous output allows for more granularity in 
 differences between proxy and non-proxy voting, as well as in the differences between
 voting rules.
 
-\vicki{Need previous work section}
-
-\section{Proposed Work}\label{sec:contribution}
-% \section{Contribution}\label{sec:contribution}
-This study aims to explore the use of proxy voting in the House of Representatives.
-We examine how much of an effect in terms of error proxy voting has on the outcome
-of a vote under a number of distributions of opinions, as well as with various
-numbers of inactive agents.
-\vicki{Is there a clearer name?  I see them called principal or elector, but no name really grabs me.  I've also seen designator and designate.  Those terms seem clearer.}
-The error of a proxy vote will be calculated by measuring how much the system output
-changes when using proxy voting instead of having all members voting and only present
-members voting.
-This will be done using continuous outputs instead of discrete or binary `yea' or
-`nay' votes, since this will allow for more precise measurements in differences
-between proxy and non-proxy voting.
-
-This paper additionally experiments with using different voting mechanisms in order
-to determine if these proxy votes should be handled differently from normal voting,
-as well as observe at what ratios between proxy and inactive voters such mechanisms
-are effective.
-Finally, this paper will watch for the prevalence of super voters and attempt to
-assess any effect, beneficial or harmful, they have on the system.
-
-% TODO: Fill out synopsis of what is learned after the data is analysed
-% This paper will show that, while proxy vote systems are not a perfect tool to
-% increase a system's accuracy, they may be beneficial when the distribution of error
-% from a measurement is asymmetrical.
-% Additionally, this paper will identify the best performing voting and weighting
-% mechanisms, as well as discuss an ideal range of proxy and inactive agents to be used
-% in such a system.
-
-% TODO: Maybe combine this section with "Contribution," explaining how we hope to be
-%   able to apply what's learned here to actual scenarios?
-% \section{Potential Applications}\label{sec:potential-applications}
-% Proxy vote systems can be used in situations where highly accurate measurements are
-% difficult, costly, or time-consuming, and cheaper or easier alternatives are
-% available.
-% While this study will show they will not work in all situations, they do have a
-% potential use when one of the alternative measurements tends to yield an asymmetrical
-% distribution of error.
-%
-% These systems may also have use in ensemble machine learning techniques, though this
-% idea is not explored in this study.
-
-
 \section{Background}\label{sec:background}
 \textit{Proxy voting} involves allowing agents to transfer their voting power
 from themselves to another agent, known as a \textit{proxy}.
@@ -330,6 +285,45 @@ mechanisms minimize this error, is precisely what this paper will explore.
 
 \vicki{This isn't previous work.  Previous work is more like:  Researcher B looked at proxy voting in two space using manhattan distance between proxy and inactive voter.  Using the methods of X,Y, and Z, they discovered that proxy voting had an error of Q when used on population T.  However, they did not consider W (which we intend to explore).  In other words, your previous work needs to give the best alternative to what you are doing.  You will also compare yourself to the alternative.  We need to know what others have done in order to (1) know if you've done anything useful (2) understand your credentials in doing this work.  Previous work will also describe standard methods of doing analysis, so we can see the motivation for the way you designed the tests. }
 
-\vicki{Look at the references.  Germany, for example, is in lower case (even though the .bib file doesn't have it that way.}
+\section{Proposed Work}\label{sec:contribution}
+% \section{Contribution}\label{sec:contribution}
+This study aims to explore the use of proxy voting in the House of Representatives.
+We examine how much of an effect in terms of error proxy voting has on the outcome
+of a vote under a number of distributions of opinions, as well as with various
+numbers of inactive agents.
+\vicki{Is there a clearer name?  I see them called principal or elector, but no name really grabs me.  I've also seen designator and designate.  Those terms seem clearer.}
+The error of a proxy vote will be calculated by measuring how much the system output
+changes when using proxy voting instead of having all members voting and only present
+members voting.
+This will be done using continuous outputs instead of discrete or binary `yea' or
+`nay' votes, since this will allow for more precise measurements in differences
+between proxy and non-proxy voting.
 
+This paper additionally experiments with using different voting mechanisms in order
+to determine if these proxy votes should be handled differently from normal voting,
+as well as observe at what ratios between proxy and inactive voters such mechanisms
+are effective.
+Finally, this paper will watch for the prevalence of super voters and attempt to
+assess any effect, beneficial or harmful, they have on the system.
+
+% TODO: Fill out synopsis of what is learned after the data is analysed
+% This paper will show that, while proxy vote systems are not a perfect tool to
+% increase a system's accuracy, they may be beneficial when the distribution of error
+% from a measurement is asymmetrical.
+% Additionally, this paper will identify the best performing voting and weighting
+% mechanisms, as well as discuss an ideal range of proxy and inactive agents to be used
+% in such a system.
+
+% TODO: Maybe combine this section with "Contribution," explaining how we hope to be
+%   able to apply what's learned here to actual scenarios?
+% \section{Potential Applications}\label{sec:potential-applications}
+% Proxy vote systems can be used in situations where highly accurate measurements are
+% difficult, costly, or time-consuming, and cheaper or easier alternatives are
+% available.
+% While this study will show they will not work in all situations, they do have a
+% potential use when one of the alternative measurements tends to yield an asymmetrical
+% distribution of error.
+%
+% These systems may also have use in ensemble machine learning techniques, though this
+% idea is not explored in this study.
 
