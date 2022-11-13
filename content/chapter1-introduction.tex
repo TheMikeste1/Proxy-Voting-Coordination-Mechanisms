@@ -38,19 +38,28 @@ be utilized in the most effective way possible.
 
 \section{Assumptions and Preliminaries}\label{sec:assumptions-and-preliminaries}
 In order to conduct this study, we make a number of assumptions.
-First, we assume that each voter is able to choose their proxy per-topic.
+First, we assume that each voter is able to choose their proxy, also known as a
+delegate, individually for each topic.
 This is not currently the case for the House of Representatives, which requires
 a proxy to be chosen by letter and so would be difficult to change as different
 topics are discussed~\cite{Congress.gov2020}.
 However, since it would be fairly simple to implement a new process that allows
 per-topic proxies, and since many complex topics can be reduced to a set of related
 subtopics, we believe this assumption is reasonable.
-Additionally, whereas currently the proxies are not general proxies and must vote as
-per specific instructions provided by the delegating
-voter~\cite{CERP2020, Congress.gov2020}, this assumption is not too far off of how
-the system currently works.
 
-Second, we assume that each voter has perfect knowledge of potential proxies' opinions. \vicki{So must the proxy vote as the voter wants?  If so, it doesn't matter what the proxy's opinion is.  Rather, it seems the voter just changes the weight of the proxy - the voter and the proxy can't vote differently.}
+Additionally, the resolution currently requires the delegate to vote exactly as the
+specific instructions provided by the delegating voter tells them to
+vote~\cite{CERP2020, Congress.gov2020}.
+This essentially turns proxy into a relay for the delegating voter, which is not how
+proxy voting is typically used and is not particularly useful.
+Instead, we consider scenarios where actual proxy voting is used, where the proxy
+receives the voting power of the delegating voter, and the proxy can vote
+however they choose.
+This requires the delegating voter to choose a proxy who they trust to vote as close
+to how they would as possible if only they were able to participate in the direct vote,
+similar to selecting experts as described in~\cite{Miller1969} and~\cite{Mueller1972}.
+
+Second, we assume that each voter has perfect knowledge of potential proxies' opinions.
 This will allow them to choose the proxy that has the most similar opinion to their own.
 While in reality voters will likely not have perfect knowledge of others' opinions,
 it is often not particularly difficult to gauge the opinion of others, especially
