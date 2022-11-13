@@ -145,10 +145,10 @@ voting rules.
 
 \section{Background}\label{sec:background}
 \textit{Proxy voting} involves allowing agents to transfer their voting power
-from themselves to another agent, known as a \textit{proxy}.
+from themselves to another agent, known as a \textit{proxy} or a \textit{delegate}.
 This adds to the voting power of the proxy, which is called its `weight.'
-By delegating a proxy, the transferring agent loses their ability to directly affect the
-voting, instead allowing the proxy to affect it on their behalf.
+By delegating a proxy, the transferring agent, also known as the delegator, loses their
+ability to directly vote, instead allowing the proxy to affect it on their behalf.
 In other words, the transferring agent does not vote in an election or other types of
 voting games, but rather affects the election vicariously through the proxy to which
 they transferred their power.
@@ -157,12 +157,12 @@ proxies can also be called \textit{active voters}.
 In contrast, \textit{direct voting} requires each agent to vote on their own.
 
 Proxy voting has a number of advantages over direct voting.
-The most obvious advantage is that it allows inactive voters to reduce the work
+The most obvious advantage is that it allows delegators to reduce the work
 required of them by choosing a proxy to perform the work of voting for them.
 Naturally, this is extremely useful when the cost of voting is high, such as
 when one is ill or fears they may become ill, or when a member's time can be spent
 more efficiently without being physically present for a vote like when attending a
-conference or engaging in active research in some location outside {Washington,~D.C.}
+conference or engaging in active research in some location outside {Washington,~D.C}.
 This is, of course, directly applicable to the House of Representatives, since proxy
 voting would allow them to prevent the spread of disease or avoid whatever other
 emergency triggered the use of proxy voting.  \vicki{Does something have to trigger proxy voting, or can it be used for personal reasons?}
@@ -215,9 +215,8 @@ His work focuses on reworking the current House and Senate systems entirely by u
 more-directly involved populace, but his ideas can still be relevant under the current
 system.
 In particular, he introduces the idea we call \textit{expert proxies},
-those being individuals who would `vote as [the inactive voter] would if only
-[the inactive voter] had the time and knowledge to participate
-directly'~\cite{Miller1969}.
+those being individuals who would `vote as [the delegator] would if only
+[the delegator] had the time and knowledge to participate directly'~\cite{Miller1969}.
 While for the general populace this could be a very useful benefit of proxy voting,
 it is not one that is directly applicable to the House of Representatives.
 One of the reasons individuals are elected to the House of Representatives is to
@@ -290,8 +289,7 @@ mechanisms minimize this error, is precisely what this paper will explore.
 This study aims to explore the use of proxy voting in the House of Representatives.
 We examine how much of an effect in terms of error proxy voting has on the outcome
 of a vote under a number of distributions of opinions, as well as with various
-numbers of inactive agents.
-\vicki{Is there a clearer name?  I see them called principal or elector, but no name really grabs me.  I've also seen designator and designate.  Those terms seem clearer.}
+numbers of delegators.
 The error of a proxy vote will be calculated by measuring how much the system output
 changes when using proxy voting instead of having all members voting and only present
 members voting.
@@ -301,7 +299,7 @@ between proxy and non-proxy voting.
 
 This paper additionally experiments with using different voting mechanisms in order
 to determine if these proxy votes should be handled differently from normal voting,
-as well as observe at what ratios between proxy and inactive voters such mechanisms
+as well as observe at what ratios between delegates and delegators such mechanisms
 are effective.
 Finally, this paper will watch for the prevalence of super voters and attempt to
 assess any effect, beneficial or harmful, they have on the system.
