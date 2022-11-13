@@ -90,7 +90,7 @@ Modeling voters' preferences in such a way allows for continuous preferences ins
 discrete or binary opinions other models might emphasize.
 This is beneficial, as it allows for a more realistic representation of voters'
 opinions, since it is unlikely that voters' opinions are perfectly binary.
-For example, it is likely that some members are  passionately in favor of higher
+For example, it is likely that some members are passionately in favor of higher
 spending on education, while others are passionately against it, and yet others
 remain ambivalent or less-passionately for or against.
 This works perfectly with the metric space model, as it allows for the passionate
@@ -143,6 +143,7 @@ the model, since observing the continuous output allows for more granularity in 
 differences between proxy and non-proxy voting, as well as in the differences between
 voting rules.
 
+
 \section{Background}\label{sec:background}
 \textit{Proxy voting} involves allowing agents to transfer their voting power
 from themselves to another agent, known as a \textit{proxy} or a \textit{delegate}.
@@ -165,7 +166,8 @@ more efficiently without being physically present for a vote like when attending
 conference or engaging in active research in some location outside {Washington,~D.C}.
 This is, of course, directly applicable to the House of Representatives, since proxy
 voting would allow them to prevent the spread of disease or avoid whatever other
-emergency triggered the use of proxy voting.  \vicki{Does something have to trigger proxy voting, or can it be used for personal reasons?}
+emergency triggered the use of proxy voting.  \vicki{Does something have to trigger
+proxy voting, or can it be used for personal reasons?}
 
 In these cases, proxy voting allows voters to skip incurring the costs while
 still having their voice heard by allowing a proxy to pay the cost once on behalf of
@@ -192,20 +194,54 @@ As will be discussed in the results section of the thesis,
 % \autoref{ch:results},  % TODO: Uncomment for thesis
 this additional system welfare comes at
 the cost of some system accuracy in terms of the actual preferences of the voters
-since not all information can be restored.  \vicki{We need to understand what is allowed.  Why couldn't the designator give the precise value (on the scale)?  I realize this is not done, but why?}
+since not all information can be restored.  \vicki{We need to understand what is
+allowed. Why couldn't the designator give the precise value (on the scale)? I realize
+this is not done, but why?}
 
 In some cases, the proxy is also able to transfer their own vote, as well as the rest of
 their delegated weight, to yet another proxy.
 This is known as \textit{liquid democracy}, which has its own challenges and
 advantages.
-However, simple proxy voting, where proxies cannot transfer their voting power,
-is sufficient for the research performed in this paper.
-\vicki{Actually, if proxies transferred their vote, we wouldn't care.  We only care where the votes end up.
-%
-Also, this section isn't really proposed work.  You are just describing the problem, not telling us what you will do.
-Proposed work looks more like:  "I will run experiments using x,y,z distributions with q,r,s types of voting and compare with other methods d,e,f of using proxies.
-%
-}
+Regardless, in this study, we will only consider the case where the proxy is not
+able to transfer their vote to yet another proxy.
+
+However, proxy voting is not without its flaws.
+\etal{Kling} investigated a weakness in liquid democracy dubbed
+`super voters'~\cite{Kling2015}, which are proxies that receive an extremely large
+amount of power, while others gain very little.
+While they determined these proxies tend to use their power wisely, possible
+\vicki{possibly?} to avoid
+estranging those voters who delegate their power to the proxy, there can be
+situations where they \vicki{who?} can be problematic with one-off issues.
+\vicki{before we went 0,10. Why not be consistent? a notation could help. Perhaps
+\{0,1\} for discrete voting and [a,b] for interval voting.}
+As a simple example, consider a vote taking over preference
+space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
+$\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
+$\truthof{\agent_5} = 0.15$.
+Under the mean mechanism, if everyone were to vote
+we would get the actual preference of the system, $\systemtruth = 0.18$.
+However, if $\agent_2$, $\agent_3$, and $\agent_5$ were to become inactive and select
+$\agent_4$ as their proxy, making them a super voter, the result would be
+$\systemtruth = 0.6$.
+This is visualized in \autoref{fig:voting-example}.
+This is an absolute error of 0.42, or 21\% of the entire preference space!
+Ideally the output of a system employing proxy voting would be much closer to the
+actual preference of the system.
+The amount of error produced by a proxy vote system, as well as which voting
+mechanisms minimize this error, is precisely what this paper will explore.
+
+\begin{figure}[htbp]
+    \centering
+    \input{content/figures/voting-example.tikz}
+    \caption{
+        An example vote and its results.
+        $\textcolor{blue}{\systemtruth_{actual}}$ is the result when everyone votes,
+        and $\textcolor{orange}{\systemtruth_{proxy}}$ is when $\agent_2$, $\agent_3$,
+        and $\agent_5$ delegate their vote and make $\agent_4$ a super voter.
+    }
+    \label{fig:voting-example}
+\end{figure}
 
 
 \section{Previous Work}\label{sec:previous-work}
@@ -246,43 +282,19 @@ duties and avoid spreading disease.
 %   - Additional voting mechanisms
 %   - Weighting mechanisms
 
-However, proxy voting is not without its flaws.
-\etal{Kling} investigated a weakness in liquid democracy dubbed
-`super voters'~\cite{Kling2015}, which are proxies that receive an extremely large
-amount of power, while others gain very little.
-While they determined these proxies tend to use their power wisely, possible \vicki{possibly?} to avoid
-estranging those voters who delegate their power to the proxy, there can be
-situations where they \vicki{who?} can be problematic with one-off issues.
-\vicki{before we went 0,10.  Why not be consistent?  a notation could help. Perhaps \{0,1\} for discrete voting and [a,b] for interval voting.}
-As a simple example, consider a vote taking over preference
-space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
-$\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
-$\truthof{\agent_5} = 0.15$.
-Under the mean mechanism, if everyone were to vote
-we would get the actual preference of the system, $\systemtruth = 0.18$.
-However, if $\agent_2$, $\agent_3$, and $\agent_5$ were to become inactive and select
-$\agent_4$ as their proxy, making them a super voter, the result would be
-$\systemtruth = 0.6$.
-This is visualized in \autoref{fig:voting-example}.
-This is an absolute error of 0.42, or 21\% of the entire preference space!
-Ideally the output of a system employing proxy voting would be much closer to the
-actual preference of the system.
-The amount of error produced by a proxy vote system, as well as which voting
-mechanisms minimize this error, is precisely what this paper will explore.
 
-\begin{figure}[htbp]
-    \centering
-    \input{content/figures/voting-example.tikz}
-    \caption{
-        An example vote and its results.
-        $\textcolor{blue}{\systemtruth_{actual}}$ is the result when everyone votes,
-        and $\textcolor{orange}{\systemtruth_{proxy}}$ is when $\agent_2$, $\agent_3$,
-        and $\agent_5$ delegate their vote and make $\agent_4$ a super voter.
-    }
-    \label{fig:voting-example}
-\end{figure}
 
-\vicki{This isn't previous work.  Previous work is more like:  Researcher B looked at proxy voting in two space using manhattan distance between proxy and inactive voter.  Using the methods of X,Y, and Z, they discovered that proxy voting had an error of Q when used on population T.  However, they did not consider W (which we intend to explore).  In other words, your previous work needs to give the best alternative to what you are doing.  You will also compare yourself to the alternative.  We need to know what others have done in order to (1) know if you've done anything useful (2) understand your credentials in doing this work.  Previous work will also describe standard methods of doing analysis, so we can see the motivation for the way you designed the tests. }
+\vicki{This isn't previous work. Previous work is more like: Researcher B looked at
+proxy voting in two space using manhattan distance between proxy and inactive voter.
+Using the methods of X,Y, and Z, they discovered that proxy voting had an error of Q
+when used on population T. However, they did not consider W (which we intend to
+explore). In other words, your previous work needs to give the best alternative to
+what you are doing. You will also compare yourself to the alternative. We need to
+know what others have done in order to (1) know if you've done anything useful (2)
+    understand your credentials in doing this work. Previous work will also describe
+    standard methods of doing analysis, so we can see the motivation for the way you
+    designed the tests. }
+
 
 \section{Proposed Work}\label{sec:contribution}
 % \section{Contribution}\label{sec:contribution}
