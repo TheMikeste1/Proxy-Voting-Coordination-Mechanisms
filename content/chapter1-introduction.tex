@@ -18,8 +18,10 @@ The purpose behind the resolution was to allow the House of Representatives
 to continue operating while still allowing members to quarantine and prevent the
 spread of COVID-19~\cite{Congress.gov2020}, as well as to pave the way for future use
 of proxy voting in other such emergencies.
-Using proxy voting in such an important part of the legislative process reignites the
-discussion on the effectiveness of proxy voting.
+While the type of proxy voting in Congress is not the traditional type of proxy vote
+and instead is more similar to voting remotely, similar to how one might attend a
+meeting via video conference, using proxy voting in such an important part of the
+legislative process reignites the discussion on the effectiveness of proxy voting.
 Does proxy voting introduce too much error into the voting process?
 Or is it a viable alternative to direct voting?
 If proxy voting does introduce error, perhaps alternative voting mechanisms or systems
@@ -44,12 +46,127 @@ Congress during pandemics or other emergencies.
 Similarly, if proxy voting can be shown to have a large effect on the results of the
 vote, it would be important to alter the system to mitigate the effects or stop using
 proxy voting in the House altogether.
-In either case, it is important to understand the effects of proxy voting so it can
-be utilized in the most effective way possible, as well as discover any potential
+In either case, it is important to understand the effects of proxy voting in order to
+utilize it in the most effective way possible, as well as discover any potential
 techniques to improve such a system.
 
 
-\section{Assumptions and Preliminaries}\label{sec:assumptions-and-preliminaries}
+\section{Background}\label{sec:background}
+\textit{Proxy voting} involves allowing agents to transfer their voting power
+from themselves to another agent, known as a \textit{proxy} or a \textit{delegate}.
+This adds to the voting power of the proxy, which is called its `weight.'
+By delegating a proxy, the transferring agent, also known as the \textit{delegator},
+loses their ability to directly vote, instead allowing the proxy to affect it on
+their behalf.
+In other words, the transferring agent does not vote in an election or other types of
+votes, but rather affects the election vicariously through the proxy to which they
+transferred their power.
+These transferring agents are also known as \textit{inactive voters}, and the proxies
+can also be called \textit{active voters}.
+
+In contrast, \textit{direct voting} requires each agent to vote on their own.
+Proxy voting has a number of advantages over direct voting.
+The most obvious advantage is that it permits delegators to reduce the work
+required of them to participate in a vote by choosing a proxy to perform the work of
+voting for them.
+Naturally, this is extremely useful when the cost of voting is high, such as
+when one is ill or fears they may become ill, or when a member's time can be spent
+more efficiently without being physically present for a vote like when attending a
+conference or engaging in active research in some location outside {Washington,~D.C}.
+This is, of course, directly applicable to the House of Representatives, since proxy
+voting would allow them to prevent the spread of disease or avoid whatever other
+emergency triggered the use of proxy voting.
+
+In these cases, proxy voting allows voters to skip incurring the costs while still
+having their voice heard by allowing a proxy to pay the cost once on behalf of all
+voters who transfer their power to that proxy.
+Of course, a voter would not want to give its voting power to just any proxy.
+This study employs a similar technique as used in~\cite{Cohensius2017}, which has the
+voters, or agents, pass their voting power to the proxy that is closest in the
+preference space.
+
+The `goodness' of a system here is measured using two primary metrics: the
+\textit{accuracy} or \textit{error} of the system, meaning how close the system is to
+the optimal solution, and the total system \textit{welfare}.
+Welfare is a measure of how good a situation or action is for an agent.
+For example, an agent not being required to vote in person increases that agent's
+welfare since it makes it easier for the agent to vote.
+Total system welfare is the sum of the welfare of all agents in the system.
+An excellent system would have high accuracy and high welfare, while a poor system
+would have low accuracy and low welfare.
+
+Proxy voting has been shown to often increase system accuracy when compared to only
+allowing active/willing agents to vote~\cite{Cohensius2017}.
+This follows intuition: if a voter doesn't vote, the system loses information.
+By allowing them to still influence the voting game through proxy, some information
+is reintroduced into the system.
+Naturally, in terms of system accuracy the ideal situation is when all voters
+participate and so the system has the most information possible.
+However, system welfare can be enhanced on an individual level by allowing agents
+who want to be inactive through the use of a proxy to delegate their vote.
+Therefore, when operating under the Congress resolution, system welfare can be
+enhanced through proxy voting by allowing ill members to quarantine and ensure the
+health of other agents.
+As will be discussed in the results section of the thesis,
+% \autoref{ch:results},  % TODO: Uncomment for thesis
+this additional system welfare comes at the cost of some system accuracy in terms of
+the actual preferences of the voters.
+This cost comes about because voters are generally unable to perfectly express their
+preference and so rely on their proxy to vote in a way that is close to their
+preference.
+Not all information can be restored through the use of a proxy since they are also
+unable to perfectly express their preference nor those of their delegator(s),
+which causes this information to be lost and the system's accuracy to suffer.
+However, if the results of the system are not too far from the optimal solution, then
+this loss of accuracy might be worth the additional system welfare produced by allowing
+agents delegate their vote.
+
+In some cases, the proxy is also able to transfer their own vote, as well as the rest of
+their delegated weight, to yet another proxy.
+This is known as \textit{liquid democracy}, which has its own challenges and advantages.
+Ultimately, the use of liquid democracy is not considered in this study, but since proxy
+voting is a subset of the liquid democracy system, it would likely be possible to
+extend the results of this study to liquid democracy as well.
+
+Proxy voting may seem like an extremely attractive option for the House of
+Representatives, and other organizations, to use.
+However, previous research has already shown it is not without its flaws.
+\etal{Kling} investigated a weakness in liquid democracy dubbed
+`super voters'~\cite{Kling2015}, which are proxies that receive an extremely large
+amount of power, while others gain very little.
+While they determined these proxies tend to use their power wisely, possibly to avoid
+estranging those voters who delegate their power to the proxy, there can be
+situations where super voters can be problematic with one-off issues.
+As a simple example, consider a vote taking over preference
+space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
+$\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
+$\truthof{\agent_5} = 0.15$.
+Under the mean mechanism, if everyone were to vote
+we would get the actual preference of the system, $\systemtruth = 0.18$.
+However, if $\agent_2$, $\agent_3$, and $\agent_5$ were to become inactive and select
+$\agent_4$ as their proxy, making them a super voter, the result would be
+$\systemtruth = 0.6$.
+This is visualized in \autoref{fig:voting-example}.
+This is an absolute error of 0.42, or 21\% of the entire preference space!
+Ideally the output of a system employing proxy voting would be much closer to the
+actual preference of the system.
+The amount of error produced by a proxy vote system, as well as which voting
+mechanisms minimize this error, is precisely what this paper will explore.
+
+\begin{figure}[htbp]
+    \centering
+    \input{content/figures/voting-example.tikz}
+    \caption{
+        An example vote and its results.
+        $\textcolor{blue}{\systemtruth_{actual}}$ is the result when everyone votes,
+        and $\textcolor{orange}{\systemtruth_{proxy}}$ is when $\agent_2$, $\agent_3$,
+        and $\agent_5$ delegate their vote and make $\agent_4$ a super voter.
+    }
+    \label{fig:voting-example}
+\end{figure}
+
+
+\section{Assumptions and Preliminary Setup}\label{sec:assumptions-and-preliminaries}
 In order to conduct this study, we make a number of assumptions.
 First, we assume that each voter is able to choose their proxy, also known as a
 delegate, individually for each topic.
@@ -160,104 +277,6 @@ This study will focus primarily on the continuous instead of the discrete output
 the model, since observing the continuous output allows for more granularity in the
 differences between proxy and non-proxy voting, as well as in the differences between
 voting rules.
-
-
-\section{Background}\label{sec:background}
-\textit{Proxy voting} involves allowing agents to transfer their voting power
-from themselves to another agent, known as a \textit{proxy} or a \textit{delegate}.
-This adds to the voting power of the proxy, which is called its `weight.'
-By delegating a proxy, the transferring agent, also known as the delegator, loses their
-ability to directly vote, instead allowing the proxy to affect it on their behalf.
-In other words, the transferring agent does not vote in an election or other types of
-voting games, but rather affects the election vicariously through the proxy to which
-they transferred their power.
-These transferring agents are also known as \textit{inactive voters}, and the
-proxies can also be called \textit{active voters}.
-In contrast, \textit{direct voting} requires each agent to vote on their own.
-
-Proxy voting has a number of advantages over direct voting.
-The most obvious advantage is that it allows delegators to reduce the work
-required of them by choosing a proxy to perform the work of voting for them.
-Naturally, this is extremely useful when the cost of voting is high, such as
-when one is ill or fears they may become ill, or when a member's time can be spent
-more efficiently without being physically present for a vote like when attending a
-conference or engaging in active research in some location outside {Washington,~D.C}.
-This is, of course, directly applicable to the House of Representatives, since proxy
-voting would allow them to prevent the spread of disease or avoid whatever other
-emergency triggered the use of proxy voting.
-
-In these cases, proxy voting allows voters to skip incurring the costs while
-still having their voice heard by allowing a proxy to pay the cost once on behalf of
-all voters who transfer their power to that proxy.
-Of course, a voter would not want to give its voting power to just any proxy.
-This study employs a similar technique as used in~\cite{Cohensius2017}, which has the
-voters, or agents, pass their voting power to the proxy that is closest in the
-preference space.
-
-In addition to reducing individual agents' work, proxy voting also often has
-the effect of increasing the system accuracy as opposed to only allowing active
-agents to vote~\cite{Cohensius2017}.
-This follows intuition: if a voter doesn't vote, the system loses information.
-By allowing them to still influence the voting game through proxy, some information
-is reintroduced into the system.
-Naturally, in terms of system accuracy the ideal situation is when all voters
-participate.
-However, system welfare can be enhanced on an individual level by allowing agents
-who want to be inactive through the use of a proxy to delegate their vote.
-When operating under the Congress resolution, system welfare can also be enhanced
-through proxy voting by allowing ill members to quarantine and ensure the health
-of other agents.
-As will be discussed in the results section of the thesis,
-% \autoref{ch:results},  % TODO: Uncomment for thesis
-this additional system welfare comes at
-the cost of some system accuracy in terms of the actual preferences of the voters.
-This cost comes about because voters are generally unable to perfectly express their
-preference and so rely on their proxy to vote in a way that is close to their
-preference.
-However, not all information can be restored through the use of a proxy since they
-are also unable to perfectly express their preference nor those of their delegator(s),
-and so this information will be lost and the system's accuracy will suffer.
-
-In some cases, the proxy is also able to transfer their own vote, as well as the rest of
-their delegated weight, to yet another proxy.
-This is known as \textit{liquid democracy}, which has its own challenges and advantages.
-Regardless, in this study, we will only consider the case where the proxy is not able
-to transfer their vote to yet another proxy.
-
-However, proxy voting is not without its flaws.
-\etal{Kling} investigated a weakness in liquid democracy dubbed
-`super voters'~\cite{Kling2015}, which are proxies that receive an extremely large
-amount of power, while others gain very little.
-While they determined these proxies tend to use their power wisely, possibly to avoid
-estranging those voters who delegate their power to the proxy, there can be
-situations where super voters can be problematic with one-off issues.
-As a simple example, consider a vote taking over preference
-space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
-$\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
-$\truthof{\agent_5} = 0.15$.
-Under the mean mechanism, if everyone were to vote
-we would get the actual preference of the system, $\systemtruth = 0.18$.
-However, if $\agent_2$, $\agent_3$, and $\agent_5$ were to become inactive and select
-$\agent_4$ as their proxy, making them a super voter, the result would be
-$\systemtruth = 0.6$.
-This is visualized in \autoref{fig:voting-example}.
-This is an absolute error of 0.42, or 21\% of the entire preference space!
-Ideally the output of a system employing proxy voting would be much closer to the
-actual preference of the system.
-The amount of error produced by a proxy vote system, as well as which voting
-mechanisms minimize this error, is precisely what this paper will explore.
-
-\begin{figure}[htbp]
-    \centering
-    \input{content/figures/voting-example.tikz}
-    \caption{
-        An example vote and its results.
-        $\textcolor{blue}{\systemtruth_{actual}}$ is the result when everyone votes,
-        and $\textcolor{orange}{\systemtruth_{proxy}}$ is when $\agent_2$, $\agent_3$,
-        and $\agent_5$ delegate their vote and make $\agent_4$ a super voter.
-    }
-    \label{fig:voting-example}
-\end{figure}
 
 
 \section{Previous Work}\label{sec:previous-work}
