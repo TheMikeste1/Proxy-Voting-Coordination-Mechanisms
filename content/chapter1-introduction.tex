@@ -166,7 +166,92 @@ mechanisms minimize this error, is precisely what this paper will explore.
 \end{figure}
 
 
-\section{Assumptions and Preliminary Setup}\label{sec:assumptions-and-preliminaries}
+\section{Preliminary Setup and Assumptions}\label{sec:setup-and-assumptions}
+An important part of any study is the model is uses to represent the system being
+studied.
+In this work, we employ a model developed by \etal{Cohensius} in their 2017
+article~\cite{Cohensius2017}.
+This model places voters' preferences, which for our purposes are the congress
+members' opinions on a topic, in a metric space \systemspace, such as
+in~\autoref{fig:system-metric-space}.
+Modeling voters' preferences in such a way allows for continuous preferences instead of
+discrete or binary opinions other models might emphasize.
+This is beneficial, as it allows for a more realistic representation of voters'
+opinions, since it is unlikely that voters' opinions are perfectly binary.
+For example, it is likely that some members are passionately in favor of higher
+spending on education, while others are passionately against it, and yet others
+remain ambivalent or less-passionately for or against.
+This works perfectly with the metric space model, as it allows for the passionate
+opinions to be at opposite extremes of the metric space, while the less-passionate
+opinions are closer to the center.
+
+\begin{figure}[htbp]
+    \centering
+    \input{content/figures/system-metric-space.tikz}
+    \caption{
+        Example of a 1D preference metric space, where \truthof{x} represents the
+        preference of agent $x$.
+        The x-axis represents some preference space, where the leftmost point is
+        the most preference most against some idea and the rightmost point is the most
+        preference most in favor of the same idea.
+    }
+    \label{fig:system-metric-space}
+\end{figure}
+
+This model also naturally extends to two- or higher-dimensional spaces.
+These would include more complex and multi-faceted topics, such as migration, which
+would include subtopics such as border restrictions and economic impact, or where to
+delegate funds in the United States Budget.
+However, as previously mentioned, we will only consider the idealistic situation
+where a congress member can choose their proxy for each topic individually.
+The model obviously allows for votes on topics that are continuous, such as setting the
+budget for the year: instead of simply voting yes or no on some pre-chosen budget,
+the output of the system can serve as the budget.
+However, discrete and binary issues can be supported too, and there are multiple
+ways of interpreting the output of the model for such issues.
+For example, one could round the output to the nearest valid choice, such as a 1 or a
+0 for binary issues.
+
+Such a model also permits an additional aspect of this study: the ability to vote in
+a range instead of aforementioned binary or discrete votes.
+The hope behind such a system is to gain a better understanding of the voters'
+true preference, which is not possible with binary or discrete votes due to all votes
+ultimately being binned into one of several values.
+This system will allow one to see if the majority is truly in favor of some idea, or
+if they are only slightly in favor of it.
+For example, consider a situation where voters are asked to vote on some new law and
+are able to vote in the interval of $[-1, 1]$.
+If the majority of votes are hovering around the center, say between in the interval
+$[-0.25, 0.25]$, then it is likely that the majority of voters are not actually fully
+satisfied by the law, but still believe some change is necessary.
+This provides a third option: refactoring the law to be more in line with the
+voters' opinions.
+
+This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
+which are functions that map a set of preferences in~\systemspace\ to an outcome that
+also exists in~\systemspace.
+%
+% \com{The idea of a voting mechanism did NOT start with Cohensius. Give credit to the
+% proper originator.}
+% MDH: I've done some research to find the originator of the term, but it seems to be
+% a fairly common term with no clear originator. The idea at the very least seems to
+% date back all the way to ancient Greece, so I'm hoping it's safe to assume it's a
+% common knowledge term.
+%
+This study employs the use of several common voting mechanisms and adapts them to the
+proxy voting system.
+What these mechanisms are and how they operate will be described in the full thesis.
+% in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
+
+The flexibility of this model in both the discrete and continuous realms, its ability
+to use different voting rules, and its easy interpretability, are the reasons it is
+employed in this study.
+This study will focus primarily on the continuous instead of the discrete output of
+the model, since observing the continuous output allows for more granularity in the
+differences between proxy and non-proxy voting, as well as in the differences between
+voting rules.
+
+\subsection{Assumptions}\label{subsec:assumptions}
 In order to conduct this study, we make a number of assumptions.
 First, we assume that each voter is able to choose their proxy, also known as a
 delegate, individually for each topic.
@@ -210,73 +295,6 @@ such as a proxy can only serve ten voters~\cite{CERP2020}.
 However, we feel removing restrictions such as these leads to a more interesting
 discussion, since it allows the use of different voting mechanisms and more extreme
 cases.
-
-As part of this study, we employ a model developed by \etal{Cohensius} in
-their 2017 article~\cite{Cohensius2017}.
-This model places voters' preferences, which for our purposes are the congress
-members' opinions on a topic, in a metric space \systemspace, such as
-in~\autoref{fig:system-metric-space}.
-Modeling voters' preferences in such a way allows for continuous preferences instead of
-discrete or binary opinions other models might emphasize.
-This is beneficial, as it allows for a more realistic representation of voters'
-opinions, since it is unlikely that voters' opinions are perfectly binary.
-For example, it is likely that some members are passionately in favor of higher
-spending on education, while others are passionately against it, and yet others
-remain ambivalent or less-passionately for or against.
-This works perfectly with the metric space model, as it allows for the passionate
-opinions to be at opposite extremes of the metric space, while the less-passionate
-opinions are closer to the center.
-
-\begin{figure}[htbp]
-    \centering
-    \input{content/figures/system-metric-space.tikz}
-    \caption{
-        Example of a 1D preference metric space, where \truthof{x} represents the
-        preference of agent $x$.
-        The x-axis represents some preference space, where the leftmost point is
-        the most preference most against some idea and the rightmost point is the most
-        preference most in favor of the same idea.
-    }
-    \label{fig:system-metric-space}
-\end{figure}
-
-This model also naturally extends to two- or higher-dimensional spaces.
-These would include more complex and multi-faceted topics, such as migration, which
-would include subtopics such as border restrictions and economic impact, or where to
-delegate funds in the United States Budget.
-However, as previously mentioned, we will only consider the idealistic situation
-where a congress member can choose their proxy for each topic individually.
-The model obviously allows for votes on topics that are continuous, such as setting the
-budget for the year: instead of simply voting yes or no on some pre-chosen budget,
-the output of the system can serve as the budget.
-However, discrete and binary issues can be supported too, and there are multiple
-ways of interpreting the output of the model for such issues.
-For example, one could round the output to the nearest valid choice, such as a 1 or a
-0 for binary issues.
-
-This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
-which are functions that map a set of preferences in~\systemspace\ to an outcome that
-also exists in~\systemspace.
-%
-% \com{The idea of a voting mechanism did NOT start with Cohensius. Give credit to the
-% proper originator.}
-% MDH: I've done some research to find the originator of the term, but it seems to be
-% a fairly common term with no clear originator. The idea at the very least seems to
-% date back all the way to ancient Greece, so I'm hoping it's safe to assume it's a
-% common knowledge term.
-%
-This study employs the use of several common voting mechanisms and adapts them to the
-proxy voting system.
-What these mechanisms are and how they operate will be described in the full thesis.
-% in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
-
-The flexibility of this model in both the discrete and continuous realms, its ability
-to use different voting rules, and its easy interpretability, are the reasons it is
-employed in this study.
-This study will focus primarily on the continuous instead of the discrete output of
-the model, since observing the continuous output allows for more granularity in the
-differences between proxy and non-proxy voting, as well as in the differences between
-voting rules.
 
 
 \section{Previous Work}\label{sec:previous-work}
