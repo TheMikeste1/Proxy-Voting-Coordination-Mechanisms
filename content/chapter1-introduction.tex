@@ -131,12 +131,13 @@ extend the results of this study to liquid democracy as well.
 Proxy voting may seem like an extremely attractive option for the House of
 Representatives, and other organizations, to use.
 However, previous research has already shown it is not without its flaws.
-\etal{Kling} investigated a weakness in liquid democracy dubbed
-`super voters'~\cite{Kling2015}, which are proxies that receive an extremely large
-amount of power, while others gain very little.
-While they determined these proxies tend to use their power wisely, possibly to avoid
-estranging those voters who delegate their power to the proxy, there can be
-situations where super voters can be problematic with one-off issues.
+\etal{Kling} and \etal{Gölz} all investigated a weakness in liquid democracy dubbed
+`super voters'~\cite{Kling2015,Golz2021}, which are proxies that receive an extremely
+large amount of power, while others gain very little.
+While \etal{Kling} ultimately determined these proxies tend to use their power
+wisely, possibly to avoid estranging those voters who delegate their power to the
+proxy, there can be situations where super voters can be problematic with one-off
+issues.
 As a simple example, consider a vote taking over preference
 space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
 $\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
@@ -150,8 +151,9 @@ This is visualized in \autoref{fig:voting-example}.
 This is an absolute error of 0.42, or 21\% of the entire preference space!
 Ideally the output of a system employing proxy voting would be much closer to the
 actual preference of the system.
-The amount of error produced by a proxy vote system, as well as which voting
-mechanisms minimize this error, is precisely what this paper will explore.
+While there are methods to help mitigate the effect of super voters, which
+\etal{Gölz}~\cite{Golz2021} explore, the amount of error produced by a proxy vote
+system, including that of super voters, is precisely what this paper will explore.
 
 \begin{figure}[htbp]
     \centering
@@ -262,6 +264,8 @@ aggregate their opinions into some preference in the aforementioned model on beh
 the delegator.
 This may reduce the error introduced by using proxies and allow the agent to feel
 more secure that their voting power will be used as they desire.
+This is not an entirely novel idea, with other authors already creating models to
+handle it~\cite{Degrave2014,Colley2021,Golz2021}.
 
 \subsection{Assumptions}\label{subsec:assumptions}
 In order to conduct this study, we make a number of assumptions.
