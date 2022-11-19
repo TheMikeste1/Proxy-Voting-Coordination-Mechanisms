@@ -142,8 +142,11 @@ As a simple example, consider a vote taking over preference
 space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
 $\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
 $\truthof{\agent_5} = 0.15$.
-Under the mean mechanism, if everyone were to vote
-we would get the actual preference of the system, $\systemtruth = 0.18$.
+Further details on such a preference space model and its mechanics is described in
+\autoref{sec:setup-and-assumptions}.
+Under the mean mechanism, which aggregates opinions by simply taking their mean, if
+everyone were to vote we would get the actual preference of the
+system: $\systemtruth = 0.18$.
 However, if $\agent_2$, $\agent_3$, and $\agent_5$ were to become inactive and select
 $\agent_4$ as their proxy, making them a super voter, the result would be
 $\systemtruth = 0.6$.
@@ -240,9 +243,8 @@ also exists in~\systemspace.
 % date back all the way to ancient Greece, so I'm hoping it's safe to assume it's a
 % common knowledge term.
 %
-This study employs the use of several common voting mechanisms and adapts them to the
-proxy voting system.
-What these mechanisms are and how they operate will be described in the full thesis.
+We employ several common voting mechanisms and adapts them to the proxy voting system.
+Which mechanisms are used and how they operate will be described in the full thesis.
 % in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
 
 The flexibility of this model in both the discrete and continuous realms, its ability
