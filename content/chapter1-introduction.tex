@@ -18,10 +18,11 @@ The purpose behind the resolution was to allow the House of Representatives
 to continue operating while still allowing members to quarantine and prevent the
 spread of COVID-19~\cite{Congress.gov2020}, as well as to pave the way for future use
 of proxy voting in other such emergencies.
-While the type of proxy voting in Congress is not the traditional type of proxy vote
-and instead is more similar to voting remotely, similar to how one might attend a
-meeting via video conference, using proxy voting in such an important part of the
-legislative process reignites the discussion on the effectiveness of proxy voting.
+The type of proxy voting in Congress is not the traditional type of proxy vote.
+Instead, it is more similar to voting remotely, similar to how one might attend a
+meeting via video conference. Using proxy voting in such an important part of the
+legislative process, reignites the discussion on the effectiveness of proxy voting.
+\vicki{I split up the previous sentence.  See if it still has the meaning you intended.}
 Does proxy voting introduce too much error into the voting process?
 Or is it a viable alternative to direct voting?
 If proxy voting does introduce error, perhaps alternative voting mechanisms or systems
@@ -36,7 +37,7 @@ allowing an individual to select a preference dependent on the positions of thei
 constituents, and determine if they are more effective than the traditional proxy
 voting system where a single proxy is chosen.
 Finally, as a part of this study we implement and describe voting over a continuous
-interval instead of the typical binary in favor or against vote.
+interval instead of the typical binary (in favor or against) vote.
 
 This topic is of large importance because of the potential ramifications of using
 proxy voting directly in the legislative process.
@@ -116,10 +117,13 @@ preference and so rely on their proxy to vote in a way that is close to their
 preference.
 Not all information can be restored through the use of a proxy since they are also
 unable to perfectly express their preference nor those of their delegator(s),
+\vicki{Unclear.  who is "they"?   What are you assuming about the proxy?  If my vote is .8, must I choose the nearest proxy?  Why don't I know the preference of the delegator?  Isn't the delgator the inactive voter?}
 which causes this information to be lost and the system's accuracy to suffer.
 However, if the results of the system are not too far from the optimal solution, then
 this loss of accuracy might be worth the additional system welfare produced by allowing
 agents delegate their vote.
+
+\vicki{Could we also claim that a certain percentage of the votes would be lost if no proxy were allowed?  In other words, someone may be genuinely unable to attend.}
 
 In some cases, the proxy is also able to transfer their own vote, as well as the rest of
 their delegated weight, to yet another proxy.
@@ -144,12 +148,14 @@ $\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1
 $\truthof{\agent_5} = 0.15$.
 Further details on such a preference space model and its mechanics are described in
 \autoref{sec:setup-and-assumptions}.
+\vicki{Better not to refer to future section, when the knowledge is needed here.}
 Under the mean mechanism, which aggregates opinions by simply taking their mean, if
 everyone were to vote we would get the actual preference of the
 system: $\systemtruth = 0.18$.
 However, if $\agent_2$, $\agent_3$, and $\agent_5$ were to become inactive and select
 $\agent_4$ as their proxy, making them a super voter, the result would be
 $\systemtruth = 0.6$.
+\vicki{But the problem isn't that there is a super voter.  The problem is that the proxy has no close choice.  When you introduce the term super voter, I assumed you were going to say that the super voter didn't vote as directed, and because he had so much power, that was a problem.}
 This is visualized in \autoref{fig:voting-example}.
 This is an absolute error of 0.42, or 21\% of the entire preference space!
 Ideally the output of a system employing proxy voting would be much closer to the
@@ -202,6 +208,7 @@ opinions are closer to the center.
     }
     \label{fig:system-metric-space}
 \end{figure}
+\vicki{This figure should really come before Figure 1.1}
 
 This model also naturally extends to two- or higher-dimensional spaces.
 These would include more complex and multi-faceted topics, such as migration, which
@@ -212,6 +219,7 @@ where a congress member can choose their proxy for each topic individually.
 The model obviously allows for votes on topics that are continuous, such as setting the
 budget for the year: instead of simply voting yes or no on some pre-chosen budget,
 the output of the system can serve as the budget.
+\vicki{Better as "budget amount" - as budgets are more complicated.  If money was cut in half, funding for each item wouldn't be cut in half.}
 However, discrete and binary issues can be supported too, and there are multiple
 ways of interpreting the output of the model for such issues.
 For example, one could round the output to the nearest valid choice, such as a 1 or a
@@ -231,6 +239,9 @@ $[-0.25, 0.25]$, then it is likely that the majority of voters are not actually 
 satisfied by the law, but still believe some change is necessary.
 This provides a third option: refactoring the law to be more in line with the
 voters' opinions.
+\vicki{I like this option.  Without it, one might say they are diluting their vote by not being a strong yes or no.  I also wonder if there would be political pressure on someone who didn't vote definitively.  I suppose we could also claim that their actual  interval vote was private, but the public manifestation was the extreme.
+I think you need to discuss the ramifications of voting on an interval.
+}
 
 This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
 which are functions that map a set of preferences in~\systemspace\ to an outcome that
@@ -243,7 +254,7 @@ also exists in~\systemspace.
 % date back all the way to ancient Greece, so I'm hoping it's safe to assume it's a
 % common knowledge term.
 %
-We employ several common voting mechanisms and adapts them to the proxy voting system.
+We employ several common voting mechanisms and adapt them to the proxy voting system.
 Which mechanisms are used and how they operate will be described in the full thesis.
 % in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
 
@@ -288,6 +299,7 @@ proxy voting is typically used and is not particularly useful.
 Instead, we consider scenarios where actual proxy voting is used, where the proxy
 receives the voting power of the delegating voter, and the proxy can vote
 however they choose.
+\vicki{Isn't the question whether we just change the weight of the proxy?  Are we assuming the proxy can say, "My votes are .8, .75, and .9.  I always assumed it was just the weight that changed, as otherwise it isn't interesting.  Why is proxy the way it is?  It does seem a bit simpler to just change the weight.  I think we need to make our assumptions clear earlier, as it affects your example Figure 1.1.}
 This requires the delegating voter to choose a proxy who they trust to vote as close
 to how they would as possible if only they were able to participate in the direct vote,
 similar to selecting experts as described in~\cite{Miller1969} and~\cite{Mueller1972}.
@@ -334,7 +346,7 @@ cases.
 % FIXME: This might need to be moved to Background. It feels somewhere in between
 %   both Previous Work and Background.
 James Miller~\cite{Miller1969} imagined a governmental system utilizing proxy voting
-all the way back in 1969 as a more direct form of a representative democracy.\footnote{
+ in 1969 as a more direct form of a representative democracy.\footnote{
     That is to say, Miller envisioned a system where individuals could directly vote
     for an issue, or elect a proxy to vote for them.
     Naturally, any democracy that uses proxy voting is a representative democracy,
@@ -389,6 +401,7 @@ effects of proxy voting on a relatively small, finite population of 435 members 
 House of Representatives.
 As such, we will explore the effects of proxy voting on a finite population of this
 size, as well as explore other possible voting mechanisms.
+\vicki{List them.  This seems more interesting than the finite set.}
 
 This study will additionally look at voting mechanisms and attempt to determine which
 mechanism is best suited for proxy voting.
@@ -396,11 +409,13 @@ This is not unlike~\cite{Mathur2017}, who looked at several voting mechanisms ap
 on a single-winner election vote and determined a ranking for these mechanisms.
 Our work will differ significantly from theirs, however, as we will explore voting
 mechanisms used under proxy voting instead of single-winner elections, and most of
-our mechanisms will be different due to some incapability of the mechanisms the used
+our mechanisms will be different due to some incapability of the mechanisms the \vicki{they?} used
 on a continuous preference space.
+\vicki{Talk about their results here.}
 
 We also look at how allowing a voter to delegate multiple proxies affects the vote,
 as described towards the end of \autoref{sec:setup-and-assumptions}.
+\vicki{In this section,  you lead with the results of others, and make your intended changes a following comment.  For example, Joe used Borda voting with population X to discover that it was subject to Y. yada yada yada.   We adapt his method to allow proxy voting.}
 Jonas Degrave~\cite{Degrave2014} implements a simple model to allow voters to
 delegate to multiple proxies, specifically by simply dividing their weight amongst
 all those to which the voter delegates.
@@ -415,6 +430,9 @@ as ideal to the delegator as if they had been able to delegate to two proxies th
 would produce a better result for the delegator.
 As such, we ask, if voters can delegate more than one proxy, how many proxies should
 they be allowed to delegate?
+\vicki{Is it "should" or how many are useful?  I'm guessing that more than 3 proxies is not that helpful.  I'm assuming the vote would be split equally?  Otherwise, it really isn't interesting as they could get their exact value.
+
+More citations of previous work would be better. Even if you barely mention their accomplishments, it gives you credibility.}
 
 % TODO: Outline methods for performing analysis and test design
 
@@ -427,6 +445,7 @@ is required.
 We examine how much of an effect in terms of error proxy voting has on the outcome
 of a vote under a number of distributions of opinions, as well as with various
 numbers of delegators.
+\vicki{give more details as to what you are proposing}
 We additionally employ a continuous space preference model to represent agents
 preferences, and introduce the ability allow agents to express their preferences as
 any number within the range of this model.
