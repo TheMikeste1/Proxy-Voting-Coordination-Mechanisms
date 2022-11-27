@@ -434,27 +434,27 @@ our mechanisms will be different due the mechanisms they used not being benefici
 a continuous preference space or with a small number of candidates, or not working well
 with proxy voting.
 
-We also look at how allowing a voter to delegate multiple proxies affects the vote,
-as described towards the end of \autoref{sec:setup-and-assumptions}.
-\vicki{In this section,  you lead with the results of others, and make your intended changes a following comment.  For example, Joe used Borda voting with population X to discover that it was subject to Y. yada yada yada.   We adapt his method to allow proxy voting.}
-Jonas Degrave~\cite{Degrave2014} implements a simple model to allow voters to
-delegate to multiple proxies, specifically by simply dividing their weight amongst
-all those to which the voter delegates.
-This is precisely the model we will use, since it allows for a straightforward way to
-delegate voting power that would not be confusing to voters.
-However, we additionally look at how many proxies a voter should be allowed to
-delegate.
+Jonas Degrave~\cite{Degrave2014} implemented a simple model to allow voters to
+delegate to multiple proxies.
+He treated proxy delegations as a graph, and developed two algorithms to determine
+the weights of each proxy.
+The first algorithm, which calls for simply dividing their weight amongst all those
+to which the voter delegates, is precisely the model we will use.
+This technique allows for a straightforward way to delegate voting power that would
+not be confusing to voters.
+We additionally augment this technique by looking at how many proxies a voter should be
+allowed to delegate.
+As with Degrave's approach, a delegator's voting power will be divided equally amongst
+all its proxies.
 Intuitively, if a voter were to delegate all other voters as proxies the result would
 be the same as if the voter had simply not voted.
 However, if the voter were to only delegate a single proxy, the result might not be
-as ideal to the delegator as if they had been able to delegate to two proxies that
-would produce a better result for the delegator.
+as ideal to the delegator or system as if they had been able to delegate to two proxies
+that would produce a better result.
 As such, we ask, if voters can delegate more than one proxy, how many proxies should
-they be allowed to delegate?
-\vicki{Is it "should" or how many are useful?  I'm guessing that more than 3 proxies is not that helpful.  I'm assuming the vote would be split equally?  Otherwise, it really isn't interesting as they could get their exact value.
-%
-More citations of previous work would be better. Even if you barely mention their accomplishments, it gives you credibility.}
+be allotted before more proxies cease to be useful?
 
+% TODO: Shotgun more previous work here
 % TODO: Outline methods for performing analysis and test design
 
 
