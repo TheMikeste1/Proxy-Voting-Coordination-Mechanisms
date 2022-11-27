@@ -161,14 +161,7 @@ them by their weights, and then averages them.
 
 Proxy voting may seem like an extremely attractive option for the House of
 Representatives, and other organizations, to use.
-However, previous research has already shown it is not without its flaws.
-\etal{Kling} and \etal{Gölz} all investigated a weakness in liquid democracy dubbed
-`super voters'~\cite{Kling2015,Golz2021}, which are proxies that receive an extremely
-large amount of power, while others gain very little.
-While \etal{Kling} ultimately determined these proxies tend to use their power
-wisely, possibly to avoid estranging those voters who delegate their power to the
-proxy, there can be situations where super voters can be problematic with one-off
-issues.
+However, it is not without its flaws.
 As a simple example, consider a vote taking over preference
 space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
 $\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
@@ -177,16 +170,12 @@ Under the mean mechanism, which aggregates opinions by simply taking their mean,
 everyone were to vote we would get the actual preference of the
 system: $\systemtruth = 0.18$.
 However, if $\agent_2$, $\agent_3$, and $\agent_5$ were to become inactive and select
-$\agent_4$ as their proxy, making them a super voter, the result would be
-$\systemtruth = 0.6$.
-\vicki{But the problem isn't that there is a super voter.  The problem is that the proxy has no close choice.  When you introduce the term super voter, I assumed you were going to say that the super voter didn't vote as directed, and because he had so much power, that was a problem.}
+$\agent_4$ as their proxy, the result would be $\systemtruth = 0.6$.
 This is visualized in \autoref{fig:voting-example}.
 This is an absolute error of 0.42, or 21\% of the entire preference space!
 Ideally the output of a system employing proxy voting would be much closer to the
-actual preference of the system.
-While there are methods to help mitigate the effect of super voters, which
-\etal{Gölz}~\cite{Golz2021} explore, the amount of error produced by a proxy vote
-system, including that of super voters, is precisely what this paper will explore.
+actual preference of the system, but since the center voters do not have a more
+central proxy, the system's output is skewed towards the most extreme voters.
 
 \begin{figure}[htbp]
     \centering
@@ -199,6 +188,22 @@ system, including that of super voters, is precisely what this paper will explor
     }
     \label{fig:voting-example}
 \end{figure}
+
+Previous research has also identified problems with proxy voting.
+\etal{Kling} and \etal{Gölz} all investigated a weakness in liquid democracy dubbed
+`super voters'~\cite{Kling2015,Golz2021}, which are proxies that receive an extremely
+large amount of power, while others gain very little.
+While \etal{Kling} ultimately determined these proxies tend to use their power
+wisely, possibly to avoid estranging those voters who delegate their power to the
+proxy, there can be situations where super voters can be problematic with one-off
+issues.
+For example, in the previous situation $\agent_4$ could be considered a super voter.
+If they were to change their preference, say after bribery, threat, or even
+something benign such as changing their opinion after a debate, the system's output
+could change drastically.
+While there are methods to help mitigate the effect of super voters, which
+\etal{Gölz}~\cite{Golz2021} explore, the amount of error produced by a proxy vote
+system, including that of super voters, is precisely what this paper will explore.
 
 
 \section{Preliminary Setup and Assumptions}\label{sec:setup-and-assumptions}
