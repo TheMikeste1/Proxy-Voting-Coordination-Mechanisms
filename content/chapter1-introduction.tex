@@ -132,6 +132,13 @@ Ultimately, the use of liquid democracy is not considered in this study, but sin
 voting is a subset of the liquid democracy system, it would likely be possible to
 extend the results of this study to liquid democracy as well.
 
+Votes are aggregated into an output using a \textit{voting mechanisms} or
+\textit{voting rules}.
+Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting rules.
+In a continuous voting space, which will be used in this study, plurality simply
+selects the option with the most votes, while mean takes all preferences, multiplies
+them by their weights, and then averages them.
+
 Proxy voting may seem like an extremely attractive option for the House of
 Representatives, and other organizations, to use.
 However, previous research has already shown it is not without its flaws.
@@ -146,9 +153,6 @@ As a simple example, consider a vote taking over preference
 space $\systemspace = [-1, 1]$ with agent preferences $\truthof{\agent_1} = -1$,
 $\truthof{\agent_2} = 0.25$, $\truthof{\agent_3} = 0.5$, $\truthof{\agent_4} = 1$,
 $\truthof{\agent_5} = 0.15$.
-Further details on such a preference space model and its mechanics are described in
-\autoref{sec:setup-and-assumptions}.
-\vicki{Better not to refer to future section, when the knowledge is needed here.}
 Under the mean mechanism, which aggregates opinions by simply taking their mean, if
 everyone were to vote we would get the actual preference of the
 system: $\systemtruth = 0.18$.
