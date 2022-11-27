@@ -132,6 +132,29 @@ Ultimately, the use of liquid democracy is not considered in this study, but sin
 voting is a subset of the liquid democracy system, it would likely be possible to
 extend the results of this study to liquid democracy as well.
 
+There are many ways to represent the votes, or preferences, of agents in a system.
+Once such way is a continuous space model, such as the one used in~\cite{Cohensius2017}.
+This model places voters' preferences in a metric space \systemspace, such as
+in~\autoref{fig:system-metric-space}.
+In this model, two points that are close together in the metric space are represent
+similar preferences, while two points that are far apart represent very different
+preferences.
+
+\begin{figure}[htbp]
+    \centering
+    \input{content/figures/system-metric-space.tikz}
+    \caption{
+        Example of a 1D preference metric space, where \truthof{x} represents the
+        preference of agent $x$.
+        The x-axis represents some preference space, where the leftmost point is
+        the most preference most against some idea and the rightmost point is the most
+        preference most in favor of the same idea.
+        Importantly, points towards the center of the space are more ambivalent about
+        the topic than the extremes on either end.
+    }
+    \label{fig:system-metric-space}
+\end{figure}
+
 Votes are aggregated into an output using a \textit{voting mechanisms} or
 \textit{voting rules}.
 Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting rules.
@@ -184,11 +207,11 @@ system, including that of super voters, is precisely what this paper will explor
 \section{Preliminary Setup and Assumptions}\label{sec:setup-and-assumptions}
 An important part of any study is the model it uses to represent the system being
 studied.
-In this work, we employ a model developed by \etal{Cohensius} in their 2017
+In this work, we employ a model described by \etal{Cohensius} in their 2017
 article~\cite{Cohensius2017}.
-This model places voters' preferences, which for our purposes are the congress
-members' opinions on a topic, in a metric space \systemspace, such as
-in~\autoref{fig:system-metric-space}.
+This model places voters' preferences, which for our purposes are the Congress
+members' opinions on a topic, in a continuous metric~space~\systemspace, as 
+previously described in~\autoref{sec:background}.
 Modeling voters' preferences in such a way allows for continuous preferences instead of
 discrete or binary opinions other models might emphasize.
 This is beneficial, as it allows for a more realistic representation of voters'
@@ -199,20 +222,6 @@ remain ambivalent or less-passionately for or against.
 This works perfectly with the metric space model, as it allows for the passionate
 opinions to be at opposite extremes of the metric space, while the less-passionate
 opinions are closer to the center.
-
-\begin{figure}[htbp]
-    \centering
-    \input{content/figures/system-metric-space.tikz}
-    \caption{
-        Example of a 1D preference metric space, where \truthof{x} represents the
-        preference of agent $x$.
-        The x-axis represents some preference space, where the leftmost point is
-        the most preference most against some idea and the rightmost point is the most
-        preference most in favor of the same idea.
-    }
-    \label{fig:system-metric-space}
-\end{figure}
-\vicki{This figure should really come before Figure 1.1}
 
 This model also naturally extends to two- or higher-dimensional spaces.
 These would include more complex and multi-faceted topics, such as migration, which
