@@ -139,7 +139,7 @@ preferences.
 
 \begin{figure}[htbp]
     \centering
-    \input{content/figures/system-metric-space.tikz}
+    \input{content/figures/chapter1/system-metric-space.tikz}
     \caption{
         Example of a 1D preference metric space, where \truthof{x} represents the
         preference of agent $x$.
@@ -179,7 +179,7 @@ central proxy, the system's output is skewed towards the most extreme voters.
 
 \begin{figure}[htbp]
     \centering
-    \input{content/figures/voting-example.tikz}
+    \input{content/figures/chapter1/voting-example.tikz}
     \caption{
         An example vote and its results.
         $\textcolor{blue}{\systemtruth_{actual}}$ is the result when everyone votes,
@@ -212,7 +212,7 @@ studied.
 In this work, we employ a model described by \etal{Cohensius} in their 2017
 article~\cite{Cohensius2017}.
 This model places voters' preferences, which for our purposes are the Congress
-members' opinions on a topic, in a continuous metric~space~\systemspace, as 
+members' opinions on a topic, in a continuous metric~space~\systemspace, as
 previously described in~\autoref{sec:background}.
 Modeling voters' preferences in such a way allows for continuous preferences instead of
 discrete or binary opinions other models might emphasize.
@@ -364,7 +364,7 @@ cases.
 % FIXME: This might need to be moved to Background. It feels somewhere in between
 %   both Previous Work and Background.
 James Miller~\cite{Miller1969} imagined a governmental system utilizing proxy voting
- in 1969 as a more direct form of a representative democracy.\footnote{
+in 1969 as a more direct form of a representative democracy.\footnote{
     That is to say, Miller envisioned a system where individuals could directly vote
     for an issue, or elect a proxy to vote for them.
     Naturally, any democracy that uses proxy voting is a representative democracy,
@@ -419,7 +419,7 @@ effects of proxy voting on a relatively small, finite population of 435 members 
 House of Representatives.
 As such, we will explore the effects of proxy voting on a finite population of this
 size, as well as explore other possible voting mechanisms.
-\vicki{List them.  This seems more interesting than the finite set.}
+\vicki{List them. This seems more interesting than the finite set.}
 
 This study will additionally look at voting mechanisms and attempt to determine which
 mechanism is best suited for proxy voting.
@@ -459,38 +459,108 @@ be allotted before more proxies cease to be useful?
 
 
 \section{Proposed Work}\label{sec:contribution}
-\vicki{Try to be more specific about what you will do. You could even give a few
-results, while explaining how you intend to extend them.  Because I'm not sure the extent of your plans, I keep seeing other possibilities:  See the document "Previous Work Summary" in the Voting Articles folder.  }
-
+\vicki{
+    Try to be more specific about what you will do.
+    You could even give a few results, while explaining how you intend to extend them.
+    Because I'm not sure the extent of your plans, I keep seeing other possibilities:
+    See the document "Previous Work Summary" in the Voting Articles folder.
+}
 % \section{Contribution}\label{sec:contribution}
-This study aims to explore the impact the use of proxies has on a vote,
-particularly in the House of Representatives, where high accuracy and participation
-is required.
-We examine how much of an effect in terms of error proxy voting has on the outcome
-of a vote under a number of distributions of opinions, as well as with various
-numbers of delegators.
-\vicki{give more details as to what you are proposing}
-We additionally employ a continuous space preference model to represent agents
-preferences, and introduce the ability allow agents to express their preferences as
-any number within the range of this model.
-The error of a proxy vote will be calculated by measuring the distance in this space
-between the proxy vote outcome, the non-proxy vote outcome, as well as comparing what
-would happen if only the active agents, meaning the agents who would not use a
-proxy, voted.
-Employing this model will allow for a more granular measurement of error, as well as
-allow the agents to be more expressive with their preferences.
 
-We additionally experiment with several voting mechanisms in order to determine if
-proxy votes should be handled differently from normal voting, as well as observe at
-what ratios between delegates and delegators such mechanisms are effective.
-This paper hopes to identify the best voting mechanism for proxy voting, as well as
-determine if proxy voting is a viable technique to increase system welfare without
-having too large an impact on the outcomes of a vote.
+This study will explore how proxy voting affects the vote.
+We will look at the difference in outcome between a direct vote using all agents that
+can vote in person, and proxy voting where the agents that can not attend in person
+will delegate a proxy from who can.
+Votes will take place in a metric space, where an agent is able to vote anywhere
+inside the interval $[-1, 1]$, and will be aggregated using a voting mechanism inside
+the same space.
+Direct voting will use the mean mechanism to aggregate votes, since the average of
+all preferences will be the point most equidistant from all voters' preferences in
+the metric space, thereby minimizing the distance between all voters' preferences and
+maximizing system accuracy.
 
-Finally, we explore how many proxies any given voter should be allowed to delegate.
-The purpose of this exploration is to determine if delegating multiple proxies can
-help produce a more accurate result by providing more information to the system, and
-at what point this effect begins to decrease or hurt the system.
+We will examine proxy voting under eight different voting mechanisms, split into two
+groups.
+Specifically, these mechanisms are\\
+\begin{samepage}
+    \textit{Averaging Mechanisms:}
+    \begin{itemize}
+        \item Mean
+        \item Weight by Instant Runoff
+        \item Weight by Ranked Choice
+        \item Weight by Weighted Instant Runoff
+    \end{itemize}
+    \textit{Candidate Mechanisms:}
+    \begin{itemize}
+        \item Median
+        \item Instant Runoff
+        \item Plurality
+        \item Weighted Instant Runoff
+    \end{itemize}
+\end{samepage}
+Each of these mechanisms will be compared against direct voting with all agents and
+direct voting with only those agents that are present.
+This is done to show what the output of the system would be with all information
+(direct voting with all agents), as well as the output with minimum information
+(direct voting with only those agents that are present).
+Error will be measured by squared error between direct voting with all agents and
+whichever mechanism is being applied.
+
+We will additionally investigate all voting mechanisms with each delegator delegating
+increasing numbers of proxies.
+We will start with the base case of one proxy per delegator, then extending to two
+proxies per delegator, then three, and so on until more proxies is either detrimental
+to system accuracy or not possible.
+
+Whereas voting on an interval is uncommon and finding a dataset using preferences
+on an interval does not seem possible, these investigations will be performed using
+preferences generated from several statistical distributions.
+These distributions and their notations are listed in \autoref{tab:distributions-used}.
+Each experiment will have a population of 435, representing the number of members in
+the House of Representatives.
+For each round, we will experiment with 1 to 434 delegating agents and examine how
+error correlates with the number of delegators.
+
+\begin{table}[!htbp]
+    % increase table row spacing, adjust to taste
+    \renewcommand{\arraystretch}{1.3}
+
+    \caption{The distributions to be used to generate preferences.}
+    \label{tab:distributions-used}
+
+    \centering
+    \input{content/figures/chapter1/distributions-used.tex}
+\end{table}
+
+
+% This study aims to explore the impact the use of proxies has on a vote,
+% particularly in the House of Representatives, where high accuracy and participation
+% is required.
+% We examine how much of an effect in terms of error proxy voting has on the outcome
+% of a vote under a number of distributions of opinions, as well as with various
+% numbers of delegators.
+% \vicki{give more details as to what you are proposing}
+% We additionally employ a continuous space preference model to represent agents
+% preferences, and introduce the ability allow agents to express their preferences as
+% any number within the range of this model.
+% The error of a proxy vote will be calculated by measuring the distance in this space
+% between the proxy vote outcome, the non-proxy vote outcome, as well as comparing what
+% would happen if only the active agents, meaning the agents who would not use a
+% proxy, voted.
+% Employing this model will allow for a more granular measurement of error, as well as
+% allow the agents to be more expressive with their preferences.
+%
+% We additionally experiment with several voting mechanisms in order to determine if
+% proxy votes should be handled differently from normal voting, as well as observe at
+% what ratios between delegates and delegators such mechanisms are effective.
+% This paper hopes to identify the best voting mechanism for proxy voting, as well as
+% determine if proxy voting is a viable technique to increase system welfare without
+% having too large an impact on the outcomes of a vote.
+%
+% Finally, we explore how many proxies any given voter should be allowed to delegate.
+% The purpose of this exploration is to determine if delegating multiple proxies can
+% help produce a more accurate result by providing more information to the system, and
+% at what point this effect begins to decrease or hurt the system.
 
 % TODO: Fill out synopsis of what is learned after the data is analysed
 % This paper will show that, while proxy vote systems are not a perfect tool to
