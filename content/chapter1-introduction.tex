@@ -21,6 +21,7 @@ of proxy voting in other such emergencies.
 The type of proxy voting in Congress is not the traditional type of proxy vote.
 Instead, it is more similar to voting remotely, similar to how one might attend a
 meeting via video conference.
+\Vicki{If this is the model, there is less reason to pick a proxy.  They can  just vote remotely.}
 Nevertheless, using proxy voting in such an important part of the legislative process
 reignites the discussion on the effectiveness of proxy voting.
 Does proxy voting introduce too much error into the voting process?
@@ -476,9 +477,9 @@ with proxy voting.
 
 Jonas Degrave~\cite{Degrave2014} implemented a simple model to allow voters to
 delegate to multiple proxies.
-He treated proxy delegations as a graph, and developed two algorithms to determine
+He treated proxy delegations as a graph \Vicki{Explain what the nodes are?  the edges?}, and developed two algorithms to determine
 the weights of each proxy.
-The first algorithm, which calls for simply dividing their weight amongst all those
+The first algorithm, which calls for simply dividing their weight \Vicki{equally?} among all those
 to which the voter delegates, is precisely the model we will use.
 This technique allows for a straightforward way to delegate voting power that would
 not be confusing to voters.
@@ -493,6 +494,10 @@ as ideal to the delegator or system as if they had been able to delegate to two 
 that would produce a better result.
 As such, we ask, if voters can delegate more than one proxy, how many proxies should
 be allotted before more proxies cease to be useful?
+\Vicki{Are we assuming equal weight?  If not, two delegates would be sufficient as you can get any point in between by proper weighting.
+
+One concern is that if we allow multiple proxies, but they have to be of equal weight, it gets complicated for the delegator to figure out.
+}  
 
 % TODO: Shotgun more previous work here
 James Fearon~\cite{Fearon1998} described how cooperation often occurs in two phases:
@@ -522,6 +527,7 @@ This study will explore how proxy voting affects the vote.
 We will look at the difference in outcome between a direct vote using all agents that
 can vote in person, and proxy voting where the agents that can not attend in person
 will delegate a proxy from who can.
+\Vicki{Previous sentence is awkward}
 Votes will take place in a metric space, where an agent is able to vote anywhere
 inside the interval $[-1, 1]$, and will be aggregated using a voting mechanism inside
 the same space.
@@ -563,10 +569,11 @@ We will start with the base case of one proxy per delegator, then extending to t
 proxies per delegator, then three, and so on until more proxies is either detrimental
 to system accuracy or not possible.
 
-Whereas voting on an interval is uncommon and finding a dataset using preferences
+Whereas voting on an interval is uncommon and finding a \Vicki{real world} dataset using preferences
 on an interval does not seem possible, these investigations will be performed using
 preferences generated from several statistical distributions.
 These distributions and their notations are listed in \autoref{tab:distributions-used}.
+\Vicki{Do we have any data to indicate that these data sets are representative? Would a bi-modal function be appropriate?}
 Each experiment will have a population of 435, representing the number of members in
 the House of Representatives.
 For each round, we will experiment with 1 to 434 delegating agents and examine how
