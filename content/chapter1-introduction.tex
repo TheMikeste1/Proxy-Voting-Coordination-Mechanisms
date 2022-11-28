@@ -264,22 +264,48 @@ to rework the law.
 This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
 which are functions that map a set of preferences in~\systemspace\ to an outcome that
 also exists in~\systemspace.
-% TODO: List the voting mechanisms we will use
-%
-% \com{The idea of a voting mechanism did NOT start with Cohensius. Give credit to the
-% proper originator.}
-% MDH: I've done some research to find the originator of the term, but it seems to be
-% a fairly common term with no clear originator. The idea at the very least seems to
-% date back all the way to ancient Greece, so I'm hoping it's safe to assume it's a
-% common knowledge term.
-%
-We employ several common voting mechanisms and adapt them to the proxy voting system.
-Which mechanisms are used and how they operate will be described in the full thesis.
+These mechanisms are split into two groups, Average Mechanisms and Candidate Mechanisms.
+
+Average mechanisms involve taking the weight of voters and aggregating them into some
+number by averaging.
+These mechanisms include
+\begin{itemize}
+    \item Mean
+    \item Weight by Instant Runoff, where the weight of an active voter is determined by
+    its ranking after Instant Runoff using the number of voters using it as a proxy.
+    \item Weight by Ranked Choice, where the weight of an active voter is determined by
+    its overall ranking against all other voters.
+    \item Weight by Weighted Instant Runoff, where the weight of an active voter is
+    determined by its ranking after Instant Runoff using the voter weights instead of
+    the number of voters using it as a proxy.
+\end{itemize}
+All of these mechanisms determine the weight of an active voter, then use apply a
+weighted mean to the voters' preferences to determine the outcome.
+
+Candidate mechanisms, on the other hand, involve selecting a single proxy out of all
+active voters and using its preference as the outcome.
+Ideally, this proxy would be the proxy that best represents the voters' opinions and
+would minimize the total distance between its preference and all other voters'
+preferences.
+\begin{itemize}
+    \item Median
+    \item Instant Runoff, which operates the same as the Average Instant Runoff.
+    \item Plurality
+    \item Weighted Instant Runoff, which operates the same as the Average Instant
+    Runoff.
+\end{itemize}
+As with Average mechanisms, all these mechanisms work by first determining the weight
+of a proxy.
+However, instead of then applying a weighted mean, they select the proxy that is
+at the median (in the case of the Median mechanism) or that ranks highest (in the case
+of the remaining mechanisms).
+
+More details on how each voting mechanism operates will be described in the full thesis.
 % in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
 
-The flexibility of this model in both the discrete and continuous realms, its ability
-to use different voting rules, and its easy interpretability, are the reasons it is
-employed in this study.
+The flexibility of the continuous model in both the discrete and continuous realms, its
+ability to use different voting rules, and its easy interpretability, are the reasons
+it is employed in this study.
 This study will focus primarily on the continuous instead of the discrete output of
 the model, since observing the continuous output allows for more granularity in the
 differences between proxy and non-proxy voting, as well as in the differences between
@@ -454,7 +480,6 @@ As such, we ask, if voters can delegate more than one proxy, how many proxies sh
 be allotted before more proxies cease to be useful?
 
 % TODO: Shotgun more previous work here
-% TODO: Outline methods for performing analysis and test design
 
 
 \section{Proposed Work}\label{sec:contribution}
