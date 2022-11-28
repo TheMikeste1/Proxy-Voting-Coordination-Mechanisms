@@ -21,13 +21,14 @@ of proxy voting in other such emergencies.
 The type of proxy voting in Congress is not the traditional type of proxy vote.
 Instead, it is more similar to voting remotely, similar to how one might attend a
 meeting via video conference.
-Nevertheless, using proxy voting in such an important part of the legislative process,
+Nevertheless, using proxy voting in such an important part of the legislative process
 reignites the discussion on the effectiveness of proxy voting.
 Does proxy voting introduce too much error into the voting process?
 Or is it a viable alternative to direct voting?
 If proxy voting does introduce error, perhaps alternative voting mechanisms or systems
 can be used to mitigate that effect while still maintaining the benefits of proxy
 voting.
+\Vicki{The reader isn't sure where the error is coming from as voting remotely seems to be the same as being there.  Explain.}
 This study attempts to answer these questions by analyzing the effects of proxy
 voting on the results of a vote under a number of preference distributions.
 We employ several voting mechanisms and rank them according to their performance when
@@ -53,6 +54,7 @@ techniques to improve such a system.
 
 
 \section{Background}\label{sec:background}
+\VIcki{Explain that initially each player gets one vote.  Explain the term voting power.}
 \textit{Proxy voting} involves allowing agents to transfer their voting power
 from themselves to another agent, known as a \textit{proxy} or a \textit{delegate}.
 This adds to the voting power of the proxy, which is called its `weight.'
@@ -89,6 +91,7 @@ preference space.
 The `goodness' of a system here is measured using two primary metrics: the
 \textit{accuracy} or \textit{error} of the system, meaning how close the system is to
 the optimal solution, and the total system \textit{welfare}.
+\Vicki{You appear to be saying that accuracy and error are the same, but they seem opposite.}
 Welfare is a measure of how good a situation or action is for an agent.
 For example, an agent not being required to vote in person increases that agent's
 welfare since it makes it easier for the agent to vote.
@@ -113,6 +116,7 @@ As will be discussed in the results section of the thesis,
 this additional system welfare comes at the cost of some system accuracy in terms of
 the actual preferences of the voters.
 This cost comes about because proxies do not vote exactly the same as their delegators,
+\Vicki{Again, we need to understand how the proxy system works to see why they wouldn't vote the same.}
 which causes information about the delegators' preference to be lost and the system's
 accuracy to suffer.
 The loss in accuracy may be acceptable, however, if the system's welfare is sufficiently
@@ -133,7 +137,7 @@ There are many ways to represent the votes, or preferences, of agents in a syste
 Once such way is a continuous space model, such as the one used in~\cite{Cohensius2017}.
 This model places voters' preferences in a metric space \systemspace, such as
 in~\autoref{fig:system-metric-space}.
-In this model, two points that are close together in the metric space are represent
+In this model, two points that are close together in the metric space represent
 similar preferences, while two points that are far apart represent very different
 preferences.
 
@@ -156,7 +160,8 @@ Votes are aggregated into an output using a \textit{voting mechanisms} or
 \textit{voting rules}.
 Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting rules.
 In a continuous voting space, which will be used in this study, plurality simply
-selects the option with the most votes, while mean takes all preferences, multiplies
+selects the option with the most votes, 
+\Vicki{Plurality doesn't make sense in a metric space.}while mean takes all preferences, multiplies
 them by their weights, and then averages them.
 
 Proxy voting may seem like an extremely attractive option for the House of
@@ -276,13 +281,15 @@ These mechanisms include
     \item Mean
     \item Weight by Instant Runoff, where the weight of an active voter is determined by
     its ranking after Instant Runoff using the number of voters using it as a proxy.
+    \Vicki{Instant Runoff needs to be defined.}
     \item Weight by Ranked Choice, where the weight of an active voter is determined by
     its overall ranking against all other voters.
+    \Vicki{unclear.  Typically means the ability to list several choices in order.  Not appropriate on a meetric space.}
     \item Weight by Weighted Instant Runoff, where the weight of an active voter is
     determined by its ranking after Instant Runoff using the voter weights instead of
     the number of voters using it as a proxy.
 \end{itemize}
-All of these mechanisms determine the weight of an active voter, then use apply a
+All of these mechanisms determine the weight of an active voter, then  apply a
 weighted mean to the voters' preferences to determine the outcome.
 
 Candidate mechanisms, on the other hand, involve selecting a single proxy out of all
