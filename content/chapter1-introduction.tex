@@ -21,7 +21,7 @@ of proxy voting in other such emergencies.
 The type of proxy voting in Congress is not the traditional type of proxy vote.
 Instead, it is more similar to voting remotely, similar to how one might attend a
 meeting via video conference.
-\Vicki{If this is the model, there is less reason to pick a proxy.  They can  just vote remotely.}
+\vicki{If this is the model, there is less reason to pick a proxy.  They can  just vote remotely.}
 Nevertheless, using proxy voting in such an important part of the legislative process
 reignites the discussion on the effectiveness of proxy voting.
 Does proxy voting introduce too much error into the voting process?
@@ -29,7 +29,7 @@ Or is it a viable alternative to direct voting?
 If proxy voting does introduce error, perhaps alternative voting mechanisms or systems
 can be used to mitigate that effect while still maintaining the benefits of proxy
 voting.
-\Vicki{The reader isn't sure where the error is coming from as voting remotely seems to be the same as being there.  Explain.}
+\vicki{The reader isn't sure where the error is coming from as voting remotely seems to be the same as being there.  Explain.}
 This study attempts to answer these questions by analyzing the effects of proxy
 voting on the results of a vote under a number of preference distributions.
 We employ several voting mechanisms and rank them according to their performance when
@@ -55,7 +55,7 @@ techniques to improve such a system.
 
 
 \section{Background}\label{sec:background}
-\VIcki{Explain that initially each player gets one vote.  Explain the term voting power.}
+\vicki{Explain that initially each player gets one vote.  Explain the term voting power.}
 \textit{Proxy voting} involves allowing agents to transfer their voting power
 from themselves to another agent, known as a \textit{proxy} or a \textit{delegate}.
 This adds to the voting power of the proxy, which is called its `weight.'
@@ -92,7 +92,7 @@ preference space.
 The `goodness' of a system here is measured using two primary metrics: the
 \textit{accuracy} or \textit{error} of the system, meaning how close the system is to
 the optimal solution, and the total system \textit{welfare}.
-\Vicki{You appear to be saying that accuracy and error are the same, but they seem opposite.}
+\vicki{You appear to be saying that accuracy and error are the same, but they seem opposite.}
 Welfare is a measure of how good a situation or action is for an agent.
 For example, an agent not being required to vote in person increases that agent's
 welfare since it makes it easier for the agent to vote.
@@ -117,7 +117,7 @@ As will be discussed in the results section of the thesis,
 this additional system welfare comes at the cost of some system accuracy in terms of
 the actual preferences of the voters.
 This cost comes about because proxies do not vote exactly the same as their delegators,
-\Vicki{Again, we need to understand how the proxy system works to see why they wouldn't vote the same.}
+\vicki{Again, we need to understand how the proxy system works to see why they wouldn't vote the same.}
 which causes information about the delegators' preference to be lost and the system's
 accuracy to suffer.
 The loss in accuracy may be acceptable, however, if the system's welfare is sufficiently
@@ -162,7 +162,7 @@ Votes are aggregated into an output using a \textit{voting mechanisms} or
 Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting rules.
 In a continuous voting space, which will be used in this study, plurality simply
 selects the option with the most votes, 
-\Vicki{Plurality doesn't make sense in a metric space.}while mean takes all preferences, multiplies
+\vicki{Plurality doesn't make sense in a metric space.}while mean takes all preferences, multiplies
 them by their weights, and then averages them.
 
 Proxy voting may seem like an extremely attractive option for the House of
@@ -282,17 +282,17 @@ These mechanisms include
     \item Mean
     \item Weight by Instant Runoff, where the weight of an active voter is determined by
     its ranking after Instant Runoff using the number of voters using it as a proxy.
-    \Vicki{Instant Runoff needs to be defined.}
+    \vicki{Instant Runoff needs to be defined.}
     \item Weight by Ranked Choice, where the weight of an active voter is determined by
     its overall ranking against all other voters.
-    \Vicki{unclear.  Typically means the ability to list several choices in order.  Not appropriate on a meetric space.}
+    \vicki{unclear.  Typically means the ability to list several choices in order.  Not appropriate on a meetric space.}
     \item Weight by Weighted Instant Runoff, where the weight of an active voter is
     determined by its ranking after Instant Runoff using the voter weights instead of
     the number of voters using it as a proxy.
 \end{itemize}
 All of these mechanisms determine the weight of an active voter, then  apply a
 weighted mean to the voters' preferences to determine the outcome.
-\Vicki{An example would help.}
+\vicki{An example would help.}
 
 Candidate mechanisms, on the other hand, involve selecting a single proxy out of all
 active voters and using its preference as the outcome.
@@ -352,7 +352,7 @@ Additionally, the resolution currently requires the delegate to vote exactly as 
 specific instructions provided by the delegating voter tells them to
 vote~\cite{CERP2020, Congress.gov2020}.
 This essentially turns proxy into a relay for the delegating voter, which is not how
-proxy voting is typically used and is not particularly useful. \Vicki{Explain what you mean by useful.}
+proxy voting is typically used and is not particularly useful. \vicki{Explain what you mean by useful.}
 Instead, we consider scenarios where actual proxy voting is used, where the proxy
 receives the voting power of the delegating voter, increasing their weight, and
 proceeds to votes according to their own preference.
@@ -460,26 +460,26 @@ size, as well as explore other possible voting mechanisms.
 
 This study will additionally look at voting mechanisms and attempt to determine which
 mechanism is best suited for proxy voting.
-|Vicki{Lead with what others have done. Then in a sentence or two say why yours will differ.}
+|vicki{Lead with what others have done. Then in a sentence or two say why yours will differ.}
 This is not unlike~\cite{Mathur2017}, who looked at several voting mechanisms applied
 on a single-winner election vote and determined a ranking for these mechanisms.
 In their work, they discover that the Schulze
 \vicki{Briefly explain these voting mechanisms} and Minimax voting mechanisms always
 agree and beat all other mechanisms tested, while Borda beats 
-\Vicki{Quantify "beats"} Copeland and Plurality,
+\vicki{Quantify "beats"} Copeland and Plurality,
 and Plurality comes in last.
 Our work will differ significantly from theirs, however, as we will explore voting
 mechanisms used under proxy voting instead of single-winner elections
-\Vicki{Why does proxy have to differ from single-winner?}, and most of
+\vicki{Why does proxy have to differ from single-winner?}, and most of
 our mechanisms will be different due the mechanisms they used not being beneficial on
 a continuous preference space or with a small number of candidates, or not working well
 with proxy voting.
 
 Jonas Degrave~\cite{Degrave2014} implemented a simple model to allow voters to
 delegate to multiple proxies.
-He treated proxy delegations as a graph \Vicki{Explain what the nodes are?  the edges?}, and developed two algorithms to determine
+He treated proxy delegations as a graph \vicki{Explain what the nodes are?  the edges?}, and developed two algorithms to determine
 the weights of each proxy.
-The first algorithm, which calls for simply dividing their weight \Vicki{equally?} among all those
+The first algorithm, which calls for simply dividing their weight \vicki{equally?} among all those
 to which the voter delegates, is precisely the model we will use.
 This technique allows for a straightforward way to delegate voting power that would
 not be confusing to voters.
@@ -494,7 +494,7 @@ as ideal to the delegator or system as if they had been able to delegate to two 
 that would produce a better result.
 As such, we ask, if voters can delegate more than one proxy, how many proxies should
 be allotted before more proxies cease to be useful?
-\Vicki{Are we assuming equal weight?  If not, two delegates would be sufficient as you can get any point in between by proper weighting.
+\vicki{Are we assuming equal weight?  If not, two delegates would be sufficient as you can get any point in between by proper weighting.
 
 One concern is that if we allow multiple proxies, but they have to be of equal weight, it gets complicated for the delegator to figure out.
 }  
@@ -527,7 +527,7 @@ This study will explore how proxy voting affects the vote.
 We will look at the difference in outcome between a direct vote using all agents that
 can vote in person, and proxy voting where the agents that can not attend in person
 will delegate a proxy from who can.
-\Vicki{Previous sentence is awkward}
+\vicki{Previous sentence is awkward}
 Votes will take place in a metric space, where an agent is able to vote anywhere
 inside the interval $[-1, 1]$, and will be aggregated using a voting mechanism inside
 the same space.
@@ -569,11 +569,11 @@ We will start with the base case of one proxy per delegator, then extending to t
 proxies per delegator, then three, and so on until more proxies is either detrimental
 to system accuracy or not possible.
 
-Whereas voting on an interval is uncommon and finding a \Vicki{real world} dataset using preferences
+Whereas voting on an interval is uncommon and finding a \vicki{real world} dataset using preferences
 on an interval does not seem possible, these investigations will be performed using
 preferences generated from several statistical distributions.
 These distributions and their notations are listed in \autoref{tab:distributions-used}.
-\Vicki{Do we have any data to indicate that these data sets are representative? Would a bi-modal function be appropriate?}
+\vicki{Do we have any data to indicate that these data sets are representative? Would a bi-modal function be appropriate?}
 Each experiment will have a population of 435, representing the number of members in
 the House of Representatives.
 For each round, we will experiment with 1 to 434 delegating agents and examine how
