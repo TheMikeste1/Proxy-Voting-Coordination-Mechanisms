@@ -287,25 +287,34 @@ number by averaging.
 These mechanisms include
 \begin{itemize}
     \item Mean
-    \item Weight by Instant Runoff, where the weight of an active voter is determined by
-    its ranking after Instant Runoff using the number of voters using it as a proxy.
-    \vicki{Instant Runoff needs to be defined.}
     \item {
-        Weight by Ranked Choice, where the weight of an active voter is determined by
-        its overall ranking against all other voters.
+        Weight by Instant Runoff, where the weight of an active voter is
+        determined by its ranking after Instant Runoff using the number of voters
+        using it as a proxy.
+        Here, Instant Runoff involves eliminating active voters with the least weight
+        until some active voter holds half of the total system weight.
+        Once this occurs, a weighted mean is calculated using the remaining active
+        voters.
+        For this mechanism, total system weight is the number of delegators in the
+        system, and an active voter's weight is the number of delegators using it as
+        a proxy.
+    }
+    \item {
+        Weight by Ranked Choice, where the system-assigned weight of an active voter is
+        determined by its overall ranking against all other voters.
         In other words, the system ranks each active voter according to its total
         delegator-assigned weight.
         Each active voter is then assigned a new weight from 1 to $n$ according to its
         ranking, where $n$ is the number of active voters.
-        This means the active voter in first will receive a system weight of $n$,
-        regardless of its total delegator weight, and the active voter in last will
-        receive a system weight of 1.
+        This means the active voter in first will receive a system-assigned weight of
+        $n$, regardless of its total delegator weight, and the active voter in last will
+        receive a system-assigned weight of 1.
     }
-    \item Weight by Weighted Instant Runoff, where the weight of an active voter is
-    determined by its ranking after Instant Runoff using the voter weights instead of
-    the number of voters using it as a proxy.
+    \item Weight by Weighted Instant Runoff, where the system weight of an active
+    voter is determined by its ranking after Instant Runoff using the voter weights
+    instead of the number of voters using it as a proxy.
 \end{itemize}
-All of these mechanisms determine the weight of an active voter, then  apply a
+All of these mechanisms determine the weight of an active voter, then apply a
 weighted mean to the voters' preferences to determine the outcome.
 \vicki{An example would help.}
 
