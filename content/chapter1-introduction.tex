@@ -500,10 +500,11 @@ candidates, or not working well with proxy voting.
 
 Jonas Degrave~\cite{Degrave2014} implemented a simple model to allow voters to
 delegate to multiple proxies.
-He treated proxy delegations as a graph \vicki{Explain what the nodes are?  the edges?}, and developed two algorithms to determine
-the weights of each proxy.
-The first algorithm, which calls for simply dividing their weight \vicki{equally?} among all those
-to which the voter delegates, is precisely the model we will use.
+He treated proxy delegations as a digraph where nodes are voters and edges represent
+delegating proxies.
+He developed two algorithms to determine the weights of each proxy.
+The first algorithm, which calls for simply dividing their weight equally among all
+those to which the voter delegates, is precisely the model we will use.
 This technique allows for a straightforward way to delegate voting power that would
 not be confusing to voters.
 We additionally augment this technique by looking at how many proxies a voter should be
