@@ -88,7 +88,11 @@ emergency triggered the use of proxy voting.
 In these cases, proxy voting allows voters to skip incurring the costs while still
 having their voice heard by allowing a proxy to pay the cost once on behalf of all
 voters who transfer their power to that proxy.
-Of course, a voter would not want to give its voting power to just any proxy.
+However, this advantage comes with the disadvantage that the proxies are able to vote
+as they themselves see fit, meaning the delegator's weight may not be applied exactly
+how they want.
+This means a voter would not want to give its voting power to just any proxy, but
+rather one that would still be `close enough' to their preference.
 This study employs a similar technique as used in~\cite{Cohensius2017}, which has the
 voters, or agents, pass their voting power to the proxy that is closest in the
 preference space.
@@ -119,9 +123,9 @@ As will be discussed in the results section of the thesis,
 % \autoref{ch:results},  % TODO: Uncomment for thesis
 this additional system welfare comes at the cost of some system accuracy in terms of
 the actual preferences of the voters.
-This cost comes about because proxies do not vote exactly the same as their delegators,
-\vicki{Again, we need to understand how the proxy system works to see why they wouldn't vote the same.}
-which causes information about the delegators' preference to be lost and the system's
+This cost comes about because proxies will likely not vote exactly the same as their
+delegators due to having different preferences.
+This causes information about the delegators' preference to be lost and the system's
 accuracy to suffer.
 The loss in accuracy may be acceptable, however, if the system's welfare is sufficiently
 improved.
