@@ -167,10 +167,10 @@ preferences.
 Votes are aggregated into an output using a \textit{voting mechanisms} or
 \textit{voting rules}.
 Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting rules.
-In a continuous voting space, which will be used in this study, plurality simply
-selects the option with the most votes, 
-\vicki{Plurality doesn't make sense in a metric space.}while mean takes all preferences, multiplies
-them by their weights, and then averages them.
+The mean mechanism naturally extends to a continuous space, since it can take all
+preferences, multiply them by their weights, and then average them.
+Plurality, on the other hand, needs to be adapted to operate in a continuous space.
+In our implementation it will select the preference of the voter with the most weight,
 
 Proxy voting may seem like an extremely attractive option for the House of
 Representatives, and other organizations, to use.
