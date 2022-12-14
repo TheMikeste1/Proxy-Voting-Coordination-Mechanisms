@@ -316,7 +316,15 @@ These mechanisms include
 \end{itemize}
 All of these mechanisms determine the weight of an active voter, then apply a
 weighted mean to the voters' preferences to determine the outcome.
-\vicki{An example would help.}
+As an example, we'll use the Weight by Ranked Choice mechanism.
+Say we have six total voters, and three active voters $a, b, c$.
+This leaves three inactive voters who can choose $a$, $b$, or $c$ as a proxy.
+Two inactive voters select $b$ as a proxy, and one selects $a$.
+This means the system ranking for these active voters would be $b = 1, a = 2, c = 3$.
+Since there are 3 active voters, $b$ receives a system-assigned weight of 3, a
+receives a weight of 2, and c receives a weight of 1.
+From here, the system would calculate the weighted mean of the preferences of $a$,
+$b$, and $c$ using the system-assigned weights.
 
 Candidate mechanisms, on the other hand, involve selecting a single proxy out of all
 active voters and using its preference as the outcome.
