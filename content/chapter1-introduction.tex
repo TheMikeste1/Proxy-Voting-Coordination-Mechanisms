@@ -359,13 +359,25 @@ Additionally, the resolution currently requires the delegate to vote exactly as 
 specific instructions provided by the delegating voter tells them to
 vote~\cite{CERP2020, Congress.gov2020}.
 This essentially turns proxy into a relay for the delegating voter, which is not how
-proxy voting is typically used and is not particularly useful. \vicki{Explain what you mean by useful.}
+proxy voting is typically used and is not particularly interesting, since relaying a
+vote essentially allows the delegator to vote as if they were present.
+This means no information about the delegator's preference is lost.
+However, it also means they do not gain all the benefits of traditional proxy voting
+since they still need to do all the work of casting their vote except for being present.
+The `relay' proxy voting also comes with the downside that delegators will be unable
+to have their proxy vote differently if the delegator's preference were to change,
+say through deliberation or as new information is provided.
+
 Instead, we consider scenarios where actual proxy voting is used, where the proxy
 receives the voting power of the delegating voter, increasing their weight, and
 proceeds to votes according to their own preference.
-This requires the delegating voter to choose a proxy who they trust to vote as close
-to how they would as possible if only they were able to participate in the direct vote,
-similar to selecting experts as described in~\cite{Miller1969} and~\cite{Mueller1972}.
+Traditional proxy voting also allows the proxy to update their (and by extension, their
+delegators') preferences as new information becomes available.
+While traditional proxy voting gives substantial flexibility to the proxy to
+operate on behalf of their delegators, this flexibility requires the delegating voter
+to choose a proxy who they trust to vote as close to how they themselves would.
+This is a process similar to selecting experts, as described by~\cite{Miller1969}
+and~\cite{Mueller1972}.
 
 Second, we assume that each voter has perfect knowledge of potential proxies' opinions.
 This will allow them to choose the proxy that has the opinion most similar to their own.
