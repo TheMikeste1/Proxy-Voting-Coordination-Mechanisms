@@ -452,16 +452,19 @@ This essentially turns proxy into a relay for the delegating voter, which is not
 proxy voting is typically used and is not particularly interesting, since relaying a
 vote essentially allows the delegator to vote as if they were present.
 This means no information about the delegator's preference is lost.
-However, it also means they do not gain all the benefits of traditional proxy voting
-since they still need to do all the work of casting their vote except for being present.
+Unfortunately, it also means they do not gain all the benefits of traditional proxy
+voting since they still need to do all the work of casting their vote except for
+being present.
 The `relay' proxy voting also comes with the downside that delegators will be unable
 to have their proxy vote differently if the delegator's preference were to change,
-say through deliberation or as new information is provided.
-\vicki{I agree we need this definition of proxy, but we need to motivate it better.
-Basically, we are saying we are making this assumption because the way it is really
-done has no problems. It would be better to say, we make this assumption because it
-us more adaptable (like handling ammendments). Finding previous work which
-motivates/justifies our assumptions would be good.}
+say through deliberation or as new information is provided, limiting the system's
+adaptability.
+% \vicki{I agree we need this definition of proxy, but we need to motivate it better.
+% Basically, we are saying we are making this assumption because the way it is really
+% done has no problems. It would be better to say, we make this assumption because it
+% us more adaptable (like handling ammendments). Finding previous work which
+% motivates/justifies our assumptions would be good.}
+% MDH: See the following paragraph.
 
 Instead, we consider scenarios where actual proxy voting is used, where the proxy
 receives the voting power of the delegating voter, increasing their weight, and
@@ -473,6 +476,8 @@ operate on behalf of their delegators, this flexibility requires the delegating 
 to choose a proxy who they trust to vote as close to how they themselves would.
 This is a process similar to selecting experts, as described by~\cite{Miller1969}
 and~\cite{Mueller1972}.
+By using traditional proxy voting instead of relay-style voting, we hope to exploit
+the advantages of proxy voting that the relay-style does not provide.
 
 Second, we assume that each voter has perfect knowledge of potential proxies' opinions.
 This will allow them to choose the proxy that has the opinion most similar to their own.
