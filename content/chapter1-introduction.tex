@@ -89,6 +89,8 @@ Naturally, this is extremely useful when the cost of voting is high, such as
 when one is ill or fears they may become ill, or when a member's time can be spent
 more efficiently without being physically present for a vote like when attending a
 conference or engaging in active research in some location outside {Washington,~D.C}.
+Costs such as these are common in voting scenarios, and are further discussed
+in~\cite{Gershtein2019}.
 Not being required to be present while still being able to participate is, of course,
 directly advantageous for members of the House of Representatives, since proxy voting
 would allow them to prevent the spread of disease or avoid whatever other emergency
@@ -207,6 +209,8 @@ preferences, multiply them by their weights, and then average them.
 Plurality, on the other hand, needs to be adapted to operate in a continuous space.
 In our implementation, we will treat plurality and any other `candidate` mechanisms
 as if the proxies themselves were candidates.
+This is similar to the framework in~\cite{Bulteau2021} treating each preference as a
+proposal.
 As such, the plurality mechanism will select the preference of the active voter with
 the most weight.
 
@@ -273,12 +277,14 @@ For example, it is likely that some members are passionately in favor of higher
 spending on education, while others are passionately against it, and yet others
 remain ambivalent or less-passionately for or against.
 This works perfectly with the metric space model, as it allows for the passionate
-opinions to be at opposite extremes of the metric space, while the less-passionate
-opinions are closer to the center.
-\vicki{Give us some examples of voting systems that use the continuous preferences.
-It seems that if there were just yay/nay votes, proxy votes wouldn't be as
-problematic. More previous work would be good here. It would also give you ideas
-going forward.}
+opinions to be at opposite extremes of the metric space, while the less-passionate or
+more moderate opinions are closer to the center.
+
+These types of continuous spaces are occasionally used in other studies.
+\etal{Bulteau}~\cite{Bulteau2021}, for example, develop and experiment with a framework
+for aggregating such preferences with several separate mechanisms.
+Similar to this study, Zhang~and~Grossi~\cite{Zhang2022} also employ a continuous
+proxy system with weighted proxies, treating weight as a probability instead of a count.
 
 This model also naturally extends to two- or higher-dimensional spaces.
 These would include more complex and multi-faceted topics, such as migration, which
@@ -380,10 +386,12 @@ receives a weight of 2, and c receives a weight of 1.
 From here, the system would calculate the weighted mean of the preferences of $a$,
 $b$, and $c$ using the system-assigned weights.
 
-Candidate mechanisms, on the other hand, involve selecting a single proxy out of all
+Candidate mechanisms, on the other hand, involve selecting a single voter out of all
 active voters and using its preference as the outcome.
-Ideally, this proxy would be the proxy that best represents the voters' opinions and
-would minimize the total distance between its preference and all other voters'
+They treat each active voter's preference as a potential candidate, similar to how
+each preference is treated as a proposal in~\cite{Bulteau2021}.
+Ideally, the voter selected would be the proxy that best represents the voters' opinions
+and would minimize the total distance between its preference and all other voters'
 preferences.
 \vicki{If we have a range space of voting possibilities, why would we need to pick
 the preference of a single proxy? I'm not understanding the motivation.}
