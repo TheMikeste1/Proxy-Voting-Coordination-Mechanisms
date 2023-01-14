@@ -84,7 +84,9 @@ conference or engaging in active research in some location outside {Washington,~
 This is, of course, directly applicable to the House of Representatives, since proxy
 voting would allow them to prevent the spread of disease or avoid whatever other
 emergency triggered the use of proxy voting.
-\vicki{The reader is unclear why proxy voting would make any difference. This needs to be clarified early in the paper.  We need to understand the rules, as it seems like the vote is identical to being present to vote.}
+\vicki{The reader is unclear why proxy voting would make any difference. This needs
+to be clarified early in the paper. We need to understand the rules, as it seems like
+the vote is identical to being present to vote.}
 
 In these cases, proxy voting allows voters to skip incurring the costs while still
 having their voice heard by allowing a proxy to pay the cost once on behalf of all
@@ -104,7 +106,8 @@ solution, and the total system \textit{welfare}.
 Welfare is a measure of how good a situation or action is for an agent.
 For example, an agent not being required to vote in person increases that agent's
 welfare since it makes it easier for the agent to vote.
-\vicki{We need to understand the negatives.  The way it is described, it seems to be only a good solution.}
+\vicki{We need to understand the negatives. The way it is described, it seems to be
+only a good solution.}
 Total system welfare is the sum of the welfare of all agents in the system.
 An excellent system would have high accuracy and high welfare, while a poor system
 would have low accuracy and low welfare.
@@ -124,7 +127,10 @@ health of other agents.
 As will be discussed in the results section of the thesis,
 % \autoref{ch:results},  % TODO: Uncomment for thesis
 this additional system welfare comes at the cost of some system accuracy in terms of
-the actual preferences of the voters. \vicki{Again, we need to understand the rules of proxy voting.  Is it that the active voter must vote the same way for all of the delegated votes?  Is it that the active voter must vote on amendments to the vote, which cannot be known in advance?}
+the actual preferences of the voters. \vicki{Again, we need to understand the rules
+of proxy voting. Is it that the active voter must vote the same way for all of the
+delegated votes? Is it that the active voter must vote on amendments to the vote,
+    which cannot be known in advance?}
 This cost comes about because proxies will likely not vote exactly the same as their
 delegators due to having different preferences.
 This causes information about the delegators' preference to be lost and the system's
@@ -141,7 +147,8 @@ their delegated weight, to yet another proxy.
 This is known as \textit{liquid democracy}, which has its own challenges and advantages.
 Ultimately, the use of liquid democracy is not considered in this study, but since proxy
 voting is a subset of the liquid democracy system, it would likely be possible to
-extend the results of this study to liquid democracy as well.  \vicki{This could be described in a future work section, but seems to have no purpose here.}
+extend the results of this study to liquid democracy as well.  \vicki{This could be
+described in a future work section, but seems to have no purpose here.}
 
 There are many ways to represent the votes, or preferences, of agents in a system.
 Once such way is a continuous space model, such as the one used in~\cite{Cohensius2017}.
@@ -162,7 +169,9 @@ preferences.
         preference most in favor of the same idea.
         Importantly, points towards the center of the space are more ambivalent about
         the topic than the extremes on either end.
-        \vicki{Are they ambivalent or just prefer a middle value?  Suppose we were voting on measures to control immigration.  A vote in the middle might not mean I'm ambivalent, but that I see the middle approach as the best.}
+        \vicki{Are they ambivalent or just prefer a middle value? Suppose we were
+        voting on measures to control immigration. A vote in the middle might not
+        mean I'm ambivalent, but that I see the middle approach as the best.}
     }
     \label{fig:system-metric-space}
 \end{figure}
@@ -173,7 +182,9 @@ Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting
 The mean mechanism naturally extends to a continuous space, since it can take all
 preferences, multiply them by their weights, and then average them.
 Plurality, on the other hand, needs to be adapted to operate in a continuous space.
-In our implementation it will select the preference of the voter with the most weight,  \vicki{Unclear.  It sounds like you only look at the single votger with the most weigh.}
+In our implementation it will select the preference of the voter with the most
+weight,  \vicki{Unclear. It sounds like you only look at the single votger with the
+most weigh.}
 
 Proxy voting may seem like an extremely attractive option for the House of
 Representatives, and other organizations, to use.
@@ -240,7 +251,10 @@ remain ambivalent or less-passionately for or against.
 This works perfectly with the metric space model, as it allows for the passionate
 opinions to be at opposite extremes of the metric space, while the less-passionate
 opinions are closer to the center.
-\vicki{Give us some examples of voting systems that use the continuous preferences.  It seems that if there were just yay/nay votes, proxy votes wouldn't be as problematic.  More previous work would be good here.  It would also give you ideas going forward.}
+\vicki{Give us some examples of voting systems that use the continuous preferences.
+It seems that if there were just yay/nay votes, proxy votes wouldn't be as
+problematic. More previous work would be good here. It would also give you ideas
+going forward.}
 
 This model also naturally extends to two- or higher-dimensional spaces.
 These would include more complex and multi-faceted topics, such as migration, which
@@ -302,9 +316,16 @@ These mechanisms include
         For this mechanism, total system weight is the number of delegators in the
         system, and an active voter's weight is the number of delegators using it as
         a proxy.
-        \vicki{This is a strange definition of instant runoff.  Normally, it is an option that is removed, not a voter.   Ballots are initially counted for each elector's top choice, losing candidates are eliminated, and ballots for losing candidates are redistributed until one candidate is the top remaining choice of a majority of the voters. When the field is reduced to two, it has become an "instant runoff" that allows a comparison of the top two candidates head-to-head. 
- 
- Where are you getting this definition?  What motivates it?  I don't see any references where you give credit for this definition.}
+        \vicki{This is a strange definition of instant runoff. Normally, it is an
+        option that is removed, not a voter. Ballots are initially counted for each
+        elector's top choice, losing candidates are eliminated, and ballots for
+        losing candidates are redistributed until one candidate is the top remaining
+        choice of a majority of the voters. When the field is reduced to two, it has
+        become an "instant runoff" that allows a comparison of the top two candidates
+        head-to-head.
+        %
+        Where are you getting this definition? What motivates it? I don't see any
+        references where you give credit for this definition.}
     }
     \item {
         Weight by Ranked Choice, where the system-assigned weight of an active voter is
@@ -316,7 +337,8 @@ These mechanisms include
         This means the active voter in first will receive a system-assigned weight of
         $n$, regardless of its total delegator weight, and the active voter in last will
         receive a system-assigned weight of 1.
-        \vicki{Again, this isn't the typical definition of ranked choice.  Normally it is the candidates that are listed in order (for each voter).}
+        \vicki{Again, this isn't the typical definition of ranked choice. Normally it
+        is the candidates that are listed in order (for each voter).}
     }
     \item Weight by Weighted Instant Runoff, where the system weight of an active
     voter is determined by its ranking after Instant Runoff using the voter weights
@@ -339,7 +361,8 @@ active voters and using its preference as the outcome.
 Ideally, this proxy would be the proxy that best represents the voters' opinions and
 would minimize the total distance between its preference and all other voters'
 preferences.
-\vicki{If we have a range space of voting possibilities, why would we need to pick the preference of a single proxy?  I'm not understanding the motivation.}
+\vicki{If we have a range space of voting possibilities, why would we need to pick
+the preference of a single proxy? I'm not understanding the motivation.}
 \begin{itemize}
     \item Median
     \item Instant Runoff, which operates the same as the Average Instant Runoff.
@@ -401,7 +424,11 @@ since they still need to do all the work of casting their vote except for being 
 The `relay' proxy voting also comes with the downside that delegators will be unable
 to have their proxy vote differently if the delegator's preference were to change,
 say through deliberation or as new information is provided.
-\vicki{I agree we need this definition of proxy, but we need to motivate it better.  Basically, we are saying we are making this assumption because the way it is really done has no problems.  It would be better to say, we make this assumption because it us more adaptable (like handling ammendments).  Finding previous work which motivates/justifies our assumptions would be good.}
+\vicki{I agree we need this definition of proxy, but we need to motivate it better.
+Basically, we are saying we are making this assumption because the way it is really
+done has no problems. It would be better to say, we make this assumption because it
+us more adaptable (like handling ammendments). Finding previous work which
+motivates/justifies our assumptions would be good.}
 
 Instead, we consider scenarios where actual proxy voting is used, where the proxy
 receives the voting power of the delegating voter, increasing their weight, and
@@ -420,14 +447,17 @@ While in reality voters will likely not have perfect knowledge of others' opinio
 it is often not particularly difficult to gauge the opinion of others, especially
 those with whom an individual often associates, and so we believe this assumption is
 reasonable.
-\vicki{Rather than "perfect", could we say "reasonable"?  If amendments are being made and discussions are held, opinions will change.  That is a good thing, in reaching consensus.}
+\vicki{Rather than "perfect", could we say "reasonable"? If amendments are being made
+and discussions are held, opinions will change. That is a good thing, in reaching
+consensus.}
 
 Third, we assume that abstention is not allowed.
 In other words, all agents must vote either themselves or by proxy.
 This is reasonable because all individuals will have some form of opinion, even if
 that opinion is completely neutral.
 Such an opinion is handled by the model this study employs, which will be discussed
-later. \vicki{Do we need this?  This seems harsh.  What if a voter is in an accident on the way to the House?}
+later. \vicki{Do we need this? This seems harsh. What if a voter is in an accident on
+the way to the House?}
 
 Finally, we assume that there are no factors besides closeness in opinion that affect
 the choice of proxy.
@@ -521,7 +551,8 @@ They apply these mechanisms on a dataset while looking only at datapoints withou
 Condorcet winner.
 In their work, they say a mechanism `beats' another if it has a larger fraction of
 the population prefer its output over the other's output.
-They discover that the GT~method~\cite{Rivest2010} beats all others,\vicki{Explain the abbreviation GT}
+They discover that the GT~method~\cite{Rivest2010} beats all others,\vicki{Explain
+the abbreviation GT}
 the Schulze~method~\cite{Schulze2011} and Minimax voting mechanisms always agree and
 beat all other mechanisms besides the GT method, while Borda beats Copeland and
 Plurality, and Plurality comes in last.
@@ -568,7 +599,13 @@ express their dissatisfaction with either side of an issue by voting towards the
 center of the interval.
 If enough agents vote towards the center, the bargaining phase can be restarted to
 allow more negotiation, thereby facilitating deliberation.
-\vicki{You seem to be thinking of the vote as really yay/nay, but that you are allowed to show how strongly you feel about either choice.  This isn't consistent with the presentation earlier.  I'm not sure the voter would do well by voting honestly,  For example, suppose I'm voting between Biden and Trump.  I don't like either, but a slightly prefer Biden.  If I vote slightly towards Biden, I allow my vote to essentially be ignored.}
+\vicki{You seem to be thinking of the vote as really yay/nay, but that you are
+allowed to show how strongly you feel about either choice. This isn't consistent with
+the presentation earlier. I'm not sure the voter would do well by voting honestly,
+    For example, suppose I'm voting between Biden and Trump. I don't like either, but
+    a slightly prefer Biden. If I vote slightly towards Biden, I allow my vote to
+    essentially be ignored.}
+
 
 \section{Proposed Work}\label{sec:contribution}
 % \vicki{
