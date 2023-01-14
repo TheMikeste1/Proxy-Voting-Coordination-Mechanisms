@@ -205,9 +205,10 @@ Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting
 The mean mechanism naturally extends to a continuous space, since it can take all
 preferences, multiply them by their weights, and then average them.
 Plurality, on the other hand, needs to be adapted to operate in a continuous space.
-In our implementation it will select the preference of the voter with the most
-weight,  \vicki{Unclear. It sounds like you only look at the single votger with the
-most weigh.}
+In our implementation, we will treat plurality and any other `candidate` mechanisms
+as if the proxies themselves were candidates.
+As such, the plurality mechanism will select the preference of the active voter with
+the most weight.
 
 Proxy voting may seem like an extremely attractive option for the House of
 Representatives, and other organizations, to use.
