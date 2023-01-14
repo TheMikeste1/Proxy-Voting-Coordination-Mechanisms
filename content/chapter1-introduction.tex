@@ -99,9 +99,19 @@ as they themselves see fit, meaning the delegator's weight may not be applied ex
 how they want.
 This means a voter would not want to give its voting power to just any proxy, but
 rather one that would still be `close enough' to their preference.
-This study employs a similar technique as used in~\cite{Cohensius2017}, which has the
-voters, or agents, pass their voting power to the proxy that is closest in the
-preference space.  \vicki{This seems obvious.}
+There is room for strategy in that an agent could delegate their vote to someone
+further away in order to bring the results closer to their opinion.\footnote{
+    For example, if an agent that leans only slightly left knows the majority was going
+    to vote far left in the preference space, the agent could delegate to someone who
+    leans towards the right.
+    This delegation would go against the agents desires, but would pull the result of
+    the vote more towards the agent's true preference, thereby yielding higher
+    utility for that agent.
+}
+These questions on strategy in proxy voting are important, but in order to first
+determine if proxy voting would even be useful, this study employs a similar technique
+as used in~\cite{Cohensius2017}, which has the voters pass their voting power to the
+proxy that is closest in the preference space without any other strategic reasoning.
 
 The `goodness' of a system here is measured using two primary metrics: the
 \textit{error} of the system, meaning how close the system is to the optimal
