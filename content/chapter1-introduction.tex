@@ -71,6 +71,8 @@ These transferring agents are also known as \textit{inactive voters},
 \textit{active voters}.
 Transferring voting power adds to the voting power of the proxy, increasing its
 weight by the amount of power transferred to it.
+The group of delegators that transfer their power to the same proxy we'll call its
+\textit{constituents}.
 By delegating a proxy, the transferring agent loses their ability to directly vote,
 instead allowing the proxy to affect it on their behalf.
 In other words, the transferring agent does not vote in an election or other types of
@@ -96,16 +98,34 @@ directly advantageous for members of the House of Representatives, since proxy v
 would allow them to prevent the spread of disease or avoid whatever other emergency
 triggered the use of proxy voting.
 
+There are many ways a system can allow their proxies to cast their vote.
+For example, a system could allow a proxy, or any other voter, to spread their weight
+out among several options.
+Alternatively, a system could only allow a proxy to allocate their weight towards one
+option, which reduces some of its flexibility but also reduces the complexity of the
+system.
+Many of these systems increase the work of the proxy, since it requires them to make
+more complex decisions and allocations.
+In order to reduce the work required from the proxy and keep the system simple, we
+will employ a system that only allows the proxy to allocate its weight towards one
+option.
+
 In these cases, proxy voting allows voters to skip incurring the costs while still
 having their voice heard by allowing a proxy to pay the cost once on behalf of all
 voters who transfer their power to that proxy.
 However, this advantage comes with the disadvantage that the proxies are able to vote
 as they themselves see fit, meaning the delegator's weight may not be applied exactly
 how they want.
+The proxy could, of course, confer with its constituents in order determine a vote
+that would make them all happy.
+This would, however, increase the work of both the proxy and its constituents, as
+well as increase the complexity of the system.
+As such, in our system, the proxy will vote selfishly, meaning it will vote according
+to its own preference without conferring with its constituents.
 This means a voter would not want to give its voting power to just any proxy, but
 rather one that would still be `close enough' to their preference.
-There is room for strategy in that an agent could delegate their vote to someone
-further away in order to bring the results closer to their opinion.\footnote{
+There is room for strategy in that a voter could delegate to someone further away in
+order to bring the results closer to their opinion.\footnote{
     For example, if an agent that leans only slightly left knows the majority was going
     to vote far left in the preference space, the agent could delegate to someone who
     leans towards the right.
@@ -312,6 +332,7 @@ are able to vote in the interval of $[-1, 1]$.
 If the majority of votes are hovering around the center, say between in the interval
 $[-0.25, 0.25]$, then it is likely that the majority of voters are not actually fully
 satisfied by the law, but still believe some change is necessary.
+In other words, neither option is satisfactory.
 This provides a third option: refactoring the law to be more in line with the
 voters' opinions.
 Such an option is extremely beneficial, since without it voters are encouraged to
@@ -325,6 +346,20 @@ This reopens discussion and allows for a more educative process, with the hope t
 as more discussion occurs the population will become more informed and result in a
 better law.
 
+In addition to facilitating an additional, neutral option on binary issues,
+continuous interval voting allows for better voting on continuous matters.
+For example, say Congress is voting on how much to allocate to the defense budget.
+Congress can decide to allocate anywhere between \$0 and \$1,000 (naturally, these
+values are not realistic and are meant to be representative).
+A voter can place their vote anywhere between those values, and the result can be how
+much Congress allocates.
+Say there are three voters, each with their own preferences, and all voters are
+active (no voter delegates their vote).
+$a$ prefers \$750, $b$ prefers \$600, and $c$ prefers \$250.
+By averaging these preferences, the system would output
+$\frac{\$(750 + 600 + 250)}{3 \text{ voters}} = \frac{\$1600}{3 \text{ voters}} =
+\$533.33$, which would be the amount allocated to the defence budget.
+
 This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
 which are functions that map a set of preferences in~\systemspace\ to an outcome that
 also exists in~\systemspace.
@@ -336,55 +371,36 @@ These mechanisms include
 \begin{itemize}
     \item Mean
     \item {
-        Weight by Instant Runoff, where the weight of an active voter is
-        determined by its ranking after Instant Runoff using the number of voters
-        using it as a proxy.
-        Here, Instant Runoff involves eliminating active voters with the least weight
-        until some active voter holds half of the total system weight.
-        Once this occurs, a weighted mean is calculated using the remaining active
-        voters.
-        For this mechanism, total system weight is the number of delegators in the
-        system, and an active voter's weight is the number of delegators using it as
-        a proxy.
-        \vicki{This is a strange definition of instant runoff. Normally, it is an
-        option that is removed, not a voter. Ballots are initially counted for each
-        elector's top choice, losing candidates are eliminated, and ballots for
-        losing candidates are redistributed until one candidate is the top remaining
-        choice of a majority of the voters. When the field is reduced to two, it has
-        become an "instant runoff" that allows a comparison of the top two candidates
-        head-to-head.
-        %
-        Where are you getting this definition? What motivates it? I don't see any
-        references where you give credit for this definition.}
-    }
-    \item {
-        Weight by Ranked Choice, where the system-assigned weight of an active voter is
+        Weight by Ranking, where the system-assigned weight of an active voter is
         determined by its overall ranking against all other voters.
         In other words, the system ranks each active voter according to its total
         delegator-assigned weight.
+        If more than one voter receives the same amount of weight, such as when two
+        active voters are not delegated any additional weight, they will receive the
+        same rank and so the same amount of weight from the system.
         Each active voter is then assigned a new weight from 1 to $n$ according to its
-        ranking, where $n$ is the number of active voters.
-        This means the active voter in first will receive a system-assigned weight of
-        $n$, regardless of its total delegator weight, and the active voter in last will
+        ranking, where $n$ is the number of distinct delegate-assigned weights.
+        This means $n$ can range from 1, when all voters have the same weight, up to
+        the number of distinct agents.
+        The active voter in first will receive a system-assigned weight of $n$,
+        regardless of its total delegator weight, and the active voter in last will
         receive a system-assigned weight of 1.
-        \vicki{Again, this isn't the typical definition of ranked choice. Normally it
-        is the candidates that are listed in order (for each voter).}
+        The purpose of this mechanism is to offset the effect of super voters by
+        reducing the discrepancy between the weights of the proxies with the most and
+        least amount of weight.
     }
-    \item Weight by Weighted Instant Runoff, where the system weight of an active
-    voter is determined by its ranking after Instant Runoff using the voter weights
-    instead of the number of voters using it as a proxy.
 \end{itemize}
 All of these mechanisms determine the weight of an active voter, then apply a
 weighted mean to the voters' preferences to determine the outcome.
-As an example, we'll use the Weight by Ranked Choice mechanism.
+As an example, we'll use the Weight by Ranking mechanism.
 Say we have six total voters, and three active voters $a, b, c$.
 This leaves three inactive voters who can choose $a$, $b$, or $c$ as a proxy.
 Two inactive voters select $b$ as a proxy, and one selects $a$.
 This means the system ranking for these active voters would be $b = 1, a = 2, c = 3$.
-Since there are 3 active voters, $b$ receives a system-assigned weight of 3, a
-receives a weight of 2, and c receives a weight of 1.
+Since there are 3 distinct weight values, $b$ receives a system-assigned weight of 3,
+$a$ receives a weight of 2, and $c$ receives a weight of 1.
 From here, the system would calculate the weighted mean of the preferences of $a$,
-$b$, and $c$ using the system-assigned weights.
+$b$, and $c$ using these system-assigned weights.
 
 Candidate mechanisms, on the other hand, involve selecting a single voter out of all
 active voters and using its preference as the outcome.
@@ -398,16 +414,13 @@ not exist in the real world, such as yea or nay votes, or choosing which topping
 should be ordered on a pizza.
 \begin{itemize}
     \item Median
-    \item Instant Runoff, which operates the same as the Average Instant Runoff.
     \item Plurality
-    \item Weighted Instant Runoff, which operates the same as the Average Instant
-    Runoff.
 \end{itemize}
 As with Average mechanisms, all these mechanisms work by first determining the weight
 of a proxy.
 However, instead of then applying a weighted mean, they select the proxy that is
 at the median (in the case of the Median mechanism) or that ranks highest (in the case
-of the remaining mechanisms).
+of the Plurality).
 
 More details on how each voting mechanism operates will be described in the full thesis.
 % in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
