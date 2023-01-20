@@ -1,0 +1,7 @@
+\textbf{md}(\systemproxies) =
+    \min\left\{
+        \agent_i \in \systemproxies \text{ s.t. }
+            \weightof{\agent_i} +
+            \sum_{\agent_j \in \systemproxies}^{\agent_{i - 1}} \weightof{\agent_j}
+        \geq \frac{\systemweight}{2}
+\right\}

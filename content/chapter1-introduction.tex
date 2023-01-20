@@ -227,8 +227,8 @@ Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting
 The mean mechanism naturally extends to a continuous space, since it can take all
 preferences, multiply them by their weights, and then average them.
 Plurality, on the other hand, needs to be adapted to operate in a continuous space.
-In our implementation, we will treat plurality and any other `candidate` mechanisms
-as if the proxies themselves were candidates.
+In our implementation, we will treat plurality as if the proxies themselves were
+candidates.
 This is similar to the framework in~\cite{Bulteau2021} treating each preference as a
 proposal.
 As such, the plurality mechanism will select the preference of the active voter with
@@ -363,64 +363,46 @@ $\frac{\$(750 + 600 + 250)}{3 \text{ voters}} = \frac{\$1600}{3 \text{ voters}} 
 This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
 which are functions that map a set of preferences in~\systemspace\ to an outcome that
 also exists in~\systemspace.
-These mechanisms are split into two groups, Average Mechanisms and Candidate Mechanisms.
-
-Average mechanisms involve taking the weight of voters and aggregating them into some
-number by averaging.
-These mechanisms include
-\begin{itemize}
-    \item Mean
-    \item {
-        Weight by Ranking, where the system-assigned weight of an active voter is
-        determined by its overall ranking against all other voters.
-        In other words, the system ranks each active voter according to its total
-        delegator-assigned weight.
-        If more than one voter receives the same amount of weight, such as when two
-        active voters are not delegated any additional weight, they will receive the
-        same rank and so the same amount of weight from the system.
-        Each active voter is then assigned a new weight from 1 to $n$ according to its
-        ranking, where $n$ is the number of distinct delegate-assigned weights.
-        This means $n$ can range from 1, when all voters have the same weight, up to
-        the number of distinct agents.
-        The active voter in first will receive a system-assigned weight of $n$,
-        regardless of its total delegator weight, and the active voter in last will
-        receive a system-assigned weight of 1.
-        The purpose of this mechanism is to offset the effect of super voters by
-        reducing the discrepancy between the weights of the proxies with the most and
-        least amount of weight.
-    }
-\end{itemize}
-All of these mechanisms determine the weight of an active voter, then apply a
-weighted mean to the voters' preferences to determine the outcome.
-As an example, we'll use the Weight by Ranking mechanism.
-Say we have six total voters, and three active voters $a, b, c$.
-This leaves three inactive voters who can choose $a$, $b$, or $c$ as a proxy.
-Two inactive voters select $b$ as a proxy, and one selects $a$.
-This means the system ranking for these active voters would be $b = 1, a = 2, c = 3$.
-Since there are 3 distinct weight values, $b$ receives a system-assigned weight of 3,
-$a$ receives a weight of 2, and $c$ receives a weight of 1.
-From here, the system would calculate the weighted mean of the preferences of $a$,
-$b$, and $c$ using these system-assigned weights.
-
-Candidate mechanisms, on the other hand, involve selecting a single voter out of all
-active voters and using its preference as the outcome.
-They treat each active voter's preference as a potential candidate, similar to how
-each preference is treated as a proposal in~\cite{Bulteau2021}.
-Ideally, the voter selected would be the proxy that best represents the voters' opinions
-and would minimize the total distance between its preference and all other voters'
+For these, we take inspiration from \etal{Bulteau}'s~\cite{Bulteau2021} work in
+aggregating one-dimensional single-winner elections by using their $L_p$ aggregation
+methods, as well as mixing in plurality.
+$L_p$ aggregation methods work by minimizing the sum of distances to the power of $p$
+($d^{\,p}$, where $d$ is a distance) between a possible solution and the voters'
 preferences.
-These mechanisms would be most beneficial when a continuous option for a vote does
-not exist in the real world, such as yea or nay votes, or choosing which toppings
-should be ordered on a pizza.
-\begin{itemize}
-    \item Median
-    \item Plurality
-\end{itemize}
-As with Average mechanisms, all these mechanisms work by first determining the weight
-of a proxy.
-However, instead of then applying a weighted mean, they select the proxy that is
-at the median (in the case of the Median mechanism) or that ranks highest (in the case
-of the Plurality).
+Naturally, since~\cite{Bulteau2021} did not use weighted proxies, these methods need
+to be adjusted to allow for weight.
+With $w(a)$ representing the weight of an agent $a$ and \systemproxies\ as the ordered
+set of active voters, the mechanisms we use are
+\begin{enumerate}
+    \item {
+        Median ($L_1$), defined as $\input{content/figures/equations/weighted-median}$.
+        Essentially, the median is the agent with whose additional weight the sum of
+        weights becomes equal to or greater than half the total weight of the system.
+    }
+    \item {
+        Mean ($L_2$), defined as $\input{content/figures/equations/weighted-mean}$.
+        This is a typical weighted average.
+    }
+    \item {
+        Mid-range ($L_\infty$), defined as
+        $\input{content/figures/equations/weighted-midrange}$, meaning the weighted
+        preference of the of the agent with the lowest preference plus the weighted
+        preference of the agent with the highest preference, divided by the sum of
+        their weights.
+    }
+    \item {
+        Plurality, defined as $\input{content/figures/equations/weighted-plurality}$,
+        simply meaning the active voter with the highest weight.
+        In the case of a tie, the output will be a simple average of the tied voters.
+        This mechanism likely will not yield a lower error than the other mechanisms,
+        but serves as a potential lower bound for mechanism accuracy.
+    }
+\end{enumerate}
+Additionally, we will apply unweighted versions of these mechanisms against all active
+voters (to simulate if proxy voting was not allowed), and all voters, inactive and
+active (to simulate the best case where all agents vote).
+These additional calculations serve as baselines to determine how well proxy voting
+works in these scenarios.
 
 More details on how each voting mechanism operates will be described in the full thesis.
 % in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
@@ -433,19 +415,20 @@ the model, since observing the continuous output allows for more granularity in 
 differences between proxy and non-proxy voting, as well as in the differences between
 voting rules.
 
-Additionally, under normal proxy voting each voter can only delegate a single proxy.
-This provides a simple system where a voter can simply select a single individual and
-allow them to vote on their behalf.
-This has the downside, however, that the proxy might not have as close of an opinion
-to the voter as they would like.
-This raises the question, what if we allowed a voter to delegate multiple proxies?
-They could, for example, delegate their vote to a trusted group, who would then
-aggregate their opinions into some preference in the aforementioned model on behalf of
-the delegator.
-This may reduce the error introduced by using proxies and allow the agent to feel
-more secure that their voting power will be used as they desire.
-This is not an entirely novel idea, with other authors already creating models to
-handle such an approach~\cite{Degrave2014,Colley2021,Golz2021}.
+% TODO: Replace this with a paragraph about proxy-constituent deliberation
+% Additionally, under normal proxy voting each voter can only delegate a single proxy.
+% This provides a simple system where a voter can simply select a single individual and
+% allow them to vote on their behalf.
+% This has the downside, however, that the proxy might not have as close of an opinion
+% to the voter as they would like.
+% This raises the question, what if we allowed a voter to delegate multiple proxies?
+% They could, for example, delegate their vote to a trusted group, who would then
+% aggregate their opinions into some preference in the aforementioned model on behalf of
+% the delegator.
+% This may reduce the error introduced by using proxies and allow the agent to feel
+% more secure that their voting power will be used as they desire.
+% This is not an entirely novel idea, with other authors already creating models to
+% handle such an approach~\cite{Degrave2014,Colley2021,Golz2021}.
 
 \subsection{Assumptions}\label{subsec:assumptions}
 In order to conduct this study, we make a number of assumptions.
@@ -660,32 +643,20 @@ all preferences will be the point most equidistant from all voters' preferences 
 the metric space, thereby minimizing the distance between all voters' preferences and
 maximizing system accuracy.
 
-We will examine proxy voting under eight different voting mechanisms, split into two
-groups.
-Specifically, these mechanisms are\\
-\begin{samepage}
-    \textit{Averaging Mechanisms:}
-    \begin{itemize}
-        \item Mean
-        \item Weight by Instant Runoff
-        \item Weight by Ranked Choice
-        \item Weight by Weighted Instant Runoff
-    \end{itemize}
-    \textit{Candidate Mechanisms:}
-    \begin{itemize}
-        \item Median
-        \item Instant Runoff
-        \item Plurality
-        \item Weighted Instant Runoff
-    \end{itemize}
-\end{samepage}
-Each of these mechanisms will be compared against direct voting with all agents and
-direct voting with only those agents that are present.
+We will examine proxy voting using four different voting mechanisms.
+Specifically, these mechanisms are
+\begin{enumerate}
+    \item Median ($L_1$)
+    \item Mean ($L_2$)
+    \item Mid-range ($L_\infty$)
+    \item Plurality
+\end{enumerate}
+Each of these mechanisms will additionally be applied to direct voting with all
+agents and direct voting with only those agents that are present.
 This is done to show what the output of the system would be with all information
 (direct voting with all agents), as well as the output with minimum information
 (direct voting with only those agents that are present).
-Error will be measured by squared error between direct voting with all agents and
-whichever mechanism is being applied.
+Error will be measured by squared error between each of these baselines.
 
 We will additionally investigate all voting mechanisms with each delegator delegating
 increasing numbers of proxies.
