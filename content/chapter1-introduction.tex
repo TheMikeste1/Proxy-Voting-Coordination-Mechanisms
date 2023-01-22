@@ -112,20 +112,24 @@ as in terms for the proxy by allowing them to aggregate more weight and so allow
 their voice to be stronger.
 We will explore several of these  methods and their impacts in our analysis.
 
-Proxy voting allows voters to skip incurring the costs while still
-having their voice heard by allowing a proxy to pay the cost once on behalf of all
-voters who transfer their power to that proxy.
-However, this advantage comes with the disadvantage that the proxies are able to vote
-as they themselves see fit, meaning the delegator's weight may not be applied exactly
-how they want.
+Proxy voting allows voters to skip incurring the costs while still having their voice
+heard by allowing a proxy to pay the cost once on behalf of all voters who transfer
+their power to that proxy.
+However, this advantage comes with the disadvantage that the proxies will likely not
+vote in the exact same way as their constituents, meaning the delegators' weights may
+not be applied exactly how they want.
 The proxy could, of course, confer with its constituents in order determine a vote
 that would make them all happy.
-This would, however, increase the work of both the proxy and its constituents, as
-well as increase the complexity of the system.
-As such, in our system, the proxy will vote selfishly, meaning it will vote according
-to its own preference without conferring with its constituents.
-This means a voter would not want to give its voting power to just any proxy, but
-rather one that would still be `close enough' to their preference.
+However, the proxy could also vote selfishly by voting using only their own preference.
+How proxies coordinate with their constituents has a large impact on both the welfare
+and the accuracy of the system, and so we will examine proxy voting under both
+selfish and cooperative scenarios.
+
+Since a proxy can vote how it wants, a voter would not want to give its voting power to
+just any proxy, but rather one that would still be `close enough' to their preference.
+Similarly, a proxy would not want to be a delegate for a voter who does not share a
+similar preference, since if the proxy were to attempt to cooperate that voter may
+vastly change how the proxy can vote.
 There is room for strategy in that a voter could delegate to someone further away in
 order to bring the results closer to their opinion.\footnote{
     For example, if an agent that leans only slightly left knows the majority was going
