@@ -49,7 +49,7 @@ can be used to significantly ease the process and lower the risk of participatin
 Congress during pandemics or other emergencies.
 Similarly, if proxy voting can be shown to have a large effect on the results of the
 vote, it would be important to alter the system to mitigate the effects or stop using
-proxy voting in the House altogether.
+proxy voting altogether.
 In either case, it is important to understand the effects of proxy voting in order to
 utilize it in the most effective way possible, as well as discover any potential
 techniques to improve such a system.
@@ -59,7 +59,7 @@ techniques to improve such a system.
 In order to understand the analysis performed in this study, we must first understand
 what proxy voting is and how it works.
 
-In a given voting scenario, each agent starts with one vote.
+In a given voting scenario, every individual starts with one vote.
 This vote can be called the voter's \textit{weight} or \textit{voting power}, meaning
 each agent starts with a weight of one.
 The more weight a voter has, the more they can swing the vote in their favor.
@@ -73,7 +73,7 @@ weight by the amount of power transferred to it.
 The group of delegators that transfer their power to the same proxy we'll call its
 \textit{constituents}.
 By delegating a proxy, the transferring agent loses their ability to directly vote,
-instead allowing the proxy to affect it on their behalf.
+instead allowing the proxy to vote on their behalf.
 In other words, the transferring agent does not vote in an election or other types of
 votes, but rather affects the election vicariously through the proxy to which they
 transferred their power.
@@ -82,13 +82,13 @@ may cause.
 
 In contrast, \textit{direct voting} requires each agent to vote on their own, meaning
 each agent must incur the costs of voting.
-As such, proxy voting has a number of advantages over direct voting.
+Proxy voting has a number of advantages over direct voting.
 The most obvious advantage is that it permits delegators to reduce the work and costs
 required to participate in a vote by choosing a proxy to perform the work of voting
 for them.
 Naturally, this is extremely useful when the cost of voting is high, such as
 when one is ill or fears they may become ill, or when a member's time can be spent
-more efficiently without being physically present for a vote like when attending a
+more efficiently without being physically present for a vote such as when attending a
 conference or engaging in active research in some location outside {Washington,~D.C}.
 Costs such as these are common in voting scenarios, and are further discussed
 in~\cite{Gershtein2019}.
@@ -102,9 +102,9 @@ For example, the proxy could talk to its constituents to see what would make eac
 them the most happy and determine an option the would best represent the group as a
 whole.
 Alternatively, the proxy might decide to selfishly enhance its own voice by voting its
-own preference.
+own preference with all the weight allocated to it.
 Such an act might have consequences, such as the proxy no longer being allowed to
-represent its constituents and so loosing its additional weight.
+represent its constituents and so losing its additional weight.
 We will call these different techniques `coordination mechanisms.'
 Naturally, requiring the proxy to coordinate with its constituents increases the work
 of the proxy, but can provide benefits for the systems in terms of accuracy, as well
@@ -166,7 +166,7 @@ In regard to proxy voting, the excellent system would maximize the use of proxie
 without degrading the accuracy of the system, while the poor would require all
 proxies to vote directly and still have high error.
 
-Proxy voting has been shown to often increase system accuracy when compared to only
+Proxy voting has been shown to increase system accuracy when compared to only
 allowing active/willing agents to vote~\cite{Cohensius2017}.
 This follows intuition: if a voter doesn't vote, the system loses information.
 By allowing them to still influence the voting game through proxy, some information
@@ -175,9 +175,9 @@ Naturally, in terms of system accuracy the ideal situation is when all voters
 participate and so the system has the most information possible.
 However, system welfare can be enhanced on an individual level by allowing agents
 who want to be inactive through the use of a proxy to delegate their vote.
-Therefore, when operating under the Congress resolution, system welfare can be
-enhanced through proxy voting by allowing ill members to quarantine and ensure the
-health of other agents.
+When operating under the Congress resolution, system welfare can be enhanced through
+proxy voting by allowing ill members to quarantine and ensure the health of other
+agents.
 As will be discussed in the results section of the thesis,
 % \autoref{ch:results},  % TODO: Uncomment for thesis
 this additional system welfare comes at the cost of some system accuracy in terms of
@@ -228,7 +228,7 @@ preferences.
 Votes are aggregated into an output using a \textit{voting mechanisms} or
 \textit{voting rules}.
 Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting rules.
-The mean mechanism naturally extends to a continuous space, since it can take all
+The mean mechanism inherently works to a continuous space, since it can take all
 preferences, multiply them by their weights, and then average them.
 Plurality, on the other hand, needs to be adapted to operate in a continuous space.
 In our implementation, we will treat plurality as if the proxies themselves were
@@ -324,8 +324,6 @@ ways of interpreting the output of the model for such issues.
 For example, one could round the output to the nearest valid choice, such as a 1 or a
 0 for binary issues.
 
-Such a model also permits an additional aspect of this study: the ability to vote in
-a range instead of aforementioned binary or discrete votes.
 The hope behind such a system is to gain a better understanding of the voters'
 true preference, which is not possible with binary or discrete votes due to all votes
 ultimately being binned into one of several values.
@@ -650,10 +648,6 @@ instead delegate a proxy.
 Votes will take place in a continuous metric space, where an agent is able to vote
 anywhere inside the interval $[-1, 1]$, and will be aggregated using a voting
 mechanism inside the same space.
-Direct voting will use the mean mechanism to aggregate votes, since the average of
-all preferences will be the point most equidistant from all voters' preferences in
-the metric space, thereby minimizing the distance between all voters' preferences and
-maximizing system accuracy.
 
 We will examine proxy voting using four different voting mechanisms.
 Specifically, these mechanisms are
@@ -686,7 +680,7 @@ constituents.
 Whereas voting on an interval is uncommon and finding a real world dataset using
 preferences on an interval currently does not seem possible, these investigations
 will be performed using preferences generated from several statistical distributions.
-These distributions and their notations are listed in \autoref{tab:distributions-used}.
+The distributions and their notations are listed in \autoref{tab:distributions-used}.
 These various distributions will allow the data gathered to represent situations
 where the majority of voters are at either extreme (\betadistribution{0.3}{0.3}),
 skewed towards one side (\betadistribution{4}{1}), or mostly indifferent
