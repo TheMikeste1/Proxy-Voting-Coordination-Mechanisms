@@ -98,19 +98,22 @@ directly advantageous for members of the House of Representatives, since proxy v
 would allow them to prevent the spread of disease or avoid whatever other emergency
 triggered the use of proxy voting.
 
-There are many ways a system can allow their proxies to cast their vote.
-For example, a system could allow a proxy, or any other voter, to spread their weight
-out among several options.
-Alternatively, a system could only allow a proxy to allocate their weight towards one
-option, which reduces some of its flexibility but also reduces the complexity of the
-system.
-Many of these systems increase the work of the proxy, since it requires them to make
-more complex decisions and allocations.
-In order to reduce the work required from the proxy and keep the system simple, we
-will employ a system that only allows the proxy to allocate its weight towards one
-option.
+There are many ways a proxy could cast their vote on behalf of their constituents.
+For example, the proxy could talk to its constituents to see what would make each of
+them the most happy and determine an option the would best represent the group as a
+whole.
+Alternatively, the proxy might decide to selfishly enhance its own voice by voting its
+own preference.
+Such an act might have consequences, such as the proxy no longer being allowed to
+represent its constituents and so loosing its additional weight.
+We will call these different techniques `coordination mechanisms.'
+Naturally, requiring the proxy to coordinate with its constituents increases the work
+of the proxy, but can provide benefits for the systems in terms of accuracy, as well
+as in terms for the proxy by allowing them to aggregate more weight and so allow
+their voice to be stronger.
+We will explore several of these  methods and their impacts in our analysis.
 
-In these cases, proxy voting allows voters to skip incurring the costs while still
+Proxy voting allows voters to skip incurring the costs while still
 having their voice heard by allowing a proxy to pay the cost once on behalf of all
 voters who transfer their power to that proxy.
 However, this advantage comes with the disadvantage that the proxies are able to vote
@@ -402,6 +405,36 @@ works in these scenarios.
 More details on how each voting mechanism operates will be described in the full thesis.
 % in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
 
+There are also several ways an individual proxy can agree to cast its vote own behalf
+of its constituents.
+Each has different advantages and disadvantages for the proxy, its constituents, and
+the system as a whole.
+We will examine four of these different `coordination' mechanisms:
+\begin{enumerate}
+    \item {
+        \textit{No preference change - Selfish}. The proxy allocates its weight to
+        its own preference.
+    }
+    \item {
+        \textit{No preference change - Cooperative}. The proxy allocates its weight
+        to the mean of its and its constituents' preferences.
+    }
+    \item {
+        \textit{Preference change - Selfish}. The proxy allocates its weight to its
+        own preference, but its preference has changed.
+        This change may be due to additional deliberation or some other cause.
+    }
+    \item {
+        \textit{Preference change - Consequences}. The proxy allocates its weight to
+        its own preference, but its preference has changed.
+        However, due to this change the proxy is only allowed to apply its own
+        weight, leaving its constituents unrepresented.
+    }
+\end{enumerate}
+These mechanisms are used in an attempt to simulate real-world consequences of proxy
+voting, as well as identify potential techniques to deter or mitigate a proxy's
+ability to swing the system by aggregating a large amount of weight and abusing it.
+
 The flexibility of the continuous model in both the discrete and continuous realms, its
 ability to use different voting rules, and its easy interpretability, are the reasons
 it is employed in this study.
@@ -410,20 +443,6 @@ the model, since observing the continuous output allows for more granularity in 
 differences between proxy and non-proxy voting, as well as in the differences between
 voting rules.
 
-% TODO: Replace this with a paragraph about proxy-constituent deliberation
-% Additionally, under normal proxy voting each voter can only delegate a single proxy.
-% This provides a simple system where a voter can simply select a single individual and
-% allow them to vote on their behalf.
-% This has the downside, however, that the proxy might not have as close of an opinion
-% to the voter as they would like.
-% This raises the question, what if we allowed a voter to delegate multiple proxies?
-% They could, for example, delegate their vote to a trusted group, who would then
-% aggregate their opinions into some preference in the aforementioned model on behalf of
-% the delegator.
-% This may reduce the error introduced by using proxies and allow the agent to feel
-% more secure that their voting power will be used as they desire.
-% This is not an entirely novel idea, with other authors already creating models to
-% handle such an approach~\cite{Degrave2014,Colley2021,Golz2021}.
 
 \subsection{Assumptions}\label{subsec:assumptions}
 In order to conduct this study, we make a number of assumptions.
@@ -645,11 +664,18 @@ This is done to show what the output of the system would be with all information
 (direct voting with only those agents that are present).
 Error will be measured by squared error between each of these baselines.
 
-We will additionally investigate all voting mechanisms with each delegator delegating
-increasing numbers of proxies.
-We will start with the base case of one proxy per delegator, then extending to two
-proxies per delegator, then three, and so on until more proxies is either detrimental
-to system accuracy or not possible.
+We will also employ four coordination mechanisms in an attempt to determine ways
+proxies and its constituents can work together to enhance their own welfare, as well
+as mitigate potential damages that could be caused by a `rogue' proxy.
+These mechanisms are
+\begin{enumerate}
+    \item No preference change - Selfish
+    \item No preference change - Cooperative
+    \item Preference change - Selfish
+    \item Preference change - Consequences
+\end{enumerate}
+These mechanisms will allow us to identify how a proxy can best represent its
+constituents.
 
 Whereas voting on an interval is uncommon and finding a real world dataset using
 preferences on an interval currently does not seem possible, these investigations
