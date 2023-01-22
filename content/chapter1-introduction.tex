@@ -367,24 +367,27 @@ With $w(a)$ representing the weight of an agent $a$ and \systemproxies\ as the o
 set of active voters, the mechanisms we use are
 \begin{enumerate}
     \item {
-        Median ($L_1$), defined as $\input{content/figures/equations/weighted-median}$.
+        \textit{Median ($L_1$)}, defined as
+        $\input{content/figures/equations/weighted-median}$.
         Essentially, the median is the agent with whose additional weight the sum of
         weights becomes equal to or greater than half the total weight of the system.
     }
     \item {
-        Mean ($L_2$), defined as $\input{content/figures/equations/weighted-mean}$.
+        \textit{Mean ($L_2$)}, defined as
+        $\input{content/figures/equations/weighted-mean}$.
         This is a typical weighted average.
     }
     \item {
-        Mid-range ($L_\infty$), defined as
+        \textit{Mid-range ($L_\infty$)}, defined as
         $\input{content/figures/equations/weighted-midrange}$, meaning the weighted
         preference of the of the agent with the lowest preference plus the weighted
         preference of the agent with the highest preference, divided by the sum of
         their weights.
     }
     \item {
-        Plurality, defined as $\input{content/figures/equations/weighted-plurality}$,
-        simply meaning the active voter with the highest weight.
+        \textit{Plurality}, defined as
+        $\input{content/figures/equations/weighted-plurality}$, simply meaning the
+        active voter with the highest weight.
         In the case of a tie, the output will be a simple average of the tied voters.
         This mechanism likely will not yield a lower error than the other mechanisms,
         but serves as a potential lower bound for mechanism accuracy.
