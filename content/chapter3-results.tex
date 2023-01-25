@@ -34,7 +34,7 @@ squared error for each voting mechanism.
     \label{fig:voting-mechanisms-comparison}
 \end{figure}
 
-\com{It would be helpful to compare your results with what other researchers found.}
+\vicki{It would be helpful to compare your results with what other researchers found.}
 
 This graph immediately tells us a few things.
 First, the squared error seems to be skewed, favoring numbers closer to 0.
@@ -48,7 +48,7 @@ Indeed, if the estimates are instead graphed as in
 \autoref{fig:voting_mechanisms_estimate_distribution}, the distribution of estimates
 is more normal than uniform.
 This means most mechanisms are better at estimating \truth\ than random chance.
-\com{Explain why this happens. Explain figure 3.1. I'm assuming the colors don't mean
+\vicki{Explain why this happens. Explain figure 3.1. I'm assuming the colors don't mean
 anything?}
 
 \begin{table}[htbp]
@@ -131,7 +131,7 @@ that any of the populations are the same.
     \label{fig:average-mechanisms-p-values}
 \end{figure}
 
-\com{Lots of zeroes in comparison. Even the non-zeroes are very near zero. Maybe I
+\vicki{Lots of zeroes in comparison. Even the non-zeroes are very near zero. Maybe I
 don't know what I'm seeing. If a 0 links the types, is there a statistical difference?}
 
 In addition, Ranked Choice appears to beat out every other voting mechanism, followed
@@ -287,7 +287,7 @@ than the mean.
     \label{fig:combined-comparison}
 \end{figure}
 
-\com{Is there a way to show all on same graph? Hard to compare between figures.}
+\vicki{Is there a way to show all on same graph? Hard to compare between figures.}
 
 Using U-tests, we can discover which combinations produce the lowest error.
 By counting how many times any given combination beats other combinations, we can
@@ -307,7 +307,7 @@ lower error than candidate mechanisms.
     U-tests.}
     \label{fig:combined-lesser_counts}
 \end{figure}
-\com{Why is 31 the highest? I'm not sure exactly how your test is set up. How much
+\vicki{Why is 31 the highest? I'm not sure exactly how your test is set up. How much
 lower error is significant? Number beaten seems to be a crude measure. Looking at how
 others present their results would be an important sanity check. How strong is your
 statistics background?}
@@ -452,7 +452,7 @@ distributions interact with the different mechanisms.
 Indeed, performing tests on groups separated by voting and weighting mechanism, as
 well as proxy and inactive estimate distribution, indicates 467 of the 2048 possible
 combinations, or 22.80\%, work better using a proxy vote system than weightlessly
-averaging.  \com{Why is this? If voters values are picked from a uniform
+averaging.  \vicki{Why is this? If voters values are picked from a uniform
 distribution, it would seem average would be accurate.}
 
 These tests are performed as if the proxy system were used instead of weightlessly
@@ -470,7 +470,7 @@ asymmetric distributions!
 The remaining 12 consist of high-performing voting mechanism/weighting mechanism
 combinations, as discovered in \autoref{sec:lowest-error-overall-combination},
 using Gaussian or \betadistribution{4}{4} distributions for the proxies,
-and \betadistribution{0.3}{0.3} as the inactive distributions.  \com{Has this beta
+and \betadistribution{0.3}{0.3} as the inactive distributions.  \vicki{Has this beta
 distribution been defined in your thesis?}
 These combinations are displayed in~\autoref{tab:non-asymmetric-lower-pop-systems}.
 
@@ -540,7 +540,7 @@ These combinations are shown in \autoref{tab:no-appearance-distro-combos}.
 Of note is in all these combinations, both distributions are asymmetric.
 Additionally, whenever an asymmetric distribution is placed with itself, a proxy system
 does not produce a lower error.
-\com{What is meant by 'placed with itself'?
+\vicki{What is meant by 'placed with itself'?
 % TODO: Reword this sentence
 % MDH: This means the proxy distribution and the inactive distribution share the same
 %  asymmetric distribution
@@ -679,7 +679,7 @@ as well.
 While it is clear that simply weightlessly averaging all agent's estimates is a more
 accurate method, there appear to be occasions when proxy vote systems can reduce
 error, particularly when one of the error distributions is asymmetrical.
-\com{This doesn't appear to match your previous discussion where you list all the
+\vicki{This doesn't appear to match your previous discussion where you list all the
 ones better than weightlessly averaging.}
 This view into distributions and other parameters begs for a closer look and may yield
 fascinating results upon closer inspection.
@@ -695,7 +695,7 @@ There are three parts to this question, all of which will be addressed here.
 The first is how many proxies should be used.
 \autoref{fig:proxy-count} shows how proxy count affects the error of a system.
 From this graph, we can see in the beginning more proxies produces better results.
-However, this benefit reduces over time \com{It isn't really over time is it? It
+However, this benefit reduces over time \vicki{It isn't really over time is it? It
 seems the value decreases with increased proxies. If you are weightlessly averaging
 all, why doesn't that get worse with more proxies? Doesn't weightlessly averaging
 all, mean all voters or just all proxies? Must mean the latter.
@@ -721,7 +721,7 @@ This benefit seems to bottom out between 10 and 15 proxies.
     \caption{How the number of proxies affects the system error.}
     \label{fig:proxy-count}
 \end{figure}
-\com{Hard to read all the different colors. Maybe also use dotted/dashed line types.}
+\vicki{Hard to read all the different colors. Maybe also use dotted/dashed line types.}
 
 The second part of determining how many agents to use is how many inactive agents to
 use.
@@ -752,7 +752,7 @@ the ratio between proxies and inactive agents increases, with
 Interestingly, the curve produced in each of these graphs flattens around a 1:1
 ratio, indicating that there is little or no benefit to having a differing number of
 proxies and inactive agents.
-Additionally, there seems to be small `hiccups' at each whole number.  \com{I don't
+Additionally, there seems to be small `hiccups' at each whole number.  \vicki{I don't
 think this can be glossed over.  }
 While the reason behind the hiccups is not explored here, this would indicate that a
 slightly higher or lower ratio than 1:1 should be used.
@@ -774,7 +774,7 @@ maintaining accuracy.
     error.}
     \label{fig:ratios}
 \end{figure}
-\com{I don't understand why the weighlessaverageAll is so erratic and poor.
+\vicki{I don't understand why the weighlessaverageAll is so erratic and poor.
 % Weighless average all is poor in terms of error, meaning it has low error. The closer
 % to zero, the better.
 % It's probably erratic because I didn't smooth the curve.

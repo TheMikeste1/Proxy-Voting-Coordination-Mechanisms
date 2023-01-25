@@ -38,7 +38,7 @@ the measurement, and so by extension \systemtruth\ may not be the same each time
 system tries to estimate \truth.
 % \vicki{so is there a single item we are trying to learn about? Does truth change over
 % time?}
-\com{This is interesting. How doesn't this impact your conclusions?}
+\vicki{This is interesting. How doesn't this impact your conclusions?}
 
 All agents will operate within a defined space~\systemspace, where
 $\systemspace \subseteq \real^k$ and $k \geq 1$ dimensions, as described
@@ -202,7 +202,7 @@ to have the same cost.
 The goal of system cost as a criteria is to determine if a less costly system
 could perform just as well, if not better than, one with a higher cost.
 
-\com{This may make more sense if we were using the expert voters periodically.
+\vicki{This may make more sense if we were using the expert voters periodically.
 So, they take a measurement and pick a proxy.
 Then they are idle for a while before taking another measurement a picking a proxy.
 This could save money and be a use for proxy voting.
@@ -223,7 +223,7 @@ These proxies can be either experts or untrained, depending on which setup is
 being used.
 Similarly, each system will also need a set of inactive voters which can likewise
 be either experts or untrained.
-\com{Would be easier to follow if you described one system completely before talking
+\vicki{Would be easier to follow if you described one system completely before talking
 about the other system.}
 
 Finally, each system will receive two mechanisms: a
@@ -247,7 +247,7 @@ While the extent determines the general boundaries, some distributions allow
 numbers slightly outside these ranges.
 For these distributions, the percent of votes inside the extents are
 specified in \autoref{tab:distributions-percent-inside-extents}.
-These extents are not meant to be known \com{ can you just say they are not known ?}
+These extents are not meant to be known \vicki{ can you just say they are not known ?}
 by the system, but are rather an
 estimation of the range of error about \truth\ a measurement in the real world
 might have.
@@ -287,7 +287,7 @@ assign weights to proxies, which rules are named `weighting mechanisms.'
 
 \subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
 \textit{Voting mechanisms} are a concept borrowed from~\cite{Cohensius2017},
-\com{Coehnsius didn't invent the term. Give proper credit.}
+\vicki{Coehnsius didn't invent the term. Give proper credit.}
 where they are simply labeled `mechanisms.'
 These are algorithms used to condense proxies and their weights, which are
 required to be positive, into \systemtruth.
@@ -296,14 +296,14 @@ mechanisms and average mechanisms.
 
 \subsubsection{Candidate Mechanisms}\label{subsubsec:candidate-mechanisms}
 \textit{Candidate mechanisms} are mechanisms that select a proxy to serve as
-\systemtruth.  \com{Select a single proxy?}
+\systemtruth.  \vicki{Select a single proxy?}
 This study experiments with a number of candidate mechanisms, which are
 described below.
 In all cases, some proxy is selected and its preference is used as \systemtruth.
 
 \mechanismheader{Median}\label{para:median}
 The median mechanism is one of the mechanisms used in~\cite{Cohensius2017}.
-\com{Briefly explain the median mechanism.}
+\vicki{Briefly explain the median mechanism.}
 This study differs from their study by using a finite number of voters instead of
 infinite,
 % \vicki{You haven't defined an infinite voter. Do you mean an infinite number of
@@ -322,7 +322,7 @@ symbolic changes)
     \text{,}
 \end{equation*}
 meaning the mechanism selects the minimum agent that has an equal or greater
-number of agents below it as it has above it in terms of \agenttruth.  \com{this
+number of agents below it as it has above it in terms of \agenttruth.  \vicki{this
 definition doesn't work with a non-linear space (which you used easier.}
 
 For weighted scenarios, the median agent will be the minimum agent whose sum of
@@ -353,20 +353,20 @@ This proxy's preference then becomes \systemtruth.
 While a seemingly simple mechanism, plurality combined with some
 weighting mechanisms allows for other common voting systems.
 For example, plurality used with \hyperref[para:borda]{Borda weighting}
-provides the Borda count system.  \com{Need to briefly describe Borda. Not everyone
+provides the Borda count system.  \vicki{Need to briefly describe Borda. Not everyone
 will know what that is. You may want to move some of the basic definitions to the
 previous work section.}
 
 \mechanismheader{Instant Runoff}\label{para:cand-instant-runoff}
 The instant runoff mechanism does not use agent-assigned weights, but rather
-ranks each proxy on behalf of the agents according to distance \com{from their
+ranks each proxy on behalf of the agents according to distance \vicki{from their
 preferred choice}.
 Once all proxies are ranked, each proxy receives a score according to how
 many first place votes they receive.
 The proxy with the lowest number of votes is eliminated, and its votes are
 redistributed to the next closest for each affected agent.https://www.overleaf.com/project/632a088d49a00f76be264e30
 This continues until some proxy has the majority ($>$50\%) of votes, at which
-time that proxy is selected as \systemtruth.  \com{How interesting is instant runoff
+time that proxy is selected as \systemtruth.  \vicki{How interesting is instant runoff
 when the votes are on a linear scale? For example, single peaked preference makes
 lots of things easier. We just pick the median. How far away you are doesn't matter.}
 
@@ -383,7 +383,7 @@ Once some proxy has the majority ($>$50\%) of weights, it is selected as
 \textit{Average mechanisms} are mechanisms that produce a \systemtruth\ that
 is not necessarily the position of any one agent, though it may be.
 They work by averaging the positions of multiple proxies to some degree.
-\com{Average seems like a bad name as average and mean are typically the same thing.
+\vicki{Average seems like a bad name as average and mean are typically the same thing.
 Come up with a more inclusive term.}
 
 \mechanismheader{Mean}\label{para:mean}
@@ -490,7 +490,7 @@ This will allow the voting mechanisms to still produce some output without being
 influenced by weights.
 The primary purpose of this mechanism is to determine if weights are actually
 important, or if all that is required is the ordering.
-\com{I don't understand this one. Are we saying that it doesn't matter how many
+\vicki{I don't understand this one. Are we saying that it doesn't matter how many
 inactive voters like a proxy? This doesn't seem reasonable.}
 
 
@@ -526,7 +526,7 @@ differences, as well as making it trivial to calculate loss by changing the
     (\systemtruth_k )^2
     \text{.}\label{eq:adjusted-loss}
 \end{align}
-\com{Picking the truth to be 0 is undesirable as your voting system could be biased
+\vicki{Picking the truth to be 0 is undesirable as your voting system could be biased
 to lean towards 0 if in doubt. The computations aren't that much simpler - and the
 computer is doing them, so it is a non-issue. }
 
