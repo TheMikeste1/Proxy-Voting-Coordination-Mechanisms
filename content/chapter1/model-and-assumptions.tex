@@ -1,0 +1,237 @@
+\section{Preliminary Setup and Assumptions}\label{sec:setup-and-assumptions}
+An important part of any study is the model it uses to represent the system being
+studied.
+In this work, we employ a model described by \etal{Cohensius} in their 2017
+article~\cite{Cohensius2017}.
+This model places voters' preferences, which for our purposes are the Congress
+members' opinions on a topic, in a continuous metric~space~\systemspace, as
+previously described in~\autoref{sec:background}.
+Modeling voters' preferences in such a way allows for continuous preferences instead of
+discrete or binary opinions other models might emphasize.
+This is beneficial, as it allows for a more realistic representation of voters'
+opinions, since it is unlikely that voters' opinions are perfectly binary.
+For example, it is likely that some members are passionately in favor of higher
+spending on education, while others are passionately against it, and yet others
+remain ambivalent or less-passionately for or against.
+This works perfectly with the metric space model, as it allows for the passionate
+opinions to be at opposite extremes of the metric space, while the less-passionate or
+more moderate opinions are closer to the center.
+
+These types of continuous spaces are occasionally used in other studies.
+\etal{Bulteau}~\cite{Bulteau2021}, for example, develop and experiment with a framework
+for aggregating such preferences with several separate mechanisms.
+Similar to this study, Zhang~and~Grossi~\cite{Zhang2022} also employ a continuous
+proxy system with weighted proxies, treating weight as a probability instead of a count.
+
+This model also naturally extends to two- or higher-dimensional spaces.
+These would include more complex and multi-faceted topics, such as migration, which
+would include subtopics such as border restrictions and economic impact, or where to
+delegate funds in the United States Budget.
+However, as previously mentioned, we will only consider the idealistic situation
+where a congress member can choose their proxy for each topic individually.
+The model obviously allows for votes on topics that are continuous, such as setting the
+budget for the year: instead of simply voting yes or no on some pre-chosen dollar
+amount for a budget, the output of the system can serve as the budget amount.
+However, discrete and binary issues can be supported too, and there are multiple
+ways of interpreting the output of the model for such issues.
+For example, one could round the output to the nearest valid choice, such as a 1 or a
+0 for binary issues.
+
+The hope behind such a system is to gain a better understanding of the voters'
+true preference, which is not possible with binary or discrete votes due to all votes
+ultimately being binned into one of several values.
+This system will allow one to see if the majority is truly in favor of some idea, or
+if they are only slightly in favor of it.
+For example, consider a situation where voters are asked to vote on some new law and
+are able to vote in the interval of $[-1, 1]$.
+If the majority of votes are hovering around the center, say in the interval
+$[-0.25, 0.25]$, then it is likely that the majority of voters are not actually fully
+satisfied by the law, but still believe some change is necessary.
+In other words, neither option is satisfactory.
+\vicki{Here you are assuming that the middle option isn't really a choice. There are
+only two options. Since we don't know which options are really possible, this is
+confusing. Try considering the cases (binary, continuous) separately.  }
+This provides a third option: refactoring the law to be more in line with the
+voters' opinions.
+Such an option is extremely beneficial, since without it voters are encouraged to
+vote in the extremes.
+This is because anything less than an all-for or all-against vote would be diluted by
+those who did vote in the extremes, making the voice of the centrist voters less potent.
+With the refactoring option, however, if the population is truly ambivalent to the
+topic they would be encouraged to vote towards the center in order to show they want
+to rework the law.
+This reopens discussion and allows for a more educative process, with the hope that
+as more discussion occurs the population will become more informed and result in a
+better law.
+
+In addition to facilitating an additional, neutral option on binary issues,
+continuous interval voting allows for better voting on continuous matters.
+For example, say Congress is voting on how much to allocate to the defense budget.
+Congress can decide to allocate anywhere between \$0 and \$1,000 (naturally, these
+values are not realistic and are meant to be representative).
+A voter can place their vote anywhere between those values, and the result can be how
+much Congress allocates.
+Say there are three voters, each with their own preferences, and all voters are
+active (no voter delegates their vote).
+$a$ prefers \$750, $b$ prefers \$600, and $c$ prefers \$250.
+By averaging these preferences, the system would output
+$\frac{\$(750 + 600 + 250)}{3 \text{ voters}} = \frac{\$1600}{3 \text{ voters}} =
+\$533.33$, which would be the amount allocated to the defence budget.
+
+This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
+which are functions that map a set of preferences in~\systemspace\ to an outcome that
+also exists in~\systemspace.
+For these, we take inspiration from \etal{Bulteau}'s~\cite{Bulteau2021} work in
+aggregating one-dimensional single-winner elections by using their $L_p$ aggregation
+methods, as well as mixing in plurality.
+$L_p$ aggregation methods work by minimizing the sum of distances to the power of $p$
+($d^{\,p}$, where $d$ is a distance) between a possible solution and the voters'
+preferences.
+Naturally, since~\cite{Bulteau2021} did not use weighted proxies, these methods need
+to be adjusted to allow for weight.
+With $w(a)$ representing the weight of an agent $a$ and \systemproxies\ as the ordered
+set of active voters, the mechanisms we use are
+\begin{enumerate}
+    \item {
+        \textit{Median ($L_1$)}, defined as
+        $\input{content/figures/equations/weighted-median}$.
+        Essentially, the median is the agent whose additional weight makes the sum of
+        weights becomes equal to or greater than half the total weight of the system.
+        The sum will occur in the same order as the ordering of voters in
+        \systemproxies.
+    }
+    \item {
+        \textit{Mean ($L_2$)}, defined as
+        $\input{content/figures/equations/weighted-mean}$.
+        This is a typical weighted average.
+        \vicki{I thought l2 was sum of squares of differences???}
+    }
+    \item {
+        \textit{Mid-range ($L_\infty$)}, defined as
+        $\input{content/figures/equations/weighted-midrange}$, meaning the weighted
+        preference of the of the agent with the lowest preference plus the weighted
+        preference of the agent with the highest preference, divided by the sum of
+        their weights.
+    }
+    \item {
+        \textit{Plurality}, defined as
+        $\input{content/figures/equations/weighted-plurality}$, simply meaning the
+        active voter with the highest weight.
+        In the case of a tie, the output will be a simple average of the tied voters.
+        This mechanism likely will not yield a lower error than the other mechanisms,
+        but serves as a potential lower bound for mechanism accuracy.
+    }
+\end{enumerate}
+Additionally, we will apply unweighted versions of these mechanisms against all active
+voters (to simulate if proxy voting was not allowed), and all voters, inactive and
+active (to simulate the best case where all agents vote).
+These additional calculations serve as baselines to determine how well proxy voting
+works in these scenarios.
+
+More details on how each voting mechanism operates will be described in the full thesis.
+% in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
+
+There are also several ways an individual proxy can agree to cast its vote own behalf
+of its constituents.
+Each has different advantages and disadvantages for the proxy, its constituents, and
+the system as a whole.
+We will examine four of these different `coordination' mechanisms:
+\begin{enumerate}
+    \item {
+        \textit{No preference change - Selfish}. The proxy allocates its weight to
+        its own preference.
+    }
+    \item {
+        \textit{No preference change - Cooperative}. The proxy allocates its weight
+        to the mean of its and its constituents' preferences.
+    }
+    \item {
+        \textit{Preference change - Selfish}. The proxy allocates its weight to its
+        own preference, but its preference has changed.
+        This change may be due to additional deliberation or some other cause.
+    }
+    \item {
+        \textit{Preference change - Consequences}. The proxy allocates its weight to
+        its own preference, but its preference has changed.
+        However, due to this change the proxy is only allowed to apply its own
+        weight, leaving its constituents unrepresented.
+    }
+\end{enumerate}
+These mechanisms are used in an attempt to simulate real-world consequences of proxy
+voting, as well as identify potential techniques to deter or mitigate a proxy's
+ability to swing the system by aggregating a large amount of weight and abusing it.
+
+The flexibility of the continuous model in both the discrete and continuous realms, its
+ability to use different voting rules, and its easy interpretability, are the reasons
+it is employed in this study.
+This study will focus primarily on the continuous instead of the discrete output of
+the model, since observing the continuous output allows for more granularity in the
+differences between proxy and non-proxy voting, as well as in the differences between
+voting rules.
+
+\subsection{Assumptions}\label{subsec:assumptions}
+In order to conduct this study, we make a number of assumptions.
+First, we assume that each voter is able to choose their proxy, also known as a
+delegate, individually for each topic.
+This is not currently the case for the House of Representatives, which requires
+a proxy to be chosen by letter and so would be difficult to change as different
+topics are discussed~\cite{Congress.gov2020}.
+However, since it would be fairly simple to implement a new process that allows
+per-topic proxies, and since many complex topics can be reduced to a set of related
+subtopics, we believe this assumption is reasonable.
+
+Additionally, the resolution currently requires the delegate to vote exactly as the
+specific instructions provided by the delegating voter tells them to
+vote~\cite{CERP2020, Congress.gov2020}.
+This essentially turns proxy into a relay for the delegating voter, which is not how
+proxy voting is typically used and is not particularly interesting, since relaying a
+vote essentially allows the delegator to vote as if they were present.
+This means no information about the delegator's preference is lost.
+Unfortunately, it also means they do not gain all the benefits of traditional proxy
+voting since they still need to do all the work of casting their vote except for
+being present.
+The `relay' proxy voting also comes with the downside that delegators will be unable
+to have their proxy vote differently if the delegator's preference were to change,
+say through deliberation or as new information is provided, limiting the system's
+adaptability.
+
+Instead, we consider scenarios where actual proxy voting is used, where the proxy
+receives the voting power of the delegating voter, increasing their weight, and
+proceeds to votes according to their own preference.
+Traditional proxy voting also allows the proxy to update their (and by extension, their
+constituents) preferences as new information becomes available.
+While traditional proxy voting gives substantial flexibility to the proxy to
+operate on behalf of their constituents, this flexibility requires the delegating voter
+to choose a proxy who they trust to vote as close to how they themselves would.
+This is a process similar to selecting experts, as described by~\cite{Miller1969}
+and~\cite{Mueller1972}.
+By using traditional proxy voting instead of relay-style voting, we hope to exploit
+the advantages of proxy voting that the relay-style does not provide.
+
+Second, we assume that each voter has reasonable knowledge of potential proxies'
+opinions, meaning they have a decent idea of the preferences of other proxies.
+This will allow them to choose the proxy that has the opinion most similar to their own.
+While in reality voters will likely not have perfect knowledge of others' opinions,
+it is often not particularly difficult to gauge the opinion of others, especially
+those with whom an individual often associates, and so we believe this assumption is
+reasonable.
+
+Third, we assume that abstention is not allowed.
+In other words, all agents must vote either themselves or by proxy.
+The primary reasoning behind this is to simplify the system being used and provide
+the system with as much information as possible without needing to account for
+extenuating circumstances such as the unexpected incapacitation of a voter.
+Additionally, all individuals will have some form of opinion, even if that opinion is
+completely neutral.
+A neutral opinion can be represented as a preference close to the middle of the
+preference space, which decreases the desire for abstention when voting is possible.
+Nevertheless, as a baseline, we will explore occasions where those who are not
+physically present are unable to vote.
+
+Finally, we assume that there are no factors besides closeness in opinion that affect
+the choice of proxy.
+This differs from the actual system presently used by the House of Representatives,
+which includes restrictions such as a proxy can only serve ten voters~\cite{CERP2020}.
+However, we feel removing restrictions such as these leads to a more interesting
+discussion, since it allows the use of different voting mechanisms and more extreme
+cases.
