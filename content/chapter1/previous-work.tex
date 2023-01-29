@@ -1,79 +1,36 @@
 \section{Previous Work}\label{sec:previous-work}
-% "Let others explain for you"
-% - Continuous model | Bulteau, Cohensius, Zhang
-%   - Bulteasu attacks many different problens
-%   - Cohensius focusses on single-winner 1D continuous
-%   - Zhang treats weight as a probability instead of a count
-% - Tracking weight | Degrave
-% - Aggregation in continuous space | Bulteau, Cohensius
+Proxy voting is a well-discussed topic, and we build off many author's previous work.
 
-% Other approaches
-% - Aggregation in non-continuous space | Mathur
+Jonas Degrave~\cite{Degrave2014} implemented a simple model to calculate how much
+weight a proxy has.
+The model even allows for agents to delegate multiple proxies.
+He treated proxy delegations as a digraph where nodes are voters and edges represent
+delegating proxies, and created two algorithms to determine the weights of each proxy.
+The first algorithm constructs a linear equation for each agent, consisting of the
+agent's original weight plus the weight of the agents the delegate to it.
+The second employs an adjacency matrix.
+Ultimately, both algorithms simply sum the total weight allocated to a proxy.
+We will employ the first technique, since it allows for a straightforward way to
+delegate voting power that would not be confusing to voters.
+However, we will not take full advantage of it by disallowing proxies to delegate to
+other proxies, as well as only allowing each agent to delegate one proxy.
+We implement these limitations so as to not cloud the focus of our study, that being
+minimizing the error and enhancing deliberation in single-vote/single-winner 1D
+continuous space scenarios.
 
-% Misc
-% - Expert proxies | Miller, Mueller
-% - Voting cycles; bargaining and enforcement | Fearon
-
-James Miller~\cite{Miller1969} imagined a governmental system utilizing proxy voting
-in 1969 as a more direct form of a representative democracy.\footnote{
-    That is to say, Miller envisioned a system where individuals could directly vote
-    for an issue, or elect a proxy to vote for them.
-    Naturally, any democracy that uses proxy voting is a representative democracy,
-    since the proxy is representing the delegator.
-    Nevertheless, it can be argued that Miller's proposal could provide a more direct
-    democracy since a voter can directly vote for an issue is they so choose.
-}
-His work focuses on reworking the current House and Senate systems entirely by using a
-more-directly involved populace, but his ideas can still be relevant under the current
-system.
-In particular, he introduces the idea we call \textit{expert proxies},
-those being individuals who would `vote as [the delegator] would if only
-[the delegator] had the time and knowledge to participate directly'~\cite{Miller1969}.
-While for the general populace this could be a very valuable benefit of proxy voting,
-it is not entirely desirable for the House of Representatives.
-One of the reasons individuals are elected to the House of Representatives is to
-research and create laws that are in the best interest of the people on behalf of
-the people.
-Though the past 25 Congresses have seen anywhere from 10 to over 25 thousand issues
-over 2 years, only around 10\% are actually discussed~\cite{GovTrack2022}.
-That would be approximately 1000 to 2500 issues per Congress, or about 500 to 1250 per
-year.
-While this is still a large number of issues, it is the job of a member of the House
-of Representatives to learn about, research, and deliberate about each issue.
-Additionally, Miller states `a representative should be an expert, or at least
-competent, in each field [on which they are voting]'~\cite{Miller1969}.
-This reinforces the idea that a member of the House of Representatives should be, as
-their title would suggest, a representative of the people and have the responsibility
-to become an expert in the issues they are voting on.
-To remove this responsibility from the House of Representatives would be to remove
-a large portion of their duties, and could easily result in the dictatorship of a few.
-As such, we differ from Miller in the sense that all voters ought to be experts in
-the field, and so we use proxy voting to allow them to be more efficient in their
-duties and avoid spreading disease instead of reworking the system entirely.
-Additionally, Miller did not consider using proxy voting for use by members of
-Congress as it currently works, which we will explore in this paper.
-
-\etal{Cohensius}~\cite{Cohensius2017} explore the use of proxy voting in a metric space
-using three voting mechanisms: mean, median, and majority.
-They discovered proxy voting using any of these mechanisms generally produces lower
-error than direct voting with active voters alone.
-This is not too surprising: reintroducing information lost through inactive voters by
-using a proxy system ought to help the system.
-Nevertheless, they were able to show that proxy voting is effective under a number of
-symmetrical and asymmetrical preference distributions, while under both random and
-strategic participation.
-However, the majority of their research focuses on voting with infinite populations.
-While this work would certainly be applicable to larger populations, since a
-population of sufficient size will begin to behave like an infinite
-population~($\lim_{x \rightarrow \infty} x = \infty$), we are more interested in the
-effects of proxy voting on a relatively small, finite population of 435 members of the
-House of Representatives.
-As such, we will explore the effects of proxy voting on a finite population of this
-size, as well as explore other possible voting mechanisms.
+Related to weight, Zhang~and~Grossi~\cite{Zhang2022} explore treating weight as a
+probability instead of a count, in addition to simply transferring voting power to
+the proxy.
+They assume that any agent is able to delegate to any other agent.
+We share this assumption, though we will only focus on transferring voting power
+directly instead of treating it as a probability.
 
 Anurita~Mathur~and~Arnab~Bhattacharyya~\cite{Mathur2017} looked at several voting
 mechanisms applied on a single-winner election vote and determined a ranking for
 these mechanisms.
+\textit{Voting mechanisms}, also known as \textit{aggregation mechanisms}, are
+algorithms that take the preferences of all active voters and turn them in to the
+output of the system.
 They apply these mechanisms on a dataset while looking only at datapoints without a
 Condorcet winner.
 In their work, they say a mechanism `beats' another if it has a larger fraction of
@@ -92,40 +49,100 @@ Additionally, most of our mechanisms will be different due the mechanisms they u
 not being beneficial on a continuous preference space or with a small number of
 candidates, or not working well with proxy voting.
 
-Jonas Degrave~\cite{Degrave2014} implemented a simple model to allow voters to
-delegate to multiple proxies.
-He treated proxy delegations as a digraph where nodes are voters and edges represent
-delegating proxies.
-He developed two algorithms to determine the weights of each proxy.
-The first algorithm, which calls for simply dividing their weight equally among all
-those to which the voter delegates, is precisely the model we will use.
-This technique allows for a straightforward way to delegate voting power that would
-not be confusing to voters.
-We additionally augment this technique by looking at how many proxies a voter should be
-allowed to delegate.
-As with Degrave's approach, a delegator's voting power will be divided equally amongst
-all its proxies.
-Intuitively, if a voter were to delegate all other voters as proxies the result would
-be the same as if the voter had simply not voted.
-However, if the voter were to only delegate a single proxy, the result might not be
-as ideal to the delegator or system as if they had been able to delegate to two proxies
-that would produce a better result.
-As such, we ask, if voters need to delegate more than one proxy with equal weighting and
-will always select those closest to them, how many proxies should be allotted before
-more proxies cease to be useful?
+\etal{Cohensius}~\cite{Cohensius2017} explore the use of proxy voting in a
+continuous metric space using three voting mechanisms: mean, median, and majority.
+They discovered proxy voting using any of these mechanisms generally produces lower
+error than direct voting with active voters alone.
+This is not too surprising: reintroducing information lost through inactive voters,
+regardless of the method, ought to help the system.
+Nevertheless, they were able to show that proxy voting is effective under a number of
+symmetrical and asymmetrical preference distributions, while under both random and
+strategic participation.
+However, the majority of their research focuses on voting with infinite populations.
+While this work would certainly be applicable to larger populations, since a
+population of sufficient size will begin to behave like an infinite
+population\footnote{
+    Naturally, $\lim_{x \rightarrow \infty} x = \infty$.
+}, we are more interested in more realistic proxy voting in smaller, finite
+populations.
+Specifically, we arbitrarily choose a finite population of 435 agents, that being the
+number of members of the House of Representatives.
+As such, we will explore the effects of proxy voting on a finite population of this
+size, as well as explore other possible voting mechanisms, inside this continuous
+metric space.
 
-James Fearon~\cite{Fearon1998} described how cooperation often occurs in two phases:
-bargaining and enforcement.
-The bargaining phase involves negotiation and determining the terms of an arrangement,
-while the enforcement phase involves ensuring that the terms of the arrangement are met.
-Generally votes take place at the end of the bargaining phase, and the result is the
-agreement to be used in the enforcement phase.
-We plan to expand voting to feed back into the bargaining phase by allowing voters to
-express their dissatisfaction with either side of an issue by voting towards the
-center of the interval.
-In the case of binary issues, such as yea/nay issues, if enough agents vote towards the
-center the bargaining phase can be restarted to allow more negotiation before
-performing a second vote, thereby facilitating deliberation.
-For more continuous issues, such as how much money to spend on defense, the
-continuous model allows agents to vote for moderate spending by voting towards the
-center, instead of high or low spending by voting at one of the extremes.
+\etal{Bulteau}~\cite{Bulteau2021}, develop and experiment with a framework for
+aggregating preferences in several space using $L_p$ mechanisms.
+$L_p$ aggregation methods work by minimizing the sum of distances to the power of $p$
+($d^{\,p}$, where $d$ is a distance) between a possible solution and the voters'
+preferences.
+These mechanisms are particularly useful because they allow fine-tuning of the
+aggregation method by changing $p$.
+Specifically, in 1D single-winner continuous models, they employ $L_1$ (median),
+$L_2$ (mean), and $L_{\infty}$ (mid-range, meaning the point between the highest and
+lowest agent preference).
+They additionally treat any possible value in the space as a potential output as the
+system.
+They provide a number of remarks and observations for each of these mechanisms, which
+we will be borrowing.
+However, they examine these mechanisms with weighted votes, which we will have.
+As such, we will adapt each of the mechanisms to use weighted votes so they can work
+with proxies, and examine how they operate in the continuous space.
+
+%%%%%%%%% OLD %%%%%%%%%
+% TODO: Move this to our model when we talk about super voters
+% James Miller~\cite{Miller1969} imagined a governmental system utilizing proxy voting
+% in 1969 as a more direct form of a representative democracy.\footnote{
+%     That is to say, Miller envisioned a system where individuals could directly vote
+%     for an issue, or elect a proxy to vote for them.
+%     Naturally, any democracy that uses proxy voting is a representative democracy,
+%     since the proxy is representing the delegator.
+%     Nevertheless, it can be argued that Miller's proposal could provide a more direct
+%     democracy since a voter can directly vote for an issue is they so choose.
+% }
+% His work focuses on reworking the current House and Senate systems entirely by using a
+% more-directly involved populace, but his ideas can still be relevant under the current
+% system.
+% In particular, he introduces the idea we call \textit{expert proxies},
+% those being individuals who would `vote as [the delegator] would if only
+% [the delegator] had the time and knowledge to participate directly'~\cite{Miller1969}.
+% While for the general populace this could be a very valuable benefit of proxy voting,
+% it is not entirely desirable for the House of Representatives.
+% One of the reasons individuals are elected to the House of Representatives is to
+% research and create laws that are in the best interest of the people on behalf of
+% the people.
+% Though the past 25 Congresses have seen anywhere from 10 to over 25 thousand issues
+% over 2 years, only around 10\% are actually discussed~\cite{GovTrack2022}.
+% That would be approximately 1000 to 2500 issues per Congress, or about 500 to 1250 per
+% year.
+% While this is still a large number of issues, it is the job of a member of the House
+% of Representatives to learn about, research, and deliberate about each issue.
+% Additionally, Miller states `a representative should be an expert, or at least
+% competent, in each field [on which they are voting]'~\cite{Miller1969}.
+% This reinforces the idea that a member of the House of Representatives should be, as
+% their title would suggest, a representative of the people and have the responsibility
+% to become an expert in the issues they are voting on.
+% To remove this responsibility from the House of Representatives would be to remove
+% a large portion of their duties, and could easily result in the dictatorship of a few.
+% As such, we differ from Miller in the sense that all voters ought to be experts in
+% the field, and so we use proxy voting to allow them to be more efficient in their
+% duties and avoid spreading disease instead of reworking the system entirely.
+% Additionally, Miller did not consider using proxy voting for use by members of
+% Congress as it currently works, which we will explore in this paper.
+
+% TODO: Move this to our model when we talk about enhancing deliberation
+% James Fearon~\cite{Fearon1998} described how cooperation often occurs in two phases:
+% bargaining and enforcement.
+% The bargaining phase involves negotiation and determining the terms of an arrangement,
+% while the enforcement phase involves ensuring that the terms of the arrangement are met.
+% Generally votes take place at the end of the bargaining phase, and the result is the
+% agreement to be used in the enforcement phase.
+% We plan to expand voting to feed back into the bargaining phase by allowing voters to
+% express their dissatisfaction with either side of an issue by voting towards the
+% center of the interval.
+% In the case of binary issues, such as yea/nay issues, if enough agents vote towards the
+% center the bargaining phase can be restarted to allow more negotiation before
+% performing a second vote, thereby facilitating deliberation.
+% For more continuous issues, such as how much money to spend on defense, the
+% continuous model allows agents to vote for moderate spending by voting towards the
+% center, instead of high or low spending by voting at one of the extremes.

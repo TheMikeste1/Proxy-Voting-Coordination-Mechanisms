@@ -1,4 +1,5 @@
 \section{Background}\label{sec:background}  % TODO: Maybe rename to "preliminaries?"
+
 \subsection{What is proxy voting?}\label{subsec:what-is-proxy-voting?}
 \textit{Proxy voting} is a group of methods by which individuals who are unable or
 uninterested in voting in person can still have their voices heard through the use of
@@ -7,6 +8,14 @@ Agents are able to delegate another individual to be their proxy.
 We call the delegating agent a \textit{delegator} or an \textit{inactive voter}, and
 the group of agents that delegate to a proxy its \textit{constituents}.
 Proxies are also known as \textit{delegates} or \textit{active voters}.
+
+When voting, each individual starts with a certain number of votes that it can
+allocate to any given option.
+Often, this number is one.
+These votes are called a voter's \textit{weight} or \textit{voting power}.
+When delegating a proxy, the delegator's weight is transferred to the proxy,
+increasing its weight by the amount of power transferred to it.
+The more weight a voter has, the more they can swing the vote in their favor.
 
 Upon selecting a proxy, a delegator is no longer able to vote directly.
 Instead, their delegate votes on their behalf in one way or another.
@@ -78,15 +87,6 @@ yield the benefits of single-vote deliberation while still producing a near-perf
 result.
 
 
-% NOTE: Weight explanation
-% In a given voting scenario, every individual starts with one vote.
-% This vote can be called the voter's \textit{weight} or \textit{voting power}, meaning
-% each agent starts with a weight of one.
-% The more weight a voter has, the more they can swing the vote in their favor.
-
-% Transferring voting power adds to the voting power of the proxy, increasing its
-% weight by the amount of power transferred to it.
-
 % NOTE: Cooperation strategies
 % There are many ways a proxy could cast their vote on behalf of their constituents.
 % For example, the proxy could talk to its constituents to see what would make each of
@@ -107,7 +107,7 @@ result.
 % their voice to be stronger.
 % We will explore several of these methods and their impacts in our analysis.
 
-% NOTE: How voters choose proxies
+% NOTE: How voters choose proxies TODO: Move this to our model
 % These questions on strategy in proxy voting are important, but in order to first
 % determine if proxy voting would even be useful, this study employs a similar technique
 % as used in~\cite{Cohensius2017}, which has the voters pass their voting power to the
@@ -165,12 +165,13 @@ result.
 %     always the case, right? If my vote is between Sarah, Joe, and John, there may not
 %     be a linear ordering that all agree to.
 %%
-    % Proxy: averages votes of constituents. Votes their own preference.
+% Proxy: averages votes of constituents. Votes their own preference.
 % }
 %
 % This causes information about the delegators' preferences to be lost and the system's
 % accuracy to suffer.
-% The loss in accuracy may be acceptable, however, if the system's welfare is sufficiently
+% The loss in accuracy may be acceptable, however, if the system's welfare is
+% sufficiently
 % improved.
 % Perhaps more importantly, proxy voting can also increase system accuracy when a
 % sufficient number of agents are unable to vote in person, since it allows the system
@@ -191,7 +192,8 @@ result.
 
 % NOTE: Continuous space model
 % There are many ways to represent the votes, or preferences, of agents in a system.
-% Once such way is a continuous space model, such as the one used in~\cite{Cohensius2017}.
+% Once such way is a continuous space model, such as the one used
+% in~\cite{Cohensius2017}.
 % This model places voters' preferences in a metric space \systemspace, such as
 % in~\autoref{fig:system-metric-space}.
 % In this model, two points that are close together in the metric space represent
@@ -219,7 +221,8 @@ result.
 % NOTE: What are voting mechanisms?
 % Votes are aggregated into an output using a \textit{voting mechanisms} or
 % \textit{voting rules}.
-% Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting rules.
+% Two common voting mechanisms are the \textit{plurality} and \textit{mean} voting
+% rules.
 % The mean mechanism inherently works to a continuous space, since it can take all
 % preferences, multiply them by their weights, and then average them.
 % Plurality  \vicki{Define first, before adapting.}, on the other hand, needs to be
@@ -271,7 +274,8 @@ result.
 % Previous research has also identified problems with proxy voting.
 % \etal{Kling} and \etal{Gölz} all investigated a weakness in liquid democracy, a
 % superset to proxy voting, dubbed `super voters'~\cite{Kling2015,Golz2021}, which are
-% proxies that receive an extremely large amount of power, while others gain very little.
+% proxies that receive an extremely large amount of power, while others gain very
+% little.
 % While \etal{Kling} ultimately determined these proxies tend to use their power
 % wisely, possibly to avoid estranging those voters who delegate their power to the
 % proxy, there can be situations where super voters can be problematic with one-off
