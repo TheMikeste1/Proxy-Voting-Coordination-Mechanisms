@@ -1,6 +1,9 @@
 \mathbf{mr}(\systemproxies) =
     \frac{
-        w(\agent_{\text{lowest}}) \cdot \agent_{\text{lowest}}
-        + w(\agent_{\text{highest}}) \cdot \agent_{\text{highest}}
+        \weightof{\agent_{\text{lowest}}} \cdot \agent_{\text{lowest}}
+        + \weightof{\agent_{\text{highest}}} \cdot \agent_{\text{highest}}
     }
-    {w(\agent_{\text{lowest}}) + w(\agent_{\text{highest}})}
+    {
+        \weightof{\agent_{\text{lowest}}}
+        + \weightof{\agent_{\text{highest}}}
+    }

@@ -1,0 +1,66 @@
+\section{Assumptions}\label{sec:assumptions}
+In order to conduct this study, we make a number of assumptions.
+First, we assume that each voter is able to choose their proxy, also known as a
+delegate, individually for each topic.
+This is not currently the case for the House of Representatives, which requires
+a proxy to be chosen by letter and so would be difficult to change as different
+topics are discussed~\cite{Congress.gov2020}.
+However, since it would be fairly simple to implement a new process that allows
+per-topic proxies, and since many complex topics can be reduced to a set of related
+subtopics, we believe this assumption is reasonable.
+
+Additionally, the resolution currently requires the delegate to vote exactly as the
+specific instructions provided by the delegating voter tells them to
+vote~\cite{CERP2020, Congress.gov2020}.
+This essentially turns proxy into a relay for the delegating voter, which is not how
+proxy voting is typically used and is not particularly interesting, since relaying a
+vote essentially allows the delegator to vote as if they were present.
+This means no information about the delegator's preference is lost.
+Unfortunately, it also means they do not gain all the benefits of traditional proxy
+voting since they still need to do all the work of casting their vote except for
+being present.
+The `relay' proxy voting also comes with the downside that delegators will be unable
+to have their proxy vote differently if the delegator's preference were to change,
+say through deliberation or as new information is provided, limiting the system's
+adaptability.
+
+Instead, we consider scenarios where actual proxy voting is used, where the proxy
+receives the voting power of the delegating voter, increasing their weight, and
+proceeds to votes according to their own preference.
+Traditional proxy voting also allows the proxy to update their (and by extension, their
+constituents) preferences as new information becomes available.
+While traditional proxy voting gives substantial flexibility to the proxy to
+operate on behalf of their constituents, this flexibility requires the delegating voter
+to choose a proxy who they trust to vote as close to how they themselves would.
+This is a process similar to selecting experts, as described by~\cite{Miller1969}
+and~\cite{Mueller1972}.
+By using traditional proxy voting instead of relay-style voting, we hope to exploit
+the advantages of proxy voting that the relay-style does not provide.
+
+Second, we assume that each voter has reasonable knowledge of potential proxies'
+opinions, meaning they have a decent idea of the preferences of other proxies.
+This will allow them to choose the proxy that has the opinion most similar to their own.
+While in reality voters will likely not have perfect knowledge of others' opinions,
+it is often not particularly difficult to gauge the opinion of others, especially
+those with whom an individual often associates, and so we believe this assumption is
+reasonable.
+
+Third, we assume that abstention is not allowed.
+In other words, all agents must vote either themselves or by proxy.
+The primary reasoning behind this is to simplify the system being used and provide
+the system with as much information as possible without needing to account for
+extenuating circumstances such as the unexpected incapacitation of a voter.
+Additionally, all individuals will have some form of opinion, even if that opinion is
+completely neutral.
+A neutral opinion can be represented as a preference close to the middle of the
+preference space, which decreases the desire for abstention when voting is possible.
+Nevertheless, as a baseline, we will explore occasions where those who are not
+physically present are unable to vote.
+
+Finally, we assume that there are no factors besides closeness in opinion that affect
+the choice of proxy.
+This differs from the actual system presently used by the House of Representatives,
+which includes restrictions such as a proxy can only serve ten voters~\cite{CERP2020}.
+However, we feel removing restrictions such as these leads to a more interesting
+discussion, since it allows the use of different voting mechanisms and more extreme
+cases.
