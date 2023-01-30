@@ -1,43 +1,53 @@
 \section{Proposed Work}\label{sec:contribution}
-% \section{Contribution}\label{sec:contribution}
-This study will explore how proxy voting affects the vote.
-We will look at the difference in outcome between a direct vote using all agents that
-can vote in person, and proxy voting where the agents that can not attend in person
-instead delegate a proxy.
-Votes will take place in a continuous metric space, where an agent is able to vote
-anywhere inside the interval $[-1, 1]$, and will be aggregated using a voting
-mechanism inside the same space.
-
-We will examine proxy voting using four different voting mechanisms.
-Specifically, these mechanisms are
+% \section{Contribution}\label{sec:contribution} % TODO: Uncomment for the thesis
+We will explore proxy voting in a single-vote/single-winner single-dimension
+continuous space model.
+We employ three well-known $L_p$ mechanisms, specifically
 \begin{enumerate}
-    \item Median ($L_1$)
-    \item Mean ($L_2$)
-    \item Mid-range ($L_\infty$)
-    \item Plurality
+    \item {
+        \textit{Median ($L_1$)}
+    }
+    \item {
+        \textit{Mean ($L_2$)}
+    }
+    \item {
+        \textit{Mid-range ($L_\infty$)}
+    }
 \end{enumerate}
 Each of these mechanisms will additionally be applied to direct voting with all
 agents and direct voting with only those agents that are present.
 This is done to show what the output of the system would be with all information
 (direct voting with all agents), as well as the output with minimum information
 (direct voting with only those agents that are present).
-Error will be measured by squared error between each of these baselines.
+Error will be measured the distance of the result to each of these baselines.
 
-We will also employ four coordination mechanisms in an attempt to determine ways
-proxies and its constituents can work together to enhance their own welfare, as well
-as mitigate potential damages that could be caused by a `rogue' proxy.
+We will additionally apply with what we've dubbed `coordination mechanisms,' which
+are techniques by which proxies and constituents work together to determine how their
+weight will be allocated, meaning how the proxy will vote on their behalf.
 These mechanisms are
 \begin{enumerate}
-    \item No preference change - Selfish
-    \item No preference change - Cooperative
-    \item Preference change - Selfish
-    \item Preference change - Consequences
+    \item {
+        No preference change - Selfish
+    }
+    \item {
+        No preference change - Cooperative Mean
+    }
+    \item {
+        No preference change - Cooperative Median
+    }
+    \item {
+        Preference change - Expert
+    }
+    \item {
+        Preference change - Expert with Consequences
+    }
 \end{enumerate}
-These mechanisms will allow us to identify how a proxy can best represent its
-constituents.
+These mechanisms are used in an attempt to simulate real-world consequences of proxy
+voting, as well as identify potential techniques to deter or mitigate a proxy's
+ability to swing the system by aggregating a large amount of weight and abusing it.
 
-Whereas voting on an interval is uncommon and finding a real world dataset using
-preferences on an interval currently does not seem possible, these investigations
+Whereas voting on in a continuous interval is uncommon and finding a real world dataset
+using preferences on an interval currently does not seem possible, these investigations
 will be performed using preferences generated from several statistical distributions.
 The distributions and their notations are listed in \autoref{tab:distributions-used}.
 These various distributions will allow the data gathered to represent situations

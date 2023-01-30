@@ -1,0 +1,46 @@
+\section{Assumptions}\label{sec:assumptions}
+In order to conduct this study, we make a number of assumptions.
+First, we assume that voting issues are one off, meaning agents vote on only one
+topic at a time.
+This allows agents to select a proxy that works best for the current topic instead of
+selecting the best proxy for all topics.
+
+Additionally, we only consider scenarios where single-vite proxy voting is used, where
+the proxy receives the voting power of the delegating voter, increasing their weight,
+and proceeds to allocate all their weight towards one vote instead of relaying their
+constituents vote.
+This type of proxy voting also allows the proxy to update their (and by extension, their
+constituents) preferences as new information becomes available.
+While single-vote proxy voting gives substantial flexibility to the proxy to operate
+on behalf of their constituents, this flexibility requires the delegating voter to
+choose a proxy who they trust to vote as close to how they themselves would.
+This is a process similar to selecting experts, as described by~\cite{Miller1969}
+and~\cite{Mueller1972}.
+By using single-vote proxy voting instead of relay-style voting, we hope to exploit
+the advantages of proxy voting that the relay-style does not provide.
+
+We also assume that each voter has reasonable knowledge of potential proxies'
+opinions, meaning they have a decent idea of the preferences of other proxies.
+This will allow them to choose the proxy that has the opinion most similar to their own.
+While in reality voters will likely not have perfect knowledge of others' opinions,
+it is often not particularly difficult to gauge the opinion of others, especially
+those with whom an individual often associates, and so we believe this assumption is
+reasonable.
+
+Next, we assume that abstention is not allowed.
+In other words, all agents must vote either themselves or by proxy.
+The primary reasoning behind this is to simplify the system being used and provide
+the system with as much information as possible without needing to account for
+extenuating circumstances such as the unexpected incapacitation of a voter.
+Nevertheless, as baselines , we will explore occasions where those who are not
+physically present are unable to vote as well as the result when all agents are able
+to vote.
+
+Finally, we assume that there are no factors besides closeness in opinion that affect
+the choice of proxy.
+This differs from some systems, such as that presently used by the House of
+Representatives which includes restrictions such as a proxy can only serve ten
+voters~\cite{CERP2020}.
+However, we feel removing restrictions such as these leads to a more interesting
+discussion, since it allows the use of different voting mechanisms and more extreme
+cases.
