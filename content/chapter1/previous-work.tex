@@ -8,19 +8,19 @@ He treated proxy delegations as a digraph where nodes are voters and edges repre
 delegating proxies, and created two algorithms to determine the weights of each proxy.
 The first algorithm constructs a linear equation for each agent, consisting of the
 agent's original weight plus the weight of the agents the delegate to it.
-The second employs an adjacency matrix.
+The second employs an adjacency matrix.  \vicki{how does that change the algorithm?  I wouldn't even consider it a different algorithm, not even really a different data structure}
 Ultimately, both algorithms simply sum the total weight allocated to a proxy.
 We will employ the first technique, since it allows for a straightforward way to
 delegate voting power that would not be confusing to voters.
 However, we will not take full advantage of it by disallowing proxies to delegate to
-other proxies, as well as only allowing each agent to delegate one proxy.
+other proxies, as well as only allowing each agent to delegate one proxy. \vicki{The important factor seems to be that the delegators would understand how their vote would be aggregated.  This would be lost if the delegate re-delegates.|
 We implement these limitations so as to not cloud the focus of our study, that being
 minimizing the error and enhancing deliberation in
 single-vote/single-winner/single-dimension continuous space scenarios.
 
 Related to weight, Zhang~and~Grossi~\cite{Zhang2022} explore treating weight as a
 probability instead of a count, in addition to simply transferring voting power to
-the proxy.
+the proxy.  \vicki{Can you explain why this matters?|
 They assume that any agent is able to delegate to any other agent.
 We share this assumption, though we will only focus on transferring voting power
 directly instead of treating it as a probability.
@@ -39,7 +39,7 @@ They discover that the GT\footnote{
     Presumably meaning `Game Theory.'
 }~method~\cite{Rivest2010} beats all others, the Schulze~method~\cite{Schulze2011}
 and Minimax voting mechanisms always agree and beat all other mechanisms besides the
-GT method, while Borda beats Copeland and Plurality, and Plurality comes in last.
+GT method, while Borda beats Copeland and Plurality, and Plurality comes in last. \vicki{The reader will likely be unfamiliar with these terms.  Consider creating a table to define plurality, copeland, Borda, Cordorcet, Schulze, Minimax.  Or you could just take the time to define the terms in the text here.  If you define them here, it will save you space later.}
 This study will also look at voting mechanisms and attempt to determine which
 mechanism is best suited for proxy voting.
 Our work will differ significantly from theirs, however, as we will explore voting
@@ -50,7 +50,7 @@ not being beneficial on a continuous preference space or with a small number of
 candidates, or not working well with proxy voting.
 
 \etal{Cohensius}~\cite{Cohensius2017} explore the use of proxy voting in a
-continuous metric space using three voting mechanisms: mean, median, and majority.
+continuous metric space using three voting mechanisms: mean, median, and majority. \vicki{Define majority on a continuos space|
 They discovered proxy voting using any of these mechanisms generally produces lower
 error than direct voting with active voters alone.
 This is not too surprising: reintroducing information lost through inactive voters,
@@ -67,6 +67,7 @@ population\footnote{
 populations.
 Specifically, we arbitrarily choose a finite population of 435 agents, that being the
 number of members of the House of Representatives.
+\vicki{better to pick a number not tied to the House}
 As such, we will explore the effects of proxy voting on a finite population of this
 size, as well as explore other possible voting mechanisms, inside this continuous
 metric space.
@@ -86,7 +87,7 @@ They additionally treat any possible value in the space as a potential output as
 system.
 They provide a number of remarks and observations for each of these mechanisms, which
 we will be borrowing.
-However, they examine these mechanisms with weighted votes, which we will have.
+However, they examine these mechanisms with weighted votes, which we will have.  \vicki{Do you mean they don't?}
 As such, we will adapt each of the mechanisms to use weighted votes so they can work
 with proxies, and examine how they operate in the continuous space.
 
