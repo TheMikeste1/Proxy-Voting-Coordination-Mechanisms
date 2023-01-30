@@ -142,7 +142,7 @@ There are also several ways an individual proxy can agree to cast its vote own b
 of its constituents.
 Each has different advantages and disadvantages for the proxy, its constituents, and
 the system as a whole.
-We will examine four of these different `coordination' mechanisms:
+We will examine five different `coordination' mechanisms:
 \begin{enumerate}
     \item {
         \textit{No preference change - Selfish}.
@@ -159,17 +159,22 @@ We will examine four of these different `coordination' mechanisms:
         preferences.
     }
     \item {
-        \textit{Preference change - Selfish}.
-        The proxy allocates its weight to its own preference, but its preference has
-        changed.
-        This change may be due to additional deliberation or some other cause.
+        \textit{Preference change - Expert}.
+        The proxy allocates its weight to its own preference.
+        This is useful for cases when a proxy is deemed by its constituents as an
+        `expert', as discussed by James Miller~\cite{Miller1969}.
+        However, but its preference has changed as it has participated in
+        deliberation and discussion with the other active voters.
     }
     \item {
-        \textit{Preference change - Consequences}.
-        The proxy allocates its weight to its own preference, but its preference has
-        changed.
+        \textit{Preference change - Expert with Consequences}.
+        The proxy is an expert and allocates its weight to its own preference, but its
+        preference has changed.
         However, due to this change the proxy is only allowed to apply its own
         weight, leaving its constituents unrepresented.
+        This represent situations where a proxy is considered an expert, but the
+        constituents impose a condition that the proxy can only represent them if
+        they vote a certain way.
     }
 \end{enumerate}
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
