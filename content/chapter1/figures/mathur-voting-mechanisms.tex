@@ -1,0 +1,61 @@
+\begin{tabular}{| r | p{0.80\linewidth} |}
+    \hline
+    \thead[r]{Voting \\ Mechanism} & \thead[l]{Description}  \\
+    \hhline{|=|=|}
+    Borda     & {
+        Agents rank each candidate, 1 to $n$.
+        The candidate ranked first receives $n - 1$ points, the candidate in second
+        $n - 2$, etc.
+        Whichever candidate receives the most points total wins.
+    } \\
+    \hline
+    Copeland  & {
+        Agents rank candidates 1 up to $n$.
+        Agents are able to leave some blank, all of which will be counted as last place.
+        After all agents have ranked the candidates, they are compared pairwise.
+        If a candidate is more often ranked better than another, it gets one point.
+        If they are more often ranked worse, they get 0 points.
+        When the number of ranked better vs ranked worse is equal, the candidate
+        receives half a point.
+        The candidate with the largest score wins.
+    } \\
+    \hline
+    GT        & {
+        Agents rank each candidate, and a pairwise margin matrix is generated.
+        In the matrix, position $(x, y)$ is the number of rankings that prefer $x$ over
+        $y$, minus the number of rankings that prefer $y$ over $x$.
+        A zero-sum game is then applied, and an optimal mixed strategy computed.
+        The winner is then chosen randomly using the optimal mixed strategy.
+        See~\cite{Rivest2010} for more details.
+    } \\
+    \hline
+    Minimax   & {
+        Agents rank every candidate from 1 to $n$.
+        Candidates are compared pairwise, where candidate $x$ is compared to
+        candidate $y$.
+        The score of each comparison is the number of votes candidate $y$ receives
+        more than candidate $x$.
+        Then, the maximum score for each candidate $x$ (meaning, its largest
+        pairwise defeat) is determined.
+        The candidate with the lowest (minimum) maximum score is selected as the winner.
+    } \\
+    \hline
+    Plurality & {
+        Each agent selects their favorite candidate.
+        The candidate with the most votes wins.
+    } \\
+    \hline
+    Schulze   & {
+        Agents rank candidates, and are allowed to skip rankings, give the same rank
+        twice, or not rank a candidate.
+        Candidates with the same ranking are said to be equally preferred, and
+        unranked candidates are ranked last.
+        Then, a weighted directed graph connecting agents is generated.
+        An edge going from candidate $A$ to candidate $B$ with a weight of 10 means
+        10 more agents prefer $A$ over $B$ then $B$ over $A$.
+        Using this graph, paths are generated between candidates.
+        The strength of the path is the sum of the weight of each edge in the path.
+        The candidate that has stronger paths to each agent than all other agents wins.
+    } \\
+    \hline
+\end{tabular}
