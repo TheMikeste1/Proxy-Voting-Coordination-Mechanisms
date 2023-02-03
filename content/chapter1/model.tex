@@ -10,9 +10,20 @@ metric~space~\systemspace, such as in~\autoref{fig:system-metric-space}.
 In this model, two points that are close together in the metric space represent
 similar preferences, while two points that are far apart represent very different
 preferences.
+As a point moves further away from the agent's preference, the agent likes it less.
 This model works best when an upper and lower bound is provided, such as only
 allowing agents to vote in the interval $[-1, 1]$.
-\vicki{Do we assume that distance measures difference? For example, if my preference is .1, would I like .2 the same as 0?  This isn't always true of single peaked preference, which may be more ordinal than cardinal.}
+% \vicki{
+%     Do we assume that distance measures difference?
+%     For example, if my preference is .1, would I like .2 the same as 0?
+%     This isn't always true of single peaked preference, which may be more ordinal
+%     than cardinal.
+% }
+% MDH: That's a good point, and would naturally depend on the utility function of the
+% agent. I just now realised I've been assuming the difference would be linear, or at
+% least all agents would view the difference similarly, but that's not necessarily
+% the case. If there's a diversity of views/utility functions, multiple agents likely
+% view the difference differently.
 
 \begin{figure}[htbp]
     \centering
@@ -52,9 +63,9 @@ other.
 
 Alternatively, if the majority of the options are about the center, it may be a sign
 neither option is satisfactory.
-Using the pineapple on pizza example, we can reinterpret 0 to mean the agents want
-pineapple on the pizza, but perhaps feel the amount proposed is too much.
-\vicki{But this blurs the next example where amount of money is the issue. Could we say that people in the middle aren't opposed to having pineapple, but wouldn't choose pineapple if they were the only one eating it?  A "don't put pineapple on it for me" attitude.}
+Using the pineapple on pizza example, we can reinterpret 0 to mean the agents don't
+mind pineapple on pizza, but don't personally want it.
+These agents would vote around 0 to avoid imposing.
 By making the agents aware of how 0 will be interpreted, they can express their
 dissatisfaction by voting at or around 0.
 Normally, voting goes through a bargaining and an enforcement
@@ -73,10 +84,10 @@ vote will how much Congress allocates.
 Say there are three voters, each with their own preferences, and all voters are
 active (no voter delegates their vote).
 Agent $a$ prefers \$750, $b$ prefers \$600, and $c$ prefers \$250.
-\vicki{Make it clear than averaging is only one option.}
+One way we could aggregate these preferences is by finding their mean.
 By averaging these preferences, the system would output
-$\frac{\$(750 + 600 + 250)}{3 \text{ voters}} = \frac{\$1600}{3 \text{ voters}} =
-\$533.33$, which would be the amount allocated to the defence budget.
+$\frac{\$(750 + 600 + 250)}{3 \text{ voters}} = \frac{\$1600}{3 \text{ voters}} = \$533.33$,
+which would be the amount allocated to the defence budget.
 Being able to vote on continuous problems and yield a continuous output, as well as
 working with binary issues, makes the model extremely flexible and allows it to
 tackle any number of problems.
@@ -148,7 +159,7 @@ the system as a whole.
 We will examine five different `coordination' mechanisms:
 \begin{enumerate}
     \item {
-        \textit{No preference change - Selfish}. \vicki{Perhaps dictator?}
+        \textit{No preference change - Expert}.
         The proxy allocates its weight to its own preference.
     }
     \item {
