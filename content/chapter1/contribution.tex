@@ -19,10 +19,10 @@ agents and direct voting with only those agents that are present.
 This is done to show what the output of the system would be with all information
 (direct voting with all agents), as well as the output with minimum information
 (direct voting with only those agents that are present).
-Error will be measured the distance of the result to each of these baselines.
+The error will be the distance between the result and each of these baselines.
 
-We will additionally apply with what we've dubbed `coordination mechanisms,' which
-are techniques by which proxies and constituents work together to determine how their
+We will additionally apply what we've dubbed `coordination mechanisms,' which are
+techniques by which proxies and constituents work together to determine how their
 weight will be allocated, meaning how the proxy will vote on their behalf.
 These mechanisms are
 \begin{enumerate}
@@ -52,8 +52,8 @@ will be performed using preferences generated from several statistical distribut
 The distributions and their notations are listed in \autoref{tab:distributions-used}.
 These various distributions will allow the data gathered to represent situations
 where the majority of voters are at either extreme (\betadistribution{0.3}{0.3}),
-skewed towards one side (\betadistribution{4}{1}), or mostly indifferent
-(\gaussiandist\ and \betadistribution{50}{50}).
+skewed towards one side (\betadistribution{4}{1}), or mostly indifferent or centralists
+(\gaussiandist~and~\betadistribution{50}{50}).
 Each experiment will have a population of 512.
 For each round, we will experiment with 1 to 511 delegating agents and examine how
 error correlates with the number of delegators.

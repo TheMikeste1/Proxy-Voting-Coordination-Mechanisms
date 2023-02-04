@@ -59,8 +59,8 @@ For example, say a group is choosing whether or not to put pineapple on pizza.
 Using the interval $[-1, 1]$, we can place `no pineapple' at -1, and `yes pineapple'
 at 1.
 Agents vote according to their preference: -1 for no pineapple, 1 for pineapple.
-So far, everything works the same as with a normal vote.
-However, due to the continuous nature of the voting space and that agents can vote
+So far, everything works the same as a normal vote.
+However, due to the continuous nature of the voting space, the agents can vote
 anywhere in the given interval.
 Therefore, agents who don't care one way or the other can vote at 0 instead of being
 forced to choose an option.
@@ -91,7 +91,7 @@ For example, say Congress is voting on how much to allocate to the defense budge
 Congress can decide to allocate anywhere between \$0 and \$1,000 (naturally, these
 values are not realistic and are meant to be representative).
 A voter can place their vote anywhere between those values, and the result of the
-vote will how much Congress allocates.
+vote will be how much Congress allocates.
 Say there are three voters, each with their own preferences, and all voters are
 active (no voter delegates their vote).
 Agent $a$ prefers \$750, $b$ prefers \$600, and $c$ prefers \$250.
@@ -135,7 +135,7 @@ the ordered set of active voters, the mechanisms we use are
         \textit{Median ($L_1$)}, defined as
         $\input{content/figures/equations/weighted-median}$.
         Essentially, the median is the agent whose additional weight makes the sum of
-        weights becomes equal to or greater than half the total weight of the system.
+        weights become equal to or greater than half the total weight of the system.
         The sum will occur in the same order as the ordering of voters in
         \systemproxies.
     }
@@ -147,7 +147,7 @@ the ordered set of active voters, the mechanisms we use are
     \item {
         \textit{Mid-range ($L_\infty$)}, defined as
         $\input{content/figures/equations/weighted-midrange}$, meaning the weighted
-        preference of the of the agent with the lowest preference plus the weighted
+        preference of the agent with the lowest preference plus the weighted
         preference of the agent with the highest preference, divided by the sum of
         their weights.
     }
@@ -176,12 +176,12 @@ We will examine five different `coordination' mechanisms:
     }
     \item {
         \textit{No preference change - Cooperative Mean}.
-        The proxy allocates its weight to the mean of its and its constituents'
+        The proxy allocates its weight to the mean of its own and its constituents'
         preferences.
     }
     \item {
         \textit{No preference change - Cooperative Median}.
-        The proxy allocates its weight to the median of its and its constituents'
+        The proxy allocates its weight to the median of its own and its constituents'
         preferences.
     }
     \item {
@@ -189,8 +189,8 @@ We will examine five different `coordination' mechanisms:
         The proxy allocates its weight to its own preference.
         This is useful for cases when a proxy is deemed by its constituents as an
         `expert', as discussed by James Miller~\cite{Miller1969}.
-        However, but its preference has changed as it has participated in
-        deliberation and discussion with the other active voters.
+        However, its preference has changed as it has participated in deliberation
+        and discussion with the other active voters.
     }
     \item {
         \textit{Preference change - Expert with Consequences}.
@@ -198,7 +198,7 @@ We will examine five different `coordination' mechanisms:
         preference has changed.
         However, due to this change the proxy is only allowed to apply its own
         weight, leaving its constituents unrepresented.
-        This represent situations where a proxy is considered an expert, but the
+        This represents situations where a proxy is considered an expert, but the
         constituents impose a condition that the proxy can only represent them if
         they vote a certain way.
     }

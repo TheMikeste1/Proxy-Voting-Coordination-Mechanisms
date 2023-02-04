@@ -7,7 +7,7 @@ The model even allows for agents to delegate multiple proxies.
 He treated proxy delegations as a digraph where nodes are voters and edges represent
 delegating proxies, and created two methods to determine the weights of each proxy.
 The first method constructs a linear equation for each agent, consisting of the
-agent's original weight plus the weight of the agents the delegate to it.
+agent's original weight plus the weight of the agents that delegate to it.
 The second employs an adjacency matrix and uses linear algebra to calculate the
 solution.
 Ultimately, both methods simply sum the total weight allocated to a proxy.
@@ -24,7 +24,10 @@ unified-vote/single-winner/single-dimension continuous space scenarios.
 Related to weight, Zhang~and~Grossi~\cite{Zhang2022} explore treating weight as a
 probability instead of a count, in addition to simply transferring voting power to
 the proxy.
-This probability represents the odds the agent would delegate their weight to a proxy.
+In the probability model, inactive agents spread their weight out amongst several
+proxies.
+This probability represents the odds the agent would delegate their full weight to that
+proxy.
 The probability model allows Zhang~and~Grossi to probabilistically predict the
 outcome of a vote, and use that model to see if agents can correctly identify some
 world state.
@@ -51,11 +54,10 @@ These mechanisms are briefly described in~\autoref{tab:mathur-voting-mechanisms}
 This study will also look at voting mechanisms and attempt to determine which
 mechanism is best suited for proxy voting.
 Our work will differ significantly from theirs, however, as we will explore voting
-mechanisms used in a continuous voting space instead of discrete-space, single-winner
-elections.
-Additionally, our mechanisms will be different due the mechanisms they used not being
-beneficial on a continuous preference space or with a small number of candidates, or
-not working well with proxy voting.
+mechanisms used in a continuous voting space instead of a discrete-space.
+Additionally, our mechanisms will be different from the ones they employed since
+their mechanisms either do not work in a continuous preference space, or do not work
+well with proxy voting.
 
 \begin{table}[htbp]
     % increase table row spacing, adjust to taste
@@ -73,7 +75,7 @@ not working well with proxy voting.
 
 
 \etal{Cohensius}~\cite{Cohensius2017} explore the use of proxy voting in a
-continuous metric space using two voting mechanisms: mean, median,
+continuous metric space using two voting mechanisms: mean, median.
 They also explore proxy voting in a binary space using majority.
 They discovered proxy voting using any of these mechanisms generally produces lower
 error than direct voting with active voters alone.
@@ -93,7 +95,7 @@ size, as well as explore other possible voting mechanisms, inside this continuou
 metric space.
 
 \etal{Bulteau}~\cite{Bulteau2021}, develop and experiment with a framework for
-aggregating preferences in several space using $L_p$ mechanisms.
+aggregating preferences in several spaces using $L_p$ mechanisms.
 $L_p$ aggregation methods work by minimizing the sum of distances to the power of $p$
 ($d^{\,p}$, where $d$ is a distance) between a possible solution and the voters'
 preferences.
@@ -118,10 +120,10 @@ in 1969 as a more direct form of a representative democracy.\footnote{
     Naturally, any democracy that uses proxy voting is a representative democracy,
     since the proxy is representing the delegator.
     Nevertheless, it can be argued that Miller's proposal could provide a more direct
-    democracy since a voter can directly vote for an issue is they so choose.
+    democracy since a voter can directly vote for an issue if they so choose.
 }
 His work focuses on reworking the current House and Senate systems entirely by using a
-more-directly involved populace, but his ideas can still be relevant under the current
+more directly involved populace, but his ideas can still be relevant under the current
 system.
 In particular, he introduces the idea we call \textit{expert proxies},
 those being individuals who would `vote as [the delegator] would if only
@@ -130,6 +132,6 @@ Additionally, Miller states `a representative should be an expert, or at least
 competent, in each field [on which they are voting]'~\cite{Miller1969}.
 This is true both in the government as well as other situations where decisions are
 made by voting.
-As such, we consider scenarios where a proxy is, dubbed, at least according to its
+As such, we consider scenarios where a proxy is dubbed, at least according to its
 constituents, an `expert,' and so the constituents will go with its preference
 instead of their own.
