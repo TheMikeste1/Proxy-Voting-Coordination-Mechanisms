@@ -1,11 +1,7 @@
 \mathbf{mr}(\systemproxies) =
     \frac{
-        \weightof{\agent_{\text{lowest}}} \cdot \agent_{\text{lowest}}
-        + \weightof{\agent_{\text{highest}}} \cdot \agent_{\text{highest}}
+        \agent_{\text{lowest}} + \agent_{\text{highest}}
     }
-    {
-        \weightof{\agent_{\text{lowest}}}
-        + \weightof{\agent_{\text{highest}}}
-    }
+    {2}
 % TODO: I'm not so sure this equation is correct. Should it simply be the unweighted version.
 %   Consider how mean and median are calculated. They make sense because each agent has a weight of 1. However, unweighted midrange ignores those weights and simple takes the larges and smallest votes. Should the "weighted" version not also ifnore those weights?

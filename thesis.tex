@@ -43,8 +43,7 @@
 %\documentclass[cee,dissertation]{usuthesis}
 
 % TODO: Swap these two once I start writing the thesis
-% \documentclass[cs,msthesis]{usuthesis}
-\documentclass[cs,proposal]{usuthesis}
+\documentclass[cs,msthesis]{usuthesis}
 
 %{{{ Packages
 \usepackage{amssymb}           % add ams symbols stuff
@@ -106,6 +105,9 @@
 \setlength{\intextsep}{2em} % Vertical space above & below [h] floats
 \setlength{\textfloatsep}{2em} % Vertical space below (above) [t] ([b]) floats
 
+% The following is added if you are using the multiple-paper format to
+% add references after each chapter:
+% \usepackage[sectionbib]{chapterbib}
 
 % Author and Title Information
 \author{Michael D. Hegerhorst}
@@ -158,9 +160,7 @@
     \body  % set main body style
     % Chapters
     \include{chapter1-introduction}
-    % \include{chapter2-experimental-design}
-    % \include{chapter3-results}
-    % \include{chapter4-conclusions-and-further-work}
+    \include{chapter2-results}
 
     % Endmatter
     % For BibTeX references: specify a .bib file and a style.
@@ -171,7 +171,6 @@
     {IEEEtran}
 
     % The style used here is for AIAA formatting:
-%    \references{IEEEabrv,sample}{aiaa}
 
     % \include{content/endmatter/appendix}
     
