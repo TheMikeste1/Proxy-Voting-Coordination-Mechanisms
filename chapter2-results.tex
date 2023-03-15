@@ -1,6 +1,22 @@
 %
 %  This document contains chapter 2 of the thesis.
 %
+\documentclass[cs,msthesis]{usuthesis}
 
-\chapter{RESULTS}\label{ch:results}
-TODO
+\input{common/prelude}
+\input{common/cover-page}
+
+\begin{document}
+    \input{common/frontmatter}
+
+    %{{{ The main body of the thesis
+    \body  % set main body style
+    % Chapters
+    \chapter{RESULTS}\label{ch:results}
+    %%%%%%%% This line gets rid of page number on first page of text
+    \thispagestyle{empty}
+    %%%%%%%%%%%%%
+    TODO
+
+    \input{common/endmatter}
+\end{document}
