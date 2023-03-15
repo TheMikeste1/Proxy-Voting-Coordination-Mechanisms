@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Generate Bibliography Silently" type="BIBTEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" activateToolWindowBeforeRun="false">
+  <configuration default="false" name="Chapter 1 Generate Bibliography Silently" type="BIBTEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" activateToolWindowBeforeRun="false">
     <texify-bibtex>
       <compiler>BIBTEX</compiler>
       <compiler-path />
       <compiler-arguments />
       <envs />
-      <main-file>$PROJECT_DIR$/thesis.tex</main-file>
+      <main-file>$PROJECT_DIR$/chapter1-introduction.tex</main-file>
       <aux-dir>$PROJECT_DIR$/build/auxil</aux-dir>
     </texify-bibtex>
     <method v="2" />
