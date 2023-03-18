@@ -26,7 +26,7 @@ preference, rather than if it is greater or less than some amount.
 
 \begin{figure}[htbp]
     \centering
-    \input{content/chapter1/figures/system-metric-space.tikz}
+    \input{common/figures/system-metric-space.tikz}
     \caption{
         Example of a 1D continuous preference metric space, where \truthof{x} represents
         the preference of agent $x$.
@@ -123,7 +123,7 @@ the ordered set of active voters, the mechanisms we use are
 \begin{enumerate}
     \item {
         \textit{Median ($L_1$)}, defined as
-        $\input{content/figures/equations/weighted-median}$.
+        $\input{common/figures/equations/weighted-median}$.
         Essentially, the median is the agent whose additional weight makes the sum of
         weights become equal to or greater than half the total weight of the system.
         The sum will occur in the same order as the ordering of voters in
@@ -131,12 +131,12 @@ the ordered set of active voters, the mechanisms we use are
     }
     \item {
         \textit{Mean ($L_2$)}, defined as
-        $\input{content/figures/equations/weighted-mean}$.
+        $\input{common/figures/equations/weighted-mean}$.
         This is a typical weighted average.
     }
     \item {
         \textit{Mid-range ($L_\infty$)}, defined as
-        $\input{content/figures/equations/weighted-midrange}$, meaning the weighted
+        $\input{common/figures/equations/weighted-midrange}$, meaning the weighted
         preference of the agent with the lowest preference plus the weighted
         preference of the agent with the highest preference, divided by the sum of
         their weights.
