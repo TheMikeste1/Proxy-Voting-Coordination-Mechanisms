@@ -22,19 +22,6 @@ As such, even though \$29 and \$31 are equidistant to \$30, an agent may vastly
 prefer \$31 over \$29.
 However, for our model, we will assume agents only care about the distance from their
 preference, rather than if it is greater or less than some amount.
-% \vicki{
-%     Do we assume that distance measures difference?
-%     For example, if my preference is .1, would I like .2 the same as 0?
-%     This isn't always true of single peaked preference, which may be more ordinal
-%     than cardinal.
-% }
-% MDH: That's a good point, and would naturally depend on the utility function of the
-% agent. I just now realised I've been assuming the difference would be linear, or at
-% least all agents would view the difference similarly, but that's not necessarily
-% the case. If there's a diversity of views/utility functions, multiple agents likely
-% view the difference differently.
-% ~TODO: Specify this is a candinal representation~ Hopefully the above paragraph
-%   fixes this issue.
 
 \begin{figure}[htbp]
     \centering
@@ -157,11 +144,6 @@ voters (to simulate if proxy voting was not allowed), and all voters, inactive a
 active (to simulate the best case where all agents vote).
 These additional calculations serve as baselines to determine how well proxy voting
 works in these scenarios.
-
-% TODO: Do I still need to explain them more, since I've shown the equations?
-% More details on how each voting mechanism operates will be described in the full
-% thesis.
-% % in~\autoref{subsec:voting-mechanisms}.  % TODO: Uncomment for thesis
 
 \subsection{Coordination Mechanisms}\label{subsec:coordination-mechanisms}
 There are also several ways an individual proxy can agree to cast its vote own behalf
