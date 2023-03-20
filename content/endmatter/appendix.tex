@@ -4,9 +4,21 @@
 % For a single appendix, use \makeappendix, and place the
 % body of the appendix after it
 
-%\makeappendix
+\makeappendix
+
+\renewcommand\thefigure{A.\arabic{figure}}
 
 % < single appendix body here >
+\begin{figure}[p]
+    \centering
+    \includegraphics[scale=0.30]
+    {content/chapter2/figures/distribution_error_as_percent_of_space_abs_mean}
+    \caption{
+        The absolute error as a percent of the preference space by coordination
+        mechanism for each voting mechanism and preference distribution.
+    }
+    \label{fig:distribution-error-as-percent-of-space-abs-mean}
+\end{figure}
 
 % For multiple appendices, use \makeappendices, and create each appendix
 % using \appendix{}
