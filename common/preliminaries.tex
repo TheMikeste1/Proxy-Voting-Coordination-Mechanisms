@@ -128,6 +128,8 @@ the ordered set of active voters, the mechanisms we use are
         weights become equal to or greater than half the total weight of the system.
         The sum will occur in the same order as the ordering of voters in
         \systemproxies.
+        There is an edge case when two agents share a border with half the total weight.
+        In this case, the average between the preferences of the two agents is taken.
     }
     \item {
         \textit{Mean ($L_2$)}, defined as
