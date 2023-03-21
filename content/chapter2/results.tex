@@ -102,9 +102,21 @@ their voice is heard.
 
 \subsection{Preference Change}\label{subsec:results-shift}
 \autoref{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean} shows
-the difference between `worst case' preference change.
+the difference between `worst case' preference change, where `worst case' means each
+agent can change its preference to any value in the preference space after
+deliberations.
+Similar experiments were performed that instead restricted the amount the agents
+could change their preference to only a portion of the preference space, which
+yielded similar graphs, though with an even smaller y-axis scale.
 
-% TODO
+Unsurprisingly, the amount of error increases as more agents become inactive.
+However, it is important to note the magnitude of the scale.
+The largest difference in error is $\approx 0.35$ of the preference space,
+which ultimately is a very small amount.
+This minute difference indicates proxy voting is still beneficial when deliberations
+and still underway.
+This is an extremely powerful advantage for prox voting, since it allows the system
+to maintain the benefits of deliberation while reducing the voting cost for agents.
 
 \begin{landscape}
     \begin{figure}[p]
@@ -112,7 +124,9 @@ the difference between `worst case' preference change.
         \includegraphics[scale=0.55]
         {content/chapter2/figures/abs_diff_from_preference_change_error_as_percent_of_space_abs_mean}
         \caption{
-            % TODO
+            The absolute difference in the error produced between without a
+            preference change and with a preference change as a percent of space.
+            Note the maximum difference is less than 0.5\%.
         }
         \label{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean}
     \end{figure}
