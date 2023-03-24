@@ -13,7 +13,7 @@ preferences.
 As a point moves further away from the agent's preference, the agent likes it less.
 This model works best when an upper and lower bound is provided, such as only
 allowing agents to vote in the interval $[-1, 1]$, to prevent agents from voting
-extremely far in either direction and so potentially biasing the vote.
+extremely far in either direction and so potentially biasing the vote.  \vicki{But this would make no difference if you were using median}
 
 The difference between multiple equidistant points in the model may not be equivalent
 to the agents.
@@ -34,7 +34,7 @@ preference, rather than if it is greater or less than some amount.
         An agent can have a preference anywhere within this space.
         One way to interpret the model is to have the leftmost point be the most
         against some idea and the rightmost point is the most in favor of the same idea.
-        Importantly, points towards the center of the space are the most ambivalent,
+        Importantly, points towards the center of the space are the most ambivalent, \vicki{or simply see a compromise solution}
         neutral, or central on the idea.
     }
     \label{fig:system-metric-space}
@@ -44,7 +44,7 @@ Such a model is extremely flexible and can be interpreted in different ways.
 When applied to binary for-or-against voting problems, options can be placed at either
 extreme of the interval.
 As an example, say a group is choosing whether to put pineapple on pizza.
-Using the interval $[-1, 1]$, we can place `no pineapple' at -1, and `yes pineapple'
+Using the interval $[-1, 1]$, we can place `no pineapple' at -1, and `yes pineapple \vicki{Picking a more serious example would be helpful as we need to convince the reader this is an important problem.  Plus, pineapple could always be placed on half the pizza}
 at 1.
 Agents vote according to their preference: -1 for no pineapple, 1 for pineapple.
 So far, everything works the same as a normal vote.
@@ -76,8 +76,7 @@ voting is no longer the end of the process, but rather part of it.
 Finally, the continuous space model allows for another, very powerful interpretation:
 interpreting the votes and result as continuous values.
 For example, imagine Congress is voting on how much to allocate to the defense budget.
-In this scenario, Congress can decide to allocate anywhere between \$0 and \$1,000.
-\footnote{
+In this scenario, Congress can decide to allocate anywhere between \$0 and \$1,000.\footnote{
     Naturally, these values are not realistic and are meant to be representative.
 }
 A voter can place their vote anywhere between those values, and the result of the
@@ -124,7 +123,7 @@ the ordered set of active voters, the mechanisms we use are
     \item {
         \textit{Median ($L_1$)}, defined as
         $\input{common/figures/equations/weighted-median}$.
-        Essentially, the median is the agent whose additional weight makes the sum of
+           Essentially, the median is the agent whose additional weight makes the sum of
         weights become equal to or greater than half the total weight of the system.
         The sum will occur in the same order as the ordering of voters in
         \systemproxies.
@@ -135,6 +134,7 @@ the ordered set of active voters, the mechanisms we use are
         \textit{Mean ($L_2$)}, defined as
         $\input{common/figures/equations/weighted-mean}$.
         This is a typical weighted average.
+        \vicki{Is ai the agent or what they vote?  You seem to be using it for both.  w(ai) is the weight of the ith voter, but you use ai as if it is what the agent votes for.}
     }
     \item {
         \textit{Mid-range ($L_\infty$)}, defined as
@@ -142,9 +142,10 @@ the ordered set of active voters, the mechanisms we use are
         preference of the agent with the lowest preference plus the weighted
         preference of the agent with the highest preference, divided by the sum of
         their weights.
+        \vicki{Notation is unclear.  Is $a_{lowest}$ an agent, as the notation would suggest or a weight?.}
     }
 \end{enumerate}
-Additionally, we will apply unweighted versions of these mechanisms against all active
+Additionally, we will apply unweighted versions of these mechanisms against all active  \vicki{Unclear.  The only reason it is unweighted is because there is no weight.  Restate.}
 voters (to simulate if proxy voting was not allowed), and all voters, inactive and
 active (to simulate the best case where all agents vote).
 These additional calculations serve as baselines to determine how well proxy voting
@@ -159,7 +160,7 @@ We will examine five different `coordination' mechanisms:
 \begin{enumerate}
     \item {
         \textit{No preference change - Expert}.
-        The proxy allocates its weight to its own preference.
+        The proxy allocates its weight to its own preference.  \vicki{Do you mean all constituents vote with the proxy?}
     }
     \item {
         \textit{No preference change - Active Only}.
@@ -181,7 +182,7 @@ We will examine five different `coordination' mechanisms:
         This is useful for cases when a proxy is deemed by its constituents as an
         `expert', as discussed by James Miller~\cite{Miller1969}.
         However, its preference has changed as it has participated in deliberation
-        and discussion with the other active voters.
+        and discussion with the other active voters.  \vicki{unclear.  its weight is confusing.  Isn't it the combined weight of the constituents?}
     }
     \item {
         \textit{Preference change - Expert with Consequences}.
@@ -199,7 +200,7 @@ We will examine five different `coordination' mechanisms:
         \textit{Preference change - Cooperative Mean}.
         The proxy allocates its weight to the mean of its own and its constituents'
         preferences.
-        However, preferences have changed due to deliberation.
+        However, preferences \vicki{of whom?}  have changed due to deliberation.
     }
     \item {
         \textit{Preference change - Cooperative Median}.
@@ -207,6 +208,7 @@ We will examine five different `coordination' mechanisms:
         preferences.
         However, preferences have changed due to deliberation.
     }
+    \item{\vicki{Is there one where constituents have less weight?}}
 \end{enumerate}
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
 voting, as well as identify potential techniques to deter or mitigate a proxy's

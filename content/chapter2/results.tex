@@ -1,8 +1,9 @@
 \section{Results}\label{sec:results}
-
+\vicki{You need to explain the experimental setup first.}
 \subsection{Mechanism Combinations}\label{subsec:mechanism-combinations}
+
 The absolute mean error by coordination mechanism per voting mechanism is graphed in
-\autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
+\autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.\vicki{We need to know how the proxies work  You gave us several choices, but we can't map them to the choices shown here.  Also, how many total voters are there? }
 There are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
 This is true with two notable exceptions: first, the Active Only/Median
@@ -51,11 +52,13 @@ similarly to the other coordination mechanisms.
             voting is used and all agents are present.
             Similarly, Active Only represents when proxy voting is not used and not
             all agents are present, and when proxies lose their constituents.
-        }
+  }
         \label{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}
     \end{figure}
 \end{landscape}
 
+      \vicki{The number of delegators makes no sense if we don't know the number of voters.  The caption should make it clear.}
+        
 Importantly, it is clear that using proxy voting, regardless of the mechanisms used,
 is better than losing information by not allowing inactive agents to vote in any way.
 
@@ -71,6 +74,7 @@ These plots show the increase in error is consistent regardless of the mechanism
 distributions used.
 Mean and Median continue to follow each other closely, and Expert is close behind
 except for near the end and the Midrange voting mechanism.
+\vicki{Not sure what you are saying in the preceding sentence.}
 Interestingly, this seems to indicate again that it does not matter how you do proxy
 voting so long as it is done.
 Additionally, it should be noted the mechanisms perform well on most preference
@@ -84,7 +88,9 @@ and Median coordination mechanisms.
 \betadistribution{0.3}{0.3} represents a highly polarized topic, with its probability
 density function (PDF) having large spikes at either end of the preference space.
 This would indicate that proxy voting, while it is still better than active-only
-voting, does not work quite as well when agents have stronger, opposing opinions.
+voting, does not work quite as well when agents have stronger, opposing opinions.  \vicki{This seems like a very common case.  Can you clarify why it doesn't work?
+This may be your most important contribution, as  otherwise you are saying proxy works great and it doesn't matter how you do it.}
+
 In these cases, agents should make an extra effort to participate in-person to ensure
 their voice is heard.
 
@@ -95,16 +101,19 @@ their voice is heard.
     \caption{
         The absolute error as a percent of the preference space by coordination
         mechanism for each voting mechanism and preference distribution.
-        Note the y-axis does not have the same scale for each plot.
-    }
+        Note the y-axis does not have the same scale for each plot.}
+
     \label{fig:distribution-different-scale-error-as-percent-of-space-abs-mean}
 \end{figure}
 
+  \vicki{all y axis values should be on the same scale for the same figure.
+        
+        This figure is impossible to read as it is too small.  Need a better way of presenting.}
 \subsection{Preference Change}\label{subsec:results-shift}
 \autoref{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean} shows
 the difference between `worst case' preference change, where `worst case' means each
 agent can change its preference to any value in the preference space after
-deliberations.
+deliberations.  \vicki{It seems unrealistic to think there are huge swings in preference.}
 Similar experiments were performed that instead restricted the amount the agents
 could change their preference to only a portion of the preference space, which
 yielded similar graphs, though with an even smaller y-axis scale.
@@ -115,9 +124,9 @@ The largest difference in error is $\approx 0.35$ of the preference space,
 which ultimately is a very small amount.
 This minute difference indicates proxy voting is still beneficial when deliberations
 and still underway.
-This is an extremely powerful advantage for prox voting, since it allows the system
+This is an extremely powerful advantage for proxy voting, since it allows the system
 to maintain the benefits of deliberation while reducing the voting cost for agents.
-
+\vicki{Why is the mid range so erratic?  You would think delegates wouldn't matter that much as you are only considering two of the votes.  Are you averaging over many cases?  The scores seem too volatile to be true expected behavior.}
 \begin{landscape}
     \begin{figure}[p]
         \centering
@@ -129,5 +138,7 @@ to maintain the benefits of deliberation while reducing the voting cost for agen
             Note the maximum difference is less than 0.5\%.
         }
         \label{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean}
+        \vicki{Why is the mid range so erratic?  You would think delegates wouldn't matter that much as you are only considering two of the votes.  Are you averaging over many cases?  The scores seem too volatile to be true expected behavior.}
     \end{figure}
 \end{landscape}
+

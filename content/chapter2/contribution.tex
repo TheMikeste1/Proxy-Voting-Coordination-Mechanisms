@@ -24,6 +24,7 @@ We will additionally apply what we've dubbed `coordination mechanisms,' which ar
 techniques by which proxies and constituents work together to determine how their
 weight will be allocated, meaning how the proxy will vote on their behalf.
 These mechanisms are
+\vicki{why list again?  Seems redundant.  Point to earlier section.}
 \begin{enumerate}
     \item {
         {No preference change - Expert}.
@@ -60,11 +61,11 @@ are performed using preferences generated from several statistical distributions
 These distributions and their notations are listed in \autoref{tab:distributions-used}.
 Using various distributions will allow the data gathered to represent situations
 where the majority of voters are at either extreme (\betadistribution{0.3}{0.3}),
-skewed towards one side (\betadistribution{4}{1}), or mostly indifferent or centralists
+skewed towards one side (\betadistribution{4}{1}), or mostly indifferent or centralists  \vicki{Why is normal indifferent?  Define the beta distribution.}
 (\gaussiandist~and~\betadistribution{50}{50}).
 Each experiment will have a population of 24.
 For each round, we will experiment with 1 to 23 delegating agents and examine how
-error correlates with the number of delegators.
+error correlates with the number of delegators.  \vicki{Why 23?  Shouldn't it be influenced by the size of the voter pool?}
 
 \begin{table}[!htbp]
     % increase table row spacing, adjust to taste
