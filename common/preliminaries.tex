@@ -13,7 +13,9 @@ preferences.
 As a point moves further away from the agent's preference, the agent likes it less.
 This model works best when an upper and lower bound is provided, such as only
 allowing agents to vote in the interval $[-1, 1]$, to prevent agents from voting
-extremely far in either direction and so potentially biasing the vote.  \vicki{But this would make no difference if you were using median}
+extremely far in either direction and so potentially biasing the vote.
+Not all ways of voting a susceptible to such attacks, but it regardless must be a
+consideration for those that are.
 
 The difference between multiple equidistant points in the model may not be equivalent
 to the agents.
@@ -34,8 +36,10 @@ preference, rather than if it is greater or less than some amount.
         An agent can have a preference anywhere within this space.
         One way to interpret the model is to have the leftmost point be the most
         against some idea and the rightmost point is the most in favor of the same idea.
-        Importantly, points towards the center of the space are the most ambivalent, \vicki{or simply see a compromise solution}
+        Importantly, points towards the center of the space are the most ambivalent,
         neutral, or central on the idea.
+        Alternatively, points towards the center may also prefer some type of
+        compromise or alternative solution instead.
     }
     \label{fig:system-metric-space}
 \end{figure}
