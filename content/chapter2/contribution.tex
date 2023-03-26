@@ -29,14 +29,24 @@ These mechanisms are used in an attempt to simulate real-world consequences of p
 voting, as well as identify potential techniques to deter or mitigate a proxy's
 ability to swing the system by aggregating a large amount of weight and abusing it.
 
-Whereas voting on in a continuous interval is uncommon and finding a real world dataset
+Whereas voting on a continuous interval is uncommon and finding a real world dataset
 using preferences on an interval currently does not seem possible, these investigations
 are performed using preferences generated from several statistical distributions.
-These distributions and their notations are listed in \autoref{tab:distributions-used}.
-Using various distributions will allow the data gathered to represent situations
-where the majority of voters are at either extreme (\betadistribution{0.3}{0.3}),
-skewed towards one side (\betadistribution{4}{1}), or mostly indifferent or centralists  \vicki{Why is normal indifferent?  Define the beta distribution.}
-(\gaussiandist~and~\betadistribution{50}{50}).
+We will use various distributions to allow the gathered data to represent
+different distributions of voters in the real world.
+These distributions include well-known statistical distributions, such as the uniform
+distribution, the Gaussian distribution, as well as a few beta distributions.
+The distributions used and their notations are listed
+in~\autoref{tab:distributions-used}.
+% \vicki{Why is normal indifferent?  Define the beta distribution.}
+% MDH: The normal distribution can be characterized as indifferent or centralist
+% because many of the votes are about the center. In reality, each of these
+% distributions could represent any number of different population types; I'm just
+% providing potential types so the reader doesn't need to on their own. I've added a
+% sentence clarifying this in the table caption.
+% The beta distribution is a well-known statistical distribution. I'm using it
+% because it can easily create diverse shapes by tweaking its parameters. I've added
+% a sentence clarifying these distributions are well-known.
 Each experiment will have a population of 24.
 For each round, we will experiment with 1 to 23 delegating agents and examine how
 error correlates with the number of delegators.  \vicki{Why 23?  Shouldn't it be influenced by the size of the voter pool?}
@@ -47,7 +57,10 @@ error correlates with the number of delegators.  \vicki{Why 23?  Shouldn't it be
 
     \caption{
         The distributions to be used to generate preferences.
-        Note how each distribution represents a unique population type.
+        Note how each distribution represents a population type.
+        These types are representative, and any distribution could potentially
+        represent a different population type that shares the same shape as the
+        distribution.
         Additionally, any skewed distributions can be inverted to create a
         distribution that is skewed in the other direction (e.g. a distribution
         skewed in favor can be inverted to create a flipped distribution skewed
