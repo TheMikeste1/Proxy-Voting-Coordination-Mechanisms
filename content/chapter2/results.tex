@@ -68,18 +68,16 @@ Importantly, it is clear that using proxy voting, regardless of the mechanisms u
 is better than losing information by not allowing inactive agents to vote in any way.
 
 \subsection{By Distribution}\label{subsec:results-distribution}
-\autoref{fig:distribution-different-scale-error-as-percent-of-space-abs-mean} shows
+\autoref{fig:distribution-error-as-percent-of-space-abs-mean} shows
 the absolute error as a percent of the preference space by coordination mechanism for
 each voting mechanism and preference distribution.
-Note the y-axis for each plot is not to scale.
-\autoref{fig:distribution-error-as-percent-of-space-abs-mean} shows the same plot,
-but with the same scale for each plot.
+\autoref{fig:distribution-different-scale-error-as-percent-of-space-abs-mean} shows
+the same graphs, but with a different scale for each plot to more easily see the shape.
 
 These plots show the increase in error is consistent regardless of the mechanisms or
 distributions used.
-Mean and Median continue to follow each other closely, and Expert is close behind
-except for near the end and the Midrange voting mechanism.
-\vicki{Not sure what you are saying in the preceding sentence.}
+Mean and Median show a similar amount of error, while Expert shows slightly more
+except for near the end and when using the Midrange voting mechanism.
 Interestingly, this seems to indicate again that it does not matter how you do proxy
 voting so long as it is done.
 Additionally, it should be noted the mechanisms perform well on most preference
@@ -93,16 +91,29 @@ and Median coordination mechanisms.
 \betadistribution{0.3}{0.3} represents a highly polarized topic, with its probability
 density function (PDF) having large spikes at either end of the preference space.
 This would indicate that proxy voting, while it is still better than active-only
-voting, does not work quite as well when agents have stronger, opposing opinions.  \vicki{This seems like a very common case.  Can you clarify why it doesn't work?
-This may be your most important contribution, as  otherwise you are saying proxy works great and it doesn't matter how you do it.}
+voting, does not work quite as well when agents have stronger, opposing opinions.
 
-In these cases, agents should make an extra effort to participate in-person to ensure
-their voice is heard.
+For the median mechanism voting mechanism, this makes sense.
+The median will most often be the preference of a specific agent, instead of some
+value in between.
+As such, the result will often be in one of the spikes in the PDF, since that is
+where the majority of the agents' preferences will be, yielding higher error than when
+using the Mean or Midrange voting mechanisms.
+
+With the other voting mechanisms, the error is similar to other distributions using
+the same mechanisms until the vast majority of the agents are inactive.
+The increase in error is because as more agents go inactive there are fewer agents able
+to serve as proxies, and so there may not be as desirable of a proxy to represent
+each agent.
+
+While it is still more beneficial to use proxy voting than not in these polarized
+cases, agents should make an extra effort to participate in-person to ensure their
+voice is heard.
 
 \begin{figure}[p]
     \centering
     \includegraphics[scale=0.30]
-    {content/chapter2/figures/distribution_different_scale_error_as_percent_of_space_abs_mean}
+    {content/chapter2/figures/distribution_error_as_percent_of_space_abs_mean}
     \caption{
         The absolute error as a percent of the preference space by coordination
         mechanism for each voting mechanism and preference distribution.
@@ -110,7 +121,7 @@ their voice is heard.
         \\
         There are 24 total agents.
     }
-    \label{fig:distribution-different-scale-error-as-percent-of-space-abs-mean}
+    \label{fig:distribution-error-as-percent-of-space-abs-mean}
 \end{figure}
 
   \vicki{all y axis values should be on the same scale for the same figure.
