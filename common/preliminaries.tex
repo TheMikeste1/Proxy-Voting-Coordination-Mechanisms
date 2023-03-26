@@ -162,38 +162,39 @@ There are also several ways an individual proxy can agree to cast its vote own b
 of its constituents.
 Each has different advantages and disadvantages for the proxy, its constituents, and
 the system as a whole.
-We will examine five different `coordination' mechanisms:
+We will examine five different `coordination' mechanisms that `groups' (meaning a
+proxy and its constituents) can use:
 \begin{enumerate}
     \item {
         \textit{No preference change - Expert}.
-        The proxy allocates its weight to its own preference.  \vicki{Do you mean all constituents vote with the proxy?}
+        The group applies its total weight to the proxy's preference.
     }
     \item {
         \textit{No preference change - Active Only}.
-        Only active agents vote.
+        Only active agents vote with no additional weight.
     }
     \item {
         \textit{No preference change - Cooperative Mean}.
-        The proxy allocates its weight to the mean of its own and its constituents'
-        preferences.
+        The group allocates its weight to the mean of the proxy's and its
+        constituents' preferences.
     }
     \item {
         \textit{No preference change - Cooperative Median}.
-        The proxy allocates its weight to the median of its own and its constituents'
-        preferences.
+        The group allocates its weight to the median of the proxy's and its
+        constituents' preferences.
     }
     \item {
         \textit{Preference change - Expert}.
-        The proxy allocates its weight to its own preference.
+        The group applies its total weight to the proxy's preference.
         This is useful for cases when a proxy is deemed by its constituents as an
         `expert', as discussed by James Miller~\cite{Miller1969}.
-        However, its preference has changed as it has participated in deliberation
-        and discussion with the other active voters.  \vicki{unclear.  its weight is confusing.  Isn't it the combined weight of the constituents?}
+        However, the proxy's preference has changed as it has participated in
+        deliberation and discussion with the other active voters.
     }
     \item {
         \textit{Preference change - Expert with Consequences}.
-        The proxy is an expert and allocates its weight to its own preference, but its
-        preference has changed.
+        The proxy is an expert and the group allocates its weight to the proxy's
+        preference, but the proxy's preference has changed.
         However, due to this change the proxy is only allowed to apply its own
         weight, leaving its constituents unrepresented.
         This represents situations where a proxy is considered an expert, but the
@@ -204,17 +205,17 @@ We will examine five different `coordination' mechanisms:
     }
     \item {
         \textit{Preference change - Cooperative Mean}.
-        The proxy allocates its weight to the mean of its own and its constituents'
-        preferences.
-        However, preferences \vicki{of whom?}  have changed due to deliberation.
+        The group allocates its weight to the mean of the proxy's and its
+        constituents' preferences.
+        However, the proxy's preference has changed as it has participated in
+        deliberation and discussion with the other active voters.
     }
     \item {
         \textit{Preference change - Cooperative Median}.
-        The proxy allocates its weight to the median of its own and its constituents'
-        preferences.
+        The group allocates its weight to the median of the proxy's and its
+        constituents' preferences.
         However, preferences have changed due to deliberation.
     }
-    \item{\vicki{Is there one where constituents have less weight?}}
 \end{enumerate}
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
 voting, as well as identify potential techniques to deter or mitigate a proxy's
