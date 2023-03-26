@@ -123,14 +123,17 @@ $L_p$ aggregation methods work by minimizing the sum of distances to the power o
 preferences.
 Naturally, since~\cite{Bulteau2021} did not use weighted proxies, these methods need
 to be adjusted to allow for weight.
-With \agentweight\ representing the weight of an agent \agent\ and \systemproxies\ as
-the ordered set of active voters, the mechanisms we use are
+Below, \agentweight\ represents the weight of an agent \agent, and \systemproxies\ is
+the ordered set of active voters.
+Additionally, \agenttruth\ is the preference of an agent.
+With these notations, the mechanisms we use are
 \begin{enumerate}
     \item {
         \textit{Median ($L_1$)}, defined as
         $\input{common/figures/equations/weighted-median}$.
-           Essentially, the median is the agent whose additional weight makes the sum of
-        weights become equal to or greater than half the total weight of the system.
+        Essentially, the median is the active agent whose additional weight makes the
+        sum of weights become equal to or greater than half the total weight of the
+        system.
         The sum will occur in the same order as the ordering of voters in
         \systemproxies.
         There is an edge case when two agents share a border with half the total weight.
@@ -140,15 +143,12 @@ the ordered set of active voters, the mechanisms we use are
         \textit{Mean ($L_2$)}, defined as
         $\input{common/figures/equations/weighted-mean}$.
         This is a typical weighted average.
-        \vicki{Is ai the agent or what they vote?  You seem to be using it for both.  w(ai) is the weight of the ith voter, but you use ai as if it is what the agent votes for.}
     }
     \item {
         \textit{Mid-range ($L_\infty$)}, defined as
-        $\input{common/figures/equations/weighted-midrange}$, meaning the weighted
-        preference of the agent with the lowest preference plus the weighted
-        preference of the agent with the highest preference, divided by the sum of
-        their weights.
-        \vicki{Notation is unclear.  Is $a_{lowest}$ an agent, as the notation would suggest or a weight?.}
+        $\input{common/figures/equations/weighted-midrange}$, meaning the preference
+        of the active agent with the lowest preference plus the preference of the
+        active agent with the highest preference, divided by two.
     }
 \end{enumerate}
 Additionally, we will apply unweighted versions of these mechanisms against all active  \vicki{Unclear.  The only reason it is unweighted is because there is no weight.  Restate.}
