@@ -77,6 +77,19 @@ Since having no delegates or all delegates would not be interesting, we will
 experiment with 1 to 23 delegating agents and examine how error correlates with
 the number of delegators.
 
+For each experiment, agents will choose some preference using the current distribution.
+Afterwards, one agent will become inactive and choose the closest active agent to be
+their proxy.
+Following this, the proxies and their constituents will apply a coordination
+mechanism, and each voting mechanism will be applied.
+The next coordination mechanism will be used, then each voting mechanism will be
+applied again.
+Once all coordination mechanisms have been used, the number of inactive agents will
+increase until all but one agent is inactive.
+Finally, agents will select a new preference from the next distribution and the
+process will begin again.
+This will continue until all possible combinations have been used.
+
 We will show that proxy voting with the right combination of mechanisms generally
 yields considerably lower error than active-only voting.
 We also show proxy voting is beneficial even when agents' preferences change.
