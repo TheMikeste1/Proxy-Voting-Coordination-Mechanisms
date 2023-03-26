@@ -133,6 +133,7 @@ deliberations.
 Similar experiments were performed that instead restricted the amount the agents
 could change their preference to only a portion of the preference space, which
 yielded similar graphs, though with an even smaller y-axis scale.
+It should be noted the results have been fit to a curve to reduce jitter.
 
 Unsurprisingly, the amount of error increases as more agents become inactive.
 However, it is important to note the magnitude of the scale.
@@ -142,7 +143,7 @@ This minute difference indicates proxy voting is still beneficial when deliberat
 and still underway.
 This is an extremely powerful advantage for proxy voting, since it allows the system
 to maintain the benefits of deliberation while reducing the voting cost for agents.
-\vicki{Why is the mid range so erratic?  You would think delegates wouldn't matter that much as you are only considering two of the votes.  Are you averaging over many cases?  The scores seem too volatile to be true expected behavior.}
+
 \begin{landscape}
     \begin{figure}[p]
         \centering
@@ -151,11 +152,11 @@ to maintain the benefits of deliberation while reducing the voting cost for agen
         \caption{
             The absolute difference in the error produced between without a
             preference change and with a preference change as a percent of space.
+            The results have been fit to a curve to reduce jutter.
             Note the maximum difference is less than 0.5\%.
             There are 24 total agents.
         }
         \label{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean}
-        \vicki{Why is the mid range so erratic?  You would think delegates wouldn't matter that much as you are only considering two of the votes.  Are you averaging over many cases?  The scores seem too volatile to be true expected behavior.}
     \end{figure}
 \end{landscape}
 
