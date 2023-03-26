@@ -47,17 +47,19 @@ preference, rather than if it is greater or less than some amount.
 Such a model is extremely flexible and can be interpreted in different ways.
 When applied to binary for-or-against voting problems, options can be placed at either
 extreme of the interval.
+As an example, say shareholders at some company are voting on new data collection
+policies.
 As an example, say a group is choosing whether to put pineapple on pizza.
-Using the interval $[-1, 1]$, we can place `no pineapple' at -1, and `yes pineapple \vicki{Picking a more serious example would be helpful as we need to convince the reader this is an important problem.  Plus, pineapple could always be placed on half the pizza}
-at 1.
-Agents vote according to their preference: -1 for no pineapple, 1 for pineapple.
+Using the interval $[-1, 1]$, we can place `no collection at all' at -1, and `heavy
+collection' at 1.
+Agents vote according to their preference: -1 for no collection, 1 for heavy collection.
 So far, everything works the same as a normal vote.
 However, due to the continuous nature of the voting space, the agents can vote
 anywhere in the given interval.
 Therefore, agents who don't care one way or the other can vote at 0 instead of being
 forced to choose an option.
 Additionally, those that are only slightly in favor (meaning they would prefer
-pineapple but don't really care that much) can choose some value between 0 and 1.
+collection but don't really care that much) can choose some value between 0 and 1.
 Once the votes are aggregated, the result can be rounded to whichever option is
 closest.
 The continuous space allows agents to better express themselves according to what
@@ -66,8 +68,8 @@ other.
 
 Alternatively, if the majority of the options are about the center, it may be a sign
 neither option is satisfactory.
-Using the pineapple on pizza example, we can reinterpret 0 to mean the agents don't
-mind pineapple on pizza, but don't personally want it.
+Using the data collection example, we can reinterpret 0 to mean the agents don't
+mind collecting users' data, but don't personally care either way.
 These agents would vote around 0 to avoid imposing.
 By making the agents aware of how 0 will be interpreted, they can express their
 dissatisfaction by voting at or around 0.
