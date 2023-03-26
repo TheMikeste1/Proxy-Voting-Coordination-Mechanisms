@@ -47,9 +47,6 @@ in~\autoref{tab:distributions-used}.
 % The beta distribution is a well-known statistical distribution. I'm using it
 % because it can easily create diverse shapes by tweaking its parameters. I've added
 % a sentence clarifying these distributions are well-known.
-Each experiment will have a population of 24.
-For each round, we will experiment with 1 to 23 delegating agents and examine how
-error correlates with the number of delegators.  \vicki{Why 23?  Shouldn't it be influenced by the size of the voter pool?}
 
 \begin{table}[!htbp]
     % increase table row spacing, adjust to taste
@@ -71,6 +68,14 @@ error correlates with the number of delegators.  \vicki{Why 23?  Shouldn't it be
     \centering
     \input{common/figures/distributions-used}
 \end{table}
+
+Each experiment will have a population of 24.
+We chose this number because prior experimentation shows it to be a good balance
+between having few enough agents that an agent going inactive can change the
+results, while not so few that there are an agent going inactive is catastrophic.
+Since having no delegates or all delegates would not be interesting, we will
+experiment with 1 to 23 delegating agents and examine how error correlates with
+the number of delegators.
 
 We will show that proxy voting with the right combination of mechanisms generally
 yields considerably lower error than active-only voting.
