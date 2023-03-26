@@ -57,7 +57,6 @@ similarly to the other coordination mechanisms.
             voting is used and all agents are present.
             Similarly, Active Only represents when proxy voting is not used and not
             all agents are present, and when proxies lose their constituents.
-            \\
             There are 24 total agents.
         }
         \label{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}
@@ -73,6 +72,20 @@ the absolute error as a percent of the preference space by coordination mechanis
 each voting mechanism and preference distribution.
 \autoref{fig:distribution-different-scale-error-as-percent-of-space-abs-mean} shows
 the same graphs, but with a different scale for each plot to more easily see the shape.
+Additionally, each graph is zoomed in for readability
+in~\autoref{apx:error-by-dist-zoomed}.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[scale=0.30]
+    {content/chapter2/figures/distribution_error_as_percent_of_space_abs_mean}
+    \caption{
+        The absolute error as a percent of the preference space by coordination
+        mechanism for each voting mechanism and preference distribution.
+        There are 24 total agents.
+    }
+    \label{fig:distribution-error-as-percent-of-space-abs-mean}
+\end{figure}
 
 These plots show the increase in error is consistent regardless of the mechanisms or
 distributions used.
@@ -83,11 +96,9 @@ voting so long as it is done.
 Additionally, it should be noted the mechanisms perform well on most preference
 distributions, including the asymmetrical distribution \betadistribution{4}{1}.
 
-Unfortunately, however, while the error for other distributions is relatively similar,
-\betadistribution{0.3}{0.3}, yields considerably more error and starts accumulating
+Unfortunately, while the error for other distributions is relatively similar,
+\betadistribution{0.3}{0.3} yields considerably more error and starts accumulating
 this error earlier.
-The main exception to this is the Mean and Midrange voting mechanisms with the Mean
-and Median coordination mechanisms.
 \betadistribution{0.3}{0.3} represents a highly polarized topic, with its probability
 density function (PDF) having large spikes at either end of the preference space.
 This would indicate that proxy voting, while it is still better than active-only
@@ -110,23 +121,6 @@ While it is still more beneficial to use proxy voting than not in these polarize
 cases, agents should make an extra effort to participate in-person to ensure their
 voice is heard.
 
-\begin{figure}[p]
-    \centering
-    \includegraphics[scale=0.30]
-    {content/chapter2/figures/distribution_error_as_percent_of_space_abs_mean}
-    \caption{
-        The absolute error as a percent of the preference space by coordination
-        mechanism for each voting mechanism and preference distribution.
-        Note the y-axis does not have the same scale for each plot.
-        \\
-        There are 24 total agents.
-    }
-    \label{fig:distribution-error-as-percent-of-space-abs-mean}
-\end{figure}
-
-  \vicki{all y axis values should be on the same scale for the same figure.
-        %
-        This figure is impossible to read as it is too small.  Need a better way of presenting.}
 \subsection{Preference Change}\label{subsec:results-shift}
 \autoref{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean} shows
 the difference between `worst case' preference change, where `worst case' means each
@@ -154,7 +148,6 @@ to maintain the benefits of deliberation while reducing the voting cost for agen
             The absolute difference in the error produced between without a
             preference change and with a preference change as a percent of space.
             Note the maximum difference is less than 0.5\%.
-            \\
             There are 24 total agents.
         }
         \label{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean}
