@@ -1,14 +1,14 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Chapter 1 Generate Report (No Bibliography)" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+  <configuration default="false" name="Generate Report Silently" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" activateToolWindowBeforeRun="false">
     <texify>
       <compiler>PDFLATEX</compiler>
       <compiler-path />
       <sumatra-path />
-      <pdf-viewer>BUILT-IN-PDF-VIEWER</pdf-viewer>
+      <pdf-viewer>NONE</pdf-viewer>
       <viewer-command />
       <compiler-arguments>--enable-write18</compiler-arguments>
       <envs />
-      <main-file>$PROJECT_DIR$/chapter1-introduction.tex</main-file>
+      <main-file>$PROJECT_DIR$/thesis.tex</main-file>
       <output-path>$PROJECT_DIR$/build</output-path>
       <auxil-path>$PROJECT_DIR$/build/auxil</auxil-path>
       <compile-twice>false</compile-twice>
