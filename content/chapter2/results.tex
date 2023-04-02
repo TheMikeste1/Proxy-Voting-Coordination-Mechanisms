@@ -43,6 +43,29 @@ bringing it closer to what their expertise dictates.
 Nevertheless, when the number of delegators is low, the Expert mechanism works
 similarly to the other coordination mechanisms.
 
+Importantly, it is clear that using proxy voting, regardless of the mechanisms used,
+is better than losing information by not allowing inactive agents to vote in any way.
+
+However, what if there was some penalty for the inactive agents?
+Since they aren't participating as much, perhaps it would be fair that their voice is
+not as strong.
+We attempted the same experiments as above with different weights between a proxy and
+their constituents.
+Specifically, the proxies maintain their weight of 1, while their constituents have
+their weight reduced to $\sfrac{1}{5}$ (0.2) of their original weight.
+The results of such a setup are shown
+in~\autoref{fig:\chptindicator-different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
+
+These graphs immediately show there is an increase in error in all mechanisms.
+This is due to the results of the vote becoming more biased towards the preferences
+of the proxies.
+Depending on the situation, this may be desirable.
+Since the inactive agents are not participating they may not have as much information
+and so their preference may not be as `up-to-date' as those who are actively
+participating.
+In situations where new information is constantly being introduced, such penalties
+could be very valuable to ensure the most current information is being used.
+
 \begin{landscape}
     \begin{figure}[p]
         \centering
@@ -61,10 +84,28 @@ similarly to the other coordination mechanisms.
         }
         \label{fig:\chptindicator-vm-col-cm-hue-error-as-percent-of-space-abs-mean}
     \end{figure}
-\end{landscape}
 
-Importantly, it is clear that using proxy voting, regardless of the mechanisms used,
-is better than losing information by not allowing inactive agents to vote in any way.
+    \begin{figure}[p]
+        \centering
+        \includegraphics[scale=0.55]
+        {content/chapter2/figures/different_weight/vm_col_cm_hue_error_as_percent_of_space_abs_mean}
+        \caption{
+            The absolute mean error as a percent of the preference space by
+            coordination mechanism per voting mechanism.
+            `Error as a percent of the preference space' means the error divided by
+            the total size of the preference space.
+            Note All Agents represents when all agents are voting, meaning no proxy
+            voting is used and all agents are present.
+            Similarly, Active Only represents when proxy voting is not used and not
+            all agents are present, and when proxies lose their constituents.
+            There are 24 total agents.
+            \\
+            Proxies in this graph have a weight of 1, while their constituents have a
+            weight of 0.2.
+        }
+        \label{fig:\chptindicator-different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}
+    \end{figure}
+\end{landscape}
 
 \subsection{By Distribution}\label{subsec:\chptindicator-results-distribution}
 \autoref{fig:\chptindicator-distribution-error-as-percent-of-space-abs-mean} shows
