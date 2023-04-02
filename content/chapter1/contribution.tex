@@ -1,6 +1,5 @@
-\section{Proposed Work}\label{sec:\chptindicator-contribution}
-% \section{Contribution}\label{sec:\chptindicator-contribution} % TODO: Uncomment for the thesis
-We will explore proxy voting in a unified-vote/single-winner single-dimension
+\section{Contribution}\label{sec:\chptindicator-contribution} % TODO: Uncomment for the thesis
+We explore proxy voting in a unified-vote/single-winner single-dimension
 continuous space model.
 We employ three well-known $L_p$ mechanisms, specifically
 \begin{enumerate}
@@ -24,48 +23,21 @@ The error will be the distance between the result and direct voting with all age
 We will additionally apply what we've dubbed `coordination mechanisms,' which are
 techniques by which proxies and constituents work together to determine how their
 weight will be allocated, meaning how the proxy will vote on their behalf.
-These mechanisms are
-\begin{enumerate}
-    \item {
-        {No preference change - Expert}.
-    }
-    \item {
-        {No preference change - Active Only}.
-    }
-    \item {
-        {No preference change - Cooperative Mean}.
-    }
-    \item {
-        {No preference change - Cooperative Median}.
-    }
-    \item {
-        {Preference change - Expert}.
-    }
-    \item {
-        {Preference change - Expert with Consequences}.
-    }
-    \item {
-        {Preference change - Cooperative Mean}.
-    }
-    \item {
-        {Preference change - Cooperative Median}.
-    }
-\end{enumerate}
+The mechanisms we will explore are described
+in~\autoref{subsec:\chptindicator-coordination-mechanisms}.
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
 voting, as well as identify potential techniques to deter or mitigate a proxy's
 ability to swing the system by aggregating a large amount of weight and abusing it.
 
-Whereas voting on in a continuous interval is uncommon and finding a real world dataset
+Whereas voting on a continuous interval is uncommon and finding a real world dataset
 using preferences on an interval currently does not seem possible, these investigations
-will be performed using preferences generated from several statistical distributions.
-The distributions and their notations are listed in \autoref{tab:\chptindicator-distributions-used}.
-These various distributions will allow the data gathered to represent situations
-where the majority of voters are at either extreme (\betadistribution{0.3}{0.3}),
-skewed towards one side (\betadistribution{4}{1}), or mostly indifferent or centralists
-(\gaussiandist~and~\betadistribution{50}{50}).
-Each experiment will have a population of 512.
-For each round, we will experiment with 1 to 511 delegating agents and examine how
-error correlates with the number of delegators.
+are performed using preferences generated from several statistical distributions.
+We will use various distributions to allow the gathered data to represent
+different distributions of voters in the real world.
+These distributions include well-known statistical distributions, such as the uniform
+distribution, the Gaussian distribution, as well as a few beta distributions.
+The distributions used and their notations are listed
+in~\autoref{tab:\chptindicator-distributions-used}.
 
 \begin{table}[!htbp]
     % increase table row spacing, adjust to taste
@@ -73,7 +45,10 @@ error correlates with the number of delegators.
 
     \caption{
         The distributions to be used to generate preferences.
-        Note how each distribution represents a unique population type.
+        Note how each distribution represents a population type.
+        These types are representative, and any distribution could potentially
+        represent a different population type that shares the same shape as the
+        distribution.
         Additionally, any skewed distributions can be inverted to create a
         distribution that is skewed in the other direction (e.g. a distribution
         skewed in favor can be inverted to create a flipped distribution skewed
@@ -84,3 +59,24 @@ error correlates with the number of delegators.
     \centering
     \input{common/figures/distributions-used}
 \end{table}
+
+Each experiment will have a population of 24.
+We chose this number because prior experimentation shows it to be a good balance
+between having few enough agents that an agent going inactive can change the
+results, while not so few that there are an agent going inactive is catastrophic.
+Since having no delegates or all delegates would not be interesting, we will
+experiment with 1 to 23 delegating agents and examine how error correlates with
+the number of delegators.
+
+For each experiment, agents will choose some preference using the current distribution.
+Afterward, one agent will become inactive and choose the closest active agent to be
+their proxy.
+Following this, the proxies and their constituents will apply a coordination
+mechanism, and each voting mechanism will be applied.
+The next coordination mechanism will be used, then each voting mechanism will be
+applied again.
+Once all coordination mechanisms have been used, the number of inactive agents will
+increase until all but one agent is inactive.
+Finally, agents will select a new preference from the next distribution and the
+process will begin again.
+This will continue until all possible combinations have been used.
