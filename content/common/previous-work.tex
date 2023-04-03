@@ -42,10 +42,10 @@ these mechanisms.
 algorithms that take the preferences of all active voters and turn them in to the
 output of the system.
 They apply these mechanisms on a dataset while looking only at datapoints without a
-Condorcet winner.
+Condorcet \vicki{Define before use} winner.
 In their work, they say a mechanism `beats' another if it has a larger fraction of
 the population prefer its output over the other's output.
-They discover that the GT\footnote{
+They discover that the \vicki{Don't use this abbreviation if you don't know what they meant by it.  The reader isn't sure what method they are using.}  GT\footnote{
     Presumably meaning `Game Theory.'
 }~method~\cite{Rivest2010} beats all others, the Schulze~method~\cite{Schulze2011}
 and Minimax voting mechanisms always agree and beat all other mechanisms besides the
@@ -57,7 +57,7 @@ Our work will differ significantly from theirs, however, as we will explore voti
 mechanisms used in a continuous voting space instead of a discrete-space.
 Additionally, our mechanisms will be different from the ones they employed since
 their mechanisms either do not work in a continuous preference space, or do not work
-well with proxy voting.
+well with proxy voting.  \vicki{This discussion simplifies the differences between voting methods such as manipulability or anomalies which occur.}
 
 \begin{table}[htbp]
     % increase table row spacing, adjust to taste
@@ -72,6 +72,7 @@ well with proxy voting.
     \centering
     \input{common/figures/mathur-voting-mechanisms}
 \end{table}
+\vicki{In Schulze, unclear why we need a path.  Isn't there a direct link between any two candidates?  with GT, not clear what is meant by a "zero-sum" game is then applied.}
 
 
 \etal{Cohensius}~\cite{Cohensius2017} explore the use of proxy voting in a
@@ -85,13 +86,13 @@ Nevertheless, they were able to show that proxy voting is effective under a numb
 symmetrical and asymmetrical preference distributions, while under both random and
 strategic participation.
 However, the majority of their research focuses on voting with infinite populations.
-While this work would certainly be applicable to larger populations, since a
+While this work \vicki{Unclear what "this work" is - yours or theirs?}  would certainly be applicable to larger populations, since a
 population of sufficient size will begin to behave like an infinite
 population\footnote{
     Naturally, $\lim_{x \rightarrow \infty} x = \infty$.
 }, we are more interested in more realistic proxy voting in smaller, finite populations.
 As such, we will explore the effects of proxy voting on a finite population of this
-size, as well as explore other possible voting mechanisms, inside this continuous
+size \vicki{Unclear.  What is "this size"?}, as well as explore other possible voting mechanisms, inside this continuous
 metric space.
 
 \etal{Bulteau}~\cite{Bulteau2021}, develop and experiment with a framework for
