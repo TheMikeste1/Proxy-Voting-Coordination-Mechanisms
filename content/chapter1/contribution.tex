@@ -38,15 +38,6 @@ These distributions include well-known statistical distributions, such as the un
 distribution, the Gaussian distribution, as well as a few beta distributions.
 The distributions used and their notations are listed
 in~\autoref{tab:distributions-used}.
-% \vicki{Why is normal indifferent?  Define the beta distribution.}
-% MDH: The normal distribution can be characterized as indifferent or centralist
-% because many of the votes are about the center. In reality, each of these
-% distributions could represent any number of different population types; I'm just
-% providing potential types so the reader doesn't need to on their own. I've added a
-% sentence clarifying this in the table caption.
-% The beta distribution is a well-known statistical distribution. I'm using it
-% because it can easily create diverse shapes by tweaking its parameters. I've added
-% a sentence clarifying these distributions are well-known.
 
 \begin{table}[!htbp]
     % increase table row spacing, adjust to taste
@@ -69,17 +60,23 @@ in~\autoref{tab:distributions-used}.
     \input{common/figures/distributions-used}
 \end{table}
 
-Each experiment will have a population of 24. \vicki{Better if you can say that experiments with larger numbers behaved in some way.}
+Initial experiments show larger populations behave similarly to those with fewer.
+As such, each experiment will have a population of 24.
 We chose this number because prior experimentation shows it to be a good balance
 between having few enough agents that an agent going inactive can change the
 results, while not so few that there are an agent going inactive is catastrophic.
 Since having no delegates or all delegates would not be interesting, we will
-experiment with 1 to 23 delegating agents and examine how error correlates with
+experiment with 1 to 23 inactive agents and examine how error correlates with
 the number of delegators.
 
-For each experiment, agents will choose \vicki{assigned?} some preference using the current distribution.
-Afterward, one agent  \vicki{sounds like various numbers of inactive voters are used. Can you state that initially?}will become inactive and choose the closest active agent to be
-their proxy.
+For each experiment, agents will randomly select some preference using the current
+distribution.
+Afterward, one agent
+% \vicki{sounds like various numbers of inactive voters are used.
+% Can you state that initially?}
+% MDH: This is stated in the previous paragraph. I've reworded it slightly to make it
+% more clear.
+will become inactive and choose the closest active agent to be their proxy.
 Following this, the proxies and their constituents will apply a coordination
 mechanism, and each voting mechanism will be applied.
 The next coordination mechanism will be used, then each voting mechanism will be
