@@ -20,9 +20,8 @@
     </texify>
     <method v="2">
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="Generate Report Silently" run_configuration_type="LATEX_RUN_CONFIGURATION" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Generate Bibliography Silently" run_configuration_type="BIBTEX_RUN_CONFIGURATION" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Generate Bibliography Silently Ch. 2" run_configuration_type="BIBTEX_RUN_CONFIGURATION" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Generate Report Silently" run_configuration_type="LATEX_RUN_CONFIGURATION" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Generate Bibliography Silently All" run_configuration_type="BIBTEX_RUN_CONFIGURATION" />
+      <option name="RunConfigurationTask" enabled="false" run_configuration_name="Generate Report Silently" run_configuration_type="LATEX_RUN_CONFIGURATION" />
     </method>
   </configuration>
 </component>
