@@ -66,8 +66,8 @@ The continuous space allows agents to better express themselves according to wha
 their actual preference is, instead of being forcibly binned into one value or the
 other.
 
-Alternatively, if the majority of the options \vicki{options or votes?}  are about
-the center, it may be a sign neither option is satisfactory.
+Alternatively, if the majority of the votes are about the center, it may be a sign
+neither option is satisfactory.
 Using the data collection example, we can reinterpret 0 to mean the agents don't
 mind collecting users' data, but don't personally care either way.
 These agents would vote around 0 to avoid imposing.
@@ -136,8 +136,15 @@ With these notations, the mechanisms we use are
         system.
         The sum will occur in the same order as the ordering of voters in
         \systemproxies.
-        There is an edge case when two agents share a border \vicki{Unclear what is meant by share a border}  with half the total weight.
-        In this case, the average between the preferences of the two agents is taken.
+        There is an edge case where the sum of weight perfectly reaches half the
+        total weight.
+        In this case both the lower and higher weighted medians, as well as any value
+        in between, can claim to be the median.
+        This is similar to when there are an even number of preferences in a normal
+        median.
+        In this case, we will take the average between the preference of agent with
+        the highest preference in the lower median half and the agent with the lowest
+        preference in the higher half of the weighted median.
     }
     \item {
         \textit{Mean ($L_2$)}, defined as
@@ -151,7 +158,7 @@ With these notations, the mechanisms we use are
         active agent with the highest preference, divided by two.
     }
 \end{enumerate}
-Additionally, we will apply these mechanisms against  \vicki{use these mechanisms to compare to } all active voters (to simulate
+We will additionally apply these voting mechanisms with all active voters (to simulate
 if proxy voting was not allowed) and all voters, both active and inactive, (to simulate
 the best case where all agents vote), without any weights.
 These additional calculations serve as baselines to determine how well proxy voting
@@ -196,8 +203,9 @@ proxy and its constituents) can use:
         \textit{Preference change - Expert with Consequences}.
         The proxy is an expert and the group allocates its weight to the proxy's
         preference, but the proxy's preference has changed.
-        However, due to this change the proxy is only allowed to apply its own
-        weight \vicki{Proxy only votes for themselves.  Allowed to apply is unclear.}, leaving its constituents unrepresented.
+        However, due to this change the proxy is only allowed vote for itself,
+        meaning it can only use its own weight.
+        This causes its constituents to be unrepresented.
         This represents situations where a proxy is considered an expert, but the
         constituents impose a condition that the proxy can only represent them if
         they vote a certain way.
