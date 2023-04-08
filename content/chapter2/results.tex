@@ -41,8 +41,6 @@ similarly to the other coordination mechanisms.
 Importantly, it is clear that using proxy voting, regardless of the mechanisms used,
 is better than losing information by not allowing inactive agents to vote in any way.
 
-% TODO: Highlight this more. Why would we want a penalty? Add more research into
-%   future work
 However, what if there was some penalty for the inactive agents?
 Since they aren't participating as much, perhaps it would be fair that their voice is
 not as strong.
@@ -79,6 +77,7 @@ could be very valuable to ensure the most current information is being used.
             voting is used and all agents are present.
             Similarly, Active Only represents when proxy voting is not used and not
             all agents are present, and when proxies lose their constituents.
+            Averaged over 1024 total runs.
             There are 24 total agents.
         }
         \label{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}
@@ -97,6 +96,7 @@ could be very valuable to ensure the most current information is being used.
             voting is used and all agents are present.
             Similarly, Active Only represents when proxy voting is not used and not
             all agents are present, and when proxies lose their constituents.
+            Averaged over 1024 total runs.
             There are 24 total agents.
             \\
             Proxies in this graph have a weight of 1, while their constituents have a
@@ -122,13 +122,17 @@ in~\autoref{apx:error-by-dist-zoomed}.
     \caption{
         The absolute error as a percent of the preference space by coordination
         mechanism for each voting mechanism and preference distribution.
+        Averaged over 1024 total runs.
         There are 24 total agents.
     }
     \label{fig:distribution-error-as-percent-of-space-abs-mean}
 \end{figure}
 
-These plots show the increase in error is consistent regardless of the mechanisms or
-distributions used.
+Unsurprisingly, the tighter the probability density function (PDF) of a distribution,
+the less error it has overall due to many votes being close to each other.
+\betadistribution{50}{50} and \gaussian are two such distributions.
+Nevertheless, these plots show the increase in error is consistent regardless of the
+mechanisms or distributions used.
 Mean and Median coordination mechanisms show a similar amount of error, while Expert
 shows slightly more except when a large portion of the population is delegating and
 when using the Midrange voting mechanism.
@@ -147,7 +151,7 @@ Unfortunately, while the error for other distributions is relatively similar,
 \betadistribution{0.3}{0.3} yields considerably more error and starts accumulating
 this error earlier.
 \betadistribution{0.3}{0.3} represents a highly polarized topic, with its probability
-density function (PDF) having large spikes at either end of the preference space.
+density function having large spikes at either end of the preference space.
 This would indicate that proxy voting, while it is still better than active-only
 voting, does not work quite as well when agents have stronger, opposing opinions.
 
@@ -198,6 +202,7 @@ proxy must be someone who would act as the delegator who want them to act.
         \caption{
             The absolute difference in the error produced between without a
             preference change and with a preference change as a percent of space.
+            Averaged over 1024 total runs.
             There are 24 total agents.
         }
         \label{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean}
