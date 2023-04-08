@@ -168,22 +168,23 @@ voice is heard.
 
 \subsection{Preference Change}\label{subsec:results-shift}
 \autoref{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean} shows
-the difference between `worst case' preference change, where `worst case' means each
-agent can change its preference to any value in the preference space after
-deliberations.
-Similar experiments were performed that instead restricted the amount the agents
-could change their preference to only a portion of the preference space, which
-yielded similar graphs, though with an even smaller y-axis scale.
-It should be noted the results have been fit to a curve to reduce jitter.
+the difference in error between when proxies do have a preference change and when
+they don't.
+In this case, the proxies were able to shift their preferences by up to 10\% of the
+total preference space, while delegators kept their original preference.
+This represents the proxies changing their preference for an issue after deliberation.
 
 Unsurprisingly, the amount of error increases as more agents become inactive.
-However, it is important to note the magnitude of the scale.
-The largest difference in error is $\approx 0.35\%$ of the preference space,
-which ultimately is a very small amount.
-This minute difference indicates proxy voting is still beneficial when deliberations
-and still underway.
-This is an extremely powerful advantage for proxy voting, since it allows the system
-to maintain the benefits of deliberation while reducing the voting cost for agents.
+However, the coordination mechanisms are much more tightly grouped than in other
+scenarios.
+We also see all coordination mechanisms actually yield worse error than active-only
+voting when using the Median and Mean voting mechanisms.
+This might be because delegators are selecting proxies who then shift a large amount,
+leaving the delegator unsatisfied.
+
+This potentially worse outcome highlights not only the importance of actively
+participating in discussions, but also that when one needs to choose a proxy the
+proxy must be someone who would act as the delegator who want them to act.
 
 \begin{landscape}
     \begin{figure}[p]
@@ -193,11 +194,8 @@ to maintain the benefits of deliberation while reducing the voting cost for agen
         \caption{
             The absolute difference in the error produced between without a
             preference change and with a preference change as a percent of space.
-            The results have been fit to a curve to reduce jutter.
-            Note the maximum difference is less than 0.5\%.
             There are 24 total agents.
         }
         \label{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean}
     \end{figure}
 \end{landscape}
-
