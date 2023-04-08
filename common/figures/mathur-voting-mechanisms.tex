@@ -24,7 +24,7 @@
         Agents rank each candidate, and a pairwise margin matrix is generated.
         In the matrix, position $(x, y)$ is the number of rankings that prefer $x$ over
         $y$, minus the number of rankings that prefer $y$ over $x$.
-        A zero-sum game is then applied, and an optimal mixed strategy computed.
+        A zero-sum game is defined, and an optimal mixed strategy computed.
         The winner is then chosen randomly using the optimal mixed strategy.
         See~\cite{Rivest2010} for more details.
     } \\
@@ -54,8 +54,11 @@
         Then, a weighted directed graph connecting agents is generated.
         An edge going from candidate $A$ to candidate $B$ with a weight of 10 means
         10 more agents prefer $A$ over $B$ than $B$ over $A$.
-        Using this graph, paths are generated between candidates.
-        The strength of the path is the sum of the weight of each edge in the path.
+        Using this graph, multiple paths are generated between candidates.
+        The strength of the path is the sum of the weight of each edge in the path,
+        and the path with the highest strength from $A$ is compared to the strongest
+        path from $B$.
+        The same occurs with paths from $A$ to $C$, $B$ to $C$, etc.
         The candidate that has stronger paths to each agent than all other agents wins.
     } \\
     \hline
