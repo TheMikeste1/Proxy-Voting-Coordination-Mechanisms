@@ -1,14 +1,8 @@
 \section{Results}\label{sec:results}
-% \vicki{You need to explain the experimental setup first.}
-% MDH: This was explained in Contribution, but I've added another paragraph there to
-% explain each step. Is there anything else I need to add?
 
 \subsection{Mechanism Combinations}\label{subsec:mechanism-combinations}
 The absolute mean error by coordination mechanism per voting mechanism is graphed in
 \autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
-% \vicki{We need to know how the proxies work  You gave us several choices, but we can't
-% map them to the choices shown here.  Also, how many total voters are there? }
-% MDH: I've added this to the `experimental setup' paragraph.
 There are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
 This is true with two notable exceptions: first, the Active Only/Median
@@ -16,13 +10,13 @@ mechanism combination has a somewhat sawtooth shape.
 This is due to the Median mechanisms always choosing a specific agent's preference
 instead of aggregating to some more preferential in-between value.
 
-The second exception is that Mean mechanism consistently dips when all but one agent
-become delegators.
+The second exception is that Mean coordination mechanism consistently dips when all but
+one agent become delegators.
 This is because we take the mean of the constituents and the proxy, then apply the
 voting mechanism on the set of proxy-constituent votes.
-Since there is only one proxy-constituent vote, the result is the vote itself.
+Since there is only one agent, there is only one proxy-constituent vote and so the
+result of the vote is the result of the coordination mechanism.
 Essentially, the coordination mechanism replaces the voting mechanism.
-\vicki{Unclear.  Isn't this always the case with median, regardless of how many inactive voters?}
 
 We can also see the Mean and Median coordination mechanisms generally yield similar
 amounts of error.
@@ -133,9 +127,15 @@ in~\autoref{apx:error-by-dist-zoomed}.
 
 These plots show the increase in error is consistent regardless of the mechanisms or
 distributions used.
-Mean and Median show a similar amount of error, while Expert shows slightly more
-except for near the end and when using the Midrange voting mechanism.
-\vicki{I would guess you would see more problems with the median, as the median cannot be accurately determined when they vote as a block.  If this is the case, it should be identified.  In general, median is considered better as it isn't manipulable.} 
+Mean and Median coordination mechanisms show a similar amount of error, while Expert
+shows slightly more except when a large portion of the population is delegating and
+when using the Midrange voting mechanism.
+% \vicki{
+%     I would guess you would see more problems with the median, as the median cannot
+%     be accurately determined when they vote as a block.
+%     If this is the case, it should be identified.
+%     In general, median is considered better as it isn't manipulable.
+% }
 Interestingly, this seems to indicate again that it does not matter how you do proxy
 voting so long as it is done.
 Additionally, it should be noted the mechanisms perform well on most preference
@@ -171,10 +171,6 @@ voice is heard.
 the difference between `worst case' preference change, where `worst case' means each
 agent can change its preference to any value in the preference space after
 deliberations.
-% \vicki{It seems unrealistic to think there are huge swings in preference.}
-% MDH: I agree, but anything less yielded even smaller differences, as stated in the
-% next sentence. I can rerun it with smaller changes again, but it would likely yield
-% similar results.
 Similar experiments were performed that instead restricted the amount the agents
 could change their preference to only a portion of the preference space, which
 yielded similar graphs, though with an even smaller y-axis scale.
@@ -183,7 +179,7 @@ It should be noted the results have been fit to a curve to reduce jitter.
 Unsurprisingly, the amount of error increases as more agents become inactive.
 However, it is important to note the magnitude of the scale.
 The largest difference in error is $\approx 0.35\%$ of the preference space,
-which ultimately is a very small amount. \vicki{Make sure it is clear that this is percent not a fraction.}
+which ultimately is a very small amount.
 This minute difference indicates proxy voting is still beneficial when deliberations
 and still underway.
 This is an extremely powerful advantage for proxy voting, since it allows the system
