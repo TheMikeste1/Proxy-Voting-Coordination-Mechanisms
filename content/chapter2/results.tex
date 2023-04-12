@@ -2,7 +2,7 @@
 
 \subsection{Mechanism Combinations}\label{subsec:mechanism-combinations}
 The absolute mean error by coordination mechanism per voting mechanism is graphed in
-\autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
+\autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.  \vicki{Briefly describe how you define mean square error}
 There are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
 This is true with two notable exceptions: first, the Active Only/Median
@@ -52,8 +52,9 @@ We choose $\sfrac{1}{5}$ because it still allows constituents to have some impac
 while still having their influence significantly reduced.
 The results of such a setup are shown
 in~\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
+\vicki{How do you define error in this case?  If you only give them a .2 vote, but compare to when they get a full vote, that seems meaningless.  We are giving them a .2 vote because their vote shouldn't count as much.  Can you compare the shift in results between the two methods?  I wouldn't call it an error, but the difference between the methods.  Better to have the comparison between the two on one graph rather than  having the reader compare two figures.}
 
-These graphs immediately show there is an increase in error in all mechanisms.
+These graphs immediately show there is an increase in error in all mechanisms. \vicki{which graphs are you referring to?  due to what?  unclear.}
 This is due to the results of the vote becoming more biased towards the preferences
 of the proxies.
 Depending on the situation, this may be desirable.
@@ -153,7 +154,7 @@ this error earlier.
 \betadistribution{0.3}{0.3} represents a highly polarized topic, with its probability
 density function having large spikes at either end of the preference space.
 This would indicate that proxy voting, while it is still better than active-only
-voting, does not work quite as well when agents have stronger, opposing opinions.
+voting, does not work quite as well when agents have stronger, opposing opinions.  \vicki{Why does this happen?  Is it because there are so few voters?  It would seem that two strong opinions shouldn't cause more error.  This needs to be explored as two opposing opinions is a common case.}
 
 For the median mechanism voting mechanism, this makes sense.
 The median will most often be the preference of a specific agent, instead of some
