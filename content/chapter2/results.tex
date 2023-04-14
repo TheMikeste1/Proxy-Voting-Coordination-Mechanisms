@@ -68,16 +68,17 @@ while still having their influence significantly reduced.
 The results of such a setup are shown
 in~\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
 % 04/13:
-\vicki{
-    How do you define error in this case?
-    If you only give them a .2 vote, but compare to when they get a full vote, that
-    seems meaningless.
-    We are giving them a .2 vote because their vote shouldn't count as much.
-    Can you compare the shift in results between the two methods?
-    I wouldn't call it an error, but the difference between the methods.
-    Better to have the comparison between the two on one graph rather than
-    having the reader compare two figures.
-}
+% \vicki{
+%     How do you define error in this case?
+%     If you only give them a .2 vote, but compare to when they get a full vote, that
+%     seems meaningless.
+%     We are giving them a .2 vote because their vote shouldn't count as much.
+%     Can you compare the shift in results between the two methods?
+%     I wouldn't call it an error, but the difference between the methods.
+%     Better to have the comparison between the two on one graph rather than
+%     having the reader compare two figures.
+% }
+% TODO: Change phrasing so it's not called error
 
 \autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}
 immediately shows there is an increase in error in all mechanisms.
@@ -172,6 +173,8 @@ voting so long as it is done.
 Additionally, it should be noted the mechanisms perform well on most preference
 distributions, including the asymmetrical distribution \betadistribution{4}{1}.
 
+% TODO: How to combat this? Suggest checking how preferences change during meetings,
+%   and stopping it when opinions change too much? Put in future work.
 Unfortunately, while the error for other distributions is relatively similar,
 \betadistribution{0.3}{0.3} yields considerably more error and starts accumulating
 this error earlier when using the median voting mechanism.
@@ -208,6 +211,7 @@ most important to individuals.
 While it is still more beneficial to use proxy voting than not in these polarized
 cases, agents should make an extra effort to participate in-person to ensure their
 voice is heard.
+% TODO: Reinforce this point
 
 \subsection{Preference Change}\label{subsec:results-shift}
 \autoref{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean} shows
