@@ -1,9 +1,24 @@
 \section{Results}\label{sec:results}
 
 \subsection{Mechanism Combinations}\label{subsec:mechanism-combinations}
-The absolute mean error by coordination mechanism per voting mechanism is graphed in
-\autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.  \vicki{Briefly describe how you define mean square error}
-There are a few trends that are immediately identifiable.
+The absolute mean error as a percent of the total preference space by coordination
+mechanism per voting mechanism is graphed in
+\autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
+% 04/13: \vicki{Briefly describe how you define mean square error}
+The absolute mean error as a percent of the total preference space
+$\sigma_{\lvert M\% \rvert}$  is defined as
+$
+    \sigma_{\lvert M\% \rvert} =
+    \frac{1}{n (\systemspace_{\max} - \systemspace_{\min})}
+        \sum^{n}_{i = 1}{\lvert \epsilon_i  \rvert}
+$,
+where $n$ is the number of runs, $\systemspace_{\max}$ and $\systemspace_{\min}$ are
+the maximum and minimum value in the preference space, respectively, and $\epsilon_i$
+is the error of run $i$.
+Error is defined as $\truthof{\text{proxy}}~-~\truthof{\text{baseline}}$, meaning the
+output of the proxy run minus the output of the baseline (all agents voting).
+
+From this plot, there are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
 This is true with two notable exceptions: first, the Active Only/Median
 mechanism combination has a somewhat sawtooth shape.
@@ -52,9 +67,25 @@ We choose $\sfrac{1}{5}$ because it still allows constituents to have some impac
 while still having their influence significantly reduced.
 The results of such a setup are shown
 in~\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
-\vicki{How do you define error in this case?  If you only give them a .2 vote, but compare to when they get a full vote, that seems meaningless.  We are giving them a .2 vote because their vote shouldn't count as much.  Can you compare the shift in results between the two methods?  I wouldn't call it an error, but the difference between the methods.  Better to have the comparison between the two on one graph rather than  having the reader compare two figures.}
+% 04/13:
+% \vicki{
+%     How do you define error in this case?
+%     If you only give them a .2 vote, but compare to when they get a full vote, that
+%     seems meaningless.
+%     We are giving them a .2 vote because their vote shouldn't count as much.
+%     Can you compare the shift in results between the two methods?
+%     I wouldn't call it an error, but the difference between the methods.
+%     Better to have the comparison between the two on one graph rather than
+%     having the reader compare two figures.
+% }
+% TODO: Change phrasing so it's not called error
 
-These graphs immediately show there is an increase in error in all mechanisms. \vicki{which graphs are you referring to?  due to what?  unclear.}
+\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}
+immediately shows there is an increase in error in all mechanisms.
+% 04/13: \vicki{which graphs are you referring to?  due to what?  unclear.}
+% MDH: The referred-to graphs are specified in the previous sentence.
+% I've re-referenced it here for clarification.
+% The explanation for the error is in the next sentence.
 This is due to the results of the vote becoming more biased towards the preferences
 of the proxies.
 Depending on the situation, this may be desirable.
@@ -137,24 +168,30 @@ mechanisms or distributions used.
 Mean and Median coordination mechanisms show a similar amount of error, while Expert
 shows slightly more except when a large portion of the population is delegating and
 when using the Midrange voting mechanism.
-% \vicki{
-%     I would guess you would see more problems with the median, as the median cannot
-%     be accurately determined when they vote as a block.
-%     If this is the case, it should be identified.
-%     In general, median is considered better as it isn't manipulable.
-% }
 Interestingly, this seems to indicate again that it does not matter how you do proxy
 voting so long as it is done.
 Additionally, it should be noted the mechanisms perform well on most preference
 distributions, including the asymmetrical distribution \betadistribution{4}{1}.
 
+% TODO: How to combat this? Suggest checking how preferences change during meetings,
+%   and stopping it when opinions change too much? Put in future work.
 Unfortunately, while the error for other distributions is relatively similar,
 \betadistribution{0.3}{0.3} yields considerably more error and starts accumulating
-this error earlier.
+this error earlier when using the median voting mechanism.
 \betadistribution{0.3}{0.3} represents a highly polarized topic, with its probability
 density function having large spikes at either end of the preference space.
 This would indicate that proxy voting, while it is still better than active-only
-voting, does not work quite as well when agents have stronger, opposing opinions.  \vicki{Why does this happen?  Is it because there are so few voters?  It would seem that two strong opinions shouldn't cause more error.  This needs to be explored as two opposing opinions is a common case.}
+voting, does not work quite as well when agents have stronger, opposing opinions.
+% 04/13:
+% \vicki{
+%     Why does this happen?
+%     Is it because there are so few voters?
+%     It would seem that two strong opinions shouldn't cause more error.
+%     This needs to be explored as two opposing opinions is a common case.
+% }
+% MDH: See the following paragraphs where I explain why this could be.
+% I've made a slight edit to specify this error really only occurs with the median
+% voting mechanism.
 
 For the median mechanism voting mechanism, this makes sense.
 The median will most often be the preference of a specific agent, instead of some
@@ -174,6 +211,7 @@ most important to individuals.
 While it is still more beneficial to use proxy voting than not in these polarized
 cases, agents should make an extra effort to participate in-person to ensure their
 voice is heard.
+% TODO: Reinforce this point
 
 \subsection{Preference Change}\label{subsec:results-shift}
 \autoref{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean} shows
