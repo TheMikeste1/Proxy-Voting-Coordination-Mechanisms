@@ -1,9 +1,24 @@
 \section{Results}\label{sec:results}
 
 \subsection{Mechanism Combinations}\label{subsec:mechanism-combinations}
-The absolute mean error by coordination mechanism per voting mechanism is graphed in
-\autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.  \vicki{Briefly describe how you define mean square error}
-There are a few trends that are immediately identifiable.
+The absolute mean error as a percent of the total preference space by coordination
+mechanism per voting mechanism is graphed in
+\autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
+% \vicki{Briefly describe how you define mean square error}
+The absolute mean error as a percent of the total preference space
+$\sigma_{\lvert M\% \rvert}$  is defined as
+$
+    \sigma_{\lvert M\% \rvert} =
+    \frac{1}{n (\systemspace_{\max} - \systemspace_{\min})}
+        \sum^{n}_{i = 1}{\lvert \epsilon_i  \rvert}
+$,
+where $n$ is the number of runs, $\systemspace_{\max}$ and $\systemspace_{\min}$ are
+the maximum and minimum value in the preference space, respectively, and $\epsilon_i$
+is the error of run $i$.
+Error is defined as $\truthof{\text{proxy}}~-~\truthof{\text{baseline}}$, meaning the
+output of the proxy run minus the output of the baseline (all agents voting).
+
+From this plot, there are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
 This is true with two notable exceptions: first, the Active Only/Median
 mechanism combination has a somewhat sawtooth shape.
