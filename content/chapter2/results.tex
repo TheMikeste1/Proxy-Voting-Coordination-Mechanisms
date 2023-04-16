@@ -65,7 +65,7 @@ Specifically, the proxies maintain their weight of 1, while their constituents h
 their weight reduced to $\sfrac{1}{5}$ (0.2) of their original weight.
 We choose $\sfrac{1}{5}$ because it still allows constituents to have some impact
 while still having their influence significantly reduced.
-The results of such a setup are shown
+The difference between all agents voting and proxy voting of such a setup are shown
 in~\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
 % 04/13:
 % \vicki{
@@ -78,16 +78,14 @@ in~\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mea
 %     Better to have the comparison between the two on one graph rather than
 %     having the reader compare two figures.
 % }
-% TODO: Change phrasing so it's not called error
 
 \autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}
-immediately shows there is an increase in error in all mechanisms.
+shows there is an immediate shift towards the proxies' preferences instead of the
+inactive voters.
 % 04/13: \vicki{which graphs are you referring to?  due to what?  unclear.}
 % MDH: The referred-to graphs are specified in the previous sentence.
 % I've re-referenced it here for clarification.
 % The explanation for the error is in the next sentence.
-This is due to the results of the vote becoming more biased towards the preferences
-of the proxies.
 Depending on the situation, this may be desirable.
 Since the inactive agents are not participating they may not have as much information
 and so their preference may not be as `up-to-date' as those who are actively
@@ -173,13 +171,12 @@ voting so long as it is done.
 Additionally, it should be noted the mechanisms perform well on most preference
 distributions, including the asymmetrical distribution \betadistribution{4}{1}.
 
-% TODO: How to combat this? Suggest checking how preferences change during meetings,
-%   and stopping it when opinions change too much? Put in future work.
 Unfortunately, while the error for other distributions is relatively similar,
 \betadistribution{0.3}{0.3} yields considerably more error and starts accumulating
 this error earlier when using the median voting mechanism.
 \betadistribution{0.3}{0.3} represents a highly polarized topic, with its probability
-density function having large spikes at either end of the preference space.
+density function having large spikes at either end of the preference space, making it
+extremely important to ensure results are fair and accurate.
 This would indicate that proxy voting, while it is still better than active-only
 voting, does not work quite as well when agents have stronger, opposing opinions.
 % 04/13:
@@ -193,13 +190,12 @@ voting, does not work quite as well when agents have stronger, opposing opinions
 % I've made a slight edit to specify this error really only occurs with the median
 % voting mechanism.
 
-For the median mechanism voting mechanism, this makes sense.
+For the median mechanism voting mechanism, the increase in error makes sense.
 The median will most often be the preference of a specific agent, instead of some
 value in between.
 As such, the result will often be in one of the spikes in the PDF, since that is
 where the majority of the agents' preferences will be, yielding higher error than when
 using the Mean or Midrange voting mechanisms.
-
 With the other voting mechanisms, the error is similar to other distributions using
 the same mechanisms until the vast majority of the agents are inactive.
 The increase in error is because as more agents go inactive there are fewer agents able
@@ -208,10 +204,18 @@ each agent.
 
 This finding is particularly important, as often the most polarizing topics are the
 most important to individuals.
-While it is still more beneficial to use proxy voting than not in these polarized
-cases, agents should make an extra effort to participate in-person to ensure their
-voice is heard.
-% TODO: Reinforce this point
+While it is still more beneficial to use proxy voting than not, in these polarized
+cases, agents should make an extra effort to participate in-person to learn all they
+can about the topic and ensure their voice is heard.
+Those using proxy voting on split issues ought to be aware of this weakness and
+implement some limitation to prevent inaccurate results.
+These limitations could include requiring some percentage of the population, say
+20--30\%, to be active.
+Alternatively, if it becomes apparent that discussion is changing the opinions of the
+active voters, which could be learned by occasionally polling the participants, it
+may be wise to require voters to attend in person.
+That way, those who have not been present to attend the deliberations can properly
+participate.
 
 \subsection{Preference Change}\label{subsec:results-shift}
 \autoref{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean} shows
