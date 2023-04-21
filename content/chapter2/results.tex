@@ -66,7 +66,7 @@ their weight reduced to $\sfrac{1}{5}$ (0.2) of their original weight.
 We choose $\sfrac{1}{5}$ because it still allows constituents to have some impact
 while still having their influence significantly reduced.
 The difference between all agents voting and proxy voting of such a setup are shown
-in~\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
+in~\autoref{fig:different-weight-comparison}.
 % 04/13:
 % \vicki{
 %     How do you define error in this case?
@@ -79,9 +79,9 @@ in~\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mea
 %     having the reader compare two figures.
 % }
 
-\autoref{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}
-shows there is an immediate shift towards the proxies' preferences instead of the
-inactive voters.
+\autoref{fig:different-weight-comparison}
+shows there is an immediate couple-percent shift towards the proxies' preferences
+instead of the inactive voters.
 % 04/13: \vicki{which graphs are you referring to?  due to what?  unclear.}
 % MDH: The referred-to graphs are specified in the previous sentence.
 % I've re-referenced it here for clarification.
@@ -116,23 +116,18 @@ could be very valuable to ensure the most current information is being used.
     \begin{figure}[p]
         \centering
         \includegraphics[scale=0.55]
-        {content/chapter2/figures/different_weight/vm_col_cm_hue_error_as_percent_of_space_abs_mean}
+        {content/chapter2/figures/different_weight/difference_abs_pref_percent_of_space_smoothed}
         \caption{
-            The absolute mean error as a percent of the preference space by
-            coordination mechanism per voting mechanism.
-            `Error as a percent of the preference space' means the error divided by
-            the total size of the preference space.
-            Note All Agents represents when all agents are voting, meaning no proxy
-            voting is used and all agents are present.
-            Similarly, Active Only represents when proxy voting is not used and not
-            all agents are present, and when proxies lose their constituents.
+            The difference between all agents having the same weight and inactive agents
+            having only $\sfrac{1}{5}$ the weight as their proxies.
+            The difference is in terms of distance as a percent of the preference
+            space from all agents voting.
+            `Distance as a percent of the preference space' means the absolute
+            difference divided by the total size of the preference space.
             Averaged over 1024 total runs.
             There are 24 total agents.
-            \\
-            Proxies in this graph have a weight of 1, while their constituents have a
-            weight of 0.2.
         }
-        \label{fig:different-weight-vm-col-cm-hue-error-as-percent-of-space-abs-mean}
+        \label{fig:different-weight-comparison}
     \end{figure}
 \end{landscape}
 
