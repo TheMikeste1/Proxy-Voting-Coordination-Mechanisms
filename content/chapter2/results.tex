@@ -101,9 +101,10 @@ shown in~\autoref{fig:different-weight-comparison}.
 %     having the reader compare two figures.
 % }
 
-\autoref{fig:different-weight-comparison}
-shows there is an immediate couple-percent shift towards the proxies' preferences
-instead of the inactive voters.
+\autoref{fig:different-weight-comparison}~shows there is an immediate difference from
+when all agents have the same weight.
+This is because, due to the weight, there is a shift towards the proxies' preferences
+instead of the inactive voters'.
 % 04/13: \vicki{which graphs are you referring to?  due to what?  unclear.}
 % MDH: The referred-to graphs are specified in the previous sentence.
 % I've re-referenced it here for clarification.
@@ -114,6 +115,25 @@ and so their preference may not be as `up-to-date' as those who are actively
 participating.
 In situations where new information is constantly being introduced, such penalties
 could be very valuable to ensure the most current information is being used.
+
+From~\autoref{fig:different-weight-comparison}, we see both the Median and Mean
+voting mechanisms quickly increase before beginning to level out.
+Median in particular raises very quickly and achieves the largest difference.
+
+The Midrange voting mechanism, however, does not increase as quickly and does not
+achieve as much of a difference.
+Midrange, or $L_{\infty}$, takes the highest and lowest voting and averages the two.
+This means it ignores weight, which is likely why the change in weights does not
+affect it as much.
+Any difference in the outcome, then, must come from the coordination mechanisms used
+prior to the final vote being calculated with Midrange.
+
+Notably, the Median mechanisms, both voting and coordination, yields the largest
+change.
+Mean is close behind, and Expert yields slightly less.
+Since the Median voting mechanism has already been shown to be difficult to
+manipulate~\cite{Moulin1980}, using both a Median voting and Median coordination
+mechanism would likely be a good choice when choosing which mechanisms to use.
 
 \begin{landscape}
     \begin{figure}[p]
