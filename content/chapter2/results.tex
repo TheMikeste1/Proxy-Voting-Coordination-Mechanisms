@@ -56,27 +56,6 @@ similarly to the other coordination mechanisms.
 Importantly, it is clear that using proxy voting, regardless of the mechanisms used,
 is better than losing information by not allowing inactive agents to vote in any way.
 
-\begin{landscape}
-    \begin{figure}[p]
-        \centering
-        \includegraphics[scale=0.55]
-        {content/chapter2/figures/vm_col_cm_hue_error_as_percent_of_space_abs_mean}
-        \caption{
-            The absolute mean error as a percent of the preference space by
-            coordination mechanism per voting mechanism.
-            `Error as a percent of the preference space' means the error divided by
-            the total size of the preference space.
-            Note All Agents represents when all agents are voting, meaning no proxy
-            voting is used and all agents are present.
-            Similarly, Active Only represents when proxy voting is not used and not
-            all agents are present, and when proxies lose their constituents.
-            The results are averaged over 1024 total runs.
-            There are 24 total agents.
-        }
-        \label{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}
-    \end{figure}
-\end{landscape}
-
 \subsection{Inactive Penalty}\label{subsec:inactive-penalty}
 What if we were to introduce some penalty for the inactive agents?
 Since they aren't participating as much, perhaps it would be fair that their voice is
@@ -100,6 +79,27 @@ shown in~\autoref{fig:different-weight-comparison}.
 %     Better to have the comparison between the two on one graph rather than
 %     having the reader compare two figures.
 % }
+
+\begin{landscape}
+    \begin{figure}[p]
+        \centering
+        \includegraphics[scale=0.55]
+        {content/chapter2/figures/vm_col_cm_hue_error_as_percent_of_space_abs_mean}
+        \caption{
+            The absolute mean error as a percent of the preference space by
+            coordination mechanism per voting mechanism.
+            `Error as a percent of the preference space' means the error divided by
+            the total size of the preference space.
+            Note All Agents represents when all agents are voting, meaning no proxy
+            voting is used and all agents are present.
+            Similarly, Active Only represents when proxy voting is not used and not
+            all agents are present, and when proxies lose their constituents.
+            The results are averaged over 1024 total runs.
+            There are 24 total agents.
+        }
+        \label{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}
+    \end{figure}
+\end{landscape}
 
 \autoref{fig:different-weight-comparison}~shows there is an immediate difference from
 when all agents have the same weight.
