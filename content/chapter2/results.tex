@@ -135,10 +135,17 @@ This makes the system less volatile, since votes are less likely to be an inacti
 voter's, and so we don't see the large spike in error when a large percent of agents
 are delegating.
 
-From~\autoref{fig:different-weight-comparison}, we see both the Median and Mean
-voting mechanisms quickly increase  \vicki{quickly increase in error? explain.  This is interesting as more delegators slows the affect.
- Better if x axis goes to 100\% as the other tables do.} before beginning to level out.
-Median rises very quickly and achieves the largest difference.
+Additionally, from~\autoref{fig:different-weight-comparison}, we see both the Median
+and Mean voting mechanisms quickly increase
+% 4/26/2023: \vicki{quickly increase in error? explain.  This is interesting as more
+% delegators slows the affect. Better if x axis goes to 100\% as the other tables do.}
+in difference before beginning to level out.
+This is again due to the difference in weight between the active and inactive voters.
+When both types of voters have the same weight, the coordination mechanisms help
+ensure the loss of preference from the agent going inactive is minimal.
+However, when they have different weights, in particular when the weight of the
+inactive voters is substantially less than that of the actives, the results are more
+akin to when the voter doesn't vote.
 
 The Midrange voting mechanism, however, does not increase as quickly and does not
 achieve as much of a difference.
