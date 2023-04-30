@@ -116,8 +116,27 @@ participating.
 In situations where new information is constantly being introduced, such penalties
 could be very valuable to ensure the most current information is being used.
 
+Notably, the Median voting mechanism suddenly takes a sharp dip and produces a result
+closer to all agents voting with the difference in weight.
+This is strange since it is completely different compared to how any other
+combination, or even the same combinations with less inactive voters, works.
+With some inspection, one can find this dip is due to active voters having a
+significantly larger influence compared to inactive voters.
+With this setup, an active voter is worth 5 times the amount of weight than an
+inactive voter.
+Therefore, when an active voter's weight is added to the sum it is more able to push
+the sum over the half-way mark, thereby making that active voter's preference the
+median.
+This is also why we see the most extreme dip with using the Median voting mechanism
+with Median coordination mechanism: the proxy is able to reach the median both when
+coordinating and when voting, thereby making the proxy and its constituents' vote be the
+proxy's preference.
+This makes the system less volatile, since votes are less likely to be an inactive
+voter's, and so we don't see the large spike in error when a large percent of agents
+are delegating.
+
 From~\autoref{fig:different-weight-comparison}, we see both the Median and Mean
-voting mechanisms quickly increase  \vicki{quickly increase in error? explain.  This is interesting as more delegators slows the affect. 
+voting mechanisms quickly increase  \vicki{quickly increase in error? explain.  This is interesting as more delegators slows the affect.
  Better if x axis goes to 100\% as the other tables do.} before beginning to level out.
 Median rises very quickly and achieves the largest difference.
 
