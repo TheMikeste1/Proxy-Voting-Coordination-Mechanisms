@@ -66,7 +66,7 @@ Specifically, the proxies maintain their weight of 1, while their constituents h
 their weight reduced to $\sfrac{1}{5}$ (0.2) of their original weight.
 We choose $\sfrac{1}{5}$ because it still allows constituents to have some impact
 while still having their influence significantly reduced.
-The smoothed difference between all agents voting and proxy voting of such a setup are
+The difference between all agents voting and proxy voting of such a setup are
 shown in~\autoref{fig:different-weight-comparison}.
 % 04/13:
 % \vicki{
@@ -140,16 +140,14 @@ mechanism would likely be a good choice when choosing which mechanisms to use.
     \begin{figure}[p]
         \centering
         \includegraphics[scale=0.55]
-        {content/chapter2/figures/different_weight/difference_abs_pref_percent_of_space_smoothed}
+        {content/chapter2/figures/different_weight/difference_abs_pref_percent_of_space}
         \caption{
-            The smoothed difference between all agents having the same weight and
-            inactive agents having only $\sfrac{1}{5}$ the weight as their proxies.
+            The difference between all agents having the same weight and inactive
+            agents having only $\sfrac{1}{5}$ the weight as their proxies.
             The difference is in terms of distance as a percent of the preference
             space from all agents voting.
             `Distance as a percent of the preference space' means the absolute
             difference divided by the total size of the preference space.
-            The plots have been smoothed to reduce the impact the dip in error that
-            occurs around 90\% delegators has on the plots.
             The results are averaged over 1024 total runs.
             There are 24 total agents.
         }
