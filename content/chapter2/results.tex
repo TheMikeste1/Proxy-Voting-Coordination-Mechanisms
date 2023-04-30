@@ -66,7 +66,7 @@ Specifically, the proxies maintain their weight of 1, while their constituents h
 their weight reduced to $\sfrac{1}{5}$ (0.2) of their original weight.
 We choose $\sfrac{1}{5}$ because it still allows constituents to have some impact
 while still having their influence significantly reduced.
-The smoothed difference between all agents voting and proxy voting of such a setup are
+The difference between all agents voting and proxy voting of such a setup are
 shown in~\autoref{fig:different-weight-comparison}.
 % 04/13:
 % \vicki{
@@ -116,10 +116,37 @@ participating.
 In situations where new information is constantly being introduced, such penalties
 could be very valuable to ensure the most current information is being used.
 
-From~\autoref{fig:different-weight-comparison}, we see both the Median and Mean
-voting mechanisms quickly increase  \vicki{quickly increase in error? explain.  This is interesting as more delegators slows the affect. 
- Better if x axis goes to 100\% as the other tables do.} before beginning to level out.
-Median rises very quickly and achieves the largest difference.
+Notably, the Median voting mechanism suddenly takes a sharp dip and produces a result
+closer to all agents voting when using different weights than when using the same
+weight.
+This is strange since it is completely different compared to how any other
+combination, or even the same combinations with less inactive voters, works.
+With some inspection, one can find this dip is due to active voters having a
+significantly larger influence compared to inactive voters.
+With this setup, an active voter is worth 5 times the amount of weight than an
+inactive voter.
+Therefore, when an active voter's weight is added to the sum it is more able to push
+the sum over the half-way mark, thereby making that active voter's preference the
+median.
+This is also why we see the most extreme dip with using the Median voting mechanism
+with Median coordination mechanism: the proxy is able to reach the median both when
+coordinating and when voting, thereby making the proxy and its constituents' vote be the
+proxy's preference.
+This makes the system less volatile, since votes are less likely to be an inactive
+voter's, and so we don't see the large spike in error when a large percent of agents
+are delegating.
+
+Additionally, from~\autoref{fig:different-weight-comparison}, we see both the Median
+and Mean voting mechanisms quickly increase
+% 4/26/2023: \vicki{quickly increase in error? explain.  This is interesting as more
+% delegators slows the affect. Better if x axis goes to 100\% as the other tables do.}
+in difference before beginning to level out.
+This is again due to the difference in weight between the active and inactive voters.
+When both types of voters have the same weight, the coordination mechanisms help
+ensure the loss of preference from the agent going inactive is minimal.
+However, when they have different weights, in particular when the weight of the
+inactive voters is substantially less than that of the actives, the results are more
+akin to when the voter doesn't vote.
 
 The Midrange voting mechanism, however, does not increase as quickly and does not
 achieve as much of a difference.
@@ -140,16 +167,14 @@ mechanism would likely be a good choice when choosing which mechanisms to use.
     \begin{figure}[p]
         \centering
         \includegraphics[scale=0.55]
-        {content/chapter2/figures/different_weight/difference_abs_pref_percent_of_space_smoothed}
+        {content/chapter2/figures/different_weight/difference_abs_pref_percent_of_space}
         \caption{
-            The smoothed difference between all agents having the same weight and
-            inactive agents having only $\sfrac{1}{5}$ the weight as their proxies.
+            The difference between all agents having the same weight and inactive
+            agents having only $\sfrac{1}{5}$ the weight as their proxies.
             The difference is in terms of distance as a percent of the preference
             space from all agents voting.
             `Distance as a percent of the preference space' means the absolute
             difference divided by the total size of the preference space.
-            The plots have been smoothed to reduce the impact the dip in error that
-            occurs around 90\% delegators has on the plots.
             The results are averaged over 1024 total runs.
             There are 24 total agents.
         }
