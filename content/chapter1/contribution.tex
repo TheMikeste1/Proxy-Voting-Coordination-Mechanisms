@@ -66,8 +66,13 @@ We chose this number because prior experimentation shows it to be a good balance
 between having few enough agents that an agent going inactive can change the
 results, while not so few that there are an agent going inactive is catastrophic.
 Since having no delegates or all delegates would not be interesting, we will
-experiment with 1 to 23 inactive agents and examine how error correlates with
+experiment with 1 to 22 inactive agents and examine how error correlates with
 the number of delegators.
+We choose 1 inactive agent as the minimum because the case with 0 agents is not
+interesting due to there not being any proxies.
+Similarly, we chose 22 as the maximum because the case with 24 agents means there are
+not active agents to vote, and the case with 23 simply devolves into the coordination
+mechanism replacing the voting mechanism.
 
 For each experiment, agents will randomly select some preference using the current
 distribution.
