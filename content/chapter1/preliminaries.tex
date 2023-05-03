@@ -14,7 +14,7 @@ As a point moves further away from the agent's preference, the agent likes it le
 This model works best when an upper and lower bound is provided, such as only
 allowing agents to vote in the interval $[-1, 1]$, to prevent agents from voting
 extremely far in either direction and so potentially biasing the vote.
-Not all ways of voting a susceptible to such attacks, but it regardless must be a
+Not all ways of voting are susceptible to such attacks, but it must be a
 consideration for those that are.
 
 The difference between multiple equidistant points in the model may not be equivalent
@@ -47,9 +47,8 @@ preference, rather than if it is greater or less than some amount.
 Such a model is extremely flexible and can be interpreted in different ways.
 When applied to binary for-or-against voting problems, options can be placed at either
 extreme of the interval.
-As an example, say shareholders at some company are voting on new data collection
+As an example, shareholders at some company are voting on new data collection
 policies.
-As an example, say a group is choosing whether to put pineapple on pizza.
 Using the interval $[-1, 1]$, we can place `no collection at all' at -1, and `heavy
 collection' at 1.
 Agents vote according to their preference: -1 for no collection, 1 for heavy collection.
@@ -77,7 +76,7 @@ Normally, voting goes through a bargaining and an enforcement
 phase~\cite{Fearon1998}, but if a sufficient number of agents vote close to 0, the
 group can reopen discussion about the topic and re-bargain before conducting a new vote.
 This enhances the cooperation aspect of voting, and creates a fundamental change:
-voting is no longer the end of the process, but rather part of it.
+voting is no longer the end of the negotiation, but rather part of it.
 
 Finally, the continuous space model allows for another, very powerful interpretation:
 interpreting the votes and result as continuous values.
@@ -94,7 +93,7 @@ One way we could aggregate these preferences is by finding their mean.
 By averaging these preferences, the system would output
 $\frac{\$(750 + 600 + 250)}{3 \text{ voters}} = \frac{\$1600}{3 \text{ voters}} =
 \$533.33$,
-which would be the amount allocated to the defence budget.
+which would be the amount allocated to the defense budget.
 Being able to vote on continuous problems and yield a continuous output, as well as
 working with binary issues, makes the model extremely flexible and allows it to
 tackle any number of problems.
@@ -131,6 +130,7 @@ With these notations, the mechanisms we use are
     \item {
         \textit{Median ($L_1$)}, defined as
         $\input{common/figures/equations/weighted-median}$.
+        \vicki{This definition seems weird to me.  What is j?  Why not start at 1 and sum from 1 to i?  Why go to a(i-1) and then add i?}
         Essentially, the median is the active agent whose additional weight makes the
         sum of weights become equal to or greater than half the total weight of the
         system.
@@ -138,7 +138,7 @@ With these notations, the mechanisms we use are
         \systemproxies.
         There is an edge case where the sum of weight perfectly reaches half the
         total weight.
-        In this case both the lower and higher weighted medians, as well as any value
+        In this case both the lower and higher weighted medians  \vicki{Awkward, lower weighted median isn't really a thing.}, as well as any value
         in between, can claim to be the median.
         This is similar to when there are an even number of preferences in a normal
         median.
@@ -148,7 +148,7 @@ With these notations, the mechanisms we use are
     }
     \item {
         \textit{Mean ($L_2$)}, defined as
-        $\input{common/figures/equations/weighted-mean}$.
+        $\input{common/figures/equations/weighted-mean}$.  \vicki{This is awkward too.  You sometimes use S and sometimes Sp, but you don't need both. S is sufficient, as the ordering doesn't matter.}
         This is a typical weighted average.
     }
     \item {
@@ -158,7 +158,7 @@ With these notations, the mechanisms we use are
         active agent with the highest preference, divided by two.
     }
 \end{enumerate}
-We will additionally apply these voting mechanisms with all active voters (to simulate
+We will additionally\vicki{Not sure what is meant by additionally.  Were you meaning that the voting mechanism was used for some other reason?}  apply these voting mechanisms with all active voters (to simulate
 if proxy voting was not allowed) and all voters, both active and inactive, (to simulate
 the best case where all agents vote), without any weights.
 These additional calculations serve as baselines to determine how well proxy voting
@@ -166,19 +166,21 @@ works in these scenarios.
 
 \subsection{Coordination Mechanisms}
 \label{subsec:coordination-mechanisms}
-There are also several ways an individual proxy can agree to cast its vote own behalf
+There are also several ways an individual proxy can agree to cast its vote on behalf
 of its constituents.
 Each has different advantages and disadvantages for the proxy, its constituents, and
 the system as a whole.
 We will examine five different `coordination' mechanisms that `groups' (meaning a
 proxy and its constituents) can use:
+\vicki{Consider removing the "no preference change" to the first four, including preference change for the last four.  The reader isn't ready for the preference change idea, as it hasn't been introduced, so it is just confusing.}
 \begin{enumerate}
     \item {
         \textit{No preference change - Expert}.
         The group applies its total weight to the proxy's preference.
     }
     \item {
-        \textit{No preference change - Active Only}.
+        \textit{No preference change - Active Only}.  \vicki{The previous sentence indicates these govern how groups coordinate.  This doesn't really meet that criteria. 
+ The name also seems odd. }
         Only active agents vote with no additional weight.
     }
     \item {
@@ -193,7 +195,7 @@ proxy and its constituents) can use:
     }
     \item {
         \textit{Preference change - Expert}.
-        The group applies its total weight to the proxy's preference.
+        The group applies its total weight to the proxy's preference but allows the proxy to change its vote.
         This is useful for cases when a proxy is deemed by its constituents as an
         `expert', as discussed by James Miller~\cite{Miller1969}.
         However, active agents' preferences have changed as they have participated in
@@ -210,7 +212,7 @@ proxy and its constituents) can use:
         constituents impose a condition that the proxy can only represent them if
         they vote a certain way.
 
-        Note this is analogous to only having the active agents vote.
+        Note this is analogous to only having the active agents vote.  \vicki{Not if the proxy doesn't change their vote.  I think you have to handle this case because otherwise, it makes no sense to have a new name.  }
     }
     \item {
         \textit{Preference change - Cooperative Mean}.
