@@ -6,39 +6,51 @@ mechanism per voting mechanism is graphed in
 \autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
 % 04/13: \vicki{Briefly describe how you define mean square error}
 The absolute mean error as a percent of the total preference space
-$\sigma_{\lvert M\% \rvert}$  is defined as
+% 05/05/2023:\vicki{Why sigma?  Sigma normally means standard deviation.  Mean squared
+% error is typically MSE.}
+% I just needed a symbol. I'll change it.
+$\lvert MSE\% \rvert$  is defined as
 $
-    \sigma_{\lvert M\% \rvert} =
+    \lvert MSE\% \rvert =
     \frac{1}{n (\systemspace_{\max} - \systemspace_{\min})}
         \sum^{n}_{i = 1}{\lvert \epsilon_i  \rvert}
 $,
 where $n$ is the number of runs, $\systemspace_{\max}$ and $\systemspace_{\min}$ are
 the maximum and minimum value in the preference space, respectively, and $\epsilon_i$
 is the error of run $i$.
-Error is defined as $\truthof{\text{proxy}}~-~\truthof{\text{baseline}}$, meaning the
-output of the proxy run minus the output of the baseline (all agents voting).
+Error is defined as $\truthof{\text{test}}~-~\truthof{\text{baseline}}$, meaning
+the output of the test run minus the output of the baseline (all agents voting).
+% 05/05/2023: \vicki{T(proxy) seems a little odd because the test doesn't always use a
+% proxy voter.  Could use say T(test)?}
 
 From this plot, there are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
-This is true with two notable exceptions: first, the Active Only/Median
-mechanism combination has a somewhat sawtooth shape.
-This is due to the Median mechanisms always choosing a specific agent's preference
-instead of aggregating to some more preferential in-between value.
+% 05/05/2023: \vicki{I thought it was an average if a unique median couldn't be found
+% .  Have you considered running with 25 agents, so the median is always clear?}
+% Whoops, another artifact from when I was using the lower bound. Active Only/Median
+% no longer has this shape.
+%
+% The parity of the total number of agents doesn't change anything because as agents
+% become inactive the number of active agents will become even.
 
-The second exception is that Mean coordination mechanism consistently dips when all but
-one agent become delegators.
-This is because we take the mean of the constituents and the proxy, then apply the
-voting mechanism on the set of proxy-constituent votes.
-Since there is only one agent, there is only one proxy-constituent vote and so the
-result of the vote is the result of the coordination mechanism.
-Essentially, the coordination mechanism replaces the voting mechanism.
+% The second exception is that Mean coordination mechanism consistently dips when all but
+% one agent become delegators.
+% 05/05/2023: \vicki{I thought you removed this case?  Did I misunderstand?  The charts
+% look like you went until 23/24 were delegates.}
+% Again, another artifcat from before we truncated the results. This paragraph is no
+% longer relevant.
+% This is because we take the mean of the constituents and the proxy, then apply the
+% voting mechanism on the set of proxy-constituent votes.
+% Since there is only one agent, there is only one proxy-constituent vote and so the
+% result of the vote is the result of the coordination mechanism.
+% Essentially, the coordination mechanism replaces the voting mechanism.
 
 We can also see the Mean and Median coordination mechanisms generally yield similar
 amounts of error.
 In particular, when either of these mechanisms is combined with the Mean voting
 mechanism the results are very similar to when all agents are active and able to vote.
 
-Notably, the Expert coordination mechanism works worse than the others as the number
+Notably, the Expert coordination mechanism exhibits higher error than the others as the number
 of delegators reaches a significant portion of the population.
 In particular, the Expert mechanism tracks nearly identically to Active Only when
 using the Midrange voting mechanism.
@@ -60,7 +72,7 @@ is better than losing information by not allowing inactive agents to vote in any
 What if we were to introduce some penalty for the inactive agents?
 Since they aren't participating as much, perhaps it would be fair that their voice is
 not as strong.
-We attempted the same experiments as above with different weights between a proxy and
+We repeated the same experiments as above with different weights between a proxy and
 their constituents.
 Specifically, the proxies maintain their weight of 1, while their constituents have
 their weight reduced to $\sfrac{1}{5}$ (0.2) of their original weight.
@@ -182,7 +194,7 @@ mechanism would likely be a good choice when choosing which mechanisms to use.
     \end{figure}
 \end{landscape}
 
-\subsection{By Distribution}\label{subsec:results-distribution}
+\subsection{Affects of Voter Distribution}\label{subsec:results-distribution}
 \autoref{fig:distribution-error-as-percent-of-space-abs-mean} shows
 the absolute error as a percent of the preference space by coordination mechanism for
 each voting mechanism and preference distribution.
@@ -190,6 +202,14 @@ each voting mechanism and preference distribution.
 the same graphs, but with a different scale for each plot to more easily see the shape.
 Additionally, each graph is zoomed in for readability
 in~\autoref{apx:error-by-dist-zoomed}.
+
+% 05/05/2023: \vicki{
+%   Having three different versions of the same thing is painful when you are
+%   looking online, as you can't easily flip back and forth (or see them side by side).
+% }
+% I'm not sure what to do about this. There is too much data to fit on a single page.
+% The only solutions I can think of are to chop up the data and have several
+% contiguous pages of charts, or eliminate some of the graphs.
 
 \begin{figure}[p]
     \centering
@@ -225,6 +245,33 @@ density function having large spikes at either end of the preference space, maki
 extremely important to ensure results are fair and accurate.
 This would indicate that proxy voting, while it is still better than active-only
 voting, does not work quite as well when agents have stronger, opposing opinions.
+
+% 05/05/2023: \vicki{
+%   When you have a polarized topic, the answer chosen will always be a long distance
+%   from the preference.
+%   For strong preferences, I'm guessing the mean or median is very volatile - changing
+%   dramatically from test to test, especially when the test size is small.
+%   If the result changes wildly from test to test, we can hardly expect a different
+%   mechanism to change in the same wild way.
+%   Is there a way we could verify this, say look at the standard deviation of resultant
+%   preference for the 1024 tests?
+%   My guess is that for a normal distribution, the results are similar (for the same
+%   test, no proxy) from run to run, but that isn't true for other distributions.
+% }
+% It might be the case that mean and median are volatile for polarized topics.
+% However, we're not looking at the sum of differences between the result of the vote
+% and the preferences of the agents. We're looking at the difference between the
+% result of the vote in the baseline and the result of the vote when using proxy
+% voting, the baseline being when all agents vote. The baseline uses the same voting
+% mechanisms as proxy voting, and runs are only compared to runs with the same voting
+% mechanism. For reference, this is explained in the first paragraph of the chapter
+% (|MSE%|).
+%
+% If proxy voting behaved the exact same way as the baselines, the error on the graph
+% would be 0 regardless of how far the result is from the agents' preferences.
+% Instead, we see an increase in error, meaning proxy voting does not select the
+% same option as the baseline.
+
 % 04/13:
 % \vicki{
 %     Why does this happen?
@@ -236,7 +283,9 @@ voting, does not work quite as well when agents have stronger, opposing opinions
 % I've made a slight edit to specify this error really only occurs with the median
 % voting mechanism.
 
-For the median mechanism voting mechanism, the increase in error makes sense.
+For the median mechanism voting mechanism in \betadistribution{0.3}{0.3},
+% 05/05/2023: \vicki{specify the distribution}
+the increase in error makes sense.
 The median will most often be the preference of a specific agent, instead of some
 value in between.
 As such, the result will often be in one of the spikes in the PDF, since that is
@@ -270,6 +319,17 @@ they don't.
 In this case, the proxies were able to shift their preferences by up to 10\% of the
 total preference space, while delegators kept their original preference.
 This represents the proxies changing their preference for an issue after deliberation.
+% \vicki{
+%   Explain how they change preference.
+%   Are they influenced by the distribution?
+%   I would guess if they were an outlier and changed preference, they would become
+%   more centrist.
+%   Is this how you set it up?  If the changes are random, it doesn't seem realistic.
+% }
+% It is somewhat random (as it would have to be since I'm not using real data), but
+% it does account for outliers. I've added the sentence below explaining this caveat.
+While this movement is random, if an agent is an extremist, meaning they are far to the
+left or right of the preference space, they are more likely to move towards the center.
 
 Unsurprisingly, the amount of error increases as more agents become inactive.
 However, the coordination mechanisms are much more tightly grouped than in other

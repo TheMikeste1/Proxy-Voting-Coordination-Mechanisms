@@ -14,7 +14,7 @@ As a point moves further away from the agent's preference, the agent likes it le
 This model works best when an upper and lower bound is provided, such as only
 allowing agents to vote in the interval $[-1, 1]$, to prevent agents from voting
 extremely far in either direction and so potentially biasing the vote.
-Not all ways of voting a susceptible to such attacks, but it regardless must be a
+Not all methods of voting are susceptible to such attacks, but it must be a
 consideration for those that are.
 
 The difference between multiple equidistant points in the model may not be equivalent
@@ -47,9 +47,7 @@ preference, rather than if it is greater or less than some amount.
 Such a model is extremely flexible and can be interpreted in different ways.
 When applied to binary for-or-against voting problems, options can be placed at either
 extreme of the interval.
-As an example, say shareholders at some company are voting on new data collection
-policies.
-As an example, say a group is choosing whether to put pineapple on pizza.
+As an example, shareholders at some company are voting on new data collection policies.
 Using the interval $[-1, 1]$, we can place `no collection at all' at -1, and `heavy
 collection' at 1.
 Agents vote according to their preference: -1 for no collection, 1 for heavy collection.
@@ -77,7 +75,7 @@ Normally, voting goes through a bargaining and an enforcement
 phase~\cite{Fearon1998}, but if a sufficient number of agents vote close to 0, the
 group can reopen discussion about the topic and re-bargain before conducting a new vote.
 This enhances the cooperation aspect of voting, and creates a fundamental change:
-voting is no longer the end of the process, but rather part of it.
+voting is no longer the end of the negotiation, but rather part of it.
 
 Finally, the continuous space model allows for another, very powerful interpretation:
 interpreting the votes and result as continuous values.
@@ -94,7 +92,7 @@ One way we could aggregate these preferences is by finding their mean.
 By averaging these preferences, the system would output
 $\frac{\$(750 + 600 + 250)}{3 \text{ voters}} = \frac{\$1600}{3 \text{ voters}} =
 \$533.33$,
-which would be the amount allocated to the defence budget.
+which would be the amount allocated to the defense budget.
 Being able to vote on continuous problems and yield a continuous output, as well as
 working with binary issues, makes the model extremely flexible and allows it to
 tackle any number of problems.
@@ -111,7 +109,7 @@ model, since observing the continuous output allows for more granularity in the
 differences between proxy and non-proxy voting, as well as in the differences between
 voting rules.
 
-\subsection{Voting mechanisms}\label{subsec:voting-mechanisms}
+\subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
 This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
 which are functions that map a set of preferences in~\systemspace\ to an outcome that
 also exists in~\systemspace.
@@ -125,12 +123,28 @@ Naturally, since~\cite{Bulteau2021} did not use weighted proxies, these methods 
 to be adjusted to allow for weight.
 Below, \agentweight\ represents the weight of an agent \agent, and \systemproxies\ is
 the ordered set of active voters.
-Additionally, \agenttruth\ is the preference of an agent.
+Additionally, \agenttruth\ is the preference of an agent, and \system\ is the set of
+all agents.
+By extension, \systemweight\ is the weight of the system.
 With these notations, the mechanisms we use are
 \begin{enumerate}
     \item {
         \textit{Median ($L_1$)}, defined as
         $\input{common/figures/equations/weighted-median}$.
+        % 05/05/2023: \vicki{
+        %   This definition seems weird to me.  What is j?  Why not start at 1 and sum from 1 to i?  Why go to a(i-1) and then add i?
+        % }
+        % This definition is saying the median is the preference of the first agent
+        % whose additional weight makes the sum of weights more than half the total
+        % weight of the system.
+        %
+        % `j` refers to `agent j,` as in the agent from the set of proxies that is
+        % not agent i. I could start at agent 1 and sum the weights to agent i.
+        % Instead I said we sum the other agents (agent j) from the set of proxies
+        % up to but not including agent i (which is why it goes to agent (i - 1)).
+        %
+        % I deliberately add agent i outside the sum to make it extremely apparent
+        % their weight is the weight that achieves the median.
         Essentially, the median is the active agent whose additional weight makes the
         sum of weights become equal to or greater than half the total weight of the
         system.
@@ -138,17 +152,34 @@ With these notations, the mechanisms we use are
         \systemproxies.
         There is an edge case where the sum of weight perfectly reaches half the
         total weight.
-        In this case both the lower and higher weighted medians, as well as any value
-        in between, can claim to be the median.
+        When this occurs, the preference that reaches half is called the lower
+        weighted median, and the preference the starts from half is called the higher
+        weighted median.
+        In this case both the lower and higher weighted medians
+        % 05/05/2023: \vicki{Awkward, lower weighted median isn't really a thing.}
+        % I'm not sure what else to call it. A quick internet search indicates these
+        % are known terms for the lower and higher bounds of a weighted median.
+        % I've added a sentence clarifying what these terms mean.
+        , as well as any value in between, can claim to be the median.
         This is similar to when there are an even number of preferences in a normal
         median.
-        In this case, we will take the average between the preference of agent with
+        In this case, we take the average between the preference of agent with
         the highest preference in the lower median half and the agent with the lowest
         preference in the higher half of the weighted median.
     }
     \item {
         \textit{Mean ($L_2$)}, defined as
         $\input{common/figures/equations/weighted-mean}$.
+        % \vicki{
+        %   This is awkward too.  You sometimes use S and sometimes Sp, but you don't
+        %   need both. S is sufficient, as the ordering doesn't matter.
+        % }
+        % S and Sp are different, S being the set of all agents and Sp being the set
+        % of active agents.
+        % I realized I forgot to define S, so I've added that above.
+        %
+        % I feel it's important to make this distinction because we want to divide by
+        % the weight of all agents, not just the weight of the active agents.
         This is a typical weighted average.
     }
     \item {
@@ -158,75 +189,103 @@ With these notations, the mechanisms we use are
         active agent with the highest preference, divided by two.
     }
 \end{enumerate}
-We will additionally apply these voting mechanisms with all active voters (to simulate
-if proxy voting was not allowed) and all voters, both active and inactive, (to simulate
-the best case where all agents vote), without any weights.
+In additional to applying these voting mechanisms on the set of active agents, we
+% 05/05/2023: \vicki{Not sure what is meant by additionally.  Were you meaning that the
+% voting mechanism was used for some other reason?}
+% Yes, the mechanisms as described above are applied to the weighted set of active
+% voters. Here I'm explaining  my baseline, those being using these mechanisms on all
+% voter, active and inactive, as well as applying them to only the active voters
+% without weights. I've rephrased things to try to make it more apparent.
+apply these mechanisms to active voters without weights (to simulate if proxy voting was
+not allowed) and all voters, both active and inactive, (to simulate the best case
+where all agents vote).
 These additional calculations serve as baselines to determine how well proxy voting
 works in these scenarios.
 
 \subsection{Coordination Mechanisms}
 \label{subsec:coordination-mechanisms}
-There are also several ways an individual proxy can agree to cast its vote own behalf
+There are also several ways an individual proxy can agree to cast its vote on behalf
 of its constituents.
 Each has different advantages and disadvantages for the proxy, its constituents, and
 the system as a whole.
 We will examine five different `coordination' mechanisms that `groups' (meaning a
 proxy and its constituents) can use:
+% 05/05/2023: \vicki{
+%   Consider removing the "no preference change" to the first four, including
+%   preference change for the last four.
+%   The reader isn't ready for the preference change idea, as it hasn't been introduced,
+%   so it is just confusing.
+% }
 \begin{enumerate}
     \item {
-        \textit{No preference change - Expert}.
+        \textit{Expert}.
         The group applies its total weight to the proxy's preference.
     }
+    % \item {
+    %     \textit{Active Only}.  \vicki{The previous sentence indicates these govern how groups coordinate.  This doesn't really meet that criteria.
+ % The name also seems odd. }
+ %        Only active agents vote with no additional weight.
+ %    }
+    % This is a baseline which I discussed previously, so I've removed it
     \item {
-        \textit{No preference change - Active Only}.
-        Only active agents vote with no additional weight.
-    }
-    \item {
-        \textit{No preference change - Cooperative Mean}.
+        \textit{Cooperative Mean}.
         The group allocates its weight to the mean of the proxy's and its
         constituents' preferences.
     }
     \item {
-        \textit{No preference change - Cooperative Median}.
+        \textit{Cooperative Median}.
         The group allocates its weight to the median of the proxy's and its
         constituents' preferences.
     }
-    \item {
-        \textit{Preference change - Expert}.
-        The group applies its total weight to the proxy's preference.
-        This is useful for cases when a proxy is deemed by its constituents as an
-        `expert', as discussed by James Miller~\cite{Miller1969}.
-        However, active agents' preferences have changed as they have participated in
-        deliberation and discussion with the other active voters.
-    }
-    \item {
-        \textit{Preference change - Expert with Consequences}.
-        The proxy is an expert and the group allocates its weight to the proxy's
-        preference, but active agents', including the proxy's, preferences have changed.
-        However, due to this change the proxy is only allowed vote for itself,
-        meaning it can only use its own weight.
-        This causes its constituents to be unrepresented.
-        This represents situations where a proxy is considered an expert, but the
-        constituents impose a condition that the proxy can only represent them if
-        they vote a certain way.
-
-        Note this is analogous to only having the active agents vote.
-    }
-    \item {
-        \textit{Preference change - Cooperative Mean}.
-        The group allocates its weight to the mean of the proxy's and its
-        constituents' preferences.
-        However, active agents' preference has changed as it has participated in
-        deliberation and discussion with the other active voters.
-        
-    }
-    \item {
-        \textit{Preference change - Cooperative Median}.
-        The group allocates its weight to the median of the proxy's and its
-        constituents' preferences.
-        However, active agents' preferences have changed due to deliberation.
-    }
+    % \item {
+    %     \textit{Preference change - Expert}.
+    %     The group applies its total weight to the proxy's preference but allows the proxy to change its vote.
+    %     This is useful for cases when a proxy is deemed by its constituents as an
+    %     `expert', as discussed by James Miller~\cite{Miller1969}.
+    %     However, active agents' preferences have changed as they have participated in
+    %     deliberation and discussion with the other active voters.
+    % }
+    % \item {
+    %     \textit{Preference change - Expert with Consequences}.
+    %     The proxy is an expert and the group allocates its weight to the proxy's
+    %     preference, but active agents', including the proxy's, preferences have changed.
+    %     However, due to this change the proxy is only allowed vote for itself,
+    %     meaning it can only use its own weight.
+    %     This causes its constituents to be unrepresented.
+    %     This represents situations where a proxy is considered an expert, but the
+    %     constituents impose a condition that the proxy can only represent them if
+    %     they vote a certain way.
+    %
+    %     Note this is analogous to when agents change their preference and only active
+    %     agents are allowed to vote.
+    %     % 05/05/2023: \vicki{Not if the proxy doesn't change their vote.  I think you
+    %     % have to handle this case because otherwise, it makes no sense to have a new name.
+    %     % }
+    %     % Naturally this doesn't apply to when agents change their vote. That's why I
+    %     % specify they've changed their preference. Nevertheless, I've extracted
+    %     % these and explain the coordination mechanisms are also applied to when the
+    %     % agents change their votes.
+    %
+    % }
+    % \item {
+    %     \textit{Preference change - Cooperative Mean}.
+    %     The group allocates its weight to the mean of the proxy's and its
+    %     constituents' preferences.
+    %     However, active agents' preference has changed as it has participated in
+    %     deliberation and discussion with the other active voters.
+    %
+    % }
+    % \item {
+    %     \textit{Preference change - Cooperative Median}.
+    %     The group allocates its weight to the median of the proxy's and its
+    %     constituents' preferences.
+    %     However, active agents' preferences have changed due to deliberation.
+    % }
 \end{enumerate}
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
 voting, as well as identify potential techniques to deter or mitigate a proxy's
 ability to swing the system by aggregating a large amount of weight and abusing it.
+
+These mechanisms will additionally be applied after active agents change their
+preferences in order to determine how well they represent the agents after
+deliberation has occurred.

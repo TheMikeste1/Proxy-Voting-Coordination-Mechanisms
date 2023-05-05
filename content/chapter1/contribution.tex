@@ -20,19 +20,38 @@ This is done to show what the output of the system would be with all information
 (direct voting with only those agents that are present).
 The error will be the distance between the result and direct voting with all agents.
 
-We will additionally apply what we've dubbed `coordination mechanisms,' which are
+We additionally apply what we've dubbed `coordination mechanisms,' which are
 techniques by which proxies and constituents work together to determine how their
 weight will be allocated, meaning how the proxy will vote on their behalf.
-The mechanisms we will explore are described
+The mechanisms we explore are described
 in~\autoref{subsec:coordination-mechanisms}.
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
 voting, as well as identify potential techniques to deter or mitigate a proxy's
-ability to swing the system by aggregating a large amount of weight and abusing it.
+ability to swing the system by aggregating a large amount of weight and abusing it by
+misallocating it towards a vote the constituents don't prefer.
+% 05/05/2023: \vicki{
+%   Not clear what the abuse refers to.
+%   They got the weight fairly.
+%   Is the abuse in threatening to change the preference for all?
+%   Not all aggregation methods would permit abuse???
+% }
+% I've added something to specify "abuse" means "misallocating."
+% Some voting mechanisms (which I assume is what is meant by "aggregation methods")
+% may not permit abuse, but inactive voters don't participate in the voting
+% mechanisms; they vote through the proxy.
+% This means the coordination mechanism needs to discourage the proxy from abusing
+% (misallocating) its constituents votes.
+%
+% If "aggregation methods" was supposed to mean "coordination mechanisms," the
+% methods that don't permit abuse only apply to when the proxy and its constituents
+% are choosing their group preference, but wouldn't help when the proxy actually goes
+% to cast the vote. To combat misallocation abuse, we introduce the "with
+% consequences" coordination mechanisms.
 
 Whereas voting on a continuous interval is uncommon and finding a real world dataset
 using preferences on an interval currently does not seem possible, these investigations
 are performed using preferences generated from several statistical distributions.
-We will use various distributions to allow the gathered data to represent
+We use various distributions to allow the gathered data to represent
 different distributions of voters in the real world.
 These distributions include well-known statistical distributions, such as the uniform
 distribution, the Gaussian distribution, as well as a few beta distributions.
@@ -64,12 +83,17 @@ Initial experiments show larger populations behave similarly to those with fewer
 As such, each experiment will have a population of 24.
 We chose this number because prior experimentation shows it to be a good balance
 between having few enough agents that an agent going inactive can change the
-results, while not so few that there are an agent going inactive is catastrophic.
+results, while not so few that an agent going inactive is catastrophic.
 Since having no delegates or all delegates would not be interesting, we will
 experiment with 1 to 22 inactive agents and examine how error correlates with
 the number of delegators.
 We choose 1 inactive agent as the minimum because the case with 0 agents is not
 interesting due to there not being any proxies.
+% 05/05/2023: % \vicki{I thought you did consider 0?}
+% No, I never have. As we've discussed, having 0 inactive agents is the same as not
+% using proxy voting and is not interesting. This plan was specified in the proposal.
+% Instead, I was asked to extend my graphs to include 0 (which I did by actually
+% running the simulations with 0 inactive agents).
 Similarly, we chose 22 as the maximum because the case with 24 agents means there are
 not active agents to vote, and the case with 23 simply devolves into the coordination
 mechanism replacing the voting mechanism.
@@ -87,10 +111,28 @@ mechanism, and each voting mechanism will be applied.
 The next coordination mechanism will be used, then each voting mechanism will be
 applied again.
 Once all coordination mechanisms have been used, the number of inactive agents will
-increase until all but one agent is inactive.
+increase 22 agents are inactive.
+% 05/05/2023: \vicki{Earlier you said 22 is the maximum}
+% Whoops, that was a leftover from when I was running up to 23. I've fixed it to be
+% correct.
 Finally, agents will select a new preference from the next distribution and the
 process will begin again.
 This will continue until all possible combinations have been used.
+% 05/05/2023 \vicki{
+%   For each experiment, are preferences and inactive voters re-selected?
+%   The way you discuss it, it sounds like the steps are additive.
+%   If they aren't there is no need to describe it as a progression.
+%   You should also state that each experiment was run 1024 times.
+% }
+% The preferences are reselected whenever a new preference distribution is used, as
+% stated two sentences prior. Since we only want to change one variable at a time
+% (similar to not using different RNG seeds), we only change the preferences once all
+% combinations have be used. This way, each coordination mechanism and voting
+% mechanism is applied to the same preferences with the same proxies and inactive
+% voters.
+%
+% I've specified the number of runs below.
+Each combination is run 1024 times to ensure any accuracy in the analysis.
 
 We will show that proxy voting with the right combination of mechanisms generally
 yields considerably lower error than active-only voting.

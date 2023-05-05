@@ -50,10 +50,8 @@ access to new information which may change their preference.
 Inactive agents do not benefit from this deliberation; only active agents do.
 As such, proxies have to participate in deliberation and change their preference on
 behalf of their constituents.
-It is possible the proxy will change its preference in such a way that some of its
-constituents would not.
 
-Additionally, there are multiple ways a proxy voting system can allow its proxies to
+There are multiple ways a proxy voting system can allow its proxies to
 vote.
 Specifically, they can allow proxies to make only one selection, or multiple.
 When the proxy is only allowed to make one selection on behalf of all its
@@ -63,6 +61,25 @@ In this `unified-vote' model, an agent must choose a proxy they are confident wo
 change their preference in the same way they would `if only [they] had the time and
 knowledge to participate directly'~\cite{Miller1969}, or risk having their vote
 misallocated.
+% 05/05/2023: \vicki{
+%   define precisely.  If they want to vote for x and find a proxy who is voting for
+%   x, explain how their vote gets misallocated.
+%   At the heart of the problem, we need to understand WHY their vote isn't just relayed
+%   and that we don't want to limit the delegate to not shifting their vote.
+% }
+% I've inserted the sentence below
+A vote would be misallocated the proxy changes its preference in such a way that some
+of its constituents would not, or when the proxy and its constituents choose a
+preference that is different from an individual's preference.
+% 05/05/2023: \vicki{
+%   At this point in the paper, you still haven't indicated that the proxy doesn't
+%   just relay the vote.
+%   I think this needs to be stated early and justified.
+% }
+% I've rearranged the paragraphs. Hopefully it makes more sense now. We have had this
+% problem before though, where it's not possible to explain all the particulars of a
+% topic before referencing it. Hopefully by introducing it in this paragraph and
+% defining it in the next we solve this issue.
 When a vote is misallocated, error is again introduced into the system, and may
 arguably be worse than if the inactive agent hadn't voted at all since it may change
 the result of the vote from what it would with all agents participating.
@@ -78,7 +95,16 @@ As such, information about the inactive voters' preferences is not lost.
 The process is effective in that every voter will have their vote allocated exactly
 as they want, but comes with the obvious cost that each proxy has to keep track
 of how each individual constituent wants their vote relayed.
-This naturally increases the complexity and work required by the proxy.
+This naturally increases the complexity and work required by the proxy since they not
+only need to know for whom they vote, but also what their preferences are and keep up
+-to-date with those preferences.
+% 05/05/2023: \vicki{
+%   This seems trivial.
+%   The proxy already has to know who they vote for.
+%   Knowing how they vote is only double the information - not a big deal.
+% }
+% Added more reasons as to why it's complex. The next sentences also outline
+% additional reasons as to why relay voting may not be desirable.
 Additionally, the inactive voters still need to be active in the deliberation process
 in order to properly participate in the process.
 This makes `relay-voting' only effective for occasions when agents have been able to

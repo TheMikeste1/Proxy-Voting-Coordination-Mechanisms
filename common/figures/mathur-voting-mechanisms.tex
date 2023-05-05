@@ -24,10 +24,14 @@
         Agents rank each candidate, and a pairwise margin matrix is generated.
         In the matrix, position $(x, y)$ is the number of rankings that prefer $x$ over
         $y$, minus the number of rankings that prefer $y$ over $x$.
-        A zero-sum game is defined, and an optimal mixed strategy computed.
-        % \vicki{explain the zero sum}
-        A zero-sum game is a situation in which for every point gained by one side,
-        the other side looses and equal number of points.
+        A zero-sum game is defined, and an optimal mixed strategy is computed.
+        % 05/05/2023: \vicki{Explain the mixed strategy.}
+        A `zero-sum game' is a situation in which for every point gained by one side,
+        the other side loses an equal number of points.
+        A `mixed strategy' is when an agent doesn't always choose the same move given
+        a situation; instead, they probabilistically choose between the options.
+        An `optimal mixed strategy' is thus the mixed strategy that yields the most
+        utility, or, in other words, achieves the best results.
         The winner is then chosen randomly using the optimal mixed strategy.
         See~\cite{Rivest2010} for more details.
     } \\
@@ -58,7 +62,7 @@
         An edge going from candidate $A$ to candidate $B$ with a weight of 10 means
         10 more agents prefer $A$ over $B$ than $B$ over $A$.
         Using this graph, multiple paths are generated between candidates.
-        The strength of the path is the sum of the weight of each edge in the path,
+        The strength of the path is the weight of the weakest edge in the path,
         and the path with the highest strength from $A$ is compared to the strongest
         path from $B$.
         The same occurs with paths from $A$ to $C$, $B$ to $C$, etc.
