@@ -14,7 +14,7 @@ As a point moves further away from the agent's preference, the agent likes it le
 This model works best when an upper and lower bound is provided, such as only
 allowing agents to vote in the interval $[-1, 1]$, to prevent agents from voting
 extremely far in either direction and so potentially biasing the vote.
-Not all ways of voting are susceptible to such attacks, but it must be a
+Not all methods of voting are susceptible to such attacks, but it must be a
 consideration for those that are.
 
 The difference between multiple equidistant points in the model may not be equivalent
@@ -47,8 +47,7 @@ preference, rather than if it is greater or less than some amount.
 Such a model is extremely flexible and can be interpreted in different ways.
 When applied to binary for-or-against voting problems, options can be placed at either
 extreme of the interval.
-As an example, shareholders at some company are voting on new data collection
-policies.
+As an example, shareholders at some company are voting on new data collection policies.
 Using the interval $[-1, 1]$, we can place `no collection at all' at -1, and `heavy
 collection' at 1.
 Agents vote according to their preference: -1 for no collection, 1 for heavy collection.
@@ -110,7 +109,7 @@ model, since observing the continuous output allows for more granularity in the
 differences between proxy and non-proxy voting, as well as in the differences between
 voting rules.
 
-\subsection{Voting mechanisms}\label{subsec:voting-mechanisms}
+\subsection{Voting Mechanisms}\label{subsec:voting-mechanisms}
 This study also makes use of \textit{voting mechanisms} or \textit{voting rules},
 which are functions that map a set of preferences in~\systemspace\ to an outcome that
 also exists in~\systemspace.
@@ -124,13 +123,28 @@ Naturally, since~\cite{Bulteau2021} did not use weighted proxies, these methods 
 to be adjusted to allow for weight.
 Below, \agentweight\ represents the weight of an agent \agent, and \systemproxies\ is
 the ordered set of active voters.
-Additionally, \agenttruth\ is the preference of an agent.
+Additionally, \agenttruth\ is the preference of an agent, and \system\ is the set of
+all agents.
+By extension, \systemweight\ is the weight of the system.
 With these notations, the mechanisms we use are
 \begin{enumerate}
     \item {
         \textit{Median ($L_1$)}, defined as
         $\input{common/figures/equations/weighted-median}$.
-        \vicki{This definition seems weird to me.  What is j?  Why not start at 1 and sum from 1 to i?  Why go to a(i-1) and then add i?}
+        % 05/05/2023: \vicki{
+        %   This definition seems weird to me.  What is j?  Why not start at 1 and sum from 1 to i?  Why go to a(i-1) and then add i?
+        % }
+        % This definition is saying the median is the preference of the first agent
+        % whose additional weight makes the sum of weights more than half the total
+        % weight of the system.
+        %
+        % `j` refers to `agent j,` as in the agent from the set of proxies that is
+        % not agent i. I could start at agent 1 and sum the weights to agent i.
+        % Instead I said we sum the other agents (agent j) from the set of proxies
+        % up to but not including agent i (which is why it goes to agent (i - 1)).
+        %
+        % I deliberately add agent i outside the sum to make it extremely apparent
+        % their weight is the weight that achieves the median.
         Essentially, the median is the active agent whose additional weight makes the
         sum of weights become equal to or greater than half the total weight of the
         system.
@@ -138,17 +152,34 @@ With these notations, the mechanisms we use are
         \systemproxies.
         There is an edge case where the sum of weight perfectly reaches half the
         total weight.
-        In this case both the lower and higher weighted medians  \vicki{Awkward, lower weighted median isn't really a thing.}, as well as any value
-        in between, can claim to be the median.
+        When this occurs, the preference that reaches half is called the lower
+        weighted median, and the preference the starts from half is called the higher
+        weighted median.
+        In this case both the lower and higher weighted medians
+        % 05/05/2023: \vicki{Awkward, lower weighted median isn't really a thing.}
+        % I'm not sure what else to call it. A quick internet search indicates these
+        % are known terms for the lower and higher bounds of a weighted median.
+        % I've added a sentence clarifying what these terms mean.
+        , as well as any value in between, can claim to be the median.
         This is similar to when there are an even number of preferences in a normal
         median.
-        In this case, we will take the average between the preference of agent with
+        In this case, we take the average between the preference of agent with
         the highest preference in the lower median half and the agent with the lowest
         preference in the higher half of the weighted median.
     }
     \item {
         \textit{Mean ($L_2$)}, defined as
-        $\input{common/figures/equations/weighted-mean}$.  \vicki{This is awkward too.  You sometimes use S and sometimes Sp, but you don't need both. S is sufficient, as the ordering doesn't matter.}
+        $\input{common/figures/equations/weighted-mean}$.
+        % \vicki{
+        %   This is awkward too.  You sometimes use S and sometimes Sp, but you don't
+        %   need both. S is sufficient, as the ordering doesn't matter.
+        % }
+        % S and Sp are different, S being the set of all agents and Sp being the set
+        % of active agents.
+        % I realized I forgot to define S, so I've added that above.
+        %
+        % I feel it's important to make this distinction because we want to divide by
+        % the weight of all agents, not just the weight of the active agents.
         This is a typical weighted average.
     }
     \item {
