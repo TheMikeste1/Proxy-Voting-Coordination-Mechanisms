@@ -5,18 +5,23 @@ The absolute mean error as a percent of the total preference space by coordinati
 mechanism per voting mechanism is graphed in
 \autoref{fig:vm-col-cm-hue-error-as-percent-of-space-abs-mean}.
 % 04/13: \vicki{Briefly describe how you define mean square error}
-The absolute mean error as a percent of the total preference space  \vicki{Why sigma?  Sigma normally means standard deviation.  Mean squared error is typically MSE.}
-$\sigma_{\lvert M\% \rvert}$  is defined as
+The absolute mean error as a percent of the total preference space
+% 05/05/2023:\vicki{Why sigma?  Sigma normally means standard deviation.  Mean squared
+% error is typically MSE.}
+% I just needed a symbol. I'll change it.
+$\lvert MSE\% \rvert$  is defined as
 $
-    \sigma_{\lvert M\% \rvert} =
+    \lvert MSE\% \rvert =
     \frac{1}{n (\systemspace_{\max} - \systemspace_{\min})}
         \sum^{n}_{i = 1}{\lvert \epsilon_i  \rvert}
 $,
 where $n$ is the number of runs, $\systemspace_{\max}$ and $\systemspace_{\min}$ are
 the maximum and minimum value in the preference space, respectively, and $\epsilon_i$
 is the error of run $i$.
-Error is defined as $\truthof{\text{proxy}}~-~\truthof{\text{baseline}}$, meaning the
-output of the proxy run minus the output of the baseline (all agents voting).  \vicki{T(proxy) seems a little odd because the test doesn't always use a proxy voter.  Could use say T(test)?}
+Error is defined as $\truthof{\text{test}}~-~\truthof{\text{baseline}}$, meaning
+the output of the test run minus the output of the baseline (all agents voting).
+% 05/05/2023: \vicki{T(proxy) seems a little odd because the test doesn't always use a
+% proxy voter.  Could use say T(test)?}
 
 From this plot, there are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
