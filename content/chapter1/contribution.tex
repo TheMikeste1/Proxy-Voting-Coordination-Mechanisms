@@ -27,8 +27,26 @@ The mechanisms we explore are described
 in~\autoref{subsec:coordination-mechanisms}.
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
 voting, as well as identify potential techniques to deter or mitigate a proxy's
-ability to swing the system by aggregating a large amount of weight and abusing it.  \vicki{Not clear what the abuse refers to. 
- They got the weight fairly.  Is the abuse in threatening to change the preference for all?  Not all aggregation methods would permit abuse???}
+ability to swing the system by aggregating a large amount of weight and abusing it by
+misallocating it towards a vote the constituents don't prefer.
+% 05/05/2023: \vicki{
+%   Not clear what the abuse refers to.
+%   They got the weight fairly.
+%   Is the abuse in threatening to change the preference for all?
+%   Not all aggregation methods would permit abuse???
+% }
+% I've added something to specify "abuse" means "misallocating."
+% Some voting mechanisms (which I assume is what is meant by "aggregation methods")
+% may not permit abuse, but inactive voters don't participate in the voting
+% mechanisms; they vote through the proxy.
+% This means the coordination mechanism needs to discourage the proxy from abusing
+% (misallocating) its constituents votes.
+%
+% If "aggregation methods" was supposed to mean "coordination mechanisms," the
+% methods that don't permit abuse only apply to when the proxy and its constituents
+% are choosing their group preference, but wouldn't help when the proxy actually goes
+% to cast the vote. To combat misallocation abuse, we introduce the "with
+% consequences" coordination mechanisms.
 
 Whereas voting on a continuous interval is uncommon and finding a real world dataset
 using preferences on an interval currently does not seem possible, these investigations
