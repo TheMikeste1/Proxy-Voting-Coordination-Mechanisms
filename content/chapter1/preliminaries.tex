@@ -210,63 +210,82 @@ Each has different advantages and disadvantages for the proxy, its constituents,
 the system as a whole.
 We will examine five different `coordination' mechanisms that `groups' (meaning a
 proxy and its constituents) can use:
-\vicki{Consider removing the "no preference change" to the first four, including preference change for the last four.  The reader isn't ready for the preference change idea, as it hasn't been introduced, so it is just confusing.}
+% 05/05/2023: \vicki{
+%   Consider removing the "no preference change" to the first four, including
+%   preference change for the last four.
+%   The reader isn't ready for the preference change idea, as it hasn't been introduced,
+%   so it is just confusing.
+% }
 \begin{enumerate}
     \item {
-        \textit{No preference change - Expert}.
+        \textit{Expert}.
         The group applies its total weight to the proxy's preference.
     }
+    % \item {
+    %     \textit{Active Only}.  \vicki{The previous sentence indicates these govern how groups coordinate.  This doesn't really meet that criteria.
+ % The name also seems odd. }
+ %        Only active agents vote with no additional weight.
+ %    }
+    % This is a baseline which I discussed previously, so I've removed it
     \item {
-        \textit{No preference change - Active Only}.  \vicki{The previous sentence indicates these govern how groups coordinate.  This doesn't really meet that criteria. 
- The name also seems odd. }
-        Only active agents vote with no additional weight.
-    }
-    \item {
-        \textit{No preference change - Cooperative Mean}.
+        \textit{Cooperative Mean}.
         The group allocates its weight to the mean of the proxy's and its
         constituents' preferences.
     }
     \item {
-        \textit{No preference change - Cooperative Median}.
+        \textit{Cooperative Median}.
         The group allocates its weight to the median of the proxy's and its
         constituents' preferences.
     }
-    \item {
-        \textit{Preference change - Expert}.
-        The group applies its total weight to the proxy's preference but allows the proxy to change its vote.
-        This is useful for cases when a proxy is deemed by its constituents as an
-        `expert', as discussed by James Miller~\cite{Miller1969}.
-        However, active agents' preferences have changed as they have participated in
-        deliberation and discussion with the other active voters.
-    }
-    \item {
-        \textit{Preference change - Expert with Consequences}.
-        The proxy is an expert and the group allocates its weight to the proxy's
-        preference, but active agents', including the proxy's, preferences have changed.
-        However, due to this change the proxy is only allowed vote for itself,
-        meaning it can only use its own weight.
-        This causes its constituents to be unrepresented.
-        This represents situations where a proxy is considered an expert, but the
-        constituents impose a condition that the proxy can only represent them if
-        they vote a certain way.
-
-        Note this is analogous to only having the active agents vote.  \vicki{Not if the proxy doesn't change their vote.  I think you have to handle this case because otherwise, it makes no sense to have a new name.  }
-    }
-    \item {
-        \textit{Preference change - Cooperative Mean}.
-        The group allocates its weight to the mean of the proxy's and its
-        constituents' preferences.
-        However, active agents' preference has changed as it has participated in
-        deliberation and discussion with the other active voters.
-        
-    }
-    \item {
-        \textit{Preference change - Cooperative Median}.
-        The group allocates its weight to the median of the proxy's and its
-        constituents' preferences.
-        However, active agents' preferences have changed due to deliberation.
-    }
+    % \item {
+    %     \textit{Preference change - Expert}.
+    %     The group applies its total weight to the proxy's preference but allows the proxy to change its vote.
+    %     This is useful for cases when a proxy is deemed by its constituents as an
+    %     `expert', as discussed by James Miller~\cite{Miller1969}.
+    %     However, active agents' preferences have changed as they have participated in
+    %     deliberation and discussion with the other active voters.
+    % }
+    % \item {
+    %     \textit{Preference change - Expert with Consequences}.
+    %     The proxy is an expert and the group allocates its weight to the proxy's
+    %     preference, but active agents', including the proxy's, preferences have changed.
+    %     However, due to this change the proxy is only allowed vote for itself,
+    %     meaning it can only use its own weight.
+    %     This causes its constituents to be unrepresented.
+    %     This represents situations where a proxy is considered an expert, but the
+    %     constituents impose a condition that the proxy can only represent them if
+    %     they vote a certain way.
+    %
+    %     Note this is analogous to when agents change their preference and only active
+    %     agents are allowed to vote.
+    %     % 05/05/2023: \vicki{Not if the proxy doesn't change their vote.  I think you
+    %     % have to handle this case because otherwise, it makes no sense to have a new name.
+    %     % }
+    %     % Naturally this doesn't apply to when agents change their vote. That's why I
+    %     % specify they've changed their preference. Nevertheless, I've extracted
+    %     % these and explain the coordination mechanisms are also applied to when the
+    %     % agents change their votes.
+    %
+    % }
+    % \item {
+    %     \textit{Preference change - Cooperative Mean}.
+    %     The group allocates its weight to the mean of the proxy's and its
+    %     constituents' preferences.
+    %     However, active agents' preference has changed as it has participated in
+    %     deliberation and discussion with the other active voters.
+    %
+    % }
+    % \item {
+    %     \textit{Preference change - Cooperative Median}.
+    %     The group allocates its weight to the median of the proxy's and its
+    %     constituents' preferences.
+    %     However, active agents' preferences have changed due to deliberation.
+    % }
 \end{enumerate}
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
 voting, as well as identify potential techniques to deter or mitigate a proxy's
 ability to swing the system by aggregating a large amount of weight and abusing it.
+
+These mechanisms will additionally be applied after active agents change their
+preferences in order to determine how well they represent the agents after
+deliberation has occurred.
