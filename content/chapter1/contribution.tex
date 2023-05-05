@@ -117,8 +117,22 @@ increase 22 agents are inactive.
 % correct.
 Finally, agents will select a new preference from the next distribution and the
 process will begin again.
-This will continue until all possible combinations have been used.  \vicki{For each experiment, are preferences and inactive voters re-selected?  The way you discuss it, it sounds like the steps are additive.  If they aren't there is no need to describe it as a progression. 
- You should also state that each experiment was run 1024 times.}
+This will continue until all possible combinations have been used.
+% 05/05/2023 \vicki{
+%   For each experiment, are preferences and inactive voters re-selected?
+%   The way you discuss it, it sounds like the steps are additive.
+%   If they aren't there is no need to describe it as a progression.
+%   You should also state that each experiment was run 1024 times.
+% }
+% The preferences are reselected whenever a new preference distribution is used, as
+% stated two sentences prior. Since we only want to change one variable at a time
+% (similar to not using different RNG seeds), we only change the preferences once all
+% combinations have be used. This way, each coordination mechanism and voting
+% mechanism is applied to the same preferences with the same proxies and inactive
+% voters.
+%
+% I've specified the number of runs below.
+Each combination is run 1024 times to ensure any accuracy in the analysis.
 
 We will show that proxy voting with the right combination of mechanisms generally
 yields considerably lower error than active-only voting.
