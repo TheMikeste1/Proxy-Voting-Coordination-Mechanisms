@@ -4,8 +4,14 @@ Proxy voting is a well-discussed topic, and we build off many author's previous 
 Jonas Degrave~\cite{Degrave2014} implemented a simple model to calculate 
 weight of a proxy.
 The model even allows for agents to delegate multiple proxies.
-He treated proxy delegations as a digraph where nodes are voters and edges represent
-delegating proxies  \vicki{This sounds like the proxies delegate, but actually they are the ones delegated to.} , and created two methods to determine the weights of each proxy.
+He treated delegations as a digraph where nodes are voters and edges represent
+a delegation.
+% 05/05/2023: \vicki{
+%   This sounds like the proxies delegate, but actually they are the
+%   ones delegated to.
+% }
+% Rephrased
+He then created two methods to determine the weights of each proxy.
 The first method constructs a linear equation for each agent, consisting of the
 agent's original weight plus the weight of the agents that delegate to it.
 The second employs an adjacency matrix and uses linear algebra to calculate the
@@ -94,7 +100,6 @@ well with proxy voting.
 %
 % Schulze does have a direct link between any candidate, but a direct link is not
 % necessarily the strongest path. I've made some changes to hopefully clarify.
-
 
 \etal{Cohensius}~\cite{Cohensius2017} explore the use of proxy voting in a
 continuous metric space using two voting mechanisms: mean, median.
