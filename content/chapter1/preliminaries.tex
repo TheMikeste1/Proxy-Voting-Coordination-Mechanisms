@@ -189,9 +189,16 @@ With these notations, the mechanisms we use are
         active agent with the highest preference, divided by two.
     }
 \end{enumerate}
-We will additionally\vicki{Not sure what is meant by additionally.  Were you meaning that the voting mechanism was used for some other reason?}  apply these voting mechanisms with all active voters (to simulate
-if proxy voting was not allowed) and all voters, both active and inactive, (to simulate
-the best case where all agents vote), without any weights.
+In additional to applying these voting mechanisms on the set of active agents, we
+% 05/05/2023: \vicki{Not sure what is meant by additionally.  Were you meaning that the
+% voting mechanism was used for some other reason?}
+% Yes, the mechanisms as described above are applied to the weighted set of active
+% voters. Here I'm explaining  my baseline, those being using these mechanisms on all
+% voter, active and inactive, as well as applying them to only the active voters
+% without weights. I've rephrased things to try to make it more apparent.
+apply these mechanisms to active voters without weights (to simulate if proxy voting was
+not allowed) and all voters, both active and inactive, (to simulate the best case
+where all agents vote).
 These additional calculations serve as baselines to determine how well proxy voting
 works in these scenarios.
 
