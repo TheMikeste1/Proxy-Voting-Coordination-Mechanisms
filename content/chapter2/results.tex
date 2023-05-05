@@ -25,19 +25,25 @@ the output of the test run minus the output of the baseline (all agents voting).
 
 From this plot, there are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
-This is true with two notable exceptions: first, the Active Only/Median
-mechanism combination has a somewhat sawtooth shape.
-This is due to the Median mechanisms always choosing a specific agent's preference
-instead of aggregating to some more preferential in-between value.  \vicki{I thought it was an average if a unique median couldn't be found.  Have you considered running with 25 agents, so the median is always clear?}
+% 05/05/2023: \vicki{I thought it was an average if a unique median couldn't be found
+% .  Have you considered running with 25 agents, so the median is always clear?}
+% Whoops, another artifact from when I was using the lower bound. Active Only/Median
+% no longer has this shape.
+%
+% The parity of the total number of agents doesn't change anything because as agents
+% become inactive the number of active agents will become even.
 
-The second exception is that Mean coordination mechanism consistently dips when all but
-one agent become delegators. 
-\vicki{I thought you removed this case?  Did I misunderstand?  The charts look like you went until 23/24 were delegates.}
-This is because we take the mean of the constituents and the proxy, then apply the
-voting mechanism on the set of proxy-constituent votes.
-Since there is only one agent, there is only one proxy-constituent vote and so the
-result of the vote is the result of the coordination mechanism.
-Essentially, the coordination mechanism replaces the voting mechanism.
+% The second exception is that Mean coordination mechanism consistently dips when all but
+% one agent become delegators.
+% 05/05/2023: \vicki{I thought you removed this case?  Did I misunderstand?  The charts
+% look like you went until 23/24 were delegates.}
+% Again, another artifcat from before we truncated the results. This paragraph is no
+% longer relevant.
+% This is because we take the mean of the constituents and the proxy, then apply the
+% voting mechanism on the set of proxy-constituent votes.
+% Since there is only one agent, there is only one proxy-constituent vote and so the
+% result of the vote is the result of the coordination mechanism.
+% Essentially, the coordination mechanism replaces the voting mechanism.
 
 We can also see the Mean and Median coordination mechanisms generally yield similar
 amounts of error.
