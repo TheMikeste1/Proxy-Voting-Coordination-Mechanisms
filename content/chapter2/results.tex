@@ -283,7 +283,9 @@ voting, does not work quite as well when agents have stronger, opposing opinions
 % I've made a slight edit to specify this error really only occurs with the median
 % voting mechanism.
 
-For the median mechanism voting mechanism \vicki{specify the distribution}, the increase in error makes sense.
+For the median mechanism voting mechanism in \betadistribution{0.3}{0.3},
+% 05/05/2023: \vicki{specify the distribution}
+the increase in error makes sense.
 The median will most often be the preference of a specific agent, instead of some
 value in between.
 As such, the result will often be in one of the spikes in the PDF, since that is
@@ -317,7 +319,17 @@ they don't.
 In this case, the proxies were able to shift their preferences by up to 10\% of the
 total preference space, while delegators kept their original preference.
 This represents the proxies changing their preference for an issue after deliberation.
-\vicki{Explain how they change preference.  Are they influenced by the distribution?  I would guess if they were an outlier and changed preference, they would become more centrist.  Is this how you set it up?  If the changes are random, it doesn't seem realistic.}
+% \vicki{
+%   Explain how they change preference.
+%   Are they influenced by the distribution?
+%   I would guess if they were an outlier and changed preference, they would become
+%   more centrist.
+%   Is this how you set it up?  If the changes are random, it doesn't seem realistic.
+% }
+% It is somewhat random (as it would have to be since I'm not using real data), but
+% it does account for outliers. I've added the sentence below explaining this caveat.
+While this movement is random, if an agent is an extremist, meaning they are far to the
+left or right of the preference space, they are more likely to move towards the center.
 
 Unsurprisingly, the amount of error increases as more agents become inactive.
 However, the coordination mechanisms are much more tightly grouped than in other
