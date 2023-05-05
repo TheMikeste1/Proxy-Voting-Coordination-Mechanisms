@@ -203,7 +203,13 @@ the same graphs, but with a different scale for each plot to more easily see the
 Additionally, each graph is zoomed in for readability
 in~\autoref{apx:error-by-dist-zoomed}.
 
-\vicki{Having three different versions of the same thing is painful when you are looking online, as you can't easily flip back and forth (or see them side by side). }
+% 05/05/2023: \vicki{
+%   Having three different versions of the same thing is painful when you are
+%   looking online, as you can't easily flip back and forth (or see them side by side).
+% }
+% I'm not sure what to do about this. There is too much data to fit on a single page.
+% The only solutions I can think of are to chop up the data and have several
+% contiguous pages of charts, or eliminate some of the graphs.
 
 \begin{figure}[p]
     \centering
@@ -240,7 +246,31 @@ extremely important to ensure results are fair and accurate.
 This would indicate that proxy voting, while it is still better than active-only
 voting, does not work quite as well when agents have stronger, opposing opinions.
 
-\vicki{  When you have a polarized topic, the answer chosen will always be a long distance from the preference.  For strong preferences, I'm guessing the mean or median is very volatile - changing dramatically from test to test, especially when the test size is small.  If the result changes wildly from test to test, we can hardly expect a different mechanism to change in the same wild way.  Is there a way we could verify this, say look at the standard deviation of resultant preference for the 1024 tests?   My guess is that for a normal distribution, the results are similar (for the same test, no proxy) from run to run, but that isn't true for other distributions. }
+% 05/05/2023: \vicki{
+%   When you have a polarized topic, the answer chosen will always be a long distance
+%   from the preference.
+%   For strong preferences, I'm guessing the mean or median is very volatile - changing
+%   dramatically from test to test, especially when the test size is small.
+%   If the result changes wildly from test to test, we can hardly expect a different
+%   mechanism to change in the same wild way.
+%   Is there a way we could verify this, say look at the standard deviation of resultant
+%   preference for the 1024 tests?
+%   My guess is that for a normal distribution, the results are similar (for the same
+%   test, no proxy) from run to run, but that isn't true for other distributions.
+% }
+% It might be the case that mean and median are volatile for polarized topics.
+% However, we're not looking at the sum of differences between the result of the vote
+% and the preferences of the agents. We're looking at the difference between the
+% result of the vote in the baseline and the result of the vote when using proxy
+% voting, the baseline being when all agents vote. The baseline uses the same voting
+% mechanisms as proxy voting, and runs are only compared to runs with the same voting
+% mechanism. For reference, this is explained in the first paragraph of the chapter
+% (|MSE%|).
+%
+% If proxy voting behaved the exact same way as the baselines, the error on the graph
+% would be 0 regardless of how far the result is from the agents' preferences.
+% Instead, we see an increase in error, meaning proxy voting does not select the
+% same option as the baseline.
 
 % 04/13:
 % \vicki{
