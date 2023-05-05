@@ -88,7 +88,12 @@ Since having no delegates or all delegates would not be interesting, we will
 experiment with 1 to 22 inactive agents and examine how error correlates with
 the number of delegators.
 We choose 1 inactive agent as the minimum because the case with 0 agents is not
-interesting due to there not being any proxies.  \vicki{I thought you did consider 0?}
+interesting due to there not being any proxies.
+% 05/05/2023: % \vicki{I thought you did consider 0?}
+% No, I never have. As we've discussed, having 0 inactive agents is the same as not
+% using proxy voting and is not interesting. This plan was specified in the proposal.
+% Instead, I was asked to extend my graphs to include 0 (which I did by actually
+% running the simulations with 0 inactive agents).
 Similarly, we chose 22 as the maximum because the case with 24 agents means there are
 not active agents to vote, and the case with 23 simply devolves into the coordination
 mechanism replacing the voting mechanism.
