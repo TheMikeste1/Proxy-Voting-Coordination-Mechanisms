@@ -1,5 +1,5 @@
 \text{let } i =
-    \min i \text{ s.t. } \sum{j = 1}{i}
-        \weightof{{\systemproxies}_j} > \frac{\systemweight}{2}
+    \min i \text{ s.t. } \sum_{j = 1}^{i}
+        \weightof{{\systemproxies}_j} \geq \frac{\systemweight}{2}
 ;
 \textbf{md}(\systemproxies) = \truthof{\agent_i}
