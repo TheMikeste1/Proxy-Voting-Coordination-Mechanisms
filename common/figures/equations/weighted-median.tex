@@ -1,9 +1,5 @@
-\textbf{md}(\systemproxies) =
-    \truthof{
-        \min\left\{
-        \agent_i \in \systemproxies \text{ s.t. }
-            \weightof{\agent_i} +
-            \sum_{\agent_j \in \systemproxies}^{\agent_{i - 1}} \weightof{\agent_j}
-            \geq \frac{\systemweight}{2}
-        \right\}
-    }
+\text{let } i =
+    \min i \text{ s.t. } \sum{j = 1}{i}
+        \weightof{{\systemproxies}_j} > \frac{\systemweight}{2}
+;
+\textbf{md}(\systemproxies) = \truthof{\agent_i}

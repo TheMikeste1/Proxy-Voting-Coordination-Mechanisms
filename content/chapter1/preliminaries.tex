@@ -131,16 +131,16 @@ With these notations, the mechanisms we use are
     \item {
         \textit{Median ($L_1$)}, defined as
         $\input{common/figures/equations/weighted-median}$.
-         05/05/2023: \vicki{
-          In your original definition, you need to control j (starting at 1) so we know it is a subscript in Sp.
-This notation doesn't say what you want.  Nothing says that j begins at 1 in Sp.
-
-Better as: 
-let i = min i such that (sum(j=1,i) w(Spj) >w(S)/2)
-md(Sp) = T(ai)
-
-           
-         }
+         % 05/13/2023: \vicki{
+         %  In your original definition, you need to control j (starting at 1) so we know it is a subscript in Sp.
+% This notation doesn't say what you want.  Nothing says that j begins at 1 in Sp.
+%
+% Better as:
+% let i = min i such that (sum(j=1,i) w(Spj) >w(S)/2)
+% md(Sp) = T(ai)
+%
+%
+%          }
         % This definition is saying the median is the preference of the first agent
         % whose additional weight makes the sum of weights more than half the total
         % weight of the system.
