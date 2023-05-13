@@ -122,10 +122,9 @@ preferences.
 Naturally, since~\cite{Bulteau2021} did not use weighted proxies, these methods need
 to be adjusted to allow for weight.
 Below, \agentweight\ represents the weight of an agent \agent, and \systemproxies\ is
-the ordered set of active voters.
+the set of active voters ordered by preference.
 Additionally, \agenttruth\ is the preference of an agent, and \system\ is the set of
 all agents.
-By extension, \systemweight\ is the weight of the system.
 With these notations, the mechanisms we use are
 \begin{enumerate}
     \item {
@@ -191,14 +190,17 @@ With these notations, the mechanisms we use are
     }
     \item {
         \textit{Mid-range ($L_\infty$)}, defined as
-        $\input{common/figures/equations/weighted-midrange}$, meaning the preference
-        of the active agent with the lowest preference plus the preference of the
-        active agent with the highest preference, divided by two.
-
-        \vicki{Since Sp is ordered, don't you just want T(Sp1) and T(Spn)?
-        You say SP is the ordered set of active voters.  You need to say it is ordered by preference (not weight).
-        I wonder if  you just need better notation.  Instead of Sp, call it W (for weighted proxies, ordered by preference) and then elements can be w1, w2, ... wn
-        }
+        $\input{common/figures/equations/weighted-midrange}$, where $n$ is the number
+        of proxies
+        This equation essentially means the preference of the active agent with the
+        lowest preference plus the preference of the active agent with the
+        highest preference, divided by two.
+        %
+        % 05/13/2023 \vicki{Since Sp is ordered, don't you just want T(Sp1) and T(Spn)?
+        % You say SP is the ordered set of active voters.  You need to say it is ordered by preference (not weight).
+        % I wonder if  you just need better notation.  Instead of Sp, call it W (for weighted proxies, ordered by preference) and then elements can be w1, w2, ... wn
+        % }
+        % I'll change Sp to W, but w is already used to mean the weight function.
     }
 \end{enumerate}
 In additional to applying these voting mechanisms on the set of active agents, we
