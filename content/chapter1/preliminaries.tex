@@ -66,8 +66,8 @@ other.
 
 Alternatively, if the majority of the votes are about the center, it may be a sign
 neither option is satisfactory.
-Using the data collection example, we can reinterpret 0 to mean the agents don't
-mind collecting users' data, but don't personally care either way.
+Using the data collection example, we can reinterpret 0 to mean the agents do not
+mind collecting users' data, but also do not personally care either way.
 These agents would vote around 0 to avoid imposing.
 By making the agents aware of how 0 will be interpreted, they can express their
 dissatisfaction by voting at or around 0.
@@ -159,17 +159,17 @@ With these notations, the mechanisms we use are
         There is an edge case where the sum of weight perfectly reaches half the
         total weight.
         When this occurs, the preference that reaches half is called the lower
-        weighted median, and the preference the starts from half is called the higher
+        weighted median, and the preference that starts from half is called the higher
         weighted median.
-        In this case both the lower and higher weighted medians
+        In this case both the lower and higher weighted medians,
         % 05/05/2023: \vicki{Awkward, lower weighted median isn't really a thing.}
         % I'm not sure what else to call it. A quick internet search indicates these
         % are known terms for the lower and higher bounds of a weighted median.
         % I've added a sentence clarifying what these terms mean.
-        , as well as any value in between, can claim to be the median.
+        as well as any value in between, can claim to be the median.
         This is similar to when there are an even number of preferences in a normal
         median.
-        In this case, we take the average between the preference of agent with
+        In this case, we take the average between the preference of the agent with
         the highest preference in the lower median half and the agent with the lowest
         preference in the higher half of the weighted median.
     }
@@ -203,7 +203,7 @@ With these notations, the mechanisms we use are
         % I'll change Sp to W, but w is already used to mean the weight function.
     }
 \end{enumerate}
-In additional to applying these voting mechanisms on the set of active agents, we
+In addition to applying these voting mechanisms on the set of active agents, we
 % 05/05/2023: \vicki{Not sure what is meant by additionally.  Were you meaning that the
 % voting mechanism was used for some other reason?}
 % Yes, the mechanisms as described above are applied to the weighted set of active

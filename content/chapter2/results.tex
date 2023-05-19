@@ -140,13 +140,13 @@ inactive voter.
 Therefore, when an active voter's weight is added to the sum it is more able to push
 the sum over the half-way mark, thereby making that active voter's preference the
 median.
-This is also why we see the most extreme dip with using the Median voting mechanism
-with Median coordination mechanism: the proxy is able to reach the median both when
+This is also why we see the most extreme dip when using the Median voting mechanism
+with the Median coordination mechanism: the proxy is able to reach the median both when
 coordinating and when voting, thereby making the proxy and its constituents' vote be the
 proxy's preference.
-This makes the system less volatile, since votes are less likely to be an inactive
-voter's, and so we don't see the large spike in error when a large percent of agents
-are delegating.
+This makes the system less volatile by making it less likely the output is an inactive
+voter's preference, and so we avoid the large spike in error when a high percent of
+agents are delegating.
 
 Additionally, from~\autoref{fig:different-weight-comparison}, we see both the Median
 and Mean voting mechanisms quickly increase
@@ -158,7 +158,7 @@ When both types of voters have the same weight, the coordination mechanisms help
 ensure the loss of preference from the agent going inactive is minimal.
 However, when they have different weights, in particular when the weight of the
 inactive voters is substantially less than that of the actives, the results are more
-akin to when the voter doesn't vote.
+akin to when the voter does not vote.
 
 The Midrange voting mechanism, however, does not increase as quickly and does not
 achieve as much of a difference.
@@ -314,8 +314,8 @@ participate.
 
 \subsection{Preference Change}\label{subsec:results-shift}
 \autoref{fig:abs-diff-from-preference-change-error-as-percent-of-space-abs-mean} shows
-the difference in error between when proxies do have a preference change and when
-they don't.
+the difference in error between when proxies do have a preference change versus when
+they do not.
 In this case, the proxies were able to shift their preferences by up to 10\% of the
 total preference space, while delegators kept their original preference.
 This represents the proxies changing their preference for an issue after deliberation.
@@ -340,8 +340,8 @@ This might be because delegators are selecting proxies who then shift a large am
 leaving the delegator unsatisfied.
 
 This potentially worse outcome highlights not only the importance of actively
-participating in discussions, but also that when one needs to choose a proxy the
-proxy must be someone who would act as the delegator who want them to act.
+participating in discussions, but also the importance of selecting a proxy who would
+act as the delegator would want them to act.
 
 \begin{landscape}
     \begin{figure}[p]
@@ -349,8 +349,8 @@ proxy must be someone who would act as the delegator who want them to act.
         \includegraphics[scale=0.55]
         {content/chapter2/figures/abs_diff_from_preference_change_error_as_percent_of_space_abs_mean}
         \caption{
-            The absolute difference in the error produced between without a
-            preference change and with a preference change as a percent of space.
+            The absolute difference in the error produced between no preference
+            change and with a preference change as a percent of space.
             The results are averaged over 1024 total runs.
             There are 24 total agents.
         }

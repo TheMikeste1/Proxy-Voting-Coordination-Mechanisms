@@ -28,7 +28,7 @@ in~\autoref{subsec:coordination-mechanisms}.
 These mechanisms are used in an attempt to simulate real-world consequences of proxy
 voting, as well as identify potential techniques to deter or mitigate a proxy's
 ability to swing the system by aggregating a large amount of weight and abusing it by
-misallocating it towards a vote the constituents don't prefer.
+misallocating it towards a vote the constituents do not prefer.
 % 05/05/2023: \vicki{
 %   Not clear what the abuse refers to.
 %   They got the weight fairly.
@@ -87,7 +87,7 @@ results, while not so few that an agent going inactive is catastrophic.
 Since having no delegates or all delegates would not be interesting, we will
 experiment with 1 to 22 inactive agents and examine how error correlates with
 the number of delegators.
-We choose 1 inactive agent as the minimum because the case with 0 agents is not
+We chose 1 inactive agent as the minimum because the case with 0 agents is not
 interesting due to there not being any proxies.
 % 05/05/2023: % \vicki{I thought you did consider 0?}
 % No, I never have. As we've discussed, having 0 inactive agents is the same as not
@@ -111,7 +111,7 @@ mechanism, and each voting mechanism will be applied.
 The next coordination mechanism will be used, then each voting mechanism will be
 applied again.
 Once all coordination mechanisms have been used, the number of inactive agents will
-increase 22 agents are inactive.
+increase until 22 agents are inactive.
 % 05/05/2023: \vicki{Earlier you said 22 is the maximum}
 % Whoops, that was a leftover from when I was running up to 23. I've fixed it to be
 % correct.
@@ -132,7 +132,7 @@ This will continue until all possible combinations have been used.
 % voters.
 %
 % I've specified the number of runs below.
-Each combination is run 1024 times to ensure any accuracy in the analysis.
+Each combination is run 1024 times to ensure accuracy in the analysis.
 
 We will show that proxy voting with the right combination of mechanisms generally
 yields considerably lower error than active-only voting.
