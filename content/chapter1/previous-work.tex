@@ -1,9 +1,9 @@
 \section{Previous Work}\label{sec:previous-work}
-Proxy voting is a well-discussed topic, and we build off many author's previous work.
+Proxy voting is a well-discussed topic, and we build off many authors' previous work.
 
-Jonas Degrave~\cite{Degrave2014} implemented a simple model to calculate 
+Jonas Degrave~\cite{Degrave2014} implemented a simple model to calculate the
 weight of a proxy.
-The model even allows for agents to delegate multiple proxies.
+The model even allows agents to delegate multiple proxies.
 He treated delegations as a digraph where nodes are voters and edges represent
 a delegation.
 % 05/05/2023: \vicki{
@@ -17,7 +17,7 @@ agent's original weight plus the weight of the agents that delegate to it.
 The second employs an adjacency matrix and uses linear algebra to calculate the
 solution.
 Ultimately, both methods simply sum the total weight allocated to a proxy.
-We will employ the first technique, since it allows for a straightforward way to
+We will employ the first technique since it allows for a straightforward way to
 delegate voting power that would not be confusing to voters.
 However, we will not take full advantage of it by disallowing proxies to delegate to
 other proxies, as well as only allowing each agent to delegate one proxy.
@@ -54,7 +54,7 @@ output of the system.
 % }
 % No. What you are describing is a coordination mechanism. Additionally, I'm
 % describing how they used it.
-They apply these mechanisms on a dataset while looking only at datapoints without a
+They apply these mechanisms on a dataset while looking only at data points without a
 Condorcet winner.
 A Condorcet winner is a candidate that wins in every possible one-on-one election
 against other candidates.
@@ -62,7 +62,7 @@ These types of winners are important because they are ubiquitously preferred ove
 all other candidates in an election, and their absence means there is not always a
 clear winner.
 In their work, they say a mechanism `beats' another if it has a larger fraction of
-the population prefer its output over the other's output.
+the population prefers its output over the other's output.
 They discover that the maximal lottery rule, also known as the
 Game~Theory~(GT)~method~\cite{Rivest2010}, beats all others.
 The Schulze~method~\cite{Schulze2011} and Minimax voting mechanisms always agree and
@@ -73,9 +73,9 @@ This study will also look at voting mechanisms and attempt to determine which
 mechanism is best suited for proxy voting.
 
 Our work will differ significantly from theirs, however, as we will explore voting
-mechanisms used in a continuous voting space instead of a discrete-space.
+mechanisms used in a continuous voting space instead of a discrete space.
 Additionally, our mechanisms will be different from the ones they employed since
-their mechanisms either do not work in a continuous preference space, or do not work
+their mechanisms either do not work in a continuous preference space or do not work
 well with proxy voting.
 % \vicki{
 %   This discussion simplifies the differences between voting methods such as
@@ -110,7 +110,7 @@ well with proxy voting.
 
 \etal{Cohensius}~\cite{Cohensius2017} explore the use of proxy voting in a
 continuous metric space using two voting mechanisms: mean and median.
-They also explore proxy voting in a binary space using majority.
+They also explore proxy voting in a binary space using the majority mechanism.
 They discovered proxy voting using any of these mechanisms generally produces lower
 error than direct voting with active voters alone.
 This is not too surprising: reintroducing information lost through inactive voters,
@@ -119,10 +119,10 @@ Nevertheless, they were able to show that proxy voting is effective under a numb
 symmetrical and asymmetrical preference distributions, while under both random and
 strategic participation.
 However, the majority of their research focuses on voting with infinite populations.
-While our work would certainly be applicable to larger populations, since a
-population of sufficient size will begin to behave like an infinite population\footnote{
+While our work would certainly be applicable to larger populations (since a
+population of sufficient size will begin to behave like an infinite population),\footnote{
     Naturally, $\lim_{x \rightarrow \infty} x = \infty$.
-}, we are more interested in more realistic proxy voting in smaller, finite populations.
+} we are more interested in more realistic proxy voting in smaller, finite populations.
 As such, we will explore the effects of proxy voting on a finite population, as well
 as explore other possible voting mechanisms, inside this continuous metric space.
 
@@ -137,7 +137,7 @@ Specifically, in single-dimension single-winner continuous models, they employ $
 (median),
 $L_2$ (mean), and $L_{\infty}$ (mid-range, meaning the point between the highest and
 lowest agent preference).
-They additionally treat any possible value in the space as a potential output as the
+They additionally treat any possible value in the space as a potential output of the
 system.
 They provide a number of remarks and observations for each of these mechanisms, which
 we will be borrowing.
@@ -146,7 +146,7 @@ As such, we will adapt each of the mechanisms to use weighted votes so they can 
 with proxies, and examine how they operate in the continuous space.
 
 James Miller~\cite{Miller1969} imagined a governmental system utilizing proxy voting
-in 1969 as a more direct form of a representative democracy.\footnote{
+in 1969 as a more direct form of representative democracy.\footnote{
     That is to say, Miller envisioned a system where individuals could directly vote
     for an issue, or elect a proxy to vote for them.
     Naturally, any democracy that uses proxy voting is a representative democracy,
@@ -162,7 +162,7 @@ those being individuals who would `vote as [the delegator] would if only
 [the delegator] had the time and knowledge to participate directly'~\cite{Miller1969}.
 Additionally, Miller states `a representative should be an expert, or at least
 competent, in each field [on which they are voting]'~\cite{Miller1969}.
-This is true both in the government as well as other situations where decisions are
+This is true both in the government as well as in other situations where decisions are
 made by voting.
 As such, we consider scenarios where a proxy is dubbed, at least according to its
 constituents, an `expert,' and so the constituents will go with its preference

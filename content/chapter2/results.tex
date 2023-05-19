@@ -16,7 +16,7 @@ $
         \sum^{n}_{i = 1}{\lvert \epsilon_i  \rvert}
 $,
 where $n$ is the number of runs, $\systemspace_{\max}$ and $\systemspace_{\min}$ are
-the maximum and minimum value in the preference space, respectively, and $\epsilon_i$
+the maximum and minimum values in the preference space, respectively, and $\epsilon_i$
 is the error of run $i$.
 Error is defined as $\truthof{\text{test}}~-~\truthof{\text{baseline}}$, meaning
 the output of the test run minus the output of the baseline (all agents voting).
@@ -27,7 +27,7 @@ From this plot, there are a few trends that are immediately identifiable.
 First, error unsurprisingly increases as the number of inactive agents increases.
 % 05/05/2023: \vicki{I thought it was an average if a unique median couldn't be found
 % .  Have you considered running with 25 agents, so the median is always clear?}
-% Whoops, another artifact from when I was using the lower bound. Active Only/Median
+% Whoops, another artifact from when I was using the lower bound. Active-Only/Median
 % no longer has this shape.
 %
 % The parity of the total number of agents doesn't change anything because as agents
@@ -52,7 +52,7 @@ mechanism the results are very similar to when all agents are active and able to
 
 Notably, the Expert coordination mechanism exhibits higher error than the others as the number
 of delegators reaches a significant portion of the population.
-In particular, the Expert mechanism tracks nearly identically to Active Only when
+In particular, the Expert mechanism tracks nearly identically to Active-Only when
 using the Midrange voting mechanism.
 Depending on the use case, this may or may not be beneficial.
 If we are attempting to find the best result for all agents, this mechanism may yield
@@ -102,9 +102,9 @@ shown in~\autoref{fig:different-weight-comparison}.
             coordination mechanism per voting mechanism.
             `Error as a percent of the preference space' means the error divided by
             the total size of the preference space.
-            Note All Agents represents when all agents are voting, meaning no proxy
+            Note All-Agents represents when all agents are voting, meaning no proxy
             voting is used and all agents are present.
-            Similarly, Active Only represents when proxy voting is not used and not
+            Similarly, Active-Only represents when proxy voting is not used and not
             all agents are present, and when proxies lose their constituents.
             The results are averaged over 1024 total runs.
             There are 24 total agents.
@@ -300,14 +300,14 @@ each agent.
 This finding is particularly important, as often the most polarizing topics are the
 most important to individuals.
 While it is still more beneficial to use proxy voting than not, in these polarized
-cases, agents should make an extra effort to participate in-person to learn all they
+cases, agents should make an extra effort to participate in person to learn all they
 can about the topic and ensure their voice is heard.
 Those using proxy voting on split issues ought to be aware of this weakness and
-implement some limitation to prevent inaccurate results.
+implement some limitations to prevent inaccurate results.
 These limitations could include requiring some percentage of the population, say
 20--30\%, to be active.
-Alternatively, if it becomes apparent that discussion is changing the opinions of the
-active voters, which could be learned by occasionally polling the participants, it
+Alternatively, if it becomes apparent that the discussion is changing the opinions of
+the active voters, which could be learned by occasionally polling the participants, it
 may be wise to require voters to attend in person.
 That way, those who have not been present to attend the deliberations can properly
 participate.
